@@ -1,4 +1,4 @@
-package org.jrebirth.demo.masteringtables;
+package org.jrebirth.demo.masteringtables.resources;
 
 import javafx.scene.text.Font;
 

@@ -16,6 +16,7 @@ import org.jrebirth.core.ui.Model;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveBuilder;
 import org.jrebirth.core.wave.WaveGroup;
+import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.game.GameModel;
 

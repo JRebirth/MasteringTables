@@ -9,7 +9,7 @@ import javafx.scene.layout.StackPane;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
-import org.jrebirth.demo.masteringtables.MTFonts;
+import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

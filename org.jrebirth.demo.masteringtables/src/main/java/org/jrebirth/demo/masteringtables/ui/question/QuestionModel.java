@@ -65,7 +65,12 @@ public class QuestionModel extends AbstractModel<QuestionModel, QuestionView> {
 
         this.expression = expression;
 
+        getView().getLeftOperand().setText(String.valueOf(getExpression().getLeft()));
+        getView().getOperator().setText(getExpression().getOperator().toString());
+        getView().getRightOperand().setText(String.valueOf(getExpression().getRight()));
+        getView().getEquality().setText("=");
         getView().getResult().setText("");
+
         getView().getShowExpression().play();
 
     }

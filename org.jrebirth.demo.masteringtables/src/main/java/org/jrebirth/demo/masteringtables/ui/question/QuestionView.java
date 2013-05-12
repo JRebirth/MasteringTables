@@ -106,16 +106,15 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
 
         this.showExpression = SequentialTransitionBuilder.create()
                 .children(
-                        buildTextPartAnimation(getLeftOperand(), String.valueOf(getModel().getExpression().getLeft())),
-                        buildTextPartAnimation(getOperator(), getModel().getExpression().getOperator().toString()),
-                        buildTextPartAnimation(getRightOperand(), String.valueOf(getModel().getExpression().getRight())),
-                        buildTextPartAnimation(getEquality(), "=")
+                        buildTextPartAnimation(getLeftOperand()),
+                        buildTextPartAnimation(getOperator()),
+                        buildTextPartAnimation(getRightOperand()),
+                        buildTextPartAnimation(getEquality())
                 )
                 .build();
     }
 
-    private Animation buildTextPartAnimation(final Text textNode, final String textValue) {
-        textNode.setText(textValue);
+    private Animation buildTextPartAnimation(final Text textNode) {
         return ParallelTransitionBuilder.create()
                 .node(textNode)
                 .children(

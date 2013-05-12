@@ -2,12 +2,10 @@ package org.jrebirth.demo.masteringtables.ui.game;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractController;
 import org.jrebirth.core.ui.adapter.KeyAdapter;
-import org.jrebirth.core.ui.adapter.MouseAdapter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author
  */
-public class GameController extends AbstractController<GameModel, GameView> implements KeyAdapter, MouseAdapter {
+public class GameController extends AbstractController<GameModel, GameView> implements KeyAdapter {
 
     /** The class logger. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameController.class);
@@ -39,8 +37,6 @@ public class GameController extends AbstractController<GameModel, GameView> impl
     @Override
     protected void customInitializeEventAdapters() throws CoreException {
         getView().getRootNode().addEventFilter(KeyEvent.KEY_RELEASED, getHandler(KeyEvent.KEY_RELEASED));
-        getView().getRootNode().addEventFilter(MouseEvent.ANY, getHandler(MouseEvent.ANY));
-
         // getRootNode().requestFocus();
     }
 
@@ -101,76 +97,6 @@ public class GameController extends AbstractController<GameModel, GameView> impl
     public void keyTyped(final KeyEvent keyEvent) {
         // Nothing to do yet
 
-    }
-
-    @Override
-    public void mouse(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-        if (getRootNode().isFocused()) {
-            System.out.println("has focus");
-        }
-    }
-
-    @Override
-    public void mouseDragDetected(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseClicked(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseDragged(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseEntered(final MouseEvent mouseEvent) {
-        // getView().getRootNode().requestFocus();
-
-    }
-
-    @Override
-    public void mouseEnteredTarget(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseExited(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseExitedTarget(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseMoved(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mousePressed(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-
-    }
-
-    @Override
-    public void mouseReleased(final MouseEvent mouseEvent) {
-        // Nothing to do yet
-        if (getRootNode().isFocused()) {
-            System.out.println("has focus");
-        }
     }
 
 }

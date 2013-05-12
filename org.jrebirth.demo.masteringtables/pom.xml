@@ -15,6 +15,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+		<storepass>defaultpass</storepass>
+		<keypass>defaultpass</keypass>
+		
 		<deployUrl>http://apps.jrebirth.org</deployUrl>
 		<deployPath>${project.artifactId}/${project.version}</deployPath>
 

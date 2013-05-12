@@ -2,7 +2,6 @@ package org.jrebirth.demo.masteringtables.ui.question;
 
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
-import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
@@ -66,13 +65,9 @@ public class QuestionModel extends AbstractModel<QuestionModel, QuestionView> {
 
         this.expression = expression;
 
-        getView().getLeftOperand().setText(String.valueOf(expression.getLeft()));
-
-        getView().getOperator().setText(expression.getOperator().toString());
-
         getView().getResult().setText("");
+        getView().getShowExpression().play();
 
-        getView().getRightOperand().setText(String.valueOf(expression.getRight()));
     }
 
     public void appendNumber(String name) {
@@ -88,16 +83,22 @@ public class QuestionModel extends AbstractModel<QuestionModel, QuestionView> {
         final int type = Integer.parseInt(getView().getResult().getText());
 
         if (type == this.expression.getResult()) {
-            sendWave(MTWaves.REGISTER_SUCCESS, WaveData.build(MTWaves.EXPRESSION, this.expression));
+            getView().getExpressionResolved().play();
         } else {
             if (String.valueOf(type).length() == String.valueOf(this.expression.getResult()).length()) {
-                sendWave(MTWaves.REGISTER_FAILURE, WaveData.build(MTWaves.EXPRESSION, this.expression));
+                getView().getExpressionFailure().play();
             }
-
         }
     }
 
     public void deleteLastChar() {
         getView().getResult().setText(getView().getResult().getText().substring(0, Math.max(0, getView().getResult().getText().length() - 1)));
+    }
+
+    /**
+     * @return Returns the expression.
+     */
+    public Expression getExpression() {
+        return this.expression;
     }
 }

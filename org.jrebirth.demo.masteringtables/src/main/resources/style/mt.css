@@ -1,5 +1,15 @@
-#SampleNode{
+
+#QuestionPanel{
 	
 	-fx-background-color: #FFCCFF;  
-    -fx-fill : #A0DCFF ;
+    
+    
+}
+
+#QuestionPanel Text{
+	
+	-fx-fill : #CCCCCC ;
+    -fx-font-family: "Verdana";
+    -fx-font-size: 70px;  
+	
 }

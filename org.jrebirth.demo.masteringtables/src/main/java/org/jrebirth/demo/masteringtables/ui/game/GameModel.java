@@ -5,9 +5,10 @@ import java.util.List;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
@@ -66,30 +67,31 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         // Process a wave action, you must listen the wave type before
     }
 
-    public void tablesBuilt(List<Expression> allTables, Wave wave) {
+    public void tablesBuilt(final List<Expression> allTables, final Wave wave) {
 
         Collections.shuffle(allTables);
         this.gameList = allTables.subList(0, 10);
 
-        getView().getRootNode().setCenter(getModel(QuestionModel.class).getRootNode());
-        BorderPane.setAlignment(getModel(QuestionModel.class).getRootNode(), Pos.CENTER);
+        getView().getQuestionHolder().getChildren().clear();
+        getView().getQuestionHolder().getChildren().add(getModel(QuestionModel.class).getRootNode());
+        StackPane.setAlignment(getModel(QuestionModel.class).getRootNode(), Pos.CENTER);
 
-        sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, gameList.get(index)));
-
-    }
-
-    public void startGame(List<Expression> expressionList, Wave wave) {
+        sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
 
     }
 
-    public void registerSuccess(Expression expression, Wave wave) {
+    public void startGame(final List<Expression> expressionList, final Wave wave) {
 
-        success.setValue(success.getValue() + 1);
-        index++;
+    }
 
-        if (gameList.size() > index) {
+    public void registerSuccess(final Expression expression, final Wave wave) {
+
+        this.success.setValue(this.success.getValue() + 1);
+        this.index++;
+
+        if (this.gameList.size() > this.index) {
             // continue game
-            sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, gameList.get(index)));
+            sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
         } else {
             // Game is finished
             sendWave(MTWaves.FINISH_GAME);
@@ -97,8 +99,8 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
 
     }
 
-    public void registerFailure(Expression expression, Wave wave) {
-        failure.setValue(failure.getValue() + 1);
+    public void registerFailure(final Expression expression, final Wave wave) {
+        this.failure.setValue(this.failure.getValue() + 1);
     }
 
     /**
@@ -106,8 +108,8 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      */
     @Override
     protected void customShowView() {
-        getView().getSuccessLabel().textProperty().bind(success.asString());
-        getView().getFailureLabel().textProperty().bind(failure.asString());
+        getView().getSuccessLabel().textProperty().bind(this.success.asString());
+        getView().getFailureLabel().textProperty().bind(this.failure.asString());
     }
 
     /**
@@ -123,7 +125,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
 
     }
 
-    public void doNumber(KeyCode code) {
+    public void doNumber(final KeyCode code) {
         getModel(QuestionModel.class).appendNumber(code.getName());
     }
 
@@ -135,6 +137,14 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
     public void doDelete() {
         getModel(QuestionModel.class).deleteLastChar();
 
+    }
+
+    public Bounds getSuccessLocation() {
+        return getView().getSuccessLabel().localToScene(getView().getSuccessLabel().getBoundsInLocal());
+    }
+
+    public Bounds getFailureLocation() {
+        return getView().getFailureLabel().localToScene(getView().getFailureLabel().getBoundsInLocal());
     }
 
 }

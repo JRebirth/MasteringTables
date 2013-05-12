@@ -1,7 +1,11 @@
 package org.jrebirth.demo.masteringtables.ui.question;
 
+import javafx.event.ActionEvent;
+
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractController;
+import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,4 +47,16 @@ public class QuestionController extends AbstractController<QuestionModel, Questi
         // Listen events
     }
 
+    public void onFinishedExpressionResolved(final ActionEvent actionEvent) {
+        getView().getResult().setScaleX(1);
+        getView().getResult().setScaleY(1);
+        getModel().sendWave(MTWaves.REGISTER_SUCCESS, WaveData.build(MTWaves.EXPRESSION, getModel().getExpression()));
+    }
+
+    public void onFinishedExpressionFailure(final ActionEvent actionEvent) {
+        getView().getResult().setText("");
+        getView().getResult().setScaleX(1);
+        getView().getResult().setScaleY(1);
+        getModel().sendWave(MTWaves.REGISTER_FAILURE, WaveData.build(MTWaves.EXPRESSION, getModel().getExpression()));
+    }
 }

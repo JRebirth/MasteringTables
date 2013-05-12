@@ -1,11 +1,19 @@
 package org.jrebirth.demo.masteringtables.ui.question;
 
-import javafx.scene.layout.GridPane;
+import javafx.animation.Animation;
+import javafx.animation.ParallelTransitionBuilder;
+import javafx.animation.ScaleTransitionBuilder;
+import javafx.animation.SequentialTransitionBuilder;
+import javafx.geometry.Pos;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextBuilder;
+import javafx.util.Duration;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
+import org.jrebirth.core.ui.annotation.OnFinished;
 import org.jrebirth.demo.masteringtables.MTFonts;
 
 import org.slf4j.Logger;
@@ -16,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author
  */
-public class QuestionView extends AbstractView<QuestionModel, GridPane, QuestionController> {
+public class QuestionView extends AbstractView<QuestionModel, FlowPane, QuestionController> {
 
     /** The class logger. */
     private static final Logger LOGGER = LoggerFactory.getLogger(QuestionView.class);
@@ -26,6 +34,14 @@ public class QuestionView extends AbstractView<QuestionModel, GridPane, Question
     private Text rightOperand;
     private Text equality;
     private Text result;
+
+    private Animation showExpression;
+
+    @OnFinished(name = "ExpressionResolved")
+    private Animation expressionResolved;
+
+    @OnFinished(name = "ExpressionFailure")
+    private Animation expressionFailure;
 
     /**
      * Default Constructor.
@@ -44,29 +60,133 @@ public class QuestionView extends AbstractView<QuestionModel, GridPane, Question
     @Override
     protected void customInitializeComponents() {
 
-        leftOperand = TextBuilder.create().font(MTFonts.SPLASH.get()).build();
+        getRootNode().setId("QuestionPanel");
+        getRootNode().setAlignment(Pos.CENTER);
+        getRootNode().setMaxSize(600, 200);
 
-        operator = TextBuilder.create().font(MTFonts.SPLASH.get()).build();
+        this.leftOperand = TextBuilder.create()
+                .scaleX(0).scaleY(0)
+                .wrappingWidth(100)
+                .textAlignment(TextAlignment.CENTER)
+                .font(MTFonts.SPLASH.get())
+                .build();
 
-        rightOperand = TextBuilder.create().font(MTFonts.SPLASH.get()).build();
+        this.operator = TextBuilder.create()
+                .scaleX(0).scaleY(0)
+                .wrappingWidth(100)
+                .textAlignment(TextAlignment.CENTER)
+                .font(MTFonts.SPLASH.get())
+                .build();
 
-        equality = TextBuilder.create()
+        this.rightOperand = TextBuilder.create()
+                .scaleX(0).scaleY(0)
+                .font(MTFonts.SPLASH.get())
+                .textAlignment(TextAlignment.CENTER)
+                .build();
+
+        this.equality = TextBuilder.create()
+                .scaleX(0).scaleY(0)
+                .wrappingWidth(100)
+                .textAlignment(TextAlignment.CENTER)
                 .font(MTFonts.SPLASH.get())
                 .text("=")
                 .build();
 
-        result = TextBuilder.create()
+        this.result = TextBuilder.create()
+                .wrappingWidth(200)
+                .textAlignment(TextAlignment.CENTER)
                 .font(MTFonts.SPLASH.get())
                 .text("")
                 .build();
 
-        GridPane.setColumnIndex(leftOperand, 0);
-        GridPane.setColumnIndex(operator, 1);
-        GridPane.setColumnIndex(rightOperand, 2);
-        GridPane.setColumnIndex(equality, 3);
-        GridPane.setColumnIndex(result, 4);
+        getRootNode().getChildren().addAll(this.leftOperand, this.operator, this.rightOperand, this.equality, this.result);
 
-        getRootNode().getChildren().addAll(leftOperand, operator, rightOperand, equality, result);
+        getExpressionResolved();
+        getExpressionFailure();
+
+        this.showExpression = SequentialTransitionBuilder.create()
+                .children(
+                        buildTextPartAnimation(getLeftOperand(), String.valueOf(getModel().getExpression().getLeft())),
+                        buildTextPartAnimation(getOperator(), getModel().getExpression().getOperator().toString()),
+                        buildTextPartAnimation(getRightOperand(), String.valueOf(getModel().getExpression().getRight())),
+                        buildTextPartAnimation(getEquality(), "=")
+                )
+                .build();
+    }
+
+    private Animation buildTextPartAnimation(final Text textNode, final String textValue) {
+        textNode.setText(textValue);
+        return ParallelTransitionBuilder.create()
+                .node(textNode)
+                .children(
+                        ScaleTransitionBuilder.create()
+                                .fromX(0.0).toX(1.0)
+                                .fromY(0.0).toY(1.0)
+                                .build()
+                )
+
+                .build();
+    }
+
+    /**
+     * @return Returns the showExpression.
+     */
+    public Animation getShowExpression() {
+        return this.showExpression;
+    }
+
+    Animation getExpressionResolved() {
+
+        if (this.expressionResolved == null) {
+            this.expressionResolved = ParallelTransitionBuilder.create()
+                    .delay(Duration.millis(600))
+                    // .duration(Duration.millis(400))
+                    .children(
+                            ScaleTransitionBuilder.create()
+                                    .node(getResult())
+                                    .fromX(1).toX(4.0)
+                                    .fromY(1).toY(4.0)
+                                    .build(),
+
+                            ScaleTransitionBuilder.create()
+                                    .node(getLeftOperand())
+                                    .fromX(1).toX(0)
+                                    .fromY(1).toY(0)
+                                    .build(),
+                            ScaleTransitionBuilder.create()
+                                    .node(getOperator())
+                                    .fromX(1).toX(0)
+                                    .fromY(1).toY(0)
+                                    .build(),
+                            ScaleTransitionBuilder.create()
+                                    .node(getRightOperand())
+                                    .fromX(1).toX(0)
+                                    .fromY(1).toY(0)
+                                    .build(),
+                            ScaleTransitionBuilder.create()
+                                    .node(getEquality())
+                                    .fromX(1).toX(0)
+                                    .fromY(1).toY(0)
+                                    .build()
+                    ).build();
+        }
+        return this.expressionResolved;
+    }
+
+    /**
+     * @return Returns the expressionFailure.
+     */
+    public Animation getExpressionFailure() {
+        if (this.expressionFailure == null) {
+            this.expressionFailure = ScaleTransitionBuilder.create()
+                    .delay(Duration.millis(1000))
+                    .node(getResult())
+                    .fromX(1).toX(0.0)
+                    .fromY(1).toY(0.0)
+                    .duration(Duration.millis(500))
+                    .build();
+        }
+        return this.expressionFailure;
     }
 
     /**
@@ -97,35 +217,35 @@ public class QuestionView extends AbstractView<QuestionModel, GridPane, Question
      * @return Returns the leftOperand.
      */
     Text getLeftOperand() {
-        return leftOperand;
+        return this.leftOperand;
     }
 
     /**
      * @return Returns the operator.
      */
     Text getOperator() {
-        return operator;
+        return this.operator;
     }
 
     /**
      * @return Returns the rightOperand.
      */
     Text getRightOperand() {
-        return rightOperand;
+        return this.rightOperand;
     }
 
     /**
      * @return Returns the equality.
      */
     Text getEquality() {
-        return equality;
+        return this.equality;
     }
 
     /**
      * @return Returns the result.
      */
     Text getResult() {
-        return result;
+        return this.result;
     }
 
 }

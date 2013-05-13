@@ -4,6 +4,7 @@ import org.jrebirth.core.wave.WaveItem;
 import org.jrebirth.core.wave.WaveType;
 import org.jrebirth.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
+import org.jrebirth.demo.masteringtables.ui.page.Page;
 
 /**
  * The class <strong>JRebirthWaveItem</strong>.
@@ -19,9 +20,14 @@ public interface MTWaves {
     WaveItem<Expression> EXPRESSION = new WaveItem<Expression>() {
     };
 
+    WaveItem<Page> PAGE = new WaveItem<Page>() {
+    };
+
     /******************************/
     /** WaveType related to Model */
     /******************************/
+
+    WaveType SHOW_PAGE = WaveTypeBase.build("SHOW_PAGE", PAGE);
 
     WaveType START_GAME = WaveTypeBase.build("START_GAME");
     WaveType FINISH_GAME = WaveTypeBase.build("FINISH_GAME");

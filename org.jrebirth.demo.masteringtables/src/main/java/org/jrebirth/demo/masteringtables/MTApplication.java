@@ -18,7 +18,7 @@ import org.jrebirth.core.wave.WaveBuilder;
 import org.jrebirth.core.wave.WaveGroup;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
-import org.jrebirth.demo.masteringtables.ui.game.GameModel;
+import org.jrebirth.demo.masteringtables.ui.page.PageModel;
 
 /**
  * The class <strong>MTApplication</strong>.
@@ -41,7 +41,7 @@ public final class MTApplication extends AbstractApplication<StackPane> {
      */
     @Override
     public Class<? extends Model> getFirstModelClass() {
-        return GameModel.class;
+        return PageModel.class;
     }
 
     /**

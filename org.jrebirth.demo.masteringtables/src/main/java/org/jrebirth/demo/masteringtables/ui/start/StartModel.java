@@ -2,6 +2,7 @@ package org.jrebirth.demo.masteringtables.ui.start;
 
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
+import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
 import org.slf4j.Logger;
@@ -16,6 +17,8 @@ public class StartModel extends AbstractModel<StartModel, StartView> {
 
     /** The class logger. */
     private static final Logger LOGGER = LoggerFactory.getLogger(StartModel.class);
+
+    private final GameSettings gameSettings = new GameSettings();
 
     /**
      * {@inheritDoc}
@@ -57,4 +60,7 @@ public class StartModel extends AbstractModel<StartModel, StartView> {
         // Custom code to process when the view is hidden
     }
 
+    public GameSettings getGameSettings() {
+        return gameSettings;
+    }
 }

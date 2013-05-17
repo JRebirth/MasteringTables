@@ -1,5 +1,6 @@
 package org.jrebirth.demo.masteringtables.ui.game;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,8 +15,8 @@ import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
-import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
+import org.jrebirth.demo.masteringtables.ui.page.Page;
 import org.jrebirth.demo.masteringtables.ui.question.QuestionModel;
 
 import org.slf4j.Logger;
@@ -37,7 +38,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
 
     private int index = 0;
 
-    private List<Expression> gameList;
+    private final List<Expression> gameList = new ArrayList<>();
 
     /**
      * {@inheritDoc}
@@ -45,7 +46,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
     @Override
     protected void customInitialize() {
 
-        listen(ExpressionBuilderService.RE_TABLES_BUILT);
+        listen(MTWaves.START_GAME);
 
         listen(MTWaves.REGISTER_SUCCESS);
         listen(MTWaves.REGISTER_FAILURE);
@@ -67,21 +68,18 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         // Process a wave action, you must listen the wave type before
     }
 
-    public void tablesBuilt(final List<Expression> allTables, final Wave wave) {
+    public void startGame(final List<Expression> expressionList, final Wave wave) {
 
-        Collections.shuffle(allTables);
-        this.gameList = allTables.subList(0, 10);
+        gameList.clear();
+        this.gameList.addAll(expressionList);
+        Collections.shuffle(expressionList);
 
         getView().getQuestionHolder().getChildren().clear();
         getView().getQuestionHolder().getChildren().add(getModel(QuestionModel.class).getRootNode());
+
         StackPane.setAlignment(getModel(QuestionModel.class).getRootNode(), Pos.CENTER);
 
         sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
-
-    }
-
-    public void startGame(final List<Expression> expressionList, final Wave wave) {
-
     }
 
     public void registerSuccess(final Expression expression, final Wave wave) {
@@ -95,6 +93,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         } else {
             // Game is finished
             sendWave(MTWaves.FINISH_GAME);
+            sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.StartMenu));
         }
 
     }

@@ -9,7 +9,7 @@
 <listEntry value="storepass=revise"/>
 <listEntry value="keypass=revise"/>
 </listAttribute>
-<stringAttribute key="M2_RUNTIME" value="c:\Users\ng1e2b8\Desktop\WIP\JR\TOOLS\apache-maven-3.0.4"/>
+<stringAttribute key="M2_RUNTIME" value="E:\JREBIRTH\TOOLS\apache-maven-3.0.4"/>
 <booleanAttribute key="M2_SKIP_TESTS" value="false"/>
 <booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="false"/>
 <booleanAttribute key="M2_WORKSPACE_RESOLUTION" value="false"/>

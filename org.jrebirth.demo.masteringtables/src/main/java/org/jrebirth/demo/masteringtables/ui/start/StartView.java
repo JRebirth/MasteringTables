@@ -132,6 +132,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
                 .maxHeight(100)
                 .text(name)
                 .build();
+
     }
 
     /**

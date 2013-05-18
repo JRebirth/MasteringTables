@@ -73,30 +73,23 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
                 callCommand(ShowModelCommand.class, waveBean);
                 break;
         }
-
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void processAction(final Wave wave) {
-        // Process a wave action, you must listen the wave type before
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void customShowView() {
+        // Nothing to do yet
+
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void customHideView() {
-        // Custom code to process when the view is hidden
+        // Nothing to do yet
+
     }
 
+    @Override
+    protected void processAction(Wave wave) {
+        // Nothing to do yet
+
+    }
 }

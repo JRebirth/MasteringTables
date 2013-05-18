@@ -1,4 +1,4 @@
-package org.jrebirth.demo.masteringtables.ui.page;
+package org.jrebirth.demo.masteringtables.beans;
 
 public enum Page {
 

@@ -5,8 +5,8 @@ import javafx.event.ActionEvent;
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractController;
 import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
-import org.jrebirth.demo.masteringtables.ui.page.Page;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

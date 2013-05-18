@@ -7,6 +7,7 @@ import org.jrebirth.core.command.basic.ShowModelCommand;
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Expression;
+import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.command.StartGameCommand;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.service.SessionService;

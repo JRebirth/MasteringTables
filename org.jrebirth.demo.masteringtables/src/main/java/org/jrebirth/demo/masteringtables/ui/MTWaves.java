@@ -6,7 +6,7 @@ import org.jrebirth.core.wave.WaveItem;
 import org.jrebirth.core.wave.WaveType;
 import org.jrebirth.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
-import org.jrebirth.demo.masteringtables.ui.page.Page;
+import org.jrebirth.demo.masteringtables.beans.Page;
 
 /**
  * The class <strong>JRebirthWaveItem</strong>.

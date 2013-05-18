@@ -15,8 +15,8 @@ import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
+import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
-import org.jrebirth.demo.masteringtables.ui.page.Page;
 import org.jrebirth.demo.masteringtables.ui.question.QuestionModel;
 
 import org.slf4j.Logger;

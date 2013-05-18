@@ -1,28 +1,51 @@
+/**
+ * Get more info at : www.jrebirth.org .
+ * Copyright JRebirth.org © 2011-2013
+ * Contact : sebastien.bordes@jrebirth.org
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.util.Builder;
 
+// TODO: Auto-generated Javadoc
 /**
- * The class <strong>ExpressionBuilder</strong>.
+ * The Class ExpressionBuilder.
  * 
- * @author Sébastien Bordes
- * 
- * @param <B> the builder recursive type
+ * @param <B> the generic type
  */
 public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builder<Expression> {
 
-    /** The field used to store the property mask (allow up to 64 properties). */
+    /** The bit mask. */
     private long bitMask;
 
+    /** The left operand. */
     private int leftOperand;
+
+    /** The right operand. */
     private int rightOperand;
+
+    /** The result operand. */
     private int resultOperand;
+
+    /** The operator. */
     private Operator operator;
 
     /**
-     * Create a WaveBuilder instance.
+     * Creates the.
      * 
-     * @return new instance of WaveBuilder
+     * @return the expression builder
      */
     @SuppressWarnings("rawtypes")
     public static ExpressionBuilder<?> create() {
@@ -30,9 +53,9 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     }
 
     /**
-     * Apply all wave properties.
+     * Apply to.
      * 
-     * @param expr the wave that need to be initialized with builder values
+     * @param expr the expr
      */
     public void applyTo(final Expression expr) {
         // super.applyTo(paramWave);
@@ -51,11 +74,10 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     }
 
     /**
-     * Define the wave group.
+     * Left.
      * 
-     * @param waveGroup the wave group to set
-     * 
-     * @return the builder
+     * @param leftOperand the left operand
+     * @return the b
      */
     @SuppressWarnings("unchecked")
     public B left(final int leftOperand) {
@@ -65,11 +87,10 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     }
 
     /**
-     * Define the wave type.
+     * Right.
      * 
-     * @param waveType the wave type to set
-     * 
-     * @return the builder
+     * @param rightOperand the right operand
+     * @return the b
      */
     @SuppressWarnings("unchecked")
     public B right(final int rightOperand) {
@@ -79,11 +100,10 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     }
 
     /**
-     * Define the related class.
+     * Result.
      * 
-     * @param relatedClass the related class to set
-     * 
-     * @return the builder
+     * @param resultOperand the result operand
+     * @return the b
      */
     @SuppressWarnings("unchecked")
     public B result(final int resultOperand) {
@@ -93,11 +113,10 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     }
 
     /**
-     * Define the related class.
+     * Operator.
      * 
-     * @param relatedClass the related class to set
-     * 
-     * @return the builder
+     * @param operator the operator
+     * @return the b
      */
     @SuppressWarnings("unchecked")
     public B operator(final Operator operator) {
@@ -117,20 +136,19 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     }
 
     /**
-     * Add a bit to the mask.
+     * Adds the bit.
      * 
-     * @param bit the bit to add
+     * @param bit the bit
      */
     protected void addBit(final int bit) {
         this.bitMask |= 1 << bit;
     }
 
     /**
-     * Check if the mask contains the requested bit.
+     * Checks for bit.
      * 
-     * @param bit the requested bit
-     * 
-     * @return true if the mask contains the requested bit
+     * @param bit the bit
+     * @return true, if successful
      */
     protected boolean hasBit(final int bit) {
         return (this.bitMask & 1 << bit) != 0;

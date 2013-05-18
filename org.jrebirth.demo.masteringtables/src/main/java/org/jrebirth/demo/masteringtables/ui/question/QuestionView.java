@@ -1,3 +1,20 @@
+/**
+ * Get more info at : www.jrebirth.org .
+ * Copyright JRebirth.org © 2011-2013
+ * Contact : sebastien.bordes@jrebirth.org
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jrebirth.demo.masteringtables.ui.question;
 
 import javafx.animation.Animation;
@@ -19,36 +36,46 @@ import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * The class <strong>QuestionView</strong>.
- * 
- * @author
+ * The Class QuestionView.
  */
 public class QuestionView extends AbstractView<QuestionModel, FlowPane, QuestionController> {
 
-    /** The class logger. */
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(QuestionView.class);
 
+    /** The left operand. */
     private Text leftOperand;
+
+    /** The operator. */
     private Text operator;
+
+    /** The right operand. */
     private Text rightOperand;
+
+    /** The equality. */
     private Text equality;
+
+    /** The result. */
     private Text result;
 
+    /** The show expression. */
     private Animation showExpression;
 
+    /** The expression resolved. */
     @OnFinished(name = "ExpressionResolved")
     private Animation expressionResolved;
 
+    /** The expression failure. */
     @OnFinished(name = "ExpressionFailure")
     private Animation expressionFailure;
 
     /**
-     * Default Constructor.
+     * Instantiates a new question view.
      * 
-     * @param model the controls view model
-     * 
-     * @throws CoreException if build fails
+     * @param model the model
+     * @throws CoreException the core exception
      */
     public QuestionView(final QuestionModel model) throws CoreException {
         super(model);
@@ -114,6 +141,12 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
                 .build();
     }
 
+    /**
+     * Builds the text part animation.
+     * 
+     * @param textNode the text node
+     * @return the animation
+     */
     private Animation buildTextPartAnimation(final Text textNode) {
         return ParallelTransitionBuilder.create()
                 .node(textNode)
@@ -128,12 +161,19 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
     }
 
     /**
-     * @return Returns the showExpression.
+     * Gets the show expression.
+     * 
+     * @return the show expression
      */
     public Animation getShowExpression() {
         return this.showExpression;
     }
 
+    /**
+     * Gets the expression resolved.
+     * 
+     * @return the expression resolved
+     */
     Animation getExpressionResolved() {
 
         if (this.expressionResolved == null) {
@@ -173,7 +213,9 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
     }
 
     /**
-     * @return Returns the expressionFailure.
+     * Gets the expression failure.
+     * 
+     * @return the expression failure
      */
     public Animation getExpressionFailure() {
         if (this.expressionFailure == null) {
@@ -213,35 +255,45 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
     }
 
     /**
-     * @return Returns the leftOperand.
+     * Gets the left operand.
+     * 
+     * @return the left operand
      */
     Text getLeftOperand() {
         return this.leftOperand;
     }
 
     /**
-     * @return Returns the operator.
+     * Gets the operator.
+     * 
+     * @return the operator
      */
     Text getOperator() {
         return this.operator;
     }
 
     /**
-     * @return Returns the rightOperand.
+     * Gets the right operand.
+     * 
+     * @return the right operand
      */
     Text getRightOperand() {
         return this.rightOperand;
     }
 
     /**
-     * @return Returns the equality.
+     * Gets the equality.
+     * 
+     * @return the equality
      */
     Text getEquality() {
         return this.equality;
     }
 
     /**
-     * @return Returns the result.
+     * Gets the result.
+     * 
+     * @return the result
      */
     Text getResult() {
         return this.result;

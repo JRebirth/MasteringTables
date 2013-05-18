@@ -1,3 +1,20 @@
+/**
+ * Get more info at : www.jrebirth.org .
+ * Copyright JRebirth.org © 2011-2013
+ * Contact : sebastien.bordes@jrebirth.org
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jrebirth.demo.masteringtables.ui.game;
 
 import javafx.scene.Node;
@@ -14,26 +31,29 @@ import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author
+ * The Class GameView.
  */
 public class GameView extends AbstractView<GameModel, BorderPane, GameController> {
 
-    /** The class logger. */
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameView.class);
 
+    /** The question holder. */
     private StackPane questionHolder;
 
+    /** The success label. */
     private Label successLabel;
 
+    /** The failure label. */
     private Label failureLabel;
 
     /**
-     * Default Constructor.
+     * Instantiates a new game view.
      * 
-     * @param model the controls view model
-     * 
-     * @throws CoreException if build fails
+     * @param model the model
+     * @throws CoreException the core exception
      */
     public GameView(final GameModel model) throws CoreException {
         super(model);
@@ -53,12 +73,19 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
     }
 
     /**
-     * @return Returns the questionHolder.
+     * Gets the question holder.
+     * 
+     * @return the question holder
      */
     StackPane getQuestionHolder() {
         return this.questionHolder;
     }
 
+    /**
+     * Builds the top panel.
+     * 
+     * @return the node
+     */
     private Node buildTopPanel() {
         final AnchorPane ap = new AnchorPane();
 
@@ -105,14 +132,18 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
     }
 
     /**
-     * @return Returns the successLabel.
+     * Gets the success label.
+     * 
+     * @return the success label
      */
     Label getSuccessLabel() {
         return this.successLabel;
     }
 
     /**
-     * @return Returns the failureLabel.
+     * Gets the failure label.
+     * 
+     * @return the failure label
      */
     Label getFailureLabel() {
         return this.failureLabel;

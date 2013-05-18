@@ -1,84 +1,147 @@
+/**
+ * Get more info at : www.jrebirth.org .
+ * Copyright JRebirth.org © 2011-2013
+ * Contact : sebastien.bordes@jrebirth.org
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Expression.
+ */
 public class Expression {
 
+    /** The left property. */
     private final SimpleIntegerProperty leftProperty = new SimpleIntegerProperty();
+
+    /** The right property. */
     private final SimpleIntegerProperty rightProperty = new SimpleIntegerProperty();
+
+    /** The result property. */
     private final SimpleIntegerProperty resultProperty = new SimpleIntegerProperty();
 
+    /** The operator property. */
     private final SimpleObjectProperty<Operator> operatorProperty = new SimpleObjectProperty<>();
 
     /**
-     * @return Returns the left.
+     * Gets the left.
+     * 
+     * @return the left
      */
     public int getLeft() {
         return this.leftProperty.get();
     }
 
     /**
-     * @param left The left to set.
+     * Sets the left.
+     * 
+     * @param left the new left
      */
     public void setLeft(final int left) {
         this.leftProperty.set(left);
     }
 
+    /**
+     * Left property.
+     * 
+     * @return the simple integer property
+     */
     public SimpleIntegerProperty leftProperty() {
         return this.leftProperty;
     }
 
     /**
-     * @return Returns the right.
+     * Gets the right.
+     * 
+     * @return the right
      */
     public int getRight() {
         return this.rightProperty.get();
     }
 
     /**
-     * @param right The right to set.
+     * Sets the right.
+     * 
+     * @param right the new right
      */
     public void setRight(final int right) {
         this.rightProperty.set(right);
     }
 
+    /**
+     * Right property.
+     * 
+     * @return the simple integer property
+     */
     public SimpleIntegerProperty rightProperty() {
         return this.rightProperty;
     }
 
     /**
-     * @return Returns the result.
+     * Gets the result.
+     * 
+     * @return the result
      */
     public int getResult() {
         return this.resultProperty.get();
     }
 
     /**
-     * @param result The result to set.
+     * Sets the result.
+     * 
+     * @param result the new result
      */
     public void setResult(final int result) {
         this.resultProperty.set(result);
     }
 
+    /**
+     * Result property.
+     * 
+     * @return the simple integer property
+     */
     public SimpleIntegerProperty resultProperty() {
         return this.resultProperty;
     }
 
     /**
-     * @return Returns the operator.
+     * Gets the operator.
+     * 
+     * @return the operator
      */
     public Operator getOperator() {
         return this.operatorProperty.get();
     }
 
     /**
-     * @param operator The operator to set.
+     * Sets the operator.
+     * 
+     * @param operator the new operator
      */
     public void setOperator(final Operator operator) {
         this.operatorProperty.set(operator);
     }
 
+    /**
+     * Operator property.
+     * 
+     * @return the simple object property
+     */
     public SimpleObjectProperty<Operator> operatorProperty() {
         return this.operatorProperty;
     }

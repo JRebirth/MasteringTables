@@ -1,3 +1,20 @@
+/**
+ * Get more info at : www.jrebirth.org .
+ * Copyright JRebirth.org © 2011-2013
+ * Contact : sebastien.bordes@jrebirth.org
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.beans.property.BooleanProperty;
@@ -5,117 +22,159 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GameSettings.
+ */
 public class GameSettings {
 
+    /** The contains addition. */
     private final BooleanProperty containsAddition = new SimpleBooleanProperty();
+
+    /** The contains subtraction. */
     private final BooleanProperty containsSubtraction = new SimpleBooleanProperty();
+
+    /** The contains multiplication. */
     private final BooleanProperty containsMultiplication = new SimpleBooleanProperty();
+
+    /** The contains division. */
     private final BooleanProperty containsDivision = new SimpleBooleanProperty();
 
+    /** The question number. */
     private final IntegerProperty questionNumber = new SimpleIntegerProperty();
 
     /**
-     * @return Returns the containsAddition.
+     * Contains addition property.
+     * 
+     * @return the boolean property
      */
     public BooleanProperty containsAdditionProperty() {
-        return containsAddition;
+        return this.containsAddition;
     }
 
     /**
-     * @return Returns the containsAddition.
+     * Gets the contains addition.
+     * 
+     * @return the contains addition
      */
     public boolean getContainsAddition() {
-        return containsAddition.get();
+        return this.containsAddition.get();
     }
 
     /**
-     * @param containsAddition The containsAddition to set.
+     * Sets the contains addition.
+     * 
+     * @param containsAddition the new contains addition
      */
-    public void setContainsAddition(boolean containsAddition) {
+    public void setContainsAddition(final boolean containsAddition) {
         this.containsAddition.set(containsAddition);
     }
 
     /**
-     * @return Returns the containsSubtraction.
+     * Contains subtraction property.
+     * 
+     * @return the boolean property
      */
     public BooleanProperty containsSubtractionProperty() {
-        return containsSubtraction;
+        return this.containsSubtraction;
     }
 
     /**
-     * @return Returns the containsSubtraction.
+     * Gets the contains subtraction.
+     * 
+     * @return the contains subtraction
      */
     public boolean getContainsSubtraction() {
-        return containsSubtraction.get();
+        return this.containsSubtraction.get();
     }
 
     /**
-     * @param containsSubtraction The containsSubtraction to set.
+     * Sets the contains subtraction.
+     * 
+     * @param containsSubtraction the new contains subtraction
      */
-    public void setContainsSubtraction(boolean containsSubtraction) {
+    public void setContainsSubtraction(final boolean containsSubtraction) {
         this.containsSubtraction.set(containsSubtraction);
     }
 
     /**
-     * @return Returns the containsMultiplication.
+     * Contains multiplication property.
+     * 
+     * @return the boolean property
      */
     public BooleanProperty containsMultiplicationProperty() {
-        return containsMultiplication;
+        return this.containsMultiplication;
     }
 
     /**
-     * @return Returns the containsMultiplication.
+     * Gets the contains multiplication.
+     * 
+     * @return the contains multiplication
      */
     public boolean getContainsMultiplication() {
-        return containsMultiplication.get();
+        return this.containsMultiplication.get();
     }
 
     /**
-     * @param containsMultiplication The containsMultiplication to set.
+     * Sets the contains multiplication.
+     * 
+     * @param containsMultiplication the new contains multiplication
      */
-    void setContainsMultiplication(boolean containsMultiplication) {
+    void setContainsMultiplication(final boolean containsMultiplication) {
         this.containsMultiplication.set(containsMultiplication);
     }
 
     /**
-     * @return Returns the containsDivision.
+     * Contains division property.
+     * 
+     * @return the boolean property
      */
     public BooleanProperty containsDivisionProperty() {
-        return containsDivision;
+        return this.containsDivision;
     }
 
     /**
-     * @return Returns the containsDivision.
+     * Gets the contains division.
+     * 
+     * @return the contains division
      */
     public boolean getContainsDivision() {
-        return containsDivision.get();
+        return this.containsDivision.get();
     }
 
     /**
-     * @param containsDivision The containsDivision to set.
+     * Sets the contains division.
+     * 
+     * @param containsDivision the new contains division
      */
-    public void setContainsDivision(boolean containsDivision) {
+    public void setContainsDivision(final boolean containsDivision) {
         this.containsDivision.set(containsDivision);
     }
 
     /**
-     * @return Returns the questionNumber.
+     * Question number property.
+     * 
+     * @return the integer property
      */
     public IntegerProperty questionNumberProperty() {
-        return questionNumber;
+        return this.questionNumber;
     }
 
     /**
-     * @return Returns the questionNumber.
+     * Gets the question number.
+     * 
+     * @return the question number
      */
     public int getQuestionNumber() {
-        return questionNumber.get();
+        return this.questionNumber.get();
     }
 
     /**
-     * @param questionNumber The questionNumber to set.
+     * Sets the question number.
+     * 
+     * @param questionNumber the new question number
      */
-    public void setQuestionNumber(int questionNumber) {
+    public void setQuestionNumber(final int questionNumber) {
         this.questionNumber.set(questionNumber);
     }
 

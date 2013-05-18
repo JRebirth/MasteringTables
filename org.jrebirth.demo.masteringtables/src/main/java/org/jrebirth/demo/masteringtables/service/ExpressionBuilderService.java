@@ -1,3 +1,20 @@
+/**
+ * Get more info at : www.jrebirth.org .
+ * Copyright JRebirth.org © 2011-2013
+ * Contact : sebastien.bordes@jrebirth.org
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.jrebirth.demo.masteringtables.service;
 
 import java.util.ArrayList;
@@ -15,30 +32,38 @@ import org.jrebirth.demo.masteringtables.beans.Operator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * The class <strong>SampleService</strong>.
- * 
- * @author
+ * The Class ExpressionBuilderService.
  */
 public final class ExpressionBuilderService extends ServiceBase {
 
+    /** The Constant ALL_EXPRESSIONS. */
     public static final WaveItem<List<Expression>> ALL_EXPRESSIONS = new WaveItem<List<Expression>>() {
     };
 
-    /** Perform something. */
+    /** The Constant DO_BUILD_TABLES. */
     public static final WaveTypeBase DO_BUILD_TABLES = WaveTypeBase.build("BUILD_TABLES");
 
-    /** Wave type to return when something was done. */
+    /** The Constant RE_TABLES_BUILT. */
     public static final WaveTypeBase RE_TABLES_BUILT = WaveTypeBase.build("TABLES_BUILT", ALL_EXPRESSIONS);
 
-    /** The class logger. */
+    /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionBuilderService.class);
 
+    /** The all tables. */
     private final List<Expression> allTables = new ArrayList<>();
 
+    /** The multiplication table. */
     private final List<Expression> multiplicationTable = new ArrayList<>();
+
+    /** The addition table. */
     private final List<Expression> additionTable = new ArrayList<>();
+
+    /** The subtraction table. */
     private final List<Expression> subtractionTable = new ArrayList<>();
+
+    /** The division table. */
     private final List<Expression> divisionTable = new ArrayList<>();
 
     /**
@@ -53,9 +78,10 @@ public final class ExpressionBuilderService extends ServiceBase {
     }
 
     /**
-     * Do something.
+     * Builds the tables.
      * 
-     * @param wave the source wave
+     * @param wave the wave
+     * @return the list
      */
     public List<Expression> buildTables(final Wave wave) {
 
@@ -93,35 +119,45 @@ public final class ExpressionBuilderService extends ServiceBase {
     }
 
     /**
-     * @return Returns the allTables.
+     * Gets the all tables.
+     * 
+     * @return the all tables
      */
     public List<Expression> getAllTables() {
         return this.allTables;
     }
 
     /**
-     * @return Returns the multiplicationTable.
+     * Gets the multiplication table.
+     * 
+     * @return the multiplication table
      */
     public List<Expression> getMultiplicationTable() {
         return this.multiplicationTable;
     }
 
     /**
-     * @return Returns the additionTable.
+     * Gets the addition table.
+     * 
+     * @return the addition table
      */
     public List<Expression> getAdditionTable() {
         return this.additionTable;
     }
 
     /**
-     * @return Returns the subtractionTable.
+     * Gets the subtraction table.
+     * 
+     * @return the subtraction table
      */
     public List<Expression> getSubtractionTable() {
         return this.subtractionTable;
     }
 
     /**
-     * @return Returns the divisionTable.
+     * Gets the division table.
+     * 
+     * @return the division table
      */
     public List<Expression> getDivisionTable() {
         return this.divisionTable;

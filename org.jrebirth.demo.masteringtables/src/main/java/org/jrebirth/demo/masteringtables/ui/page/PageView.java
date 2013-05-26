@@ -22,14 +22,15 @@ import javafx.scene.layout.BorderPane;
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
 import org.jrebirth.core.ui.DefaultController;
+import org.jrebirth.core.ui.annotation.RootNodeId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PageView.
  */
+@RootNodeId("PagePanel")
 public class PageView extends AbstractView<PageModel, BorderPane, DefaultController<PageModel, PageView>> {
 
     /** The Constant LOGGER. */

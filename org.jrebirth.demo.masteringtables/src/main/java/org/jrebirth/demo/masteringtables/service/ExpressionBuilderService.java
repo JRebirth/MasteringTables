@@ -32,7 +32,6 @@ import org.jrebirth.demo.masteringtables.beans.Operator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ExpressionBuilderService.
  */
@@ -46,13 +45,13 @@ public final class ExpressionBuilderService extends ServiceBase {
     public static final WaveTypeBase DO_BUILD_TABLES = WaveTypeBase.build("BUILD_TABLES");
 
     /** The Constant RE_TABLES_BUILT. */
-    public static final WaveTypeBase RE_TABLES_BUILT = WaveTypeBase.build("TABLES_BUILT", ALL_EXPRESSIONS);
+    public static final WaveTypeBase RE_TABLES_BUILT = WaveTypeBase.build("TABLES_BUILT");
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionBuilderService.class);
 
     /** The all tables. */
-    private final List<Expression> allTables = new ArrayList<>();
+    // private final List<Expression> allTables = new ArrayList<>();
 
     /** The multiplication table. */
     private final List<Expression> multiplicationTable = new ArrayList<>();
@@ -83,7 +82,7 @@ public final class ExpressionBuilderService extends ServiceBase {
      * @param wave the wave
      * @return the list
      */
-    public List<Expression> buildTables(final Wave wave) {
+    public/* List<Expression> */void buildTables(final Wave wave) {
 
         LOGGER.trace("Build Tables.");
 
@@ -109,13 +108,13 @@ public final class ExpressionBuilderService extends ServiceBase {
             tableGap++;
         }
 
-        this.allTables.addAll(this.additionTable);
-        this.allTables.addAll(this.subtractionTable);
-        this.allTables.addAll(this.multiplicationTable);
-        this.allTables.addAll(this.divisionTable);
+        // this.allTables.addAll(this.additionTable);
+        // this.allTables.addAll(this.subtractionTable);
+        // this.allTables.addAll(this.multiplicationTable);
+        // this.allTables.addAll(this.divisionTable);
 
         LOGGER.trace("Tables are ready !");
-        return this.allTables;
+        // return this.allTables;
     }
 
     /**
@@ -123,9 +122,9 @@ public final class ExpressionBuilderService extends ServiceBase {
      * 
      * @return the all tables
      */
-    public List<Expression> getAllTables() {
-        return this.allTables;
-    }
+    // public List<Expression> getAllTables() {
+    // return this.allTables;
+    // }
 
     /**
      * Gets the multiplication table.

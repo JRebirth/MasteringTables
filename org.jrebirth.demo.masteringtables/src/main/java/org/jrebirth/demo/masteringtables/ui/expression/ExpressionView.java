@@ -15,13 +15,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.question;
+package org.jrebirth.demo.masteringtables.ui.expression;
 
 import javafx.animation.Animation;
 import javafx.animation.ParallelTransitionBuilder;
 import javafx.animation.ScaleTransitionBuilder;
 import javafx.animation.SequentialTransitionBuilder;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -31,19 +32,20 @@ import javafx.util.Duration;
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
 import org.jrebirth.core.ui.annotation.OnFinished;
+import org.jrebirth.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class QuestionView.
  */
-public class QuestionView extends AbstractView<QuestionModel, FlowPane, QuestionController> {
+@RootNodeId("ExpressionPanel")
+public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, ExpressionController> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(QuestionView.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionView.class);
 
     /** The left operand. */
     private Text leftOperand;
@@ -71,13 +73,15 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
     @OnFinished(name = "ExpressionFailure")
     private Animation expressionFailure;
 
+    private Group expressionGroup;
+
     /**
      * Instantiates a new question view.
      * 
      * @param model the model
      * @throws CoreException the core exception
      */
-    public QuestionView(final QuestionModel model) throws CoreException {
+    public ExpressionView(final ExpressionModel model) throws CoreException {
         super(model);
     }
 
@@ -87,49 +91,42 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
     @Override
     protected void customInitializeComponents() {
 
-        getRootNode().setId("QuestionPanel");
         getRootNode().setAlignment(Pos.CENTER);
-        getRootNode().setMaxSize(600, 200);
 
-        this.leftOperand = TextBuilder.create()
-                .scaleX(0).scaleY(0)
-                .wrappingWidth(100)
-                .textAlignment(TextAlignment.CENTER)
-                .font(MTFonts.SPLASH.get())
+        getRootNode().setPrefSize(600, 200);
+        getRootNode().setMaxSize(800, 200);
+
+        this.leftOperand = getExpressionTextBuilder().build();
+
+        this.operator = getExpressionTextBuilder()
+                .wrappingWidth(80)
                 .build();
 
-        this.operator = TextBuilder.create()
-                .scaleX(0).scaleY(0)
-                .wrappingWidth(100)
-                .textAlignment(TextAlignment.CENTER)
-                .font(MTFonts.SPLASH.get())
-                .build();
+        this.rightOperand = getExpressionTextBuilder().build();
 
-        this.rightOperand = TextBuilder.create()
-                .scaleX(0).scaleY(0)
-                .font(MTFonts.SPLASH.get())
-                .textAlignment(TextAlignment.CENTER)
-                .build();
-
-        this.equality = TextBuilder.create()
-                .scaleX(0).scaleY(0)
-                .wrappingWidth(100)
-                .textAlignment(TextAlignment.CENTER)
-                .font(MTFonts.SPLASH.get())
+        this.equality = getExpressionTextBuilder()
+                .wrappingWidth(80)
                 .text("=")
                 .build();
 
-        this.result = TextBuilder.create()
-                .wrappingWidth(200)
-                .textAlignment(TextAlignment.CENTER)
-                .font(MTFonts.SPLASH.get())
+        this.result = getExpressionTextBuilder()
+                .wrappingWidth(180)
+                .scaleX(1.0)
+                .scaleY(1.0)
                 .text("")
                 .build();
 
+        // expressionGroup = GroupBuilder.create()
+        // .children(this.leftOperand, operator, rightOperand, equality, result)
+        // .build();
+
+        // getRootNode().getChildren().addAll(expressionGroup/* this.leftOperand, this.operator, this.rightOperand, this.equality, this.result */);
+
         getRootNode().getChildren().addAll(this.leftOperand, this.operator, this.rightOperand, this.equality, this.result);
 
-        getExpressionResolved();
-        getExpressionFailure();
+        // Manage Animation
+        this.expressionResolved = buildExpressionResolved();
+        this.expressionFailure = buildExpressionFailure();
 
         this.showExpression = SequentialTransitionBuilder.create()
                 .children(
@@ -139,6 +136,19 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
                         buildTextPartAnimation(getEquality())
                 )
                 .build();
+    }
+
+    /**
+     * TODO To complete.
+     * 
+     * @return
+     */
+    private TextBuilder<?> getExpressionTextBuilder() {
+        return TextBuilder.create()
+                .scaleX(0).scaleY(0)
+                .wrappingWidth(120)
+                .textAlignment(TextAlignment.CENTER)
+                .font(MTFonts.EXPRESSION.get());
     }
 
     /**
@@ -170,46 +180,57 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
     }
 
     /**
+     * @return Returns the expressionResolved.
+     */
+    Animation getExpressionResolved() {
+        return expressionResolved;
+    }
+
+    /**
      * Gets the expression resolved.
      * 
      * @return the expression resolved
      */
-    Animation getExpressionResolved() {
+    private Animation buildExpressionResolved() {
 
-        if (this.expressionResolved == null) {
-            this.expressionResolved = ParallelTransitionBuilder.create()
-                    .delay(Duration.millis(600))
-                    // .duration(Duration.millis(400))
-                    .children(
-                            ScaleTransitionBuilder.create()
-                                    .node(getResult())
-                                    .fromX(1).toX(4.0)
-                                    .fromY(1).toY(4.0)
-                                    .build(),
+        return ParallelTransitionBuilder.create()
+                .delay(Duration.millis(400))
+                .children(
+                        ScaleTransitionBuilder.create()
+                                .node(result)
+                                .fromX(1).toX(4.0)
+                                .fromY(1).toY(4.0)
+                                .build()
+                        ,
 
-                            ScaleTransitionBuilder.create()
-                                    .node(getLeftOperand())
-                                    .fromX(1).toX(0)
-                                    .fromY(1).toY(0)
-                                    .build(),
-                            ScaleTransitionBuilder.create()
-                                    .node(getOperator())
-                                    .fromX(1).toX(0)
-                                    .fromY(1).toY(0)
-                                    .build(),
-                            ScaleTransitionBuilder.create()
-                                    .node(getRightOperand())
-                                    .fromX(1).toX(0)
-                                    .fromY(1).toY(0)
-                                    .build(),
-                            ScaleTransitionBuilder.create()
-                                    .node(getEquality())
-                                    .fromX(1).toX(0)
-                                    .fromY(1).toY(0)
-                                    .build()
-                    ).build();
-        }
-        return this.expressionResolved;
+                        ScaleTransitionBuilder.create()
+                                .node(getLeftOperand())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build(),
+                        ScaleTransitionBuilder.create()
+                                .node(getOperator())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build(),
+                        ScaleTransitionBuilder.create()
+                                .node(getRightOperand())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build(),
+                        ScaleTransitionBuilder.create()
+                                .node(getEquality())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build()
+                ).build();
+    }
+
+    /**
+     * @return Returns the expressionFailure.
+     */
+    Animation getExpressionFailure() {
+        return expressionFailure;
     }
 
     /**
@@ -217,17 +238,14 @@ public class QuestionView extends AbstractView<QuestionModel, FlowPane, Question
      * 
      * @return the expression failure
      */
-    public Animation getExpressionFailure() {
-        if (this.expressionFailure == null) {
-            this.expressionFailure = ScaleTransitionBuilder.create()
-                    .delay(Duration.millis(1000))
-                    .node(getResult())
-                    .fromX(1).toX(0.0)
-                    .fromY(1).toY(0.0)
-                    .duration(Duration.millis(500))
-                    .build();
-        }
-        return this.expressionFailure;
+    private Animation buildExpressionFailure() {
+        return ScaleTransitionBuilder.create()
+                .delay(Duration.millis(500))
+                .node(getResult())
+                .fromX(1).toX(0.0)
+                .fromY(1).toY(0.0)
+                .duration(Duration.millis(400))
+                .build();
     }
 
     /**

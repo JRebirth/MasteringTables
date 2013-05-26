@@ -34,12 +34,11 @@ import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
-import org.jrebirth.demo.masteringtables.ui.question.QuestionModel;
+import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GameModel.
  */
@@ -101,9 +100,9 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         Collections.shuffle(expressionList);
 
         getView().getQuestionHolder().getChildren().clear();
-        getView().getQuestionHolder().getChildren().add(getModel(QuestionModel.class).getRootNode());
+        getView().getQuestionHolder().getChildren().add(getModel(ExpressionModel.class).getRootNode());
 
-        StackPane.setAlignment(getModel(QuestionModel.class).getRootNode(), Pos.CENTER);
+        StackPane.setAlignment(getModel(ExpressionModel.class).getRootNode(), Pos.CENTER);
 
         sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
     }
@@ -171,7 +170,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      * @param code the code
      */
     public void doNumber(final KeyCode code) {
-        getModel(QuestionModel.class).appendNumber(code.getName());
+        getModel(ExpressionModel.class).appendNumber(code.getName());
     }
 
     /**
@@ -186,7 +185,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      * Do delete.
      */
     public void doDelete() {
-        getModel(QuestionModel.class).deleteLastChar();
+        getModel(ExpressionModel.class).deleteLastChar();
 
     }
 

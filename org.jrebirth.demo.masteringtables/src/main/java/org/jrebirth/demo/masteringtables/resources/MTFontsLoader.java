@@ -19,13 +19,12 @@ package org.jrebirth.demo.masteringtables.resources;
 
 import org.jrebirth.core.resource.font.FontName;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Enum MTFontsLoader.
+ * The Enum MTFontsLoader used to load font ttf file.
  */
 public enum MTFontsLoader implements FontName {
 
-    /** The DI nk. */
-    DINk;
+    /** The NYALA font. */
+    NYALA;
 
 }

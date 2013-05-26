@@ -1,5 +1,5 @@
 /**
- * Get more info at : www.jrebirth.org .
+ more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
  * 
@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.question;
+package org.jrebirth.demo.masteringtables.ui.expression;
 
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
@@ -25,14 +25,13 @@ import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class QuestionModel.
  */
-public class QuestionModel extends AbstractModel<QuestionModel, QuestionView> {
+public class ExpressionModel extends AbstractModel<ExpressionModel, ExpressionView> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(QuestionModel.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionModel.class);
 
     /** The expression. */
     private Expression expression;

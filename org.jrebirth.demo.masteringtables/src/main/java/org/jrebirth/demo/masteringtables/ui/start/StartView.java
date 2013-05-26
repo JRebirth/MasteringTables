@@ -129,12 +129,20 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
         final GridPane pane = GridPaneBuilder.create()
                 .hgap(10)
                 .vgap(10)
+                .gridLinesVisible(true)
                 .build();
 
         this.addition = buildChoiceButton(Operator.addition.toString());
+        // this.addition.setSkin(new ArcadeButtonSkin(this.addition));
+
         this.subtraction = buildChoiceButton(Operator.subtraction.toString());
+        // this.subtraction.setSkin(new ArcadeButtonSkin(this.subtraction));
+
         this.multiplication = buildChoiceButton(Operator.multiplication.toString());
+        // this.multiplication.setSkin(new ArcadeButtonSkin(this.multiplication));
+
         this.division = buildChoiceButton(Operator.division.toString());
+        // this.division.setSkin(new ArcadeButtonSkin(this.division));
 
         GridPane.setConstraints(this.addition, 1, 1, 1, 1, HPos.CENTER, VPos.CENTER);
         GridPane.setConstraints(this.subtraction, 2, 1, 1, 1, HPos.CENTER, VPos.CENTER);
@@ -161,11 +169,12 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
      */
     private ToggleButton buildChoiceButton(final String name) {
         return ToggleButtonBuilder.create()
-                .styleClass("ChoiceButton", "toggle-button")
-                .minWidth(100)
-                .minHeight(100)
-                .maxWidth(100)
-                .maxHeight(100)
+                .styleClass("ChoiceButton")// , "toggle-button")
+                .alignment(Pos.BASELINE_CENTER)
+                .minWidth(150)
+                .minHeight(150)
+                .maxWidth(150)
+                .maxHeight(150)
                 .text(name)
                 .build();
 

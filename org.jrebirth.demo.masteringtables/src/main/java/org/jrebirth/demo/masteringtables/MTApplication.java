@@ -17,7 +17,6 @@
  */
 package org.jrebirth.demo.masteringtables;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -31,20 +30,16 @@ import org.jrebirth.core.application.AbstractApplication;
 import org.jrebirth.core.resource.font.FontItem;
 import org.jrebirth.core.ui.Model;
 import org.jrebirth.core.wave.Wave;
-import org.jrebirth.core.wave.WaveBuilder;
-import org.jrebirth.core.wave.WaveGroup;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
-import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.page.PageModel;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class MTApplication.
+ * The MTApplication is the main class used to start the application in standalone mode.
  */
 public final class MTApplication extends AbstractApplication<StackPane> {
 
     /**
-     * The main method.
+     * The main method triggered by Java Runtime.
      * 
      * @param args the arguments
      */
@@ -89,8 +84,10 @@ public final class MTApplication extends AbstractApplication<StackPane> {
      */
     @Override
     public List<FontItem> getFontToPreload() {
+        // Define fonts that will be available from CSS
         return Arrays.asList(new FontItem[] {
-                MTFonts.SPLASH
+                MTFonts.EXPRESSION,
+                MTFonts.COUNTER
         });
     }
 
@@ -107,16 +104,20 @@ public final class MTApplication extends AbstractApplication<StackPane> {
      */
     @Override
     public List<Wave> getPostBootWaveList() {
-        final List<Wave> waveList = new ArrayList<>();
-        waveList.add(
-                WaveBuilder.create()
-                        .waveGroup(WaveGroup.RETURN_DATA)
-                        .relatedClass(ExpressionBuilderService.class)
-                        .waveType(ExpressionBuilderService.DO_BUILD_TABLES)
-                        .build()
-                );
+        return Collections.emptyList();
 
-        return waveList;
+        // Create an asynchronous wave to build all expressions
+
+        // final List<Wave> waveList = new ArrayList<>();
+        // waveList.add(
+        // WaveBuilder.create()
+        // .waveGroup(WaveGroup.RETURN_DATA)
+        // .relatedClass(ExpressionBuilderService.class)
+        // .waveType(ExpressionBuilderService.DO_BUILD_TABLES)
+        // .build()
+        // );
+        //
+        // return waveList;
     }
 
 }

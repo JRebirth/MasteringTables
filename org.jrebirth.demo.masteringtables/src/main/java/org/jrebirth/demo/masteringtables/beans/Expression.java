@@ -20,7 +20,6 @@ package org.jrebirth.demo.masteringtables.beans;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Expression.
  */

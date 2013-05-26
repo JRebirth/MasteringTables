@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.question;
+package org.jrebirth.demo.masteringtables.ui.expression;
 
 import javafx.event.ActionEvent;
 
@@ -27,14 +27,13 @@ import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class QuestionController.
  */
-public class QuestionController extends AbstractController<QuestionModel, QuestionView> {
+public class ExpressionController extends AbstractController<ExpressionModel, ExpressionView> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(QuestionController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionController.class);
 
     /**
      * Instantiates a new question controller.
@@ -42,7 +41,7 @@ public class QuestionController extends AbstractController<QuestionModel, Questi
      * @param view the view
      * @throws CoreException the core exception
      */
-    public QuestionController(final QuestionView view) throws CoreException {
+    public ExpressionController(final ExpressionView view) throws CoreException {
         super(view);
     }
 

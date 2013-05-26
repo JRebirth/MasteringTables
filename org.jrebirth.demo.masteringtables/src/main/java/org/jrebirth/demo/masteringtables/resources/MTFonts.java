@@ -17,46 +17,19 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
-import javafx.scene.text.Font;
-
-import org.jrebirth.core.resource.ResourceBuilders;
-import org.jrebirth.core.resource.font.FontBuilder;
 import org.jrebirth.core.resource.font.FontItem;
-import org.jrebirth.core.resource.font.FontParams;
+import org.jrebirth.core.resource.font.FontItemBase;
 import org.jrebirth.core.resource.font.RealFont;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Enum MTFonts.
+ * The MTFonts interface providing all fonts.
  */
-public enum MTFonts implements FontItem {
+public interface MTFonts {
 
-    /** The splash. */
-    SPLASH(new RealFont(MTFontsLoader.DINk, 24));
+    /** The font used to display expression. */
+    FontItem EXPRESSION = FontItemBase.build(new RealFont(MTFontsLoader.NYALA, 150.0));
 
-    /**
-     * Instantiates a new mT fonts.
-     * 
-     * @param fontParams the font params
-     */
-    MTFonts(final FontParams fontParams) {
-        builder().storeParams(this, fontParams);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Font get() {
-        return builder().get(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public FontBuilder builder() {
-        return ResourceBuilders.FONT_BUILDER;
-    }
+    /** The font used to display counter values. */
+    FontItem COUNTER = FontItemBase.build(new RealFont(MTFontsLoader.NYALA, 50.0));
 
 }

@@ -17,16 +17,12 @@
  */
 package org.jrebirth.demo.masteringtables.ui.page;
 
-import java.util.List;
-
 import org.jrebirth.core.command.basic.DisplayModelWaveBean;
 import org.jrebirth.core.command.basic.ShowModelCommand;
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
-import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.command.StartGameCommand;
-import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.game.GameModel;
@@ -35,7 +31,6 @@ import org.jrebirth.demo.masteringtables.ui.start.StartModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PageModel.
  */
@@ -53,7 +48,6 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
     @Override
     protected void customInitialize() {
 
-        listen(ExpressionBuilderService.RE_TABLES_BUILT);
         listen(MTWaves.SHOW_PAGE);
     }
 
@@ -62,18 +56,6 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
      */
     @Override
     protected void customInitializeInnerModels() {
-
-    }
-
-    /**
-     * Tables built.
-     * 
-     * @param allTables the all tables
-     * @param wave the wave
-     */
-    public void tablesBuilt(final List<Expression> allTables, final Wave wave) {
-
-        showPage(Page.StartMenu, null);
 
     }
 
@@ -110,8 +92,8 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
      */
     @Override
     protected void customShowView() {
-        // Nothing to do yet
-
+        // On redisplay show the start page
+        showPage(Page.StartMenu, null);
     }
 
     /**

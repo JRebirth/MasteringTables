@@ -91,12 +91,12 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
 
         final StackPane successPane = new StackPane();
 
-        this.successLabel = LabelBuilder.create().font(MTFonts.SPLASH.get()).build();
+        this.successLabel = LabelBuilder.create().font(MTFonts.COUNTER.get()).build();
 
         successPane.getChildren().addAll(this.successLabel);
 
         final StackPane failurePane = new StackPane();
-        this.failureLabel = LabelBuilder.create().font(MTFonts.SPLASH.get()).build();
+        this.failureLabel = LabelBuilder.create().font(MTFonts.COUNTER.get()).build();
         failurePane.getChildren().addAll(this.failureLabel);
 
         AnchorPane.setRightAnchor(failurePane, 20.0);

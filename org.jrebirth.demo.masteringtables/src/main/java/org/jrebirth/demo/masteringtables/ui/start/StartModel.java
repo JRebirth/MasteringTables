@@ -52,7 +52,7 @@ public class StartModel extends AbstractModel<StartModel, StartView> {
         listen(MTWaves.REGISTER_FAILURE);
 
         // Store an hard link to avoid garbage collection of the service
-        expressionBuilderService = getService(ExpressionBuilderService.class);
+        this.expressionBuilderService = getService(ExpressionBuilderService.class);
 
         returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES);
     }

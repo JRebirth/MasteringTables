@@ -183,7 +183,7 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
      * @return Returns the expressionResolved.
      */
     Animation getExpressionResolved() {
-        return expressionResolved;
+        return this.expressionResolved;
     }
 
     /**
@@ -197,7 +197,7 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
                 .delay(Duration.millis(400))
                 .children(
                         ScaleTransitionBuilder.create()
-                                .node(result)
+                                .node(this.result)
                                 .fromX(1).toX(4.0)
                                 .fromY(1).toY(4.0)
                                 .build()
@@ -230,7 +230,7 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
      * @return Returns the expressionFailure.
      */
     Animation getExpressionFailure() {
-        return expressionFailure;
+        return this.expressionFailure;
     }
 
     /**

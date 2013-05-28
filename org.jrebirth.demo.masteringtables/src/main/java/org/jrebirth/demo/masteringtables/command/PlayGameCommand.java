@@ -63,6 +63,6 @@ public class PlayGameCommand extends DefaultPoolCommand {
 
         Collections.shuffle(gameList);
 
-        sendWave(MTWaves.START_GAME, WaveData.build(MTWaves.GAME_LIST, gameList.subList(0, 5)));
+        sendWave(MTWaves.START_GAME, WaveData.build(MTWaves.GAME_LIST, gameList.subList(0, gs.getQuestionNumber())));
     }
 }

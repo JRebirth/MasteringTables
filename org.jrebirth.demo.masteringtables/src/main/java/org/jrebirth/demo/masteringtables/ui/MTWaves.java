@@ -19,13 +19,14 @@ package org.jrebirth.demo.masteringtables.ui;
 
 import java.util.List;
 
+import javafx.scene.Node;
+
 import org.jrebirth.core.wave.WaveItem;
 import org.jrebirth.core.wave.WaveType;
 import org.jrebirth.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Interface MTWaves.
  */
@@ -34,6 +35,12 @@ public interface MTWaves {
     /** The expression. */
     /** WaveItem */
     /******************************/
+
+    WaveItem<Node> FADE_OUT_NODE = new WaveItem<Node>() {
+    };
+
+    WaveItem<Node> FADE_IN_NODE = new WaveItem<Node>() {
+    };
 
     WaveItem<Expression> EXPRESSION = new WaveItem<Expression>() {
     };

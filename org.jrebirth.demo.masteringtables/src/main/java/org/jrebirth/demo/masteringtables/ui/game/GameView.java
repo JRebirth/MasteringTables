@@ -17,12 +17,15 @@
  */
 package org.jrebirth.demo.masteringtables.ui.game;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.LabelBuilder;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.StackPaneBuilder;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
@@ -31,7 +34,6 @@ import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GameView.
  */
@@ -44,10 +46,16 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
     private StackPane questionHolder;
 
     /** The success label. */
-    private Label successLabel;
+    private Label successIcon;
+
+    /** The success text counter. */
+    private Label successCounter;
 
     /** The failure label. */
-    private Label failureLabel;
+    private Label failureIcon;
+
+    /** The failure text counter. */
+    private Label failureCounter;
 
     /**
      * Instantiates a new game view.
@@ -70,6 +78,7 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
         getRootNode().setCenter(this.questionHolder);
 
         getRootNode().setFocusTraversable(true);
+
     }
 
     /**
@@ -89,18 +98,60 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
     private Node buildTopPanel() {
         final AnchorPane ap = new AnchorPane();
 
-        final StackPane successPane = new StackPane();
+        // Success Part
 
-        this.successLabel = LabelBuilder.create().font(MTFonts.COUNTER.get()).build();
+        this.successCounter = LabelBuilder.create()
+                .id("SuccessCounter")
+                .font(MTFonts.COUNTER.get())
+                .minWidth(100)
+                .alignment(Pos.CENTER_RIGHT)
+                // .style("-fx-background-color:#CCC")
+                .build();
 
-        successPane.getChildren().addAll(this.successLabel);
+        this.successIcon = LabelBuilder.create()
+                .id("SuccessIcon")
+                // .style("-fx-background-color:#233")
+                .build();
 
-        final StackPane failurePane = new StackPane();
-        this.failureLabel = LabelBuilder.create().font(MTFonts.COUNTER.get()).build();
-        failurePane.getChildren().addAll(this.failureLabel);
+        StackPane.setMargin(successIcon, new Insets(0, 0, 12, 92));
+        StackPane.setAlignment(successIcon, Pos.TOP_RIGHT);
 
+        StackPane.setAlignment(successCounter, Pos.BOTTOM_LEFT);
+
+        final StackPane successPane = StackPaneBuilder.create()
+                .children(this.successIcon, this.successCounter)
+                // .style("-fx-background-color:#CCC")
+                .build();
+
+        // Failure Part
+
+        this.failureCounter = LabelBuilder.create()
+                .id("FailureCounter")
+                .font(MTFonts.COUNTER.get())
+                .minWidth(100)
+                .alignment(Pos.CENTER_RIGHT)
+                .build();
+
+        this.failureIcon = LabelBuilder.create()
+                .id("FailureIcon")
+                .build();
+
+        StackPane.setMargin(failureIcon, new Insets(0, 0, 12, 92));
+        StackPane.setAlignment(failureIcon, Pos.TOP_RIGHT);
+
+        StackPane.setAlignment(failureCounter, Pos.BOTTOM_LEFT);
+
+        final StackPane failurePane = StackPaneBuilder.create()
+                .children(this.failureIcon, this.failureCounter)
+                .build();
+
+        // Add Part to the view root node
+
+        AnchorPane.setTopAnchor(failurePane, 10.0);
         AnchorPane.setRightAnchor(failurePane, 20.0);
-        AnchorPane.setRightAnchor(successPane, 60.0);
+
+        AnchorPane.setTopAnchor(successPane, 10.0);
+        AnchorPane.setRightAnchor(successPane, 200.0);
 
         ap.getChildren().addAll(successPane, failurePane);
 
@@ -132,21 +183,21 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
     }
 
     /**
-     * Gets the success label.
+     * Gets the success counter.
      * 
-     * @return the success label
+     * @return the success counter
      */
-    Label getSuccessLabel() {
-        return this.successLabel;
+    Label getSuccessCounter() {
+        return this.successCounter;
     }
 
     /**
-     * Gets the failure label.
+     * Gets the failure counter.
      * 
-     * @return the failure label
+     * @return the failure counter
      */
-    Label getFailureLabel() {
-        return this.failureLabel;
+    Label getFailureCounter() {
+        return this.failureCounter;
     }
 
 }

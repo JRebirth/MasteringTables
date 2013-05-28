@@ -22,10 +22,13 @@ import org.jrebirth.core.command.basic.ShowModelCommand;
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Page;
+import org.jrebirth.demo.masteringtables.command.ShowPageNicelyCommand;
 import org.jrebirth.demo.masteringtables.command.StartGameCommand;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.game.GameModel;
+import org.jrebirth.demo.masteringtables.ui.result.ResultModel;
+import org.jrebirth.demo.masteringtables.ui.splash.SplashModel;
 import org.jrebirth.demo.masteringtables.ui.start.StartModel;
 
 import org.slf4j.Logger;
@@ -67,22 +70,33 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
      */
     public void showPage(final Page page, final Wave wave) {
 
+        LOGGER.info("Show Page: " + page.toString());
+
         final DisplayModelWaveBean waveBean = new DisplayModelWaveBean();
-        waveBean.setUniquePlaceHolder(getView().getRootNode().centerProperty());
+        waveBean.setChidrenPlaceHolder(getView().getRootNode().getChildren());
+        waveBean.setAppendChild(false);
 
         switch (page) {
+
+            case Splash:
+                waveBean.setModelClass(SplashModel.class);
+                callCommand(ShowModelCommand.class, waveBean);
+                break;
+
             case Game:
                 waveBean.setModelClass(GameModel.class);
                 callCommand(StartGameCommand.class, waveBean);
                 break;
+
             case ShowResult:
-                waveBean.setModelClass(GameModel.class);
-                callCommand(ShowModelCommand.class, waveBean);
+                waveBean.setModelClass(ResultModel.class);
+                callCommand(ShowPageNicelyCommand.class, waveBean);
                 break;
+
             default:
             case StartMenu:
                 waveBean.setModelClass(StartModel.class);
-                callCommand(ShowModelCommand.class, waveBean);
+                callCommand(ShowPageNicelyCommand.class, waveBean);
                 break;
         }
     }
@@ -93,7 +107,7 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
     @Override
     protected void customShowView() {
         // On redisplay show the start page
-        showPage(Page.StartMenu, null);
+        showPage(Page.Splash, null);
     }
 
     /**

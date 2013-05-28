@@ -15,23 +15,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.beans;
+package org.jrebirth.demo.masteringtables.command;
+
+import org.jrebirth.core.command.DefaultMultiCommand;
+import org.jrebirth.core.command.basic.ShowModelCommand;
 
 /**
- * The Enum Page list all possible page loaded in fullscreen.
+ * The Class StartGameCommand.
  */
-public enum Page {
+public class ShowPageNicelyCommand extends DefaultMultiCommand {
 
-    /** The Start menu. */
-    Splash,
+    /**
+     * Instantiates a new start game command.
+     */
+    public ShowPageNicelyCommand() {
+        super();// Run into JIT and is sequential
+    }
 
-    /** The Start menu. */
-    StartMenu,
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void addSubCommand() {
+        addCommandClass(ShowModelCommand.class);
+        addCommandClass(FadeTransitionCommand.class);
 
-    /** The Game. */
-    Game,
-
-    /** The Show result. */
-    ShowResult;
-
+    }
 }

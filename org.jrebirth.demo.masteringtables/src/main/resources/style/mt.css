@@ -1,21 +1,58 @@
-/** Expression. */
+/********************************************************************/
+/** Page View. */
+/********************************************************************/
+
+#PagePanel {
+	-fx-background-image: url("../image/Background.png");
+}
+
+
+/********************************************************************/
+/** 				Splash View. 									*/
+/********************************************************************/
+
+#SplashPanel{
+	-fx-background-image: url("../image/Splash.png");
+}
+
+/********************************************************************/
+/** 						Game View 								*/
+/********************************************************************/
+
+#SuccessCounter{
+	-fx-text-fill: #D6DF23;
+	-fx-content-display: text-only ;
+}
+
+#SuccessIcon{
+	-fx-content-display: graphic-only  ;
+	-fx-graphic: url("../image/SuccessLabel.png"); 
+}
+
+#FailureCounter{
+	-fx-text-fill: #000;
+	-fx-content-display: text-only ;
+}
+#FailureIcon{
+	-fx-content-display: graphic-only  ;
+	-fx-graphic: url("../image/FailureLabel.png"); 
+}
+
+/********************************************************************/
+/** 				Expression View.								*/
+/********************************************************************/
 
 #ExpressionPanel{
-	
-	-fx-effect:innershadow(gaussian, #fff,10,1.0, 0,0);
-	-fx-background-color: #CCCCCC;
+	-fx-background-color: #A7BBBC;
+	-fx-background-radius: 10px;
+
+	-fx-border-color: #FFF;
+	-fx-border-width: 0.3px;
+	-fx-border-radius: 10px;
 }
-/*
-Text{
-	-fx-stroke-width: 10px;
-	-fx-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);
-}*/
 
 #ExpressionPanel Text{
-	
-	-fx-text-fill : #000000 ;
-/*   -fx-font-family: "Verdana";
-    -fx-font-size: 70px; */   
+	-fx-fill : #FFFFFF;
 }
 
 /*
@@ -41,9 +78,9 @@ ToggleButton Labeled{
 
 .ChoiceButton {
 	
-	-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);
+	/*-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);*/
 	
-	-fx-background-image: url("toggle-button.png");
+	-fx-background-image: url("../image/toggle-button.png");
 	-fx-background-color: transparent;
 	-fx-background-size: 150px;
 	-fx-background-position: center center ;
@@ -72,23 +109,11 @@ ToggleButton Labeled{
 }
 .ChoiceButton:hover {
 	
-	-fx-background-image: url("toggle-button-hover.png");
+	-fx-background-image: url("../image/toggle-button.png");
 	
-    /*-fx-background-color:
-        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-        #9d4024,
-        #d86e3a,
-        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);*/
 }
 .ChoiceButton:selected {
 	
-	-fx-background-image: url("toggle-button-selected.png");
+	-fx-background-image: url("../image/toggle-button-selected.png");
 	
-   /*  -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
-    -fx-background-color:
-        linear-gradient(from 0% 93% to 0% 100%, #a3C313 0%, #903b12 100%),
-        #9d6624,
-        #d8CC3a,
-        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c5992c);*/
 }
-

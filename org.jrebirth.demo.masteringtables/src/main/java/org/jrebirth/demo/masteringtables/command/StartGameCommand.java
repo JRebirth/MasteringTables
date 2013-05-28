@@ -18,9 +18,7 @@
 package org.jrebirth.demo.masteringtables.command;
 
 import org.jrebirth.core.command.DefaultMultiCommand;
-import org.jrebirth.core.command.basic.ShowModelCommand;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class StartGameCommand.
  */
@@ -38,7 +36,7 @@ public class StartGameCommand extends DefaultMultiCommand {
      */
     @Override
     protected void addSubCommand() {
-        addCommandClass(ShowModelCommand.class);
+        addCommandClass(ShowPageNicelyCommand.class);
         addCommandClass(PlayGameCommand.class);
 
     }

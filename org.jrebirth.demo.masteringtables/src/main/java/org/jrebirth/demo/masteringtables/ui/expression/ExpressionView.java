@@ -23,7 +23,11 @@ import javafx.animation.ScaleTransitionBuilder;
 import javafx.animation.SequentialTransitionBuilder;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.DropShadowBuilder;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextBuilder;
@@ -94,7 +98,7 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
         getRootNode().setAlignment(Pos.CENTER);
 
         getRootNode().setPrefSize(600, 200);
-        getRootNode().setMaxSize(800, 200);
+        getRootNode().setMaxSize(700, 200);
 
         this.leftOperand = getExpressionTextBuilder().build();
 
@@ -136,6 +140,17 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
                         buildTextPartAnimation(getEquality())
                 )
                 .build();
+
+        DropShadow s = DropShadowBuilder.create()
+                .height(10)
+                .width(10)
+                .color(Color.BLACK)
+                .blurType(BlurType.THREE_PASS_BOX)
+                .radius(10)
+                .spread(0.1)
+                .build();
+
+        getRootNode().setEffect(s);
     }
 
     /**
@@ -162,6 +177,7 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
                 .node(textNode)
                 .children(
                         ScaleTransitionBuilder.create()
+                                .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
                                 .fromX(0.0).toX(1.0)
                                 .fromY(0.0).toY(1.0)
                                 .build()

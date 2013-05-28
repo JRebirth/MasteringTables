@@ -17,16 +17,24 @@
  */
 package org.jrebirth.demo.masteringtables.ui.start;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBuilder;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleButtonBuilder;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ToggleGroupBuilder;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
@@ -67,6 +75,8 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
     @OnAction(name = "Start")
     private Button start;
 
+    private ToggleGroup lengthGroup;
+
     /**
      * Instantiates a new start view.
      * 
@@ -84,7 +94,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
     protected void customInitializeComponents() {
 
         final FlowPane fp = FlowPaneBuilder.create()
-                .children(new ImageView(loadImage("image/Mastering_Tables_Header.png")))
+                .children(new ImageView(loadImage("image/Title.png")))
                 .build();
         fp.setAlignment(Pos.CENTER);
         getRootNode().setTop(fp);
@@ -93,6 +103,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
 
         getRootNode().setBottom(buildStartGamePanel());
 
+        // Ui binding
         final BooleanBinding bb1 = Bindings.or(this.addition.selectedProperty(), this.subtraction.selectedProperty());
         final BooleanBinding bb2 = Bindings.or(this.multiplication.selectedProperty(), this.division.selectedProperty());
         final BooleanBinding bb = Bindings.or(bb1, bb2);
@@ -129,7 +140,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
         final GridPane pane = GridPaneBuilder.create()
                 .hgap(10)
                 .vgap(10)
-                .gridLinesVisible(true)
+                // .gridLinesVisible(true)
                 .build();
 
         this.addition = buildChoiceButton(Operator.addition.toString());
@@ -146,17 +157,48 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
 
         GridPane.setConstraints(this.addition, 1, 1, 1, 1, HPos.CENTER, VPos.CENTER);
         GridPane.setConstraints(this.subtraction, 2, 1, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(this.multiplication, 1, 2, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(this.division, 2, 2, 1, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(this.multiplication, 3, 1, 1, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(this.division, 4, 1, 1, 1, HPos.CENTER, VPos.CENTER);
 
         pane.getChildren().addAll(this.addition, this.subtraction, this.multiplication, this.division);
         pane.setAlignment(Pos.CENTER);
 
-        // Bound widget to properties
+        // Bound widget to properties Binding SHOULD BE grouped
         getModel().getGameSettings().containsAdditionProperty().bind(this.addition.selectedProperty());
         getModel().getGameSettings().containsSubtractionProperty().bind(this.subtraction.selectedProperty());
         getModel().getGameSettings().containsMultiplicationProperty().bind(this.multiplication.selectedProperty());
         getModel().getGameSettings().containsDivisionProperty().bind(this.division.selectedProperty());
+
+        // Manage Question count
+
+        List<ToggleButton> toggleList = new ArrayList<>();
+        FlowPane fp = new FlowPane();
+        fp.setAlignment(Pos.CENTER);
+        fp.setHgap(10);
+
+        int[] list = { 5, 10, 20, 30, 50, 100 };
+        for (int i : list) {
+            toggleList.add(buildMiniButton(i));
+        }
+        fp.getChildren().addAll(toggleList);
+
+        lengthGroup = ToggleGroupBuilder.create()
+                .toggles(toggleList)
+                .build();
+
+        GridPane.setConstraints(fp, 1, 5, 4, 1, HPos.CENTER, VPos.CENTER);
+        pane.getChildren().add(fp);
+
+        lengthGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Toggle> toggleProperty, Toggle previous, Toggle next) {
+                getModel().getGameSettings().setQuestionNumber((int) next.getUserData());
+            }
+        });
+
+        // Select the first item
+        lengthGroup.selectToggle(toggleList.get(0));
 
         return pane;
     }
@@ -176,6 +218,26 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
                 .maxWidth(150)
                 .maxHeight(150)
                 .text(name)
+                .build();
+
+    }
+
+    /**
+     * Builds the choice button.
+     * 
+     * @param name the name
+     * @return the toggle button
+     */
+    private ToggleButton buildMiniButton(final int value) {
+        return ToggleButtonBuilder.create()
+                .styleClass("MiniChoiceButton")// , "toggle-button")
+                .alignment(Pos.BASELINE_CENTER)
+                .minWidth(50)
+                .minHeight(50)
+                .maxWidth(50)
+                .maxHeight(50)
+                .userData(value)
+                .text(Integer.toString(value))
                 .build();
 
     }

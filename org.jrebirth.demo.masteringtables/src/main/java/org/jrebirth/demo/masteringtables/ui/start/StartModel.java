@@ -78,6 +78,7 @@ public class StartModel extends AbstractModel<StartModel, StartView> {
      */
     @Override
     protected void customShowView() {
+
     }
 
     /**

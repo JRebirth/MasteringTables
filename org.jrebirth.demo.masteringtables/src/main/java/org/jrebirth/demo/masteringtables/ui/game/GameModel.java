@@ -21,9 +21,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.geometry.Bounds;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
@@ -32,7 +29,9 @@ import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
+import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.beans.Page;
+import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
 
@@ -47,11 +46,13 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameModel.class);
 
+    private SessionService sessionService;
+
     /** The success. */
-    private final IntegerProperty success = new SimpleIntegerProperty(0);
+    // private final IntegerProperty success = new SimpleIntegerProperty(1000);
 
     /** The failure. */
-    private final IntegerProperty failure = new SimpleIntegerProperty(0);
+    // private final IntegerProperty failure = new SimpleIntegerProperty(0);
 
     /** The index. */
     private int index = 0;
@@ -69,6 +70,8 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
 
         listen(MTWaves.REGISTER_SUCCESS);
         listen(MTWaves.REGISTER_FAILURE);
+
+        sessionService = getService(SessionService.class);
     }
 
     /**
@@ -95,9 +98,12 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      */
     public void startGame(final List<Expression> expressionList, final Wave wave) {
 
+        this.index = 0;
         this.gameList.clear();
         this.gameList.addAll(expressionList);
         Collections.shuffle(expressionList);
+
+        bindGame();
 
         getView().getQuestionHolder().getChildren().clear();
         getView().getQuestionHolder().getChildren().add(getModel(ExpressionModel.class).getRootNode());
@@ -105,6 +111,16 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         StackPane.setAlignment(getModel(ExpressionModel.class).getRootNode(), Pos.CENTER);
 
         sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
+    }
+
+    private Game getGame() {
+        return sessionService.getCurrentGame();
+    }
+
+    private void bindGame() {
+        sessionService.setCurrentGame(new Game());
+        getView().getSuccessCounter().textProperty().bind(getGame().successCountProperty().asString());
+        getView().getFailureCounter().textProperty().bind(getGame().failureCountProperty().asString());
     }
 
     /**
@@ -115,16 +131,18 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      */
     public void registerSuccess(final Expression expression, final Wave wave) {
 
-        this.success.setValue(this.success.getValue() + 1);
+        getGame().setSuccessCount(getGame().getSuccessCount() + 1);
+
         this.index++;
 
         if (this.gameList.size() > this.index) {
             // continue game
             sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
         } else {
+
             // Game is finished
             sendWave(MTWaves.FINISH_GAME);
-            sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.StartMenu));
+            sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.ShowResult));
         }
 
     }
@@ -136,7 +154,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      * @param wave the wave
      */
     public void registerFailure(final Expression expression, final Wave wave) {
-        this.failure.setValue(this.failure.getValue() + 1);
+        getGame().setFailureCount(getGame().getFailureCount() + 1);
     }
 
     /**
@@ -144,8 +162,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      */
     @Override
     protected void customShowView() {
-        getView().getSuccessLabel().textProperty().bind(this.success.asString());
-        getView().getFailureLabel().textProperty().bind(this.failure.asString());
+
     }
 
     /**
@@ -189,22 +206,22 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
 
     }
 
-    /**
-     * Gets the success location.
-     * 
-     * @return the success location
-     */
-    public Bounds getSuccessLocation() {
-        return getView().getSuccessLabel().localToScene(getView().getSuccessLabel().getBoundsInLocal());
-    }
-
-    /**
-     * Gets the failure location.
-     * 
-     * @return the failure location
-     */
-    public Bounds getFailureLocation() {
-        return getView().getFailureLabel().localToScene(getView().getFailureLabel().getBoundsInLocal());
-    }
+    // /**
+    // * Gets the success location.
+    // *
+    // * @return the success location
+    // */
+    // public Bounds getSuccessLocation() {
+    // return getView().getSuccessCounter().localToScene(getView().getSuccessCounter().getBoundsInLocal());
+    // }
+    //
+    // /**
+    // * Gets the failure location.
+    // *
+    // * @return the failure location
+    // */
+    // public Bounds getFailureLocation() {
+    // return getView().getFailureCounter().localToScene(getView().getFailureCounter().getBoundsInLocal());
+    // }
 
 }

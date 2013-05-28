@@ -15,9 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.page;
+package org.jrebirth.demo.masteringtables.ui.splash;
 
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
@@ -30,11 +30,11 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class SplashView.
  */
-@RootNodeId("PagePanel")
-public class PageView extends AbstractView<PageModel, StackPane, DefaultController<PageModel, PageView>> {
+@RootNodeId("SplashPanel")
+public class SplashView extends AbstractView<SplashModel, BorderPane, DefaultController<SplashModel, SplashView>> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(PageView.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SplashView.class);
 
     /**
      * Instantiates a new page view.
@@ -42,7 +42,7 @@ public class PageView extends AbstractView<PageModel, StackPane, DefaultControll
      * @param model the model
      * @throws CoreException the core exception
      */
-    public PageView(final PageModel model) throws CoreException {
+    public SplashView(final SplashModel model) throws CoreException {
         super(model);
     }
 

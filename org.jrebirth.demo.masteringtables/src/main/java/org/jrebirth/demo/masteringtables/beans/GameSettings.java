@@ -22,7 +22,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GameSettings.
  */

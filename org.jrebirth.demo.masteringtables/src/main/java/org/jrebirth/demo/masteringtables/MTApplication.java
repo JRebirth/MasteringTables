@@ -69,6 +69,7 @@ public final class MTApplication extends AbstractApplication<StackPane> {
     @Override
     protected void customizeStage(final Stage stage) {
         stage.setFullScreen(false);
+        stage.setResizable(false);
     }
 
     /**
@@ -105,19 +106,6 @@ public final class MTApplication extends AbstractApplication<StackPane> {
     @Override
     public List<Wave> getPostBootWaveList() {
         return Collections.emptyList();
-
-        // Create an asynchronous wave to build all expressions
-
-        // final List<Wave> waveList = new ArrayList<>();
-        // waveList.add(
-        // WaveBuilder.create()
-        // .waveGroup(WaveGroup.RETURN_DATA)
-        // .relatedClass(ExpressionBuilderService.class)
-        // .waveType(ExpressionBuilderService.DO_BUILD_TABLES)
-        // .build()
-        // );
-        //
-        // return waveList;
     }
 
 }

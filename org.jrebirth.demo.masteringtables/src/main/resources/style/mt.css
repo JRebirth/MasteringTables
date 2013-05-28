@@ -1,5 +1,14 @@
 /********************************************************************/
-/** Page View. */
+/** 				Splash View. 									*/
+/********************************************************************/
+
+#SplashPanel{
+	-fx-background-image: url("../image/Splash.png");
+}
+
+
+/********************************************************************/
+/** 					Page View.									*/
 /********************************************************************/
 
 #PagePanel {
@@ -8,12 +17,45 @@
 
 
 /********************************************************************/
-/** 				Splash View. 									*/
+/** 					Game Menu View.								*/
 /********************************************************************/
 
-#SplashPanel{
-	-fx-background-image: url("../image/Splash.png");
+.ChoiceButton {
+	
+	/*-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);*/
+	
+	-fx-background-image: url("../image/toggle-button.png");
+	-fx-background-color: transparent;
+	-fx-background-size: 150px;
+	-fx-background-position: center center ;
+	-fx-background-repeat: no-repeat ;
+	
+	/* 
+	-fx-border-width: 2px;
+	-fx-border-color: black;*/
+    /*-fx-padding: -14px 0 0 0;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+     
+    */
+    -fx-font-weight: bold;
+    -fx-font-size: 60px;
 }
+.ChoiceButton:hover {
+	
+	-fx-background-image: url("../image/toggle-button.png");
+}
+.ChoiceButton:selected {
+	
+	-fx-background-image: url("../image/toggle-button-selected.png");
+}
+
 
 /********************************************************************/
 /** 						Game View 								*/
@@ -55,65 +97,8 @@
 	-fx-fill : #FFFFFF;
 }
 
-/*
-ToggleButton Labeled{
-	
-	
-	 -fx-font-weight: bold;
-    -fx-font-size: 55px;
-    
-    -fx-text-fill: linear-gradient(from 0 0 to 0 1, 0.03 #cccccc, 0.499 #fdfdfd,  0.5 #999999, 0.99 #dddddd );
-    
-	
-	/*-fx-effect:innershadow(gaussian, #fff,10,1.0, 0,0),
-    innershadow(gaussian, #fff,20,1.0, 0,0),
-    innershadow(gaussian, #fff,30,1.0, 0,0),
-    innershadow(gaussian, #ff00de,40,1.0, 0,0),
-    innershadow(gaussian, #ff00de,70,1.0, 0,0),
-    innershadow(gaussian, #ff00de,80,1.0, 0,0),
-    innershadow(gaussian, #ff00de,100,1.0, 0,0),
-    innershadow(gaussian, #ff00de,150,1.0, 0,0)
-    ;
-}*/
 
-.ChoiceButton {
-	
-	/*-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);*/
-	
-	-fx-background-image: url("../image/toggle-button.png");
-	-fx-background-color: transparent;
-	-fx-background-size: 150px;
-	-fx-background-position: center center ;
-	-fx-background-repeat: no-repeat ;
-	
-	/* 
-	-fx-border-width: 2px;
-	-fx-border-color: black;*/
-    /*-fx-padding: -14px 0 0 0;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color:
-        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-        #9d4024,
-        #d86e3a,
-        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-     
-    */
-    -fx-font-weight: bold;
-    -fx-font-size: 55px;
-    /*-fx-text-fill: #000000;
-    -fx-font-family: "Verdana";*/
+/********************************************************************/
+/** 					Result View.								*/
+/********************************************************************/
 
-    
-}
-.ChoiceButton:hover {
-	
-	-fx-background-image: url("../image/toggle-button.png");
-	
-}
-.ChoiceButton:selected {
-	
-	-fx-background-image: url("../image/toggle-button-selected.png");
-	
-}

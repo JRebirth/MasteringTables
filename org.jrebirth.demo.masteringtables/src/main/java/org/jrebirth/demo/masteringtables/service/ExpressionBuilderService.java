@@ -33,25 +33,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class ExpressionBuilderService.
+ * The Service ExpressionBuilder is used to build all mathematical tables.
  */
 public final class ExpressionBuilderService extends ServiceBase {
 
-    /** The Constant ALL_EXPRESSIONS. */
+    /** The Wave Item ALL_EXPRESSIONS. */
     public static final WaveItem<List<Expression>> ALL_EXPRESSIONS = new WaveItem<List<Expression>>() {
     };
 
-    /** The Constant DO_BUILD_TABLES. */
+    /** The Wave Type DO_BUILD_TABLES. */
     public static final WaveTypeBase DO_BUILD_TABLES = WaveTypeBase.build("BUILD_TABLES");
 
-    /** The Constant RE_TABLES_BUILT. */
+    /** The Wave Type RE_TABLES_BUILT. */
     public static final WaveTypeBase RE_TABLES_BUILT = WaveTypeBase.build("TABLES_BUILT");
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionBuilderService.class);
-
-    /** The all tables. */
-    // private final List<Expression> allTables = new ArrayList<>();
 
     /** The multiplication table. */
     private final List<Expression> multiplicationTable = new ArrayList<>();
@@ -77,12 +74,11 @@ public final class ExpressionBuilderService extends ServiceBase {
     }
 
     /**
-     * Builds the tables.
+     * Builds all tables.
      * 
      * @param wave the wave
-     * @return the list
      */
-    public/* List<Expression> */void buildTables(final Wave wave) {
+    public void buildTables(final Wave wave) {
 
         LOGGER.trace("Build Tables.");
 
@@ -108,23 +104,8 @@ public final class ExpressionBuilderService extends ServiceBase {
             tableGap++;
         }
 
-        // this.allTables.addAll(this.additionTable);
-        // this.allTables.addAll(this.subtractionTable);
-        // this.allTables.addAll(this.multiplicationTable);
-        // this.allTables.addAll(this.divisionTable);
-
         LOGGER.trace("Tables are ready !");
-        // return this.allTables;
     }
-
-    /**
-     * Gets the all tables.
-     * 
-     * @return the all tables
-     */
-    // public List<Expression> getAllTables() {
-    // return this.allTables;
-    // }
 
     /**
      * Gets the multiplication table.

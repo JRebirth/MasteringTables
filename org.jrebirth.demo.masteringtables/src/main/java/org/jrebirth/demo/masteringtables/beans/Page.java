@@ -22,16 +22,16 @@ package org.jrebirth.demo.masteringtables.beans;
  */
 public enum Page {
 
-    /** The Start menu. */
+    /** The Application splash. */
     Splash,
 
-    /** The Start menu. */
-    StartMenu,
+    /** The Game menu. */
+    GameMenu,
 
     /** The Game. */
     Game,
 
     /** The Show result. */
-    ShowResult;
+    Result;
 
 }

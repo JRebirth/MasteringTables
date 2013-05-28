@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.start;
+package org.jrebirth.demo.masteringtables.ui.menu;
 
 import javafx.event.ActionEvent;
 
@@ -28,14 +28,13 @@ import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class StartController.
+ * The Class GameMenuController.
  */
-public class StartController extends AbstractController<StartModel, StartView> {
+public class GameMenuController extends AbstractController<GameMenuModel, GameMenuView> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(StartController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuController.class);
 
     /**
      * Instantiates a new start controller.
@@ -43,7 +42,7 @@ public class StartController extends AbstractController<StartModel, StartView> {
      * @param view the view
      * @throws CoreException the core exception
      */
-    public StartController(final StartView view) throws CoreException {
+    public GameMenuController(final GameMenuView view) throws CoreException {
         super(view);
     }
 
@@ -52,6 +51,7 @@ public class StartController extends AbstractController<StartModel, StartView> {
      */
     @Override
     protected void customInitializeEventAdapters() throws CoreException {
+        // No adapter required
     }
 
     /**
@@ -59,15 +59,16 @@ public class StartController extends AbstractController<StartModel, StartView> {
      */
     @Override
     protected void customInitializeEventHandlers() throws CoreException {
-        // Listen events
+        // No event handler required
     }
 
     /**
-     * On action start.
+     * When Play button is pressed.
      * 
      * @param actionEvent the action event
      */
-    public void onActionStart(final ActionEvent actionEvent) {
+    public void onActionPlay(final ActionEvent actionEvent) {
+        // When play button is trigered launch the game
         getModel().sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.Game));
     }
 

@@ -113,10 +113,10 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
                 // .style("-fx-background-color:#233")
                 .build();
 
-        StackPane.setMargin(successIcon, new Insets(0, 0, 12, 92));
-        StackPane.setAlignment(successIcon, Pos.TOP_RIGHT);
+        StackPane.setMargin(this.successIcon, new Insets(0, 0, 12, 92));
+        StackPane.setAlignment(this.successIcon, Pos.TOP_RIGHT);
 
-        StackPane.setAlignment(successCounter, Pos.BOTTOM_LEFT);
+        StackPane.setAlignment(this.successCounter, Pos.BOTTOM_LEFT);
 
         final StackPane successPane = StackPaneBuilder.create()
                 .children(this.successIcon, this.successCounter)
@@ -136,10 +136,10 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
                 .id("FailureIcon")
                 .build();
 
-        StackPane.setMargin(failureIcon, new Insets(0, 0, 12, 92));
-        StackPane.setAlignment(failureIcon, Pos.TOP_RIGHT);
+        StackPane.setMargin(this.failureIcon, new Insets(0, 0, 12, 92));
+        StackPane.setAlignment(this.failureIcon, Pos.TOP_RIGHT);
 
-        StackPane.setAlignment(failureCounter, Pos.BOTTOM_LEFT);
+        StackPane.setAlignment(this.failureCounter, Pos.BOTTOM_LEFT);
 
         final StackPane failurePane = StackPaneBuilder.create()
                 .children(this.failureIcon, this.failureCounter)

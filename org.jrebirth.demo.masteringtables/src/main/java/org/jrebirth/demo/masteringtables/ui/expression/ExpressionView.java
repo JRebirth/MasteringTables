@@ -22,7 +22,6 @@ import javafx.animation.ParallelTransitionBuilder;
 import javafx.animation.ScaleTransitionBuilder;
 import javafx.animation.SequentialTransitionBuilder;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.DropShadowBuilder;
@@ -43,7 +42,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class QuestionView.
+ * The Class ExpressionView.
  */
 @RootNodeId("ExpressionPanel")
 public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, ExpressionController> {
@@ -77,8 +76,6 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
     @OnFinished(name = "ExpressionFailure")
     private Animation expressionFailure;
 
-    private Group expressionGroup;
-
     /**
      * Instantiates a new question view.
      * 
@@ -103,13 +100,13 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
         this.leftOperand = getExpressionTextBuilder().build();
 
         this.operator = getExpressionTextBuilder()
-                .wrappingWidth(80)
+                .wrappingWidth(60)
                 .build();
 
         this.rightOperand = getExpressionTextBuilder().build();
 
         this.equality = getExpressionTextBuilder()
-                .wrappingWidth(80)
+                .wrappingWidth(60)
                 .text("=")
                 .build();
 
@@ -119,12 +116,6 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
                 .scaleY(1.0)
                 .text("")
                 .build();
-
-        // expressionGroup = GroupBuilder.create()
-        // .children(this.leftOperand, operator, rightOperand, equality, result)
-        // .build();
-
-        // getRootNode().getChildren().addAll(expressionGroup/* this.leftOperand, this.operator, this.rightOperand, this.equality, this.result */);
 
         getRootNode().getChildren().addAll(this.leftOperand, this.operator, this.rightOperand, this.equality, this.result);
 
@@ -141,7 +132,8 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
                 )
                 .build();
 
-        DropShadow s = DropShadowBuilder.create()
+        // Add a nice drop shadow in all direction
+        final DropShadow s = DropShadowBuilder.create()
                 .height(10)
                 .width(10)
                 .color(Color.BLACK)
@@ -154,9 +146,9 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
     }
 
     /**
-     * TODO To complete.
+     * Return the text builder used for expression part.
      * 
-     * @return
+     * @return the text builder
      */
     private TextBuilder<?> getExpressionTextBuilder() {
         return TextBuilder.create()
@@ -176,6 +168,7 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
         return ParallelTransitionBuilder.create()
                 .node(textNode)
                 .children(
+
                         ScaleTransitionBuilder.create()
                                 .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
                                 .fromX(0.0).toX(1.0)

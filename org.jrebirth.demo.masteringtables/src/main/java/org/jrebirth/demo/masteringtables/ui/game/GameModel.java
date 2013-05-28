@@ -31,6 +31,7 @@ import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.beans.Page;
+import org.jrebirth.demo.masteringtables.command.CreateGameContent;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
@@ -71,7 +72,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         listen(MTWaves.REGISTER_SUCCESS);
         listen(MTWaves.REGISTER_FAILURE);
 
-        sessionService = getService(SessionService.class);
+        this.sessionService = getService(SessionService.class);
     }
 
     /**
@@ -114,11 +115,11 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
     }
 
     private Game getGame() {
-        return sessionService.getCurrentGame();
+        return this.sessionService.getCurrentGame();
     }
 
     private void bindGame() {
-        sessionService.setCurrentGame(new Game());
+        this.sessionService.setCurrentGame(new Game());
         getView().getSuccessCounter().textProperty().bind(getGame().successCountProperty().asString());
         getView().getFailureCounter().textProperty().bind(getGame().failureCountProperty().asString());
     }
@@ -142,7 +143,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
 
             // Game is finished
             sendWave(MTWaves.FINISH_GAME);
-            sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.ShowResult));
+            sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.Result));
         }
 
     }
@@ -162,7 +163,7 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
      */
     @Override
     protected void customShowView() {
-
+        callCommand(CreateGameContent.class);
     }
 
     /**
@@ -205,23 +206,5 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         getModel(ExpressionModel.class).deleteLastChar();
 
     }
-
-    // /**
-    // * Gets the success location.
-    // *
-    // * @return the success location
-    // */
-    // public Bounds getSuccessLocation() {
-    // return getView().getSuccessCounter().localToScene(getView().getSuccessCounter().getBoundsInLocal());
-    // }
-    //
-    // /**
-    // * Gets the failure location.
-    // *
-    // * @return the failure location
-    // */
-    // public Bounds getFailureLocation() {
-    // return getView().getFailureCounter().localToScene(getView().getFailureCounter().getBoundsInLocal());
-    // }
 
 }

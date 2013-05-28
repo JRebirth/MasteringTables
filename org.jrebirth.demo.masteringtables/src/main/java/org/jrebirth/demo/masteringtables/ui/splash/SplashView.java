@@ -51,7 +51,7 @@ public class SplashView extends AbstractView<SplashModel, BorderPane, DefaultCon
      */
     @Override
     protected void customInitializeComponents() {
-
+        // Nothing to do yet
     }
 
     /**
@@ -59,7 +59,7 @@ public class SplashView extends AbstractView<SplashModel, BorderPane, DefaultCon
      */
     @Override
     public void doStart() {
-
+        // Nothing to do yet
     }
 
     /**

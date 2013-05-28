@@ -19,11 +19,10 @@ package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.util.Builder;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ExpressionBuilder.
  * 
- * @param <B> the generic type
+ * @param <B> the generic type of the current builder
  */
 public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builder<Expression> {
 

@@ -19,7 +19,7 @@ package org.jrebirth.demo.masteringtables.ui.splash;
 
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
-import org.jrebirth.demo.masteringtables.command.WaitAndStart;
+import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 
 /**
  * The Class SplashModel.
@@ -31,7 +31,7 @@ public class SplashModel extends AbstractModel<SplashModel, SplashView> {
      */
     @Override
     protected void customInitialize() {
-
+        // Nothing to do yet
     }
 
     /**
@@ -39,7 +39,7 @@ public class SplashModel extends AbstractModel<SplashModel, SplashView> {
      */
     @Override
     protected void customInitializeInnerModels() {
-
+        // Nothing to do yet
     }
 
     /**
@@ -47,7 +47,8 @@ public class SplashModel extends AbstractModel<SplashModel, SplashView> {
      */
     @Override
     protected void customShowView() {
-        callCommand(WaitAndStart.class);
+        // Wait 5s and display the game menu
+        callCommand(DisplayGameMenu.class);
     }
 
     /**

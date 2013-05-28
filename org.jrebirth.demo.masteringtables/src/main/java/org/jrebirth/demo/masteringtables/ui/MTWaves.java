@@ -19,8 +19,6 @@ package org.jrebirth.demo.masteringtables.ui;
 
 import java.util.List;
 
-import javafx.scene.Node;
-
 import org.jrebirth.core.wave.WaveItem;
 import org.jrebirth.core.wave.WaveType;
 import org.jrebirth.core.wave.WaveTypeBase;
@@ -28,20 +26,15 @@ import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 
 /**
- * The Interface MTWaves.
+ * The Interface MTWaves that store all Wave Items and Wave Types used for asynchronous messaging.
  */
 public interface MTWaves {
 
-    /** The expression. */
+    /******************************/
     /** WaveItem */
     /******************************/
 
-    WaveItem<Node> FADE_OUT_NODE = new WaveItem<Node>() {
-    };
-
-    WaveItem<Node> FADE_IN_NODE = new WaveItem<Node>() {
-    };
-
+    /** The expression to ask to user. */
     WaveItem<Expression> EXPRESSION = new WaveItem<Expression>() {
     };
 
@@ -49,28 +42,29 @@ public interface MTWaves {
     WaveItem<List<Expression>> GAME_LIST = new WaveItem<List<Expression>>() {
     };
 
-    /** The page. */
+    /** The page to display. */
     WaveItem<Page> PAGE = new WaveItem<Page>() {
     };
 
-    /** The show page. */
+    /******************************/
     /** WaveType related to Model */
     /******************************/
 
+    /** Show Page action. */
     WaveType SHOW_PAGE = WaveTypeBase.build("SHOW_PAGE", PAGE);
 
-    /** The start game. */
+    /** Start game action. */
     WaveType START_GAME = WaveTypeBase.build("START_GAME", GAME_LIST);
 
-    /** The finish game. */
+    /** Finish game action. */
     WaveType FINISH_GAME = WaveTypeBase.build("FINISH_GAME");
 
-    /** The display expression. */
+    /** Display expression action. */
     WaveType DISPLAY_EXPRESSION = WaveTypeBase.build("DISPLAY_EXPRESSION", EXPRESSION);
 
-    /** The register success. */
+    /** Register expression success action. */
     WaveType REGISTER_SUCCESS = WaveTypeBase.build("REGISTER_SUCCESS", EXPRESSION);
 
-    /** The register failure. */
+    /** Register expression failure action. */
     WaveType REGISTER_FAILURE = WaveTypeBase.build("REGISTER_FAILURE", EXPRESSION);
 }

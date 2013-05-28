@@ -17,7 +17,7 @@
 
 		<storepass>defaultpass</storepass>
 		<keypass>defaultpass</keypass>
-		
+
 		<deployUrl>http://apps.jrebirth.org</deployUrl>
 		<deployPath>${project.artifactId}/${project.version}</deployPath>
 
@@ -27,7 +27,7 @@
 		<appletWidth>800</appletWidth>
 		<appletHeight>600</appletHeight>
 
-		<updateCheck>timeout</updateCheck>
+		<updateCheck>background</updateCheck>
 		<updatePolicy>prompt-update</updatePolicy>
 
 	</properties>

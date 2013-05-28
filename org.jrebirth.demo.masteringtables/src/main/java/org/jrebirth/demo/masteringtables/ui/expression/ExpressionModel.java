@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class QuestionModel.
+ * The Class ExpressionModel.
  */
 public class ExpressionModel extends AbstractModel<ExpressionModel, ExpressionView> {
 

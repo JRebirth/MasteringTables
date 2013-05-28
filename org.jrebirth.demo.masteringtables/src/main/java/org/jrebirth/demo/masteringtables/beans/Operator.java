@@ -17,7 +17,6 @@
  */
 package org.jrebirth.demo.masteringtables.beans;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Enum Operator.
  */

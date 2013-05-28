@@ -17,19 +17,17 @@
  */
 package org.jrebirth.demo.masteringtables.ui.page;
 
-import org.jrebirth.core.command.basic.DisplayModelWaveBean;
-import org.jrebirth.core.command.basic.ShowModelCommand;
+import org.jrebirth.core.command.basic.showmodel.DisplayModelWaveBean;
+import org.jrebirth.core.command.basic.showmodel.ShowFadingModelCommand;
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Page;
-import org.jrebirth.demo.masteringtables.command.ShowPageNicelyCommand;
-import org.jrebirth.demo.masteringtables.command.StartGameCommand;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.game.GameModel;
+import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 import org.jrebirth.demo.masteringtables.ui.result.ResultModel;
 import org.jrebirth.demo.masteringtables.ui.splash.SplashModel;
-import org.jrebirth.demo.masteringtables.ui.start.StartModel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +63,8 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
     /**
      * Show page.
      * 
+     * Called when model received a SHOW_PAGE wave type.
+     * 
      * @param page the page
      * @param wave the wave
      */
@@ -72,33 +72,34 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
 
         LOGGER.info("Show Page: " + page.toString());
 
+        // Create the Wave Bean that will hold all data processed by chained commands
         final DisplayModelWaveBean waveBean = new DisplayModelWaveBean();
+        // Define the placeholder that will receive the content
         waveBean.setChidrenPlaceHolder(getView().getRootNode().getChildren());
+        // Allow to add element behin the stack to allow transition
         waveBean.setAppendChild(false);
 
         switch (page) {
 
             case Splash:
                 waveBean.setModelClass(SplashModel.class);
-                callCommand(ShowModelCommand.class, waveBean);
                 break;
 
             case Game:
                 waveBean.setModelClass(GameModel.class);
-                callCommand(StartGameCommand.class, waveBean);
                 break;
 
-            case ShowResult:
+            case Result:
                 waveBean.setModelClass(ResultModel.class);
-                callCommand(ShowPageNicelyCommand.class, waveBean);
                 break;
 
             default:
-            case StartMenu:
-                waveBean.setModelClass(StartModel.class);
-                callCommand(ShowPageNicelyCommand.class, waveBean);
+            case GameMenu:
+                waveBean.setModelClass(GameMenuModel.class);
                 break;
         }
+
+        callCommand(ShowFadingModelCommand.class, waveBean);
     }
 
     /**

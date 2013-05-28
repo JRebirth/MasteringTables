@@ -50,21 +50,21 @@ public class ResultView extends AbstractView<ResultModel, BorderPane, DefaultCon
      * @return Returns the successLabel.
      */
     Label getSuccessLabel() {
-        return successLabel;
+        return this.successLabel;
     }
 
     /**
      * @return Returns the failureLabel.
      */
     Label getFailureLabel() {
-        return failureLabel;
+        return this.failureLabel;
     }
 
     /**
      * @return Returns the ratioLabel.
      */
     Label getRatioLabel() {
-        return ratioLabel;
+        return this.ratioLabel;
     }
 
     /**
@@ -83,21 +83,21 @@ public class ResultView extends AbstractView<ResultModel, BorderPane, DefaultCon
     @Override
     protected void customInitializeComponents() {
 
-        VBox vbox = new VBox();
+        final VBox vbox = new VBox();
 
-        successLabel = LabelBuilder.create()
+        this.successLabel = LabelBuilder.create()
                 .font(MTFonts.EXPRESSION.get())
                 .build();
 
-        failureLabel = LabelBuilder.create()
+        this.failureLabel = LabelBuilder.create()
                 .font(MTFonts.EXPRESSION.get())
                 .build();
 
-        ratioLabel = LabelBuilder.create()
+        this.ratioLabel = LabelBuilder.create()
                 .font(MTFonts.EXPRESSION.get())
                 .build();
 
-        vbox.getChildren().addAll(successLabel, failureLabel, ratioLabel);
+        vbox.getChildren().addAll(this.successLabel, this.failureLabel, this.ratioLabel);
 
         vbox.setAlignment(Pos.CENTER);
         getRootNode().setCenter(vbox);

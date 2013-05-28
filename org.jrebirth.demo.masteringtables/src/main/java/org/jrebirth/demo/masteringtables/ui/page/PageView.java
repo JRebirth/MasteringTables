@@ -51,7 +51,7 @@ public class PageView extends AbstractView<PageModel, StackPane, DefaultControll
      */
     @Override
     protected void customInitializeComponents() {
-
+        // Nothing to set up
     }
 
     /**
@@ -59,7 +59,7 @@ public class PageView extends AbstractView<PageModel, StackPane, DefaultControll
      */
     @Override
     public void doStart() {
-
+        // Custom code to process when the view is displayed the first time
     }
 
     /**

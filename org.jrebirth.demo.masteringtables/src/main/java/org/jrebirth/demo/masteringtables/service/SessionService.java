@@ -26,26 +26,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class SessionService.
+ * The Class SessionService is used to store game data.
  */
 public final class SessionService extends ServiceBase {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionService.class);
 
+    /** The game currently played. */
     private Game currentGame;
 
     /**
      * @return Returns the currentGame.
      */
     public Game getCurrentGame() {
-        return currentGame;
+        return this.currentGame;
     }
 
     /**
      * @param currentGame The currentGame to set.
      */
-    public void setCurrentGame(Game currentGame) {
+    public void setCurrentGame(final Game currentGame) {
+        LOGGER.info("Register an new Game Data.");
         this.currentGame = currentGame;
     }
 

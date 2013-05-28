@@ -28,13 +28,12 @@ import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
-import org.jrebirth.demo.masteringtables.ui.start.StartModel;
+import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class PlayGameCommand.
+ * The command CreateGameContent is used to generate the game list and length according to user choice.
  */
-public class PlayGameCommand extends DefaultPoolCommand {
+public class CreateGameContent extends DefaultPoolCommand {
 
     /**
      * {@inheritDoc}
@@ -44,8 +43,10 @@ public class PlayGameCommand extends DefaultPoolCommand {
 
         final ExpressionBuilderService service = getService(ExpressionBuilderService.class);
 
-        final GameSettings gs = getModel(StartModel.class).getGameSettings();
+        // Retrieve game settings from the ui
+        final GameSettings gs = getModel(GameMenuModel.class).getGameSettings();
 
+        // Add tables according to User choice
         final List<Expression> gameList = new ArrayList<>();
 
         if (gs.getContainsAddition()) {
@@ -61,8 +62,13 @@ public class PlayGameCommand extends DefaultPoolCommand {
             gameList.addAll(service.getDivisionTable());
         }
 
+        // Add some entropy
         Collections.shuffle(gameList);
 
-        sendWave(MTWaves.START_GAME, WaveData.build(MTWaves.GAME_LIST, gameList.subList(0, gs.getQuestionNumber())));
+        // Get expressions to be asked
+        final WaveData<List<Expression>> gameData = WaveData.build(MTWaves.GAME_LIST, gameList.subList(0, gs.getQuestionNumber()));
+
+        // Display the game page
+        sendWave(MTWaves.START_GAME, gameData);
     }
 }

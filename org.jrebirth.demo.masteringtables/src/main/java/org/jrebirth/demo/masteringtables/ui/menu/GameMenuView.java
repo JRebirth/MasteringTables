@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.start;
+package org.jrebirth.demo.masteringtables.ui.menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,14 +50,13 @@ import org.jrebirth.demo.masteringtables.beans.Operator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class StartView.
+ * The Class GameMenuView.
  */
-public class StartView extends AbstractView<StartModel, BorderPane, StartController> {
+public class GameMenuView extends AbstractView<GameMenuModel, BorderPane, GameMenuController> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(StartView.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuView.class);
 
     /** The addition. */
     private ToggleButton addition;
@@ -72,8 +71,8 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
     private ToggleButton division;
 
     /** The start. */
-    @OnAction(name = "Start")
-    private Button start;
+    @OnAction(name = "Play")
+    private Button playButton;
 
     private ToggleGroup lengthGroup;
 
@@ -83,7 +82,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
      * @param model the model
      * @throws CoreException the core exception
      */
-    public StartView(final StartModel model) throws CoreException {
+    public GameMenuView(final GameMenuModel model) throws CoreException {
         super(model);
     }
 
@@ -108,7 +107,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
         final BooleanBinding bb2 = Bindings.or(this.multiplication.selectedProperty(), this.division.selectedProperty());
         final BooleanBinding bb = Bindings.or(bb1, bb2);
 
-        this.start.disableProperty().bind(bb.not());
+        this.playButton.disableProperty().bind(bb.not());
     }
 
     /**
@@ -119,12 +118,12 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
     private Node buildStartGamePanel() {
         final FlowPane fp = new FlowPane();
 
-        this.start = ButtonBuilder.create()
+        this.playButton = ButtonBuilder.create()
                 .styleClass("StartButton")
                 .text("Start Game")
                 .build();
 
-        fp.getChildren().add(this.start);
+        fp.getChildren().add(this.playButton);
         fp.setAlignment(Pos.TOP_CENTER);
 
         return fp;
@@ -171,42 +170,43 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
 
         // Manage Question count
 
-        List<ToggleButton> toggleList = new ArrayList<>();
-        FlowPane fp = new FlowPane();
+        final List<ToggleButton> toggleList = new ArrayList<>();
+        final FlowPane fp = new FlowPane();
         fp.setAlignment(Pos.CENTER);
         fp.setHgap(10);
 
-        int[] list = { 5, 10, 20, 30, 50, 100 };
-        for (int i : list) {
+        final int[] list = { 5, 10, 20, 30, 50, 100 };
+        for (final int i : list) {
             toggleList.add(buildMiniButton(i));
         }
         fp.getChildren().addAll(toggleList);
 
-        lengthGroup = ToggleGroupBuilder.create()
+        this.lengthGroup = ToggleGroupBuilder.create()
                 .toggles(toggleList)
                 .build();
 
         GridPane.setConstraints(fp, 1, 5, 4, 1, HPos.CENTER, VPos.CENTER);
         pane.getChildren().add(fp);
 
-        lengthGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+        this.lengthGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
             @Override
-            public void changed(ObservableValue<? extends Toggle> toggleProperty, Toggle previous, Toggle next) {
+            public void changed(final ObservableValue<? extends Toggle> toggleProperty, final Toggle previous, final Toggle next) {
                 getModel().getGameSettings().setQuestionNumber((int) next.getUserData());
             }
         });
 
         // Select the first item
-        lengthGroup.selectToggle(toggleList.get(0));
+        this.lengthGroup.selectToggle(toggleList.get(0));
 
         return pane;
     }
 
     /**
-     * Builds the choice button.
+     * Builds the choice button for tables.
      * 
-     * @param name the name
+     * @param name the toggle button name
+     * 
      * @return the toggle button
      */
     private ToggleButton buildChoiceButton(final String name) {
@@ -223,9 +223,10 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
     }
 
     /**
-     * Builds the choice button.
+     * Builds the choice button for game length.
      * 
      * @param name the name
+     * 
      * @return the toggle button
      */
     private ToggleButton buildMiniButton(final int value) {
@@ -247,7 +248,7 @@ public class StartView extends AbstractView<StartModel, BorderPane, StartControl
      */
     @Override
     public void doStart() {
-
+        // Custom code to process when the view is displayed the first time
     }
 
     /**

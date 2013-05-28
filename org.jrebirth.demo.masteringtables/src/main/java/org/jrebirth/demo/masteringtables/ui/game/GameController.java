@@ -27,7 +27,6 @@ import org.jrebirth.core.ui.adapter.KeyAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class GameController.
  */

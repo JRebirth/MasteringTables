@@ -22,14 +22,15 @@ import javafx.beans.binding.NumberBinding;
 import org.jrebirth.core.ui.AbstractModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Game;
-import org.jrebirth.demo.masteringtables.command.WaitAndStart;
+import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 
 /**
- * The Class SplashModel.
+ * The Class ResultModel.
  */
 public class ResultModel extends AbstractModel<ResultModel, ResultView> {
 
+    /** The session service is used to store game statistics. */
     private SessionService sessionService;
 
     /**
@@ -38,7 +39,8 @@ public class ResultModel extends AbstractModel<ResultModel, ResultView> {
     @Override
     protected void customInitialize() {
 
-        sessionService = getService(SessionService.class);
+        // Store an hard link to avoid loosing game stats
+        this.sessionService = getService(SessionService.class);
     }
 
     /**
@@ -46,7 +48,7 @@ public class ResultModel extends AbstractModel<ResultModel, ResultView> {
      */
     @Override
     protected void customInitializeInnerModels() {
-
+        // Nothing to do yet
     }
 
     /**
@@ -55,17 +57,20 @@ public class ResultModel extends AbstractModel<ResultModel, ResultView> {
     @Override
     protected void customShowView() {
 
-        Game g = sessionService.getCurrentGame();
+        final Game g = this.sessionService.getCurrentGame();
 
+        // Binf number of success and failure to UI objects
         getView().getSuccessLabel().textProperty().bind(g.successCountProperty().asString());
         getView().getFailureLabel().textProperty().bind(g.failureCountProperty().asString());
 
-        NumberBinding ratio = g.successCountProperty().multiply(100)
+        // Compute Hit ratio
+        final NumberBinding ratio = g.successCountProperty().multiply(100)
                 .divide(g.successCountProperty().add(g.failureCountProperty()));
 
         getView().getRatioLabel().textProperty().bind(ratio.asString().concat(" %"));
 
-        callCommand(WaitAndStart.class);
+        // Wait 5s and display the game menu
+        callCommand(DisplayGameMenu.class);
     }
 
     /**

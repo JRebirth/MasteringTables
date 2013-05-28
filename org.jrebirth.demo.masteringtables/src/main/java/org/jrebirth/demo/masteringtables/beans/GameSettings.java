@@ -23,7 +23,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 /**
- * The Class GameSettings.
+ * The Class GameSettings stores all data used to set up a game.
  */
 public class GameSettings {
 

@@ -20,7 +20,7 @@ package org.jrebirth.demo.masteringtables.ui.menu;
 import javafx.event.ActionEvent;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractController;
+import org.jrebirth.core.ui.DefaultController;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameMenuController.
  */
-public class GameMenuController extends AbstractController<GameMenuModel, GameMenuView> {
+public class GameMenuController extends DefaultController<GameMenuModel, GameMenuView> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuController.class);
@@ -44,22 +44,6 @@ public class GameMenuController extends AbstractController<GameMenuModel, GameMe
      */
     public GameMenuController(final GameMenuView view) throws CoreException {
         super(view);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeEventAdapters() throws CoreException {
-        // No adapter required
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeEventHandlers() throws CoreException {
-        // No event handler required
     }
 
     /**

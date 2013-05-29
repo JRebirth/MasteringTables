@@ -19,10 +19,9 @@ package org.jrebirth.demo.masteringtables.ui.page;
 
 import org.jrebirth.core.command.basic.showmodel.DisplayModelWaveBean;
 import org.jrebirth.core.command.basic.showmodel.ShowFadingModelCommand;
-import org.jrebirth.core.ui.AbstractModel;
+import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Page;
-import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.game.GameModel;
 import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
@@ -35,13 +34,10 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class PageModel.
  */
-public class PageModel extends AbstractModel<PageModel, PageView> {
+public class PageModel extends DefaultModel<PageModel, PageView> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(PageModel.class);
-
-    /** The session service. */
-    private SessionService sessionService;
 
     /**
      * {@inheritDoc}
@@ -50,14 +46,6 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
     protected void customInitialize() {
 
         listen(MTWaves.SHOW_PAGE);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeInnerModels() {
-
     }
 
     /**
@@ -111,21 +99,4 @@ public class PageModel extends AbstractModel<PageModel, PageView> {
         showPage(Page.Splash, null);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customHideView() {
-        // Nothing to do yet
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void processAction(final Wave wave) {
-        // Nothing to do yet
-
-    }
 }

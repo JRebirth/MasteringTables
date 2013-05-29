@@ -19,8 +19,7 @@ package org.jrebirth.demo.masteringtables.ui.result;
 
 import javafx.beans.binding.NumberBinding;
 
-import org.jrebirth.core.ui.AbstractModel;
-import org.jrebirth.core.wave.Wave;
+import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 import org.jrebirth.demo.masteringtables.service.SessionService;
@@ -28,7 +27,7 @@ import org.jrebirth.demo.masteringtables.service.SessionService;
 /**
  * The Class ResultModel.
  */
-public class ResultModel extends AbstractModel<ResultModel, ResultView> {
+public class ResultModel extends DefaultModel<ResultModel, ResultView> {
 
     /** The session service is used to store game statistics. */
     private SessionService sessionService;
@@ -41,14 +40,6 @@ public class ResultModel extends AbstractModel<ResultModel, ResultView> {
 
         // Store an hard link to avoid loosing game stats
         this.sessionService = getService(SessionService.class);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeInnerModels() {
-        // Nothing to do yet
     }
 
     /**
@@ -73,21 +64,4 @@ public class ResultModel extends AbstractModel<ResultModel, ResultView> {
         callCommand(DisplayGameMenu.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customHideView() {
-        // Nothing to do yet
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void processAction(final Wave wave) {
-        // Nothing to do yet
-
-    }
 }

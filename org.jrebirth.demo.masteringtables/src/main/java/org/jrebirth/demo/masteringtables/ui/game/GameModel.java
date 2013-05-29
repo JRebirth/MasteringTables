@@ -25,7 +25,7 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.core.ui.AbstractModel;
+import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameModel.
  */
-public class GameModel extends AbstractModel<GameModel, GameView> {
+public class GameModel extends DefaultModel<GameModel, GameView> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameModel.class);
@@ -75,20 +75,10 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         this.sessionService = getService(SessionService.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected void customInitializeInnerModels() {
-        // Put the code to initialize inner models here (if any)
-    }
+    protected void customBind() {
+        // Nothing to do yet
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void processAction(final Wave wave) {
-        // Process a wave action, you must listen the wave type before
     }
 
     /**
@@ -114,6 +104,11 @@ public class GameModel extends AbstractModel<GameModel, GameView> {
         sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
     }
 
+    /**
+     * Return the current game object.
+     * 
+     * @return the current game
+     */
     private Game getGame() {
         return this.sessionService.getCurrentGame();
     }

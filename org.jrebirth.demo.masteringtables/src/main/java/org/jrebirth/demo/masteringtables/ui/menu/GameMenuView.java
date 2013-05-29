@@ -43,7 +43,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.GridPaneBuilder;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractView;
+import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.core.ui.annotation.OnAction;
 import org.jrebirth.demo.masteringtables.beans.Operator;
 import org.jrebirth.demo.masteringtables.resources.MTImages;
@@ -54,7 +54,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameMenuView.
  */
-public class GameMenuView extends AbstractView<GameMenuModel, BorderPane, GameMenuController> {
+public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMenuController> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuView.class);
@@ -242,30 +242,6 @@ public class GameMenuView extends AbstractView<GameMenuModel, BorderPane, GameMe
                 .text(Integer.toString(value))
                 .build();
 
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doStart() {
-        // Custom code to process when the view is displayed the first time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doReload() {
-        // Custom code to process when the view is displayed the 1+n time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doHide() {
-        // Custom code to process when the view is hidden
     }
 
 }

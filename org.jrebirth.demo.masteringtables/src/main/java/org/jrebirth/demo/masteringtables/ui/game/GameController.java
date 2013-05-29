@@ -21,7 +21,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractController;
+import org.jrebirth.core.ui.DefaultController;
 import org.jrebirth.core.ui.adapter.KeyAdapter;
 
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameController.
  */
-public class GameController extends AbstractController<GameModel, GameView> implements KeyAdapter {
+public class GameController extends DefaultController<GameModel, GameView> implements KeyAdapter {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameController.class);
@@ -51,15 +51,6 @@ public class GameController extends AbstractController<GameModel, GameView> impl
     @Override
     protected void customInitializeEventAdapters() throws CoreException {
         getView().getRootNode().addEventFilter(KeyEvent.KEY_RELEASED, getHandler(KeyEvent.KEY_RELEASED));
-        // getRootNode().requestFocus();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeEventHandlers() throws CoreException {
-        // Listen events
     }
 
     /**
@@ -68,7 +59,6 @@ public class GameController extends AbstractController<GameModel, GameView> impl
     @Override
     public void key(final KeyEvent keyEvent) {
         // Nothing to do yet
-
     }
 
     /**
@@ -77,7 +67,6 @@ public class GameController extends AbstractController<GameModel, GameView> impl
     @Override
     public void keyPressed(final KeyEvent keyEvent) {
         // Nothing to do yet
-
     }
 
     /**
@@ -111,7 +100,6 @@ public class GameController extends AbstractController<GameModel, GameView> impl
             case BACK_SPACE:
                 getModel().doDelete();
                 break;
-
         }
 
     }

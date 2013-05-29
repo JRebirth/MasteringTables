@@ -28,7 +28,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.StackPaneBuilder;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractView;
+import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameView.
  */
-public class GameView extends AbstractView<GameModel, BorderPane, GameController> {
+public class GameView extends DefaultView<GameModel, BorderPane, GameController> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameView.class);
@@ -156,30 +156,6 @@ public class GameView extends AbstractView<GameModel, BorderPane, GameController
         ap.getChildren().addAll(successPane, failurePane);
 
         return ap;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doStart() {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doReload() {
-        // Custom code to process when the view is displayed the 1+n time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doHide() {
-        // Custom code to process when the view is hidden
     }
 
     /**

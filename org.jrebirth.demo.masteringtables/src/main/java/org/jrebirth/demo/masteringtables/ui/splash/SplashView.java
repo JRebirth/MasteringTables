@@ -20,8 +20,8 @@ package org.jrebirth.demo.masteringtables.ui.splash;
 import javafx.scene.layout.BorderPane;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractView;
 import org.jrebirth.core.ui.DefaultController;
+import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.core.ui.annotation.RootNodeId;
 
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  * The Class SplashView.
  */
 @RootNodeId("SplashPanel")
-public class SplashView extends AbstractView<SplashModel, BorderPane, DefaultController<SplashModel, SplashView>> {
+public class SplashView extends DefaultView<SplashModel, BorderPane, DefaultController<SplashModel, SplashView>> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(SplashView.class);
@@ -44,38 +44,6 @@ public class SplashView extends AbstractView<SplashModel, BorderPane, DefaultCon
      */
     public SplashView(final SplashModel model) throws CoreException {
         super(model);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeComponents() {
-        // Nothing to do yet
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doStart() {
-        // Nothing to do yet
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doReload() {
-        // Custom code to process when the view is displayed the 1+n time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doHide() {
-        // Custom code to process when the view is hidden
     }
 
 }

@@ -17,30 +17,13 @@
  */
 package org.jrebirth.demo.masteringtables.ui.splash;
 
-import org.jrebirth.core.ui.AbstractModel;
-import org.jrebirth.core.wave.Wave;
+import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 
 /**
  * The Class SplashModel.
  */
-public class SplashModel extends AbstractModel<SplashModel, SplashView> {
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitialize() {
-        // Nothing to do yet
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeInnerModels() {
-        // Nothing to do yet
-    }
+public class SplashModel extends DefaultModel<SplashModel, SplashView> {
 
     /**
      * {@inheritDoc}
@@ -51,21 +34,4 @@ public class SplashModel extends AbstractModel<SplashModel, SplashView> {
         callCommand(DisplayGameMenu.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customHideView() {
-        // Nothing to do yet
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void processAction(final Wave wave) {
-        // Nothing to do yet
-
-    }
 }

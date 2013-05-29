@@ -20,18 +20,18 @@ package org.jrebirth.demo.masteringtables.ui.page;
 import javafx.scene.layout.StackPane;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractView;
 import org.jrebirth.core.ui.DefaultController;
+import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.core.ui.annotation.RootNodeId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class SplashView.
+ * The Class PageView.
  */
 @RootNodeId("PagePanel")
-public class PageView extends AbstractView<PageModel, StackPane, DefaultController<PageModel, PageView>> {
+public class PageView extends DefaultView<PageModel, StackPane, DefaultController<PageModel, PageView>> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(PageView.class);
@@ -44,38 +44,6 @@ public class PageView extends AbstractView<PageModel, StackPane, DefaultControll
      */
     public PageView(final PageModel model) throws CoreException {
         super(model);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeComponents() {
-        // Nothing to set up
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doStart() {
-        // Custom code to process when the view is displayed the first time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doReload() {
-        // Custom code to process when the view is displayed the 1+n time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doHide() {
-        // Custom code to process when the view is hidden
     }
 
 }

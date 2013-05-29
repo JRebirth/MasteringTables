@@ -24,8 +24,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractView;
 import org.jrebirth.core.ui.DefaultController;
+import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
@@ -33,10 +33,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class SplashView.
+ * The Class ResultView.
  */
 @RootNodeId("ResultPanel")
-public class ResultView extends AbstractView<ResultModel, BorderPane, DefaultController<ResultModel, ResultView>> {
+public class ResultView extends DefaultView<ResultModel, BorderPane, DefaultController<ResultModel, ResultView>> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ResultView.class);
@@ -45,27 +45,6 @@ public class ResultView extends AbstractView<ResultModel, BorderPane, DefaultCon
     private Label failureLabel;
 
     private Label ratioLabel;
-
-    /**
-     * @return Returns the successLabel.
-     */
-    Label getSuccessLabel() {
-        return this.successLabel;
-    }
-
-    /**
-     * @return Returns the failureLabel.
-     */
-    Label getFailureLabel() {
-        return this.failureLabel;
-    }
-
-    /**
-     * @return Returns the ratioLabel.
-     */
-    Label getRatioLabel() {
-        return this.ratioLabel;
-    }
 
     /**
      * Instantiates a new page view.
@@ -105,27 +84,24 @@ public class ResultView extends AbstractView<ResultModel, BorderPane, DefaultCon
     }
 
     /**
-     * {@inheritDoc}
+     * @return Returns the successLabel.
      */
-    @Override
-    public void doStart() {
-
+    Label getSuccessLabel() {
+        return this.successLabel;
     }
 
     /**
-     * {@inheritDoc}
+     * @return Returns the failureLabel.
      */
-    @Override
-    public void doReload() {
-        // Custom code to process when the view is displayed the 1+n time
+    Label getFailureLabel() {
+        return this.failureLabel;
     }
 
     /**
-     * {@inheritDoc}
+     * @return Returns the ratioLabel.
      */
-    @Override
-    public void doHide() {
-        // Custom code to process when the view is hidden
+    Label getRatioLabel() {
+        return this.ratioLabel;
     }
 
 }

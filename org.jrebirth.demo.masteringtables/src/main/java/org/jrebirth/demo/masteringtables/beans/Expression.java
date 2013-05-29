@@ -18,7 +18,8 @@
 package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * The Bean Expression.
@@ -35,7 +36,7 @@ public class Expression {
     private final SimpleIntegerProperty resultProperty = new SimpleIntegerProperty();
 
     /** The operator property. */
-    private final SimpleObjectProperty<Operator> operatorProperty = new SimpleObjectProperty<>();
+    private final StringProperty operatorProperty = new SimpleStringProperty();
 
     /**
      * Gets the left.
@@ -123,7 +124,7 @@ public class Expression {
      * 
      * @return the operator
      */
-    public Operator getOperator() {
+    public String getOperator() {
         return this.operatorProperty.get();
     }
 
@@ -132,7 +133,7 @@ public class Expression {
      * 
      * @param operator the new operator
      */
-    public void setOperator(final Operator operator) {
+    public void setOperator(final String operator) {
         this.operatorProperty.set(operator);
     }
 
@@ -141,7 +142,7 @@ public class Expression {
      * 
      * @return the simple object property
      */
-    public SimpleObjectProperty<Operator> operatorProperty() {
+    public StringProperty operatorProperty() {
         return this.operatorProperty;
     }
 

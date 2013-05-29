@@ -20,7 +20,7 @@ package org.jrebirth.demo.masteringtables.ui.expression;
 import javafx.event.ActionEvent;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractController;
+import org.jrebirth.core.ui.DefaultController;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class ExpressionController.
  */
-public class ExpressionController extends AbstractController<ExpressionModel, ExpressionView> {
+public class ExpressionController extends DefaultController<ExpressionModel, ExpressionView> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionController.class);
@@ -46,29 +46,17 @@ public class ExpressionController extends AbstractController<ExpressionModel, Ex
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeEventAdapters() throws CoreException {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customInitializeEventHandlers() throws CoreException {
-        // Listen events
-    }
-
-    /**
      * On finished expression resolved.
      * 
      * @param actionEvent the action event
      */
     public void onFinishedExpressionResolved(final ActionEvent actionEvent) {
+
+        // Reset basic scale
         getView().getResult().setScaleX(1);
         getView().getResult().setScaleY(1);
+
+        // Send a register success event
         getModel().sendWave(MTWaves.REGISTER_SUCCESS, WaveData.build(MTWaves.EXPRESSION, getModel().getExpression()));
     }
 
@@ -78,9 +66,13 @@ public class ExpressionController extends AbstractController<ExpressionModel, Ex
      * @param actionEvent the action event
      */
     public void onFinishedExpressionFailure(final ActionEvent actionEvent) {
+
+        // Reset basic scale and erase current result
         getView().getResult().setText("");
         getView().getResult().setScaleX(1);
         getView().getResult().setScaleY(1);
+
+        // Send a register failure event
         getModel().sendWave(MTWaves.REGISTER_FAILURE, WaveData.build(MTWaves.EXPRESSION, getModel().getExpression()));
     }
 }

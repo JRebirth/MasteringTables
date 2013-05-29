@@ -33,7 +33,7 @@ import javafx.scene.text.TextBuilder;
 import javafx.util.Duration;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.AbstractView;
+import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.core.ui.annotation.OnFinished;
 import org.jrebirth.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  * The Class ExpressionView.
  */
 @RootNodeId("ExpressionPanel")
-public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, ExpressionController> {
+public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, ExpressionController> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionView.class);
@@ -255,30 +255,6 @@ public class ExpressionView extends AbstractView<ExpressionModel, FlowPane, Expr
                 .fromY(1).toY(0.0)
                 .duration(Duration.millis(400))
                 .build();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doStart() {
-        // Custom code to process when the view is displayed the first time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doReload() {
-        // Custom code to process when the view is displayed the 1+n time
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void doHide() {
-        // Custom code to process when the view is hidden
     }
 
     /**

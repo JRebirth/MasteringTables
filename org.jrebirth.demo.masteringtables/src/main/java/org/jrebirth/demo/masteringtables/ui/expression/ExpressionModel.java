@@ -17,7 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables.ui.expression;
 
-import org.jrebirth.core.ui.AbstractModel;
+import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
@@ -28,20 +28,20 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class ExpressionModel.
  */
-public class ExpressionModel extends AbstractModel<ExpressionModel, ExpressionView> {
+public class ExpressionModel extends DefaultModel<ExpressionModel, ExpressionView> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionModel.class);
 
     /** The expression. */
-    private Expression expression;
+    private Expression expression = new Expression();
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void customInitialize() {
-        // Put the code to initialize your model here
+        // Listen event to display a given expression
         listen(MTWaves.DISPLAY_EXPRESSION);
     }
 
@@ -49,32 +49,11 @@ public class ExpressionModel extends AbstractModel<ExpressionModel, ExpressionVi
      * {@inheritDoc}
      */
     @Override
-    protected void customInitializeInnerModels() {
-        // Put the code to initialize inner models here (if any)
-    }
+    protected void customBind() {
+        getView().getLeftOperand().textProperty().bind(getExpression().leftProperty().asString());
+        getView().getOperator().textProperty().bind(getExpression().operatorProperty());
+        getView().getRightOperand().textProperty().bind(getExpression().rightProperty().asString());
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void processAction(final Wave wave) {
-        // Process a wave action, you must listen the wave type before
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customShowView() {
-        // Custom code to process when the view is displayed
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void customHideView() {
-        // Custom code to process when the view is hidden
     }
 
     /**
@@ -85,8 +64,10 @@ public class ExpressionModel extends AbstractModel<ExpressionModel, ExpressionVi
      */
     public void displayExpression(final Expression expression, final Wave wave) {
 
+        // Store the current expression
         this.expression = expression;
 
+        // Bind expression properties
         getView().getLeftOperand().setText(String.valueOf(getExpression().getLeft()));
         getView().getOperator().setText(getExpression().getOperator().toString());
         getView().getRightOperand().setText(String.valueOf(getExpression().getRight()));
@@ -141,4 +122,5 @@ public class ExpressionModel extends AbstractModel<ExpressionModel, ExpressionVi
     public Expression getExpression() {
         return this.expression;
     }
+
 }

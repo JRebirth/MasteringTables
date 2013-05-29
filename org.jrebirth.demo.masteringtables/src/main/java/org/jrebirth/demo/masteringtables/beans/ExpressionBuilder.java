@@ -68,7 +68,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
             expr.setResult(this.resultOperand);
         }
         if (hasBit(3)) {
-            expr.setOperator(this.operator);
+            expr.setOperator(this.operator.toString());
         }
     }
 

@@ -46,6 +46,7 @@ import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.AbstractView;
 import org.jrebirth.core.ui.annotation.OnAction;
 import org.jrebirth.demo.masteringtables.beans.Operator;
+import org.jrebirth.demo.masteringtables.resources.MTImages;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,7 +94,7 @@ public class GameMenuView extends AbstractView<GameMenuModel, BorderPane, GameMe
     protected void customInitializeComponents() {
 
         final FlowPane fp = FlowPaneBuilder.create()
-                .children(new ImageView(loadImage("image/Title.png")))
+                .children(new ImageView(MTImages.MT_TITLE.get()))
                 .build();
         fp.setAlignment(Pos.CENTER);
         getRootNode().setTop(fp);

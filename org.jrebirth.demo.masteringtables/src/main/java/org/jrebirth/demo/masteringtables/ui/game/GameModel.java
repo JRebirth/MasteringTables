@@ -65,7 +65,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customInitialize() {
+    protected void initModel() {
 
         listen(MTWaves.START_GAME);
 
@@ -76,7 +76,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
     }
 
     @Override
-    protected void customBind() {
+    protected void bind() {
         // Nothing to do yet
 
     }
@@ -87,7 +87,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * @param expressionList the expression list
      * @param wave the wave
      */
-    public void startGame(final List<Expression> expressionList, final Wave wave) {
+    public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
         this.index = 0;
         this.gameList.clear();
@@ -125,7 +125,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * @param expression the expression
      * @param wave the wave
      */
-    public void registerSuccess(final Expression expression, final Wave wave) {
+    public void doRegisterSuccess(final Expression expression, final Wave wave) {
 
         getGame().setSuccessCount(getGame().getSuccessCount() + 1);
 
@@ -149,7 +149,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * @param expression the expression
      * @param wave the wave
      */
-    public void registerFailure(final Expression expression, final Wave wave) {
+    public void doRegisterFailure(final Expression expression, final Wave wave) {
         getGame().setFailureCount(getGame().getFailureCount() + 1);
     }
 
@@ -157,7 +157,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customShowView() {
+    protected void showView() {
         callCommand(CreateGameContent.class);
     }
 
@@ -165,16 +165,8 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customHideView() {
+    protected void hideView() {
         // Custom code to process when the view is hidden
-    }
-
-    /**
-     * Do enter.
-     */
-    public void doEnter() {
-        // Nothing to do yet
-
     }
 
     /**
@@ -182,14 +174,22 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * 
      * @param code the code
      */
-    public void doNumber(final KeyCode code) {
+    public void performNumber(final KeyCode code) {
         getModel(ExpressionModel.class).appendNumber(code.getName());
+    }
+
+    /**
+     * Do Enter.
+     */
+    public void performEnter() {
+        // Nothing to do yet
+
     }
 
     /**
      * Do cancel.
      */
-    public void doCancel() {
+    public void performCancel() {
         // Nothing to do yet
 
     }
@@ -197,7 +197,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
     /**
      * Do delete.
      */
-    public void doDelete() {
+    public void performDelete() {
         getModel(ExpressionModel.class).deleteLastChar();
 
     }

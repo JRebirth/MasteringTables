@@ -29,7 +29,7 @@ public class SplashModel extends DefaultModel<SplashModel, SplashView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customShowView() {
+    protected void showView() {
         // Wait 5s and display the game menu
         callCommand(DisplayGameMenu.class);
     }

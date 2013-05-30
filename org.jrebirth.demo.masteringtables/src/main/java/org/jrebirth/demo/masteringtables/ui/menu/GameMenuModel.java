@@ -43,7 +43,7 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customInitialize() {
+    protected void initModel() {
 
         // Be notified when tables are ready
         listen(ExpressionBuilderService.RE_TABLES_BUILT);
@@ -61,7 +61,7 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
      * @param allTables the all tables
      * @param wave the wave
      */
-    public void tablesBuilt(final Wave wave) {
+    public void doTablesBuilt(final Wave wave) {
 
         final int nbExpression = this.expressionBuilderService.getAdditionTable().size()
                 + this.expressionBuilderService.getDivisionTable().size()

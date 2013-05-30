@@ -17,7 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables.ui.expression;
 
-import org.jrebirth.core.ui.DefaultModel;
+import org.jrebirth.core.ui.DefaultObjectModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
@@ -28,19 +28,16 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class ExpressionModel.
  */
-public class ExpressionModel extends DefaultModel<ExpressionModel, ExpressionView> {
+public class ExpressionModel extends DefaultObjectModel<ExpressionModel, ExpressionView, Expression> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionModel.class);
-
-    /** The expression. */
-    private Expression expression = new Expression();
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void customInitialize() {
+    protected void initModel() {
         // Listen event to display a given expression
         listen(MTWaves.DISPLAY_EXPRESSION);
     }
@@ -49,10 +46,15 @@ public class ExpressionModel extends DefaultModel<ExpressionModel, ExpressionVie
      * {@inheritDoc}
      */
     @Override
-    protected void customBind() {
-        getView().getLeftOperand().textProperty().bind(getExpression().leftProperty().asString());
-        getView().getOperator().textProperty().bind(getExpression().operatorProperty());
-        getView().getRightOperand().textProperty().bind(getExpression().rightProperty().asString());
+    protected void bind() {
+
+        // Bind expression properties
+        getView().getLeftOperand().textProperty().bind(getObject().leftProperty().asString());
+        getView().getOperator().textProperty().bind(getObject().operatorProperty());
+        getView().getRightOperand().textProperty().bind(getObject().rightProperty().asString());
+
+        getView().getEquality().setText("=");
+        getView().getResult().setText("");
 
     }
 
@@ -62,20 +64,12 @@ public class ExpressionModel extends DefaultModel<ExpressionModel, ExpressionVie
      * @param expression the expression
      * @param wave the wave
      */
-    public void displayExpression(final Expression expression, final Wave wave) {
+    public void doDisplayExpression(final Expression expression, final Wave wave) {
 
         // Store the current expression
-        this.expression = expression;
-
-        // Bind expression properties
-        getView().getLeftOperand().setText(String.valueOf(getExpression().getLeft()));
-        getView().getOperator().setText(getExpression().getOperator().toString());
-        getView().getRightOperand().setText(String.valueOf(getExpression().getRight()));
-        getView().getEquality().setText("=");
-        getView().getResult().setText("");
+        setObject(expression);
 
         getView().getShowExpression().play();
-
     }
 
     /**
@@ -98,10 +92,10 @@ public class ExpressionModel extends DefaultModel<ExpressionModel, ExpressionVie
     private void checkResult() {
         final int type = Integer.parseInt(getView().getResult().getText());
 
-        if (type == this.expression.getResult()) {
+        if (type == getObject().getResult()) {
             getView().getExpressionResolved().play();
         } else {
-            if (String.valueOf(type).length() == String.valueOf(this.expression.getResult()).length()) {
+            if (String.valueOf(type).length() == String.valueOf(getObject().getResult()).length()) {
                 getView().getExpressionFailure().play();
             }
         }
@@ -112,15 +106,6 @@ public class ExpressionModel extends DefaultModel<ExpressionModel, ExpressionVie
      */
     public void deleteLastChar() {
         getView().getResult().setText(getView().getResult().getText().substring(0, Math.max(0, getView().getResult().getText().length() - 1)));
-    }
-
-    /**
-     * Gets the expression.
-     * 
-     * @return the expression
-     */
-    public Expression getExpression() {
-        return this.expression;
     }
 
 }

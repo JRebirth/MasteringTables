@@ -71,7 +71,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
      * {@inheritDoc}
      */
     @Override
-    protected void customInitializeComponents() {
+    protected void initView() {
         getRootNode().setTop(buildTopPanel());
 
         this.questionHolder = new StackPane();

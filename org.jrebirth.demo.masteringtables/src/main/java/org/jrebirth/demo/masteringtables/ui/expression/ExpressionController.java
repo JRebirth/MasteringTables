@@ -57,7 +57,7 @@ public class ExpressionController extends DefaultController<ExpressionModel, Exp
         getView().getResult().setScaleY(1);
 
         // Send a register success event
-        getModel().sendWave(MTWaves.REGISTER_SUCCESS, WaveData.build(MTWaves.EXPRESSION, getModel().getExpression()));
+        getModel().sendWave(MTWaves.REGISTER_SUCCESS, WaveData.build(MTWaves.EXPRESSION, getModel().getObject()));
     }
 
     /**
@@ -73,6 +73,6 @@ public class ExpressionController extends DefaultController<ExpressionModel, Exp
         getView().getResult().setScaleY(1);
 
         // Send a register failure event
-        getModel().sendWave(MTWaves.REGISTER_FAILURE, WaveData.build(MTWaves.EXPRESSION, getModel().getExpression()));
+        getModel().sendWave(MTWaves.REGISTER_FAILURE, WaveData.build(MTWaves.EXPRESSION, getModel().getObject()));
     }
 }

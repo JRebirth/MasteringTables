@@ -78,7 +78,7 @@ public final class ExpressionBuilderService extends ServiceBase {
      * 
      * @param wave the wave
      */
-    public void buildTables(final Wave wave) {
+    public void doBuildTables(final Wave wave) {
 
         LOGGER.trace("Build Tables.");
 

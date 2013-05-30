@@ -60,7 +60,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, DefaultCont
      * {@inheritDoc}
      */
     @Override
-    protected void customInitializeComponents() {
+    protected void initView() {
 
         final VBox vbox = new VBox();
 

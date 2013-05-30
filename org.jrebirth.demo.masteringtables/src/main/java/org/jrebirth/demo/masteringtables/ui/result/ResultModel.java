@@ -36,7 +36,7 @@ public class ResultModel extends DefaultModel<ResultModel, ResultView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customInitialize() {
+    protected void initModel() {
 
         // Store an hard link to avoid loosing game stats
         this.sessionService = getService(SessionService.class);
@@ -46,7 +46,7 @@ public class ResultModel extends DefaultModel<ResultModel, ResultView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customShowView() {
+    protected void showView() {
 
         final Game g = this.sessionService.getCurrentGame();
 

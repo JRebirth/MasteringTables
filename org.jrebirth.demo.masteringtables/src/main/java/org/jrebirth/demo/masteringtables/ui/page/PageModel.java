@@ -43,7 +43,7 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customInitialize() {
+    protected void initModel() {
 
         listen(MTWaves.SHOW_PAGE);
     }
@@ -56,7 +56,7 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
      * @param page the page
      * @param wave the wave
      */
-    public void showPage(final Page page, final Wave wave) {
+    public void doShowPage(final Page page, final Wave wave) {
 
         LOGGER.info("Show Page: " + page.toString());
 
@@ -94,9 +94,9 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
      * {@inheritDoc}
      */
     @Override
-    protected void customShowView() {
+    protected void showView() {
         // On redisplay show the start page
-        showPage(Page.Splash, null);
+        doShowPage(Page.Splash, null);
     }
 
 }

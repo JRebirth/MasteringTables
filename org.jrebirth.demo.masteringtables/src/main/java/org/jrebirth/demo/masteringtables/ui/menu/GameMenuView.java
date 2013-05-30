@@ -91,7 +91,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      * {@inheritDoc}
      */
     @Override
-    protected void customInitializeComponents() {
+    protected void initView() {
 
         final FlowPane fp = FlowPaneBuilder.create()
                 .children(new ImageView(MTImages.MT_TITLE.get()))

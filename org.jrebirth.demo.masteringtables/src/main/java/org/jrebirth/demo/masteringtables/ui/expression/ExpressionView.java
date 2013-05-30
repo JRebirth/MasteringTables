@@ -90,7 +90,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
      * {@inheritDoc}
      */
     @Override
-    protected void customInitializeComponents() {
+    protected void initView() {
 
         getRootNode().setAlignment(Pos.CENTER);
 

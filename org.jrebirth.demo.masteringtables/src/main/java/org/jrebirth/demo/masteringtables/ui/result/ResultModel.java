@@ -19,7 +19,7 @@ package org.jrebirth.demo.masteringtables.ui.result;
 
 import javafx.beans.binding.NumberBinding;
 
-import org.jrebirth.core.ui.DefaultModel;
+import org.jrebirth.core.ui.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 import org.jrebirth.demo.masteringtables.service.SessionService;
@@ -27,7 +27,7 @@ import org.jrebirth.demo.masteringtables.service.SessionService;
 /**
  * The Class ResultModel.
  */
-public class ResultModel extends DefaultModel<ResultModel, ResultView> {
+public class ResultModel extends DefaultObjectModel<ResultModel, ResultView, Game> {
 
     /** The session service is used to store game statistics. */
     private SessionService sessionService;
@@ -38,19 +38,20 @@ public class ResultModel extends DefaultModel<ResultModel, ResultView> {
     @Override
     protected void initModel() {
 
-        // Store an hard link to avoid loosing game stats
+        // Store an hard link to avoid losing game stats
         this.sessionService = getService(SessionService.class);
+        // not used yet
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void showView() {
+    protected void bind() {
 
-        final Game g = this.sessionService.getCurrentGame();
+        final Game g = getObject();
 
-        // Binf number of success and failure to UI objects
+        // Bind number of success and failure to UI objects
         getView().getSuccessLabel().textProperty().bind(g.successCountProperty().asString());
         getView().getFailureLabel().textProperty().bind(g.failureCountProperty().asString());
 
@@ -59,6 +60,13 @@ public class ResultModel extends DefaultModel<ResultModel, ResultView> {
                 .divide(g.successCountProperty().add(g.failureCountProperty()));
 
         getView().getRatioLabel().textProperty().bind(ratio.asString().concat(" %"));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void showView() {
 
         // Wait 5s and display the game menu
         callCommand(DisplayGameMenu.class);

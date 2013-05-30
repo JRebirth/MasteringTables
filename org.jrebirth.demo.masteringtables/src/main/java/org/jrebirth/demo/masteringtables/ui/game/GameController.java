@@ -81,6 +81,16 @@ public class GameController extends DefaultController<GameModel, GameView> imple
             case ENTER:
                 getModel().performEnter();
                 break;
+            case DIGIT0:
+            case DIGIT1:
+            case DIGIT2:
+            case DIGIT3:
+            case DIGIT4:
+            case DIGIT5:
+            case DIGIT6:
+            case DIGIT7:
+            case DIGIT8:
+            case DIGIT9:
             case NUMPAD0:
             case NUMPAD1:
             case NUMPAD2:

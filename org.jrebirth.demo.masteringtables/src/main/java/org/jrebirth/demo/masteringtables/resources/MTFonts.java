@@ -27,7 +27,7 @@ import org.jrebirth.core.resource.font.RealFont;
 public interface MTFonts {
 
     /** The font used to display expression. */
-    FontItem EXPRESSION = FontItemBase.build(new RealFont(MTFontsLoader.NYALA, 150.0));
+    FontItem EXPRESSION = FontItemBase.build(new RealFont(MTFontsLoader.NYALA, 140.0));
 
     /** The font used to display counter values. */
     FontItem COUNTER = FontItemBase.build(new RealFont(MTFontsLoader.NYALA, 50.0));

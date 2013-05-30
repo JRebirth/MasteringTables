@@ -78,6 +78,7 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
                 break;
 
             case Result:
+                waveBean.getKeyPart().add(getModel(GameModel.class).getObject());
                 waveBean.setModelClass(ResultModel.class);
                 break;
 

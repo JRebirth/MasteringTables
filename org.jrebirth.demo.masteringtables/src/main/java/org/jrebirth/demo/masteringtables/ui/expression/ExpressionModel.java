@@ -69,6 +69,7 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
         // Store the current expression
         setObject(expression);
 
+        // Start the show animation
         getView().getShowExpression().play();
     }
 
@@ -79,7 +80,11 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
      */
     public void appendNumber(String name) {
 
-        name = name.replaceAll("Numpad ", "");
+        if (name.contains("Numpad")) {
+            name = name.replaceAll("Numpad ", "");
+        } else {
+
+        }
         getView().getResult().setText(getView().getResult().getText() + name);
 
         checkResult();

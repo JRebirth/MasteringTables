@@ -19,6 +19,8 @@ package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * The Class Game.
@@ -30,6 +32,12 @@ public class Game {
 
     /** The failure count. */
     private final IntegerProperty failureCount = new SimpleIntegerProperty(0);
+
+    /** The list of expression that composed the game. */
+    private final ObservableList<Expression> gameList = FXCollections.observableArrayList();
+
+    /** The current index property. */
+    private final SimpleIntegerProperty indexProperty = new SimpleIntegerProperty();
 
     /**
      * Success count property.
@@ -85,4 +93,55 @@ public class Game {
         this.failureCount.set(failureCount);
     }
 
+    /**
+     * @return Returns the gameList.
+     */
+    public ObservableList<Expression> getGameList() {
+        return this.gameList;
+    }
+
+    /**
+     * Gets the index.
+     * 
+     * @return the index
+     */
+    public int getIndex() {
+        return this.indexProperty.get();
+    }
+
+    /**
+     * Sets the index.
+     * 
+     * @param index the new index
+     */
+    public void setIndex(final int index) {
+        this.indexProperty.set(index);
+    }
+
+    /**
+     * Index property.
+     * 
+     * @return the simple integer property
+     */
+    public SimpleIntegerProperty indexProperty() {
+        return this.indexProperty;
+    }
+
+    /**
+     * Return the current expression.
+     * 
+     * @return the current expression to solve
+     */
+    public Expression getCurrentExpression() {
+        return getGameList().get(getIndex());
+    }
+
+    /**
+     * Return true if at least one expression to solve remains
+     * 
+     * @return true if there is at least another expression to solve
+     */
+    public boolean hasMoreExpression() {
+        return getGameList().size() > getIndex();
+    }
 }

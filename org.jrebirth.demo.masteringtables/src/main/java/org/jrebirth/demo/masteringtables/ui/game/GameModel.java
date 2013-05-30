@@ -17,22 +17,19 @@
  */
 package org.jrebirth.demo.masteringtables.ui.game;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.core.ui.DefaultModel;
+import org.jrebirth.core.ui.DefaultObjectModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.command.CreateGameContent;
-import org.jrebirth.demo.masteringtables.service.SessionService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
 
@@ -42,24 +39,10 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameModel.
  */
-public class GameModel extends DefaultModel<GameModel, GameView> {
+public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameModel.class);
-
-    private SessionService sessionService;
-
-    /** The success. */
-    // private final IntegerProperty success = new SimpleIntegerProperty(1000);
-
-    /** The failure. */
-    // private final IntegerProperty failure = new SimpleIntegerProperty(0);
-
-    /** The index. */
-    private int index = 0;
-
-    /** The game list. */
-    private final List<Expression> gameList = new ArrayList<>();
 
     /**
      * {@inheritDoc}
@@ -72,12 +55,14 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
         listen(MTWaves.REGISTER_SUCCESS);
         listen(MTWaves.REGISTER_FAILURE);
 
-        this.sessionService = getService(SessionService.class);
     }
 
     @Override
     protected void bind() {
-        // Nothing to do yet
+
+        // Bind counter values
+        getView().getSuccessCounter().textProperty().bind(getObject().successCountProperty().asString());
+        getView().getFailureCounter().textProperty().bind(getObject().failureCountProperty().asString());
 
     }
 
@@ -89,34 +74,24 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      */
     public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
-        this.index = 0;
-        this.gameList.clear();
-        this.gameList.addAll(expressionList);
-        Collections.shuffle(expressionList);
+        // Reset the current index and counters
+        getObject().setIndex(0);
+        getObject().setSuccessCount(0);
+        getObject().setFailureCount(0);
 
-        bindGame();
+        // Add new generated list of expression
+        getObject().getGameList().clear();
+        getObject().getGameList().addAll(expressionList);
 
-        getView().getQuestionHolder().getChildren().clear();
-        getView().getQuestionHolder().getChildren().add(getModel(ExpressionModel.class).getRootNode());
+        // Clear the current expression panel
+        getView().getExpressionHolder().getChildren().clear();
+        getView().getExpressionHolder().getChildren().add(getModel(ExpressionModel.class).getRootNode());
 
+        // Center the panel
         StackPane.setAlignment(getModel(ExpressionModel.class).getRootNode(), Pos.CENTER);
 
-        sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
-    }
-
-    /**
-     * Return the current game object.
-     * 
-     * @return the current game
-     */
-    private Game getGame() {
-        return this.sessionService.getCurrentGame();
-    }
-
-    private void bindGame() {
-        this.sessionService.setCurrentGame(new Game());
-        getView().getSuccessCounter().textProperty().bind(getGame().successCountProperty().asString());
-        getView().getFailureCounter().textProperty().bind(getGame().failureCountProperty().asString());
+        // Display the current expression with the help of the inner model
+        sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
     }
 
     /**
@@ -127,13 +102,13 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      */
     public void doRegisterSuccess(final Expression expression, final Wave wave) {
 
-        getGame().setSuccessCount(getGame().getSuccessCount() + 1);
+        getObject().setSuccessCount(getObject().getSuccessCount() + 1);
 
-        this.index++;
+        getObject().setIndex(getObject().getIndex() + 1);
 
-        if (this.gameList.size() > this.index) {
+        if (getObject().hasMoreExpression()) {
             // continue game
-            sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, this.gameList.get(this.index)));
+            sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
         } else {
 
             // Game is finished
@@ -150,7 +125,7 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * @param wave the wave
      */
     public void doRegisterFailure(final Expression expression, final Wave wave) {
-        getGame().setFailureCount(getGame().getFailureCount() + 1);
+        getObject().setFailureCount(getObject().getFailureCount() + 1);
     }
 
     /**
@@ -190,7 +165,11 @@ public class GameModel extends DefaultModel<GameModel, GameView> {
      * Do cancel.
      */
     public void performCancel() {
-        // Nothing to do yet
+        // Cancel the game
+        sendWave(MTWaves.FINISH_GAME);
+
+        // Display the star menu
+        sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
 
     }
 

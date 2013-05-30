@@ -42,8 +42,8 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameView.class);
 
-    /** The question holder. */
-    private StackPane questionHolder;
+    /** The expression holder. */
+    private StackPane expressionHolder;
 
     /** The success label. */
     private Label successIcon;
@@ -61,6 +61,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
      * Instantiates a new game view.
      * 
      * @param model the model
+     * 
      * @throws CoreException the core exception
      */
     public GameView(final GameModel model) throws CoreException {
@@ -74,20 +75,21 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
     protected void initView() {
         getRootNode().setTop(buildTopPanel());
 
-        this.questionHolder = new StackPane();
-        getRootNode().setCenter(this.questionHolder);
+        // This stackPane will hold the expression view
+        this.expressionHolder = new StackPane();
+        getRootNode().setCenter(this.expressionHolder);
 
         getRootNode().setFocusTraversable(true);
 
     }
 
     /**
-     * Gets the question holder.
+     * Gets the expression holder.
      * 
-     * @return the question holder
+     * @return the expression holder
      */
-    StackPane getQuestionHolder() {
-        return this.questionHolder;
+    StackPane getExpressionHolder() {
+        return this.expressionHolder;
     }
 
     /**
@@ -96,6 +98,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
      * @return the node
      */
     private Node buildTopPanel() {
+
         final AnchorPane ap = new AnchorPane();
 
         // Success Part
@@ -105,12 +108,10 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
                 .font(MTFonts.COUNTER.get())
                 .minWidth(100)
                 .alignment(Pos.CENTER_RIGHT)
-                // .style("-fx-background-color:#CCC")
                 .build();
 
         this.successIcon = LabelBuilder.create()
                 .id("SuccessIcon")
-                // .style("-fx-background-color:#233")
                 .build();
 
         StackPane.setMargin(this.successIcon, new Insets(0, 0, 12, 92));
@@ -120,7 +121,6 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
         final StackPane successPane = StackPaneBuilder.create()
                 .children(this.successIcon, this.successCounter)
-                // .style("-fx-background-color:#CCC")
                 .build();
 
         // Failure Part

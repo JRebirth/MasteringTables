@@ -17,8 +17,9 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
+import static org.jrebirth.core.resource.Resources.create;
+
 import org.jrebirth.core.resource.image.ImageItem;
-import org.jrebirth.core.resource.image.ImageItemBase;
 import org.jrebirth.core.resource.image.LocalImage;
 
 /**
@@ -27,5 +28,5 @@ import org.jrebirth.core.resource.image.LocalImage;
 public interface MTImages {
 
     /** The application main title image. */
-    ImageItem MT_TITLE = ImageItemBase.build(new LocalImage("image/Title.png"));
+    ImageItem MT_TITLE = create(new LocalImage("image/Title.png"));
 }

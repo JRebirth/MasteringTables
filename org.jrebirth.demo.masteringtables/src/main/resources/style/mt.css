@@ -25,7 +25,6 @@
 
 #GameMenuPanel{
 	-fx-background-color: transparent;
-	
 	-fx-background-image: url("../image/menu/Menu_Background.png");
 	-fx-background-position: center;
 	-fx-background-size: stretch;

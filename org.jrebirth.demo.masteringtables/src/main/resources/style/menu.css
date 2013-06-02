@@ -1,7 +1,3 @@
-
-
-
-
 .ChoiceButton {
 	
 	/*-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);*/
@@ -12,37 +8,15 @@
 	-fx-background-position: center center ;
 	-fx-background-repeat: no-repeat ;
 	
-	/* 
-	-fx-border-width: 2px;
-	-fx-border-color: black;*/
-    /*-fx-padding: -14px 0 0 0;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color:
-        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-        #9d4024,
-        #d86e3a,
-        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-     
-    */
     -fx-font-weight: bold;
     -fx-font-size: 60px;
 }
-/* .ChoiceButton:hover {
-	
-	-fx-background-image: url("../image/toggle-button.png");
-}
-.ChoiceButton:selected {
-	
-	-fx-background-image: url("../image/toggle-button-selected.png");
-}*/
 
 .multiplication{
 	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_X_inactif.png");
 }
 .division{
-	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_÷_inactif.png");
+	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_d_inactif.png");
 }
 .addition{
 	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_+_inactif.png");
@@ -56,7 +30,7 @@
 	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_X_actif.png");
 }
 .division:selected{
-	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_÷_actif.png");
+	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_d_actif.png");
 }
 .addition:selected{
 	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_+_actif.png");
@@ -93,6 +67,7 @@
 .expr100{
 	-fx-background-image: url("../image/menu/occurences_inactive.png"),url("../image/menu/Occurence_100_inactif.png");
 }
+
 
 .expr5:selected{
 	-fx-background-image: url("../image/menu/occurences_active.png"), url("../image/menu/Occurence_5_actif.png");

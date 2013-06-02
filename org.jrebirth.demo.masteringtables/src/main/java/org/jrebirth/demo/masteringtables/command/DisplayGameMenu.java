@@ -44,11 +44,11 @@ public class DisplayGameMenu extends DefaultCommand {
     @Override
     protected void execute(final Wave wave) {
 
-        // Sleep 5 seconds
+        // Sleep 3 seconds
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(3);
         } catch (final InterruptedException e) {
-            LOGGER.error("Failure while sleeping 5s");
+            LOGGER.error("Failure while sleeping 3s");
         }
 
         // Then launch the wave that will display teh game menu

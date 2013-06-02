@@ -17,11 +17,11 @@
  */
 package org.jrebirth.demo.masteringtables.ui.result;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 
 import org.jrebirth.core.ui.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.Game;
-import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 
 /**
@@ -51,25 +51,22 @@ public class ResultModel extends DefaultObjectModel<ResultModel, ResultView, Gam
 
         final Game g = getObject();
 
+        getView().getTimeLabel().textProperty().bind(g.timeEllapsedProperty());
+
         // Bind number of success and failure to UI objects
         getView().getSuccessLabel().textProperty().bind(g.successCountProperty().asString());
         getView().getFailureLabel().textProperty().bind(g.failureCountProperty().asString());
 
-        // Compute Hit ratio
-        final NumberBinding ratio = g.successCountProperty().multiply(100)
-                .divide(g.successCountProperty().add(g.failureCountProperty()));
+        if (g.getSuccessCount() > 0) {
+            // Compute Hit ratio
+            final NumberBinding totalattempt = g.successCountProperty().add(g.failureCountProperty());
+            final NumberBinding ratio = Bindings.when(totalattempt.greaterThan(0))
+                    .then(Bindings.divide(g.successCountProperty().multiply(100), totalattempt))
+                    .otherwise(0);
 
-        getView().getRatioLabel().textProperty().bind(ratio.asString().concat(" %"));
-    }
+            getView().getRatioLabel().textProperty().bind(ratio.asString().concat("%"));
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void showView() {
-
-        // Wait 5s and display the game menu
-        callCommand(DisplayGameMenu.class);
+        }
     }
 
 }

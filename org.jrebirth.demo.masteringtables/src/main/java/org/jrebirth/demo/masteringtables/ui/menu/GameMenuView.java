@@ -25,6 +25,7 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -35,18 +36,17 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleButtonBuilder;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToggleGroupBuilder;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.FlowPaneBuilder;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.GridPaneBuilder;
+import javafx.scene.layout.RowConstraints;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.DefaultView;
 import org.jrebirth.core.ui.annotation.OnAction;
+import org.jrebirth.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.beans.Operator;
-import org.jrebirth.demo.masteringtables.resources.MTImages;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +54,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameMenuView.
  */
+@RootNodeId("GameMenuPanel")
 public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMenuController> {
 
     /** The Constant LOGGER. */
@@ -93,15 +94,15 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     @Override
     protected void initView() {
 
-        final FlowPane fp = FlowPaneBuilder.create()
-                .children(new ImageView(MTImages.MT_TITLE.get()))
-                .build();
-        fp.setAlignment(Pos.CENTER);
-        getRootNode().setTop(fp);
+        // final FlowPane fp = FlowPaneBuilder.create()
+        // .children(new ImageView(MTImages.MT_TITLE.get()))
+        // .build();
+        // fp.setAlignment(Pos.CENTER);
+        // getRootNode().setTop(fp);
 
         getRootNode().setCenter(buildGameConfigPanel());
 
-        getRootNode().setBottom(buildStartGamePanel());
+        // getRootNode().setBottom(buildStartGamePanel());
 
         // Ui binding
         final BooleanBinding bb1 = Bindings.or(this.addition.selectedProperty(), this.subtraction.selectedProperty());
@@ -120,8 +121,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         final FlowPane fp = new FlowPane();
 
         this.playButton = ButtonBuilder.create()
-                .styleClass("StartButton")
-                .text("Start Game")
+                .styleClass("play")
+                .minHeight(130)
+                .minWidth(180)
+                // .text("Start Game")
                 .build();
 
         fp.getChildren().add(this.playButton);
@@ -139,26 +142,32 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
 
         final GridPane pane = GridPaneBuilder.create()
                 .hgap(10)
-                .vgap(10)
+                // .vgap(10)
                 // .gridLinesVisible(true)
                 .build();
 
+        pane.getRowConstraints().addAll(new RowConstraints(150), new RowConstraints(100), new RowConstraints(100));
+
         this.addition = buildChoiceButton(Operator.addition.toString());
+        this.addition.getStyleClass().add("addition");
         // this.addition.setSkin(new ArcadeButtonSkin(this.addition));
 
         this.subtraction = buildChoiceButton(Operator.subtraction.toString());
+        this.subtraction.getStyleClass().add("subtraction");
         // this.subtraction.setSkin(new ArcadeButtonSkin(this.subtraction));
 
         this.multiplication = buildChoiceButton(Operator.multiplication.toString());
+        this.multiplication.getStyleClass().add("multiplication");
         // this.multiplication.setSkin(new ArcadeButtonSkin(this.multiplication));
 
         this.division = buildChoiceButton(Operator.division.toString());
+        this.division.getStyleClass().add("division");
         // this.division.setSkin(new ArcadeButtonSkin(this.division));
 
-        GridPane.setConstraints(this.addition, 1, 1, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(this.subtraction, 2, 1, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(this.multiplication, 3, 1, 1, 1, HPos.CENTER, VPos.CENTER);
-        GridPane.setConstraints(this.division, 4, 1, 1, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(this.addition, 0, 0, 1, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(this.subtraction, 1, 0, 1, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(this.multiplication, 2, 0, 1, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(this.division, 3, 0, 1, 1, HPos.CENTER, VPos.CENTER);
 
         pane.getChildren().addAll(this.addition, this.subtraction, this.multiplication, this.division);
         pane.setAlignment(Pos.CENTER);
@@ -177,6 +186,8 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         fp.setHgap(10);
 
         final int[] list = { 5, 10, 20, 30, 50, 100 };
+        // final int[] list = { 2, 5, 10, 20, 30, 50 };
+
         for (final int i : list) {
             toggleList.add(buildMiniButton(i));
         }
@@ -186,19 +197,29 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
                 .toggles(toggleList)
                 .build();
 
-        GridPane.setConstraints(fp, 1, 5, 4, 1, HPos.CENTER, VPos.CENTER);
+        GridPane.setConstraints(fp, 0, 1, 4, 1, HPos.CENTER, VPos.CENTER);
         pane.getChildren().add(fp);
 
         this.lengthGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
             @Override
             public void changed(final ObservableValue<? extends Toggle> toggleProperty, final Toggle previous, final Toggle next) {
-                getModel().getGameSettings().setQuestionNumber((int) next.getUserData());
+                if (next != null) {
+                    getModel().getGameSettings().setQuestionNumber((int) next.getUserData());
+                }
             }
         });
 
         // Select the first item
         this.lengthGroup.selectToggle(toggleList.get(0));
+
+        // Third row START
+
+        final Node start = buildStartGamePanel();
+        GridPane.setConstraints(start, 0, 2, 4, 1, HPos.CENTER, VPos.CENTER);
+        pane.getChildren().add(start);
+
+        BorderPane.setMargin(pane, new Insets(140, 0, 0, 0));
 
         return pane;
     }
@@ -218,7 +239,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
                 .minHeight(150)
                 .maxWidth(150)
                 .maxHeight(150)
-                .text(name)
+                // .text(name)
                 .build();
 
     }
@@ -232,14 +253,14 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      */
     private ToggleButton buildMiniButton(final int value) {
         return ToggleButtonBuilder.create()
-                .styleClass("MiniChoiceButton")// , "toggle-button")
+                .styleClass("MiniChoiceButton", "expr" + value)// , "toggle-button")
                 .alignment(Pos.BASELINE_CENTER)
-                .minWidth(50)
-                .minHeight(50)
-                .maxWidth(50)
-                .maxHeight(50)
+                .minWidth(70)
+                .minHeight(70)
+                .maxWidth(70)
+                .maxHeight(70)
                 .userData(value)
-                .text(Integer.toString(value))
+                // .text(Integer.toString(value))
                 .build();
 
     }

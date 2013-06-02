@@ -4,6 +4,9 @@
 
 #SplashPanel{
 	-fx-background-image: url("../image/Splash.png");
+	-fx-background-position: center;
+	-fx-background-size: stretch;
+	-fx-background-repeat: no-repeat ;
 }
 
 
@@ -12,7 +15,7 @@
 /********************************************************************/
 
 #PagePanel {
-	-fx-background-image: url("../image/Background.png");
+	
 }
 
 
@@ -20,46 +23,26 @@
 /** 					Game Menu View.								*/
 /********************************************************************/
 
-.ChoiceButton {
-	
-	/*-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);*/
-	
-	-fx-background-image: url("../image/toggle-button.png");
+#GameMenuPanel{
 	-fx-background-color: transparent;
-	-fx-background-size: 150px;
-	-fx-background-position: center center ;
+	
+	-fx-background-image: url("../image/menu/Menu_Background.png");
+	-fx-background-position: center;
+	-fx-background-size: stretch;
 	-fx-background-repeat: no-repeat ;
-	
-	/* 
-	-fx-border-width: 2px;
-	-fx-border-color: black;*/
-    /*-fx-padding: -14px 0 0 0;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color:
-        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
-        #9d4024,
-        #d86e3a,
-        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-     
-    */
-    -fx-font-weight: bold;
-    -fx-font-size: 60px;
-}
-.ChoiceButton:hover {
-	
-	-fx-background-image: url("../image/toggle-button.png");
-}
-.ChoiceButton:selected {
-	
-	-fx-background-image: url("../image/toggle-button-selected.png");
 }
 
 
 /********************************************************************/
 /** 						Game View 								*/
 /********************************************************************/
+
+#GamePanel{
+	-fx-background-image: url("../image/Game_Background.png");
+	-fx-background-position: center;
+	-fx-background-size: stretch;
+	-fx-background-repeat: no-repeat ;
+}
 
 #SuccessCounter{
 	-fx-text-fill: #D6DF23;
@@ -102,3 +85,33 @@
 /** 					Result View.								*/
 /********************************************************************/
 
+#ResultPanel{
+	-fx-background-image: url("../image/Result_Background.png");
+	-fx-background-position: center;
+	-fx-background-size: stretch;
+	-fx-background-repeat: no-repeat ;
+}
+
+#ResultRatioLabel{
+	-fx-font-family: "nyala";
+	-fx-font-size: 140px;
+	-fx-text-fill: #f7f5f5;
+}
+
+#ResultTimeLabel{
+	-fx-font-family: "nyala";
+	-fx-font-size: 130px;
+	-fx-text-fill: #f7f5f5;
+}
+
+#ResultSuccessLabel{
+	-fx-font-family: "nyala";
+	-fx-font-size: 110px;
+	-fx-text-fill: #f7f5f5;
+}
+
+#ResultFailureLabel{
+	-fx-font-family: "nyala";
+	-fx-font-size: 80px;
+	-fx-text-fill: #f7f5f5;
+}

@@ -19,6 +19,8 @@ package org.jrebirth.demo.masteringtables.ui.page;
 
 import org.jrebirth.core.command.basic.showmodel.DisplayModelWaveBean;
 import org.jrebirth.core.command.basic.showmodel.ShowFadingModelCommand;
+import org.jrebirth.core.key.KeyBuilder;
+import org.jrebirth.core.key.UniqueKey;
 import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Page;
@@ -39,6 +41,9 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(PageModel.class);
 
+    /** Hold the current mode displayed as a page. */
+    private UniqueKey currentModelKey;
+
     /**
      * {@inheritDoc}
      */
@@ -46,6 +51,7 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
     protected void initModel() {
 
         listen(MTWaves.SHOW_PAGE);
+
     }
 
     /**
@@ -70,24 +76,25 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
         switch (page) {
 
             case Splash:
-                waveBean.setModelClass(SplashModel.class);
+                waveBean.setShowModelKey(KeyBuilder.buildKey(SplashModel.class));
                 break;
 
             case Game:
-                waveBean.setModelClass(GameModel.class);
+                waveBean.setShowModelKey(KeyBuilder.buildKey(GameModel.class));
                 break;
 
             case Result:
-                waveBean.getKeyPart().add(getModel(GameModel.class).getObject());
-                waveBean.setModelClass(ResultModel.class);
+                waveBean.setShowModelKey(KeyBuilder.buildKey(ResultModel.class, getModel(GameModel.class).getObject()));
                 break;
 
             default:
             case GameMenu:
-                waveBean.setModelClass(GameMenuModel.class);
+                waveBean.setShowModelKey(KeyBuilder.buildKey(GameMenuModel.class));
                 break;
         }
 
+        waveBean.setHideModelKey(this.currentModelKey);
+        this.currentModelKey = waveBean.getShowModelKey();
         callCommand(ShowFadingModelCommand.class, waveBean);
     }
 

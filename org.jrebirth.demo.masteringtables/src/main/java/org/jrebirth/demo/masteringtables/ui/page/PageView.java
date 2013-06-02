@@ -46,4 +46,9 @@ public class PageView extends DefaultView<PageModel, StackPane, DefaultControlle
         super(model);
     }
 
+    @Override
+    protected void initView() {
+
+    }
+
 }

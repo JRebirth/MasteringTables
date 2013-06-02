@@ -19,6 +19,8 @@ package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -32,6 +34,9 @@ public class Game {
 
     /** The failure count. */
     private final IntegerProperty failureCount = new SimpleIntegerProperty(0);
+
+    /** The time ellapsed. */
+    private final StringProperty timeEllapsed = new SimpleStringProperty("01:00");
 
     /** The list of expression that composed the game. */
     private final ObservableList<Expression> gameList = FXCollections.observableArrayList();
@@ -94,6 +99,8 @@ public class Game {
     }
 
     /**
+     * Gets the list of expression that composed the game.
+     * 
      * @return Returns the gameList.
      */
     public ObservableList<Expression> getGameList() {
@@ -137,11 +144,38 @@ public class Game {
     }
 
     /**
-     * Return true if at least one expression to solve remains
+     * Return true if at least one expression to solve remains.
      * 
      * @return true if there is at least another expression to solve
      */
     public boolean hasMoreExpression() {
         return getGameList().size() > getIndex();
+    }
+
+    /**
+     * Time ellapsed property.
+     * 
+     * @return the string property
+     */
+    public StringProperty timeEllapsedProperty() {
+        return this.timeEllapsed;
+    }
+
+    /**
+     * Gets the time ellapsed.
+     * 
+     * @return the time ellapsed
+     */
+    public String getTimeEllapsed() {
+        return this.timeEllapsed.get();
+    }
+
+    /**
+     * Sets the time ellapsed.
+     * 
+     * @param timeEllapsed the new time ellapsed
+     */
+    public void setTimeEllapsed(final String timeEllapsed) {
+        this.timeEllapsed.set(timeEllapsed);
     }
 }

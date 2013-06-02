@@ -141,7 +141,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void hideView() {
-        // Custom code to process when the view is hidden
+        getModel(ExpressionModel.class).reset();
     }
 
     /**

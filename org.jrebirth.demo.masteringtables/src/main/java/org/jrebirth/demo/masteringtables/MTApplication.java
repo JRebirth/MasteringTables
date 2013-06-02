@@ -78,6 +78,7 @@ public final class MTApplication extends AbstractApplication<StackPane> {
     @Override
     protected void customizeScene(final Scene scene) {
         addCSS(scene, "style/mt.css");
+        addCSS(scene, "style/menu.css");
     }
 
     /**

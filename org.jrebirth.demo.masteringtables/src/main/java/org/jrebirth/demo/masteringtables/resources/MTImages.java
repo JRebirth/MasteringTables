@@ -29,4 +29,13 @@ public interface MTImages {
 
     /** The application main title image. */
     ImageItem MT_TITLE = create(new LocalImage("image/Title.png"));
+
+    /** . */
+    ImageItem RESULT_MONSTER = create(new LocalImage("image/Result_Monster.png"));
+
+    /** . */
+    ImageItem RESULT_SUCCESS_ICON = create(new LocalImage("image/Result_Success_Icon.png"));
+
+    /** . */
+    ImageItem RESULT_FAILURE_ICON = create(new LocalImage("image/Result_Failure_Icon.png"));
 }

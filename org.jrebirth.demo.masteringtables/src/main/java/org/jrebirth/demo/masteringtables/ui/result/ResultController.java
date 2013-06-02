@@ -15,53 +15,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jrebirth.demo.masteringtables.ui.splash;
+package org.jrebirth.demo.masteringtables.ui.result;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.DefaultController;
-import org.jrebirth.core.ui.DefaultView;
-import org.jrebirth.core.ui.annotation.RootNodeId;
+import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.demo.masteringtables.beans.Page;
+import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class SplashView.
+ * The Class GameController.
  */
-@RootNodeId("SplashPanel")
-public class SplashView extends DefaultView<SplashModel, BorderPane, DefaultController<SplashModel, SplashView>> {
+public class ResultController extends DefaultController<ResultModel, ResultView> {
 
     /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(SplashView.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ResultController.class);
 
     /**
-     * Instantiates a new page view.
+     * Instantiates a new game controller.
      * 
-     * @param model the model
+     * @param view the view
      * @throws CoreException the core exception
      */
-    public SplashView(final SplashModel model) throws CoreException {
-        super(model);
+    public ResultController(final ResultView view) throws CoreException {
+        super(view);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void initView() {
+    protected void initEventAdapters() throws CoreException {
 
-        // Add an indefinite progress bar
-        final ProgressBar pb = new ProgressBar();
-        pb.setMinSize(400, 40);
-        BorderPane.setAlignment(pb, Pos.CENTER);
-        BorderPane.setMargin(pb, new Insets(40, 0, 40, 0));
+        linkWave(getRootNode(), KeyEvent.KEY_RELEASED, MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
+        linkWave(getRootNode(), MouseEvent.MOUSE_CLICKED, MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
 
-        getRootNode().setBottom(pb);
     }
-
 }

@@ -29,6 +29,7 @@ import javafx.scene.layout.StackPaneBuilder;
 
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.ui.DefaultView;
+import org.jrebirth.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
 import org.slf4j.Logger;
@@ -37,6 +38,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameView.
  */
+@RootNodeId("GamePanel")
 public class GameView extends DefaultView<GameModel, BorderPane, GameController> {
 
     /** The Constant LOGGER. */

@@ -30,7 +30,7 @@ public class SplashModel extends DefaultModel<SplashModel, SplashView> {
      */
     @Override
     protected void showView() {
-        // Wait 5s and display the game menu
+        // Wait 3s and display the game menu
         callCommand(DisplayGameMenu.class);
     }
 

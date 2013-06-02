@@ -19,18 +19,26 @@ package org.jrebirth.demo.masteringtables.resources;
 
 import static org.jrebirth.core.resource.Resources.create;
 
-import org.jrebirth.core.resource.font.FontItem;
-import org.jrebirth.core.resource.font.RealFont;
+import org.jrebirth.core.resource.color.ColorItem;
+import org.jrebirth.core.resource.color.WebColor;
 
 /**
- * The MTFonts interface providing all fonts.
+ * The MTColors interface providing all colors.
  */
-public interface MTFonts {
+public interface MTColors {
 
-    /** The font used to display expression. */
-    FontItem EXPRESSION = create(new RealFont(MTFontsLoader.NYALA, 130.0));
+    /** The result ratio background color. */
+    ColorItem RESULT_RATIO = create(new WebColor("bdccd4"));
 
-    /** The font used to display counter values. */
-    FontItem COUNTER = create(new RealFont(MTFontsLoader.NYALA, 50.0));
+    /** The result time background color. */
+    ColorItem RESULT_TIME = create(new WebColor("fbb03b"));
 
+    /** The result success background color. */
+    ColorItem RESULT_SUCCESS = create(new WebColor("95cd8b"));
+
+    /** The result ratio background color. */
+    ColorItem RESULT_FAILURE = create(new WebColor("e7685d"));
+
+    /** The bean shadow color. */
+    ColorItem BEAN_SHADOW = create(new WebColor("4c4945"));
 }

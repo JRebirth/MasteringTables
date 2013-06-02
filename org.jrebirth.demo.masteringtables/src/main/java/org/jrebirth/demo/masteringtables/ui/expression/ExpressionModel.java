@@ -113,4 +113,8 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
         getView().getResult().setText(getView().getResult().getText().substring(0, Math.max(0, getView().getResult().getText().length() - 1)));
     }
 
+    public void reset() {
+        getView().getResult().setText("");
+    }
+
 }

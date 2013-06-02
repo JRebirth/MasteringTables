@@ -94,16 +94,20 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
         getRootNode().setAlignment(Pos.CENTER);
 
-        getRootNode().setPrefSize(600, 200);
+        getRootNode().setPrefSize(650, 200);
         getRootNode().setMaxSize(700, 200);
 
-        this.leftOperand = getExpressionTextBuilder().build();
+        this.leftOperand = getExpressionTextBuilder()
+                .wrappingWidth(180)
+                .build();
 
         this.operator = getExpressionTextBuilder()
                 .wrappingWidth(60)
                 .build();
 
-        this.rightOperand = getExpressionTextBuilder().build();
+        this.rightOperand = getExpressionTextBuilder()
+                .wrappingWidth(120)
+                .build();
 
         this.equality = getExpressionTextBuilder()
                 .wrappingWidth(60)
@@ -153,7 +157,6 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
     private TextBuilder<?> getExpressionTextBuilder() {
         return TextBuilder.create()
                 .scaleX(0).scaleY(0)
-                .wrappingWidth(120)
                 .textAlignment(TextAlignment.CENTER)
                 .font(MTFonts.EXPRESSION.get());
     }

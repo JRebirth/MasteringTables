@@ -3,7 +3,7 @@
 /********************************************************************/
 
 #SplashPanel{
-	-fx-background-image: url("../image/Splash.png");
+	-fx-background-image: url("../image/Splash_Background.png");
 	-fx-background-position: center;
 	-fx-background-size: stretch;
 	-fx-background-repeat: no-repeat ;

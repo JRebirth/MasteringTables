@@ -59,7 +59,7 @@ public class SplashView extends DefaultView<SplashModel, BorderPane, DefaultCont
         final ProgressBar pb = new ProgressBar();
         pb.setMinSize(400, 40);
         BorderPane.setAlignment(pb, Pos.CENTER);
-        BorderPane.setMargin(pb, new Insets(40, 0, 40, 0));
+        BorderPane.setMargin(pb, new Insets(40, 0, 30, 0));
 
         getRootNode().setBottom(pb);
     }

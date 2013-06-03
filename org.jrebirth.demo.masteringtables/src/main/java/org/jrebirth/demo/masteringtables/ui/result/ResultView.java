@@ -238,7 +238,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                         buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
 
                         ParallelTransitionBuilder.create().children(
-                                TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(200)).duration(Duration.millis(300)).byY(-766).build(),
+                                TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400)).byY(-766).build(),
                                 buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
                                 FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
                                 )

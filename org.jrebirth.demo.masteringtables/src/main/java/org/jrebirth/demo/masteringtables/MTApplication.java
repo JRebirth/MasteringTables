@@ -59,14 +59,6 @@ public final class MTApplication extends AbstractApplication<StackPane> {
      * {@inheritDoc}
      */
     @Override
-    protected String getApplicationTitle() {
-        return "Mastering Tables - Powered by JRebirth";
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     protected void customizeStage(final Stage stage) {
         stage.setFullScreen(false);
         stage.setResizable(false);

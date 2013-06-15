@@ -19,7 +19,6 @@ package org.jrebirth.demo.masteringtables.ui.page;
 
 import org.jrebirth.core.command.basic.showmodel.DisplayModelWaveBean;
 import org.jrebirth.core.command.basic.showmodel.ShowFadingModelCommand;
-import org.jrebirth.core.key.KeyBuilder;
 import org.jrebirth.core.key.UniqueKey;
 import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.Wave;
@@ -76,20 +75,20 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
         switch (page) {
 
             case Splash:
-                waveBean.setShowModelKey(KeyBuilder.buildKey(SplashModel.class));
+                waveBean.setShowModelKey(getLocalFacade().buildKey(SplashModel.class));
                 break;
 
             case Game:
-                waveBean.setShowModelKey(KeyBuilder.buildKey(GameModel.class));
+                waveBean.setShowModelKey(getLocalFacade().buildKey(GameModel.class));
                 break;
 
             case Result:
-                waveBean.setShowModelKey(KeyBuilder.buildKey(ResultModel.class, getModel(GameModel.class).getObject()));
+                waveBean.setShowModelKey(getLocalFacade().buildKey(ResultModel.class, getModel(GameModel.class).getObject()));
                 break;
 
             default:
             case GameMenu:
-                waveBean.setShowModelKey(KeyBuilder.buildKey(GameMenuModel.class));
+                waveBean.setShowModelKey(getLocalFacade().buildKey(GameMenuModel.class));
                 break;
         }
 

@@ -22,7 +22,7 @@ import org.jrebirth.core.resource.font.FontName;
 /**
  * The Enum MTFontsLoader used to load font ttf file.
  */
-public enum MTFontsLoader implements FontName {
+public enum MTFontNames implements FontName {
 
     /** The NYALA font. */
     NYALA;

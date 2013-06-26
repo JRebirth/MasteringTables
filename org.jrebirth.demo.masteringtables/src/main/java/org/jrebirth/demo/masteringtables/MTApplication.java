@@ -31,6 +31,7 @@ import org.jrebirth.core.resource.font.FontItem;
 import org.jrebirth.core.ui.Model;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
+import org.jrebirth.demo.masteringtables.resources.MTStyles;
 import org.jrebirth.demo.masteringtables.ui.page.PageModel;
 
 /**
@@ -69,8 +70,8 @@ public final class MTApplication extends AbstractApplication<StackPane> {
      */
     @Override
     protected void customizeScene(final Scene scene) {
-        addCSS(scene, "style/mt.css");
-        addCSS(scene, "style/menu.css");
+        addCSS(scene, MTStyles.MAIN);
+        addCSS(scene, MTStyles.MENU);
     }
 
     /**

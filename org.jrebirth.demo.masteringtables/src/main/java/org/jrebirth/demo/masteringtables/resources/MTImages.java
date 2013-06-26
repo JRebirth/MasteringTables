@@ -29,14 +29,14 @@ import org.jrebirth.core.resource.image.LocalImage;
 public interface MTImages {
 
     /** The application main title image. */
-    ImageItem MT_TITLE = create(new LocalImage("image/", "Title", ImageExtension.PNG));
+    ImageItem MT_TITLE = create(new LocalImage("Title", ImageExtension.PNG));
 
-    /** . */
-    ImageItem RESULT_MONSTER = create(new LocalImage("image/", "Result_Monster", ImageExtension.PNG));
+    /** Monster used into Result page (Monster is reading a book). */
+    ImageItem RESULT_MONSTER = create(new LocalImage("Result_Monster", ImageExtension.PNG));
 
-    /** . */
-    ImageItem RESULT_SUCCESS_ICON = create(new LocalImage("image/", "Result_Success_Icon", ImageExtension.PNG));
+    /** The success icon used to count a good answer. */
+    ImageItem RESULT_SUCCESS_ICON = create(new LocalImage("Result_Success_Icon", ImageExtension.PNG));
 
-    /** . */
-    ImageItem RESULT_FAILURE_ICON = create(new LocalImage("image/", "Result_Failure_Icon", ImageExtension.PNG));
+    /** The failure icon used to count a bad answer. */
+    ImageItem RESULT_FAILURE_ICON = create(new LocalImage("Result_Failure_Icon", ImageExtension.PNG));
 }

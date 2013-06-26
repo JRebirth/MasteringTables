@@ -63,6 +63,7 @@
 	</licenses>
 
 	<build>
+		<finalName>${project.groupId}.${project.artifactId}-${project.version}</finalName>
 		<resources>
 			<resource>
 				<directory>${basedir}/src/main/java</directory>
@@ -104,14 +105,25 @@
 							<JavaFX-Version>2.0</JavaFX-Version>
 							<Main-Class>${appClass}</Main-Class>
 							<JavaFX-Application-Class>${appClass}</JavaFX-Application-Class>
-							<implementation-version>1.0</implementation-version>
+
+<!-- 							<implementation-vendor>JRebirth</implementation-vendor>
+							<implementation-title>JRebirthAnalyzer</implementation-title>
+							<implementation-version>1.0</implementation-version> -->
+
 							<!-- not automated yet -->
-							<JavaFX-Class-Path></JavaFX-Class-Path>
+							<JavaFX-Class-Path>logback-classic-1.0.6.jar logback-core-1.0.6.jar slf4j-api
+ -1.6.5.jar core-0.7.4-SNAPSHOT.jar</JavaFX-Class-Path>
+
+							<Permissions>sandbox</Permissions>
+							<Codebase>${deployUrl}</Codebase>
 						</manifestEntries>
 						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 							<addClasspath>true</addClasspath>
 						</manifest>
 					</archive>
+
 				</configuration>
 			</plugin>
 
@@ -144,6 +156,7 @@
 
 						<mainClass>${appClass}</mainClass>
 						<offlineAllowed>true</offlineAllowed>
+						<allPermissions>false</allPermissions>
 					</jnlp>
 
 					<sign>

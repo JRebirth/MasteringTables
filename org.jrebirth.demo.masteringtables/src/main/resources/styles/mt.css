@@ -3,7 +3,7 @@
 /********************************************************************/
 
 #SplashPanel{
-	-fx-background-image: url("../image/Splash_Background.png");
+	-fx-background-image: url("../images/Splash_Background.png");
 	-fx-background-position: center;
 	-fx-background-size: stretch;
 	-fx-background-repeat: no-repeat ;
@@ -25,7 +25,7 @@
 
 #GameMenuPanel{
 	-fx-background-color: transparent;
-	-fx-background-image: url("../image/menu/Menu_Background.png");
+	-fx-background-image: url("../images/menu/Menu_Background.png");
 	-fx-background-position: center;
 	-fx-background-size: stretch;
 	-fx-background-repeat: no-repeat ;
@@ -37,7 +37,7 @@
 /********************************************************************/
 
 #GamePanel{
-	-fx-background-image: url("../image/Game_Background.png");
+	-fx-background-image: url("../images/Game_Background.png");
 	-fx-background-position: center;
 	-fx-background-size: stretch;
 	-fx-background-repeat: no-repeat ;
@@ -50,7 +50,7 @@
 
 #SuccessIcon{
 	-fx-content-display: graphic-only  ;
-	-fx-graphic: url("../image/SuccessLabel.png"); 
+	-fx-graphic: url("../images/SuccessLabel.png"); 
 }
 
 #FailureCounter{
@@ -59,7 +59,7 @@
 }
 #FailureIcon{
 	-fx-content-display: graphic-only  ;
-	-fx-graphic: url("../image/FailureLabel.png"); 
+	-fx-graphic: url("../images/FailureLabel.png"); 
 }
 
 /********************************************************************/
@@ -85,7 +85,7 @@
 /********************************************************************/
 
 #ResultPanel{
-	-fx-background-image: url("../image/Result_Background.png");
+	-fx-background-image: url("../images/Result_Background.png");
 	-fx-background-position: center;
 	-fx-background-size: stretch;
 	-fx-background-repeat: no-repeat ;

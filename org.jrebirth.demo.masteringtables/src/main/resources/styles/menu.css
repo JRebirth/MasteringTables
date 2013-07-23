@@ -2,7 +2,7 @@
 	
 	/*-fx-text-fill: linear-gradient(from 0% 0% to 0% 100%, #cccccc 3%, #fdfdfd 49%,  #999999 50%, #dddddd 99%);*/
 	
-	-fx-background-image: url("../image/menu/operateur_inactive.png");
+	-fx-background-image: url("../images/menu/operateur_inactive.png");
 	-fx-background-color: transparent;
 	/*-fx-background-size: 150px;*/
 	-fx-background-position: center center ;
@@ -13,35 +13,35 @@
 }
 
 .multiplication{
-	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_X_inactif.png");
+	-fx-background-image: url("../images/menu/operateur_inactive.png"),url("../images/menu/Operateur_X_inactif.png");
 }
 .division{
-	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_d_inactif.png");
+	-fx-background-image: url("../images/menu/operateur_inactive.png"),url("../images/menu/Operateur_d_inactif.png");
 }
 .addition{
-	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_+_inactif.png");
+	-fx-background-image: url("../images/menu/operateur_inactive.png"),url("../images/menu/Operateur_+_inactif.png");
 }
 .subtraction{
-	-fx-background-image: url("../image/menu/operateur_inactive.png"),url("../image/menu/Operateur_-_inactif.png");
+	-fx-background-image: url("../images/menu/operateur_inactive.png"),url("../images/menu/Operateur_-_inactif.png");
 }
 
 
 .multiplication:selected{
-	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_X_actif.png");
+	-fx-background-image: url("../images/menu/operateur_active.png"),url("../images/menu/Operateur_X_actif.png");
 }
 .division:selected{
-	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_d_actif.png");
+	-fx-background-image: url("../images/menu/operateur_active.png"),url("../images/menu/Operateur_d_actif.png");
 }
 .addition:selected{
-	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_+_actif.png");
+	-fx-background-image: url("../images/menu/operateur_active.png"),url("../images/menu/Operateur_+_actif.png");
 }
 .subtraction:selected{
-	-fx-background-image: url("../image/menu/operateur_active.png"),url("../image/menu/Operateur_-_actif.png");
+	-fx-background-image: url("../images/menu/operateur_active.png"),url("../images/menu/Operateur_-_actif.png");
 }
 
 
 .MiniChoiceButton{
-	-fx-background-image: url("../image/menu/occurences_inactive.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png");
 	-fx-background-color: transparent;
 	/*-fx-background-size: 150px;*/
 	-fx-background-position: center center ;
@@ -50,42 +50,42 @@
 
 
 .expr5{
-	-fx-background-image: url("../image/menu/occurences_inactive.png"), url("../image/menu/Occurence_5_inactif.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png"), url("../images/menu/Occurence_5_inactif.png");
 }
 .expr10{
-	-fx-background-image: url("../image/menu/occurences_inactive.png"),url("../image/menu/Occurence_10_inactif.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png"),url("../images/menu/Occurence_10_inactif.png");
 }
 .expr20{
-	-fx-background-image: url("../image/menu/occurences_inactive.png"),url("../image/menu/Occurence_20_inactif.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png"),url("../images/menu/Occurence_20_inactif.png");
 }
 .expr30{
-	-fx-background-image: url("../image/menu/occurences_inactive.png"),url("../image/menu/Occurence_30_inactif.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png"),url("../images/menu/Occurence_30_inactif.png");
 }
 .expr50{
-	-fx-background-image: url("../image/menu/occurences_inactive.png"),url("../image/menu/Occurence_50_inactif.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png"),url("../images/menu/Occurence_50_inactif.png");
 }
 .expr100{
-	-fx-background-image: url("../image/menu/occurences_inactive.png"),url("../image/menu/Occurence_100_inactif.png");
+	-fx-background-image: url("../images/menu/occurences_inactive.png"),url("../images/menu/Occurence_100_inactif.png");
 }
 
 
 .expr5:selected{
-	-fx-background-image: url("../image/menu/occurences_active.png"), url("../image/menu/Occurence_5_actif.png");
+	-fx-background-image: url("../images/menu/occurences_active.png"), url("../images/menu/Occurence_5_actif.png");
 }
 .expr10:selected{
-	-fx-background-image: url("../image/menu/occurences_active.png"),url("../image/menu/Occurence_10_actif.png");
+	-fx-background-image: url("../images/menu/occurences_active.png"),url("../images/menu/Occurence_10_actif.png");
 }
 .expr20:selected{
-	-fx-background-image: url("../image/menu/occurences_active.png"),url("../image/menu/Occurence_20_actif.png");
+	-fx-background-image: url("../images/menu/occurences_active.png"),url("../images/menu/Occurence_20_actif.png");
 }
 .expr30:selected{
-	-fx-background-image: url("../image/menu/occurences_active.png"),url("../image/menu/Occurence_30_actif.png");
+	-fx-background-image: url("../images/menu/occurences_active.png"),url("../images/menu/Occurence_30_actif.png");
 }
 .expr50:selected{
-	-fx-background-image: url("../image/menu/occurences_active.png"),url("../image/menu/Occurence_50_actif.png");
+	-fx-background-image: url("../images/menu/occurences_active.png"),url("../images/menu/Occurence_50_actif.png");
 }
 .expr100:selected{
-	-fx-background-image: url("../image/menu/occurences_active.png"),url("../image/menu/Occurence_100_actif.png");
+	-fx-background-image: url("../images/menu/occurences_active.png"),url("../images/menu/Occurence_100_actif.png");
 }
 
 
@@ -94,10 +94,10 @@
 	-fx-background-repeat: no-repeat ;
 	-fx-border-color: transparent;
 	-fx-background-color: transparent;
-	-fx-background-image: url("../image/menu/Button_start_inactive.png");
+	-fx-background-image: url("../images/menu/Button_start_inactive.png");
 }
 
 
 .play:hover{
-	-fx-background-image: url("../image/menu/Button_start_active.png");
+	-fx-background-image: url("../images/menu/Button_start_active.png");
 }

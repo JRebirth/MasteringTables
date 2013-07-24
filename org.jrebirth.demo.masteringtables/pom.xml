@@ -111,8 +111,8 @@
 							<implementation-version>1.0</implementation-version> -->
 
 							<!-- not automated yet -->
-							<JavaFX-Class-Path>logback-classic-1.0.6.jar logback-core-1.0.6.jar slf4j-api
- -1.6.5.jar core-0.7.4-SNAPSHOT.jar</JavaFX-Class-Path>
+<!-- 							<JavaFX-Class-Path>logback-classic-1.0.6.jar logback-core-1.0.6.jar slf4j-api
+ -1.6.5.jar core-0.7.4-SNAPSHOT.jar</JavaFX-Class-Path> -->
 
 							<Permissions>sandbox</Permissions>
 							<Codebase>${deployUrl}</Codebase>
@@ -156,7 +156,7 @@
 
 						<mainClass>${appClass}</mainClass>
 						<offlineAllowed>true</offlineAllowed>
-						<allPermissions>false</allPermissions>
+						<allPermissions>true</allPermissions>
 					</jnlp>
 
 					<sign>

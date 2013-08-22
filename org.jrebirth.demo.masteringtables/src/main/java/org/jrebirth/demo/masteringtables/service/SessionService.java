@@ -18,9 +18,8 @@
 package org.jrebirth.demo.masteringtables.service;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.service.ServiceBase;
+import org.jrebirth.core.service.DefaultService;
 import org.jrebirth.demo.masteringtables.beans.Game;
-import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +27,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class SessionService is used to store game data.
  */
-public final class SessionService extends ServiceBase {
+public final class SessionService extends DefaultService {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(SessionService.class);
@@ -56,7 +55,7 @@ public final class SessionService extends ServiceBase {
      */
     @Override
     public void ready() throws CoreException {
-        listen(MTWaves.FINISH_GAME);
+        // listen(MTWaves.FINISH_GAME);
     }
 
 }

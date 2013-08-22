@@ -17,10 +17,10 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
-import static org.jrebirth.core.resource.Resources.create;
-
 import org.jrebirth.core.resource.color.ColorItem;
 import org.jrebirth.core.resource.color.WebColor;
+
+import static org.jrebirth.core.resource.Resources.create;
 
 /**
  * The MTColors interface providing all colors.

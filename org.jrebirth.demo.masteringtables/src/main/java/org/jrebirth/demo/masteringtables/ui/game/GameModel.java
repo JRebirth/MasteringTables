@@ -23,7 +23,7 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.core.ui.DefaultObjectModel;
+import org.jrebirth.core.ui.object.DefaultObjectModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
@@ -133,6 +133,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void showView() {
+
         callCommand(CreateGameContent.class);
     }
 

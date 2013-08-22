@@ -21,10 +21,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import org.jrebirth.core.ui.object.ViewObject;
+
 /**
  * The Bean Expression.
  */
-public class Expression {
+public class Expression implements ViewObject {
 
     /** The left property. */
     private final SimpleIntegerProperty leftProperty = new SimpleIntegerProperty();

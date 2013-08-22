@@ -24,10 +24,12 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import org.jrebirth.core.ui.object.ViewObject;
+
 /**
  * The Class Game.
  */
-public class Game {
+public class Game implements ViewObject {
 
     /** The success count. */
     private final IntegerProperty successCount = new SimpleIntegerProperty(0);

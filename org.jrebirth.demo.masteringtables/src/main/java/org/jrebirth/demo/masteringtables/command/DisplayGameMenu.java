@@ -51,7 +51,7 @@ public class DisplayGameMenu extends DefaultCommand {
             LOGGER.error("Failure while sleeping 3s");
         }
 
-        // Then launch the wave that will display teh game menu
+        // Then launch the wave that will display the game menu
         sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
 
     }

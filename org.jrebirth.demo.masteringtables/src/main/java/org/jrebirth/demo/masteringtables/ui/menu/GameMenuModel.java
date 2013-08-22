@@ -18,7 +18,9 @@
 package org.jrebirth.demo.masteringtables.ui.menu;
 
 import org.jrebirth.core.ui.DefaultModel;
+import org.jrebirth.core.wave.JRebirthWaves;
 import org.jrebirth.core.wave.Wave;
+import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 
@@ -51,8 +53,18 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
         // Store an hard link to avoid garbage collection of the service
         this.expressionBuilderService = getService(ExpressionBuilderService.class);
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void showView() {
+        super.showView();
+
         // Generate all tables
-        returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES);
+        returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
+                WaveData.build(JRebirthWaves.PROGRESS_BAR, getView().getLoadingBar()));
     }
 
     /**

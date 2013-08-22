@@ -17,7 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables.ui.expression;
 
-import org.jrebirth.core.ui.DefaultObjectModel;
+import org.jrebirth.core.ui.object.DefaultObjectModel;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;

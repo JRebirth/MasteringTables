@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.service.ServiceBase;
+import org.jrebirth.core.service.DefaultService;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveItem;
 import org.jrebirth.core.wave.WaveTypeBase;
@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Service ExpressionBuilder is used to build all mathematical tables.
  */
-public final class ExpressionBuilderService extends ServiceBase {
+public final class ExpressionBuilderService extends DefaultService {
 
     /** The Wave Item ALL_EXPRESSIONS. */
     public static final WaveItem<List<Expression>> ALL_EXPRESSIONS = new WaveItem<List<Expression>>() {
@@ -77,30 +77,49 @@ public final class ExpressionBuilderService extends ServiceBase {
      * Builds all tables.
      * 
      * @param wave the wave
+     * @throws InterruptedException
      */
-    public void doBuildTables(final Wave wave) {
+    public void doBuildTables(final Wave wave) throws InterruptedException {
 
         LOGGER.trace("Build Tables.");
 
+        final int allItems = 12 * 12 * 3 + 12 * 13;
+        int counter = 0;
+
+        updateProgress(wave, 0, allItems);
+
+        // 12 * 12 * 3 items (432)
         for (int leftOperand = 1; leftOperand <= 12; leftOperand++) {
 
             for (int rightOperand = 1; rightOperand <= 12; rightOperand++) {
 
                 this.multiplicationTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.multiplication).right(rightOperand).result(leftOperand * rightOperand).build());
+                // updateProgress(wave, ++counter, allItems);
+                Thread.sleep(10);
                 this.additionTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.addition).right(rightOperand).result(leftOperand + rightOperand).build());
-
+                // updateProgress(wave, ++counter, allItems);
+                Thread.sleep(10);
                 this.divisionTable.add(ExpressionBuilder.create().left(rightOperand * leftOperand).operator(Operator.division).right(leftOperand).result(rightOperand).build());
+                // updateProgress(wave, ++counter, allItems);
+                Thread.sleep(10);
             }
+            counter += 36;
+            updateProgress(wave, counter, allItems);
 
         }
 
+        // 12 * 13 * 1 items (156)
         int tableGap = 0;
         for (int rightOperand = 0; rightOperand <= 11; rightOperand++) {
 
             for (int leftOperand = tableGap; leftOperand <= tableGap + 12; leftOperand++) {
 
                 this.subtractionTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.subtraction).right(rightOperand).result(leftOperand - rightOperand).build());
+                // updateProgress(wave, ++counter, allItems);
+                Thread.sleep(10);
             }
+            counter += 13;
+            updateProgress(wave, counter, allItems);
             tableGap++;
         }
 

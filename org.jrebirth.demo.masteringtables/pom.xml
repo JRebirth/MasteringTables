@@ -18,6 +18,7 @@
 		<storepass>defaultpass</storepass>
 		<keypass>defaultpass</keypass>
 
+		<permissions>all-permissions</permissions> <!-- sandbox -->
 		<deployUrl>http://apps.jrebirth.org</deployUrl>
 		<deployPath>${project.artifactId}/${project.version}</deployPath>
 
@@ -114,7 +115,7 @@
 <!-- 							<JavaFX-Class-Path>logback-classic-1.0.6.jar logback-core-1.0.6.jar slf4j-api
  -1.6.5.jar core-0.7.4-SNAPSHOT.jar</JavaFX-Class-Path> -->
 
-							<!-- <Permissions>sandbox</Permissions> -->
+							<Permissions>${permissions}</Permissions>
 							<Codebase>${deployUrl}</Codebase>
 						</manifestEntries>
 						<manifest>

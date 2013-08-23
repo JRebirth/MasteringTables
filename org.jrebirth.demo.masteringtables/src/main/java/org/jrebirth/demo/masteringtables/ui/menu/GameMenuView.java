@@ -114,7 +114,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
 
         this.playButton.disableProperty().bind(bb.not());
 
-        this.loadingBar = new ProgressBar();
+        this.loadingBar = new ProgressBar(0.0);
         this.loadingBar.visibleProperty().bind(this.loadingBar.progressProperty().lessThan(1));
         getRootNode().setBottom(this.loadingBar);
     }

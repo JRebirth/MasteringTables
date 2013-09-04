@@ -17,6 +17,9 @@
  */
 package org.jrebirth.demo.masteringtables.ui.menu;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.JRebirthWaves;
 import org.jrebirth.core.wave.Wave;
@@ -63,8 +66,17 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
         super.showView();
 
         // Generate all tables
-        returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
+        final Wave wave = returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
                 WaveData.build(JRebirthWaves.PROGRESS_BAR, getView().getLoadingBar()));
+
+        wave.statusProperty().addListener(new ChangeListener<Wave.Status>() {
+
+            @Override
+            public void changed(final ObservableValue<? extends Wave.Status> arg0, final Wave.Status arg1, final Wave.Status arg2) {
+                // Nothing to do yet
+
+            }
+        });
     }
 
     /**

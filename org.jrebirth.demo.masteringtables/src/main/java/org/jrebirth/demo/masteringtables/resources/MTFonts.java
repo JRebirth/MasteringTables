@@ -17,10 +17,10 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
+import static org.jrebirth.core.resource.Resources.create;
+
 import org.jrebirth.core.resource.font.FontItem;
 import org.jrebirth.core.resource.font.RealFont;
-
-import static org.jrebirth.core.resource.Resources.create;
 
 /**
  * The MTFonts interface providing all fonts.

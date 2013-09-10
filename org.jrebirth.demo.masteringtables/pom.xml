@@ -159,27 +159,27 @@
 					</jnlp>
 
 					<sign>
-						<keystore>${basedir}/masteringTables.jks</keystore>
+						<keystore>${basedir}/truststore.jks</keystore>
 						<!-- MUST BE PROVIDED BY COMMAND LINE ARGUMENTS -->
 						<!-- -Dstorepass=xxx -Dkeypass=xxx -->
 						<keypass>${keypass}</keypass>
 						<storepass>${storepass}</storepass>
-						<!-- <storetype>fillme</storetype> -->
-						<alias>masteringtables</alias>
-
-						<validity>360</validity>
+						<storetype>JKS</storetype>
+						<alias>id unizeto technologies s.a. de open source developer, bordes sébastien</alias>
+						
+<!-- 						<validity>360</validity>
 						<dnameCn>www.jrebirth.org</dnameCn>
 						<dnameOu>None</dnameOu>
 						<dnameO>JRebirth</dnameO>
 						<dnameL>Toulouse</dnameL>
 						<dnameSt>HG</dnameSt>
-						<dnameC>FR</dnameC>
+						<dnameC>FR</dnameC> -->
 
 						<verify>true</verify>
 
 						<keystoreConfig>
-							<delete>true</delete>
-							<gen>true</gen>
+							<delete>false</delete>
+							<gen>false</gen>
 						</keystoreConfig>
 					</sign>
 

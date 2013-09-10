@@ -159,7 +159,7 @@
 					</jnlp>
 
 					<sign>
-						<keystore>${basedir}/truststore.jks</keystore>
+						<keystore>${keystore}</keystore>
 						<!-- MUST BE PROVIDED BY COMMAND LINE ARGUMENTS -->
 						<!-- -Dstorepass=xxx -Dkeypass=xxx -->
 						<keypass>${keypass}</keypass>

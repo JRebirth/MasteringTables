@@ -15,8 +15,13 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+		<keystore>${project.basedir}/masteringTables.jks</keystore>
 		<storepass>defaultpass</storepass>
+		<storetype>JKS</storetype>
+		<keyalias>masteringTables</keyalias>
 		<keypass>defaultpass</keypass>
+		<deletekeystore>true</deletekeystore>
+		<genkeystore>true</genkeystore>
 
 		<permissions>all-permissions</permissions> <!-- sandbox -->
 		<deployUrl>http://apps.jrebirth.org</deployUrl>
@@ -164,22 +169,23 @@
 						<!-- -Dstorepass=xxx -Dkeypass=xxx -->
 						<keypass>${keypass}</keypass>
 						<storepass>${storepass}</storepass>
-						<storetype>JKS</storetype>
-						<alias>id unizeto technologies s.a. de open source developer, bordes sébastien</alias>
-						
-<!-- 						<validity>360</validity>
-						<dnameCn>www.jrebirth.org</dnameCn>
-						<dnameOu>None</dnameOu>
+						<storetype>${storetype}</storetype>
+						<!-- <alias>id unizeto technologies s.a. de open source developer, bordes sébastien</alias> -->
+						<alias>${keyalias}</alias>
+
+						<validity>360</validity>
+						<dnameCn>JRebirth Self-signed Certificate</dnameCn>
+						<dnameOu>JRebirth OSS</dnameOu>
 						<dnameO>JRebirth</dnameO>
 						<dnameL>Toulouse</dnameL>
-						<dnameSt>HG</dnameSt>
-						<dnameC>FR</dnameC> -->
+						<dnameSt>Haute-Garonne</dnameSt>
+						<dnameC>FR</dnameC>
 
 						<verify>true</verify>
 
 						<keystoreConfig>
-							<delete>false</delete>
-							<gen>false</gen>
+							<delete>${deletekeystore}</delete>
+							<gen>${genkeystore}</gen>
 						</keystoreConfig>
 					</sign>
 

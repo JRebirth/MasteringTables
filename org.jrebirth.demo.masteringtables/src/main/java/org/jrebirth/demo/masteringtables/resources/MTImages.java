@@ -17,11 +17,11 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
-import static org.jrebirth.core.resource.Resources.create;
-
 import org.jrebirth.core.resource.image.ImageExtension;
 import org.jrebirth.core.resource.image.ImageItem;
 import org.jrebirth.core.resource.image.LocalImage;
+
+import static org.jrebirth.core.resource.Resources.create;
 
 /**
  * The MTImages interface providing all images.

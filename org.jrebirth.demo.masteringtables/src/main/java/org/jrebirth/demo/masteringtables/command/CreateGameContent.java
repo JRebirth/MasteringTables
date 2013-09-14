@@ -49,16 +49,16 @@ public class CreateGameContent extends DefaultPoolCommand {
         // Add tables according to User choice
         final List<Expression> gameList = new ArrayList<>();
 
-        if (gs.getContainsAddition()) {
+        if (gs.containsAddition()) {
             gameList.addAll(service.getAdditionTable());
         }
-        if (gs.getContainsSubtraction()) {
+        if (gs.containsSubtraction()) {
             gameList.addAll(service.getSubtractionTable());
         }
-        if (gs.getContainsMultiplication()) {
+        if (gs.containsMultiplication()) {
             gameList.addAll(service.getMultiplicationTable());
         }
-        if (gs.getContainsDivision()) {
+        if (gs.containsDivision()) {
             gameList.addAll(service.getDivisionTable());
         }
 

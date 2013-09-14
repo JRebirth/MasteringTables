@@ -82,7 +82,7 @@ public final class MTApplication extends AbstractApplication<StackPane> {
         // Define fonts that will be available from CSS
         return Arrays.asList(new FontItem[] {
                 MTFonts.EXPRESSION,
-                MTFonts.COUNTER
+                MTFonts.COUNTER,
         });
     }
 

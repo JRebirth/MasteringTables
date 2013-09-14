@@ -56,7 +56,7 @@ public class GameSettings {
      * 
      * @return the contains addition
      */
-    public boolean getContainsAddition() {
+    public boolean containsAddition() {
         return this.containsAddition.get();
     }
 
@@ -83,7 +83,7 @@ public class GameSettings {
      * 
      * @return the contains subtraction
      */
-    public boolean getContainsSubtraction() {
+    public boolean containsSubtraction() {
         return this.containsSubtraction.get();
     }
 
@@ -110,7 +110,7 @@ public class GameSettings {
      * 
      * @return the contains multiplication
      */
-    public boolean getContainsMultiplication() {
+    public boolean containsMultiplication() {
         return this.containsMultiplication.get();
     }
 
@@ -137,7 +137,7 @@ public class GameSettings {
      * 
      * @return the contains division
      */
-    public boolean getContainsDivision() {
+    public boolean containsDivision() {
         return this.containsDivision.get();
     }
 

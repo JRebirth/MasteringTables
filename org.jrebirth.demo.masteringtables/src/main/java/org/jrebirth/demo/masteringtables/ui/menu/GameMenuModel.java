@@ -82,7 +82,6 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
     /**
      * Tables built.
      * 
-     * @param allTables the all tables
      * @param wave the wave
      */
     public void doTablesBuilt(final Wave wave) {

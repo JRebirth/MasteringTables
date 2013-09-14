@@ -77,7 +77,7 @@ public final class ExpressionBuilderService extends DefaultService {
      * Builds all tables.
      * 
      * @param wave the wave
-     * @throws InterruptedException
+     * @throws InterruptedException if the job is cancelled
      */
     public void doBuildTables(final Wave wave) throws InterruptedException {
 

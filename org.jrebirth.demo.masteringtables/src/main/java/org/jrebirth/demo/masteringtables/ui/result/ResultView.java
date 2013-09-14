@@ -51,6 +51,7 @@ import org.jrebirth.demo.masteringtables.resources.MTImages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ResultView.
  */
@@ -60,23 +61,37 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ResultView.class);
 
+    /** The ratio label. */
     private Label ratioLabel;
+
+    /** The time label. */
     private Label timeLabel;
+
+    /** The success label. */
     private Label successLabel;
+
+    /** The failure label. */
     private Label failureLabel;
 
+    /** The monster image. */
     private ImageView monsterImage;
 
+    /** The time bean. */
     private SVGPath timeBean;
 
+    /** The success bean. */
     private SVGPath successBean;
 
+    /** The failure bean. */
     private SVGPath failureBean;
 
+    /** The ratio circle. */
     private Circle ratioCircle;
 
+    /** The success icon. */
     private ImageView successIcon;
 
+    /** The failure icon. */
     private ImageView failureIcon;
 
     /**
@@ -215,6 +230,11 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     }
 
+    /**
+     * Build the drop shadow.
+     * 
+     * @return the drop shadow effect
+     */
     private Effect getDropShadow() {
         return DropShadowBuilder.create()
                 .offsetX(0)
@@ -257,9 +277,13 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     }
 
     /**
-     * TODO To complete.
+     * Build a bean animation.
      * 
-     * @return
+     * @param label the attached label
+     * @param shape the shape to show
+     * @param fillColor the color to use to paint the shape
+     * 
+     * @return the bean animation
      */
     private Animation buildBeanAnimation(final Label label, final Shape shape, final Color fillColor) {
         return ParallelTransitionBuilder.create()
@@ -308,6 +332,8 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     }
 
     /**
+     * Gets the time label.
+     * 
      * @return Returns the timeLabel.
      */
     Label getTimeLabel() {
@@ -315,6 +341,8 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     }
 
     /**
+     * Gets the success label.
+     * 
      * @return Returns the successLabel.
      */
     Label getSuccessLabel() {
@@ -322,6 +350,8 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     }
 
     /**
+     * Gets the failure label.
+     * 
      * @return Returns the failureLabel.
      */
     Label getFailureLabel() {
@@ -329,6 +359,8 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     }
 
     /**
+     * Gets the ratio label.
+     * 
      * @return Returns the ratioLabel.
      */
     Label getRatioLabel() {

@@ -78,14 +78,13 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
      * 
      * @param name the name
      */
-    public void appendNumber(String name) {
+    public void appendNumber(final String name) {
 
+        String number = name;
         if (name.contains("Numpad")) {
-            name = name.replaceAll("Numpad ", "");
-        } else {
-
+            number = name.replaceAll("Numpad ", "");
         }
-        getView().getResult().setText(getView().getResult().getText() + name);
+        getView().getResult().setText(getView().getResult().getText() + number);
 
         checkResult();
 
@@ -113,6 +112,9 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
         getView().getResult().setText(getView().getResult().getText().substring(0, Math.max(0, getView().getResult().getText().length() - 1)));
     }
 
+    /**
+     * Reset the result text.
+     */
     public void reset() {
         getView().getResult().setText("");
     }

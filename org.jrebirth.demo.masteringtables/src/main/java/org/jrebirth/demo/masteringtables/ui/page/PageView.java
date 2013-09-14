@@ -46,9 +46,12 @@ public class PageView extends DefaultView<PageModel, StackPane, DefaultControlle
         super(model);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void initView() {
-
+        // Do custom stuff to init the view
     }
 
 }

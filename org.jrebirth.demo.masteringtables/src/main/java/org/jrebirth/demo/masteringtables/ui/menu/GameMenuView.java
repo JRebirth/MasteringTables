@@ -77,8 +77,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     @OnAction(name = "Play")
     private Button playButton;
 
+    /** The game length. */
     private ToggleGroup lengthGroup;
 
+    /** The loading bar related to expression calculation. */
     private ProgressBar loadingBar;
 
     /**
@@ -254,7 +256,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     /**
      * Builds the choice button for game length.
      * 
-     * @param name the name
+     * @param value the value of thez mini button
      * 
      * @return the toggle button
      */

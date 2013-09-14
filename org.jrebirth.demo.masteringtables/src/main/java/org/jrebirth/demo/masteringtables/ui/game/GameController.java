@@ -17,7 +17,6 @@
  */
 package org.jrebirth.demo.masteringtables.ui.game;
 
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import org.jrebirth.core.exception.CoreException;
@@ -74,9 +73,7 @@ public class GameController extends DefaultController<GameModel, GameView> imple
      */
     @Override
     public void keyReleased(final KeyEvent keyEvent) {
-        if (keyEvent.getCode() == KeyCode.ENTER) {
 
-        }
         switch (keyEvent.getCode()) {
             case ENTER:
                 getModel().performEnter();
@@ -110,6 +107,7 @@ public class GameController extends DefaultController<GameModel, GameView> imple
             case BACK_SPACE:
                 getModel().performDelete();
                 break;
+            default:
         }
 
     }

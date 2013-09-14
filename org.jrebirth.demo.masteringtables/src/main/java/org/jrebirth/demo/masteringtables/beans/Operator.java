@@ -38,7 +38,7 @@ public enum Operator {
      * Instantiates a new operator.
      */
     Operator() {
-
+        // Nothing to do
     }
 
     /**

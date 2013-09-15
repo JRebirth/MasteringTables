@@ -112,7 +112,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
         } else {
 
             // Game is finished
-            sendWave(MTWaves.FINISH_GAME);
+            // sendWave(MTWaves.FINISH_GAME);
             sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.Result));
         }
 

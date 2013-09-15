@@ -52,7 +52,7 @@ public class GameMenuController extends DefaultController<GameMenuModel, GameMen
      * @param actionEvent the action event
      */
     public void onActionPlay(final ActionEvent actionEvent) {
-        // When play button is trigered launch the game
+        // When play button is triggered launch the game
         getModel().sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.Game));
     }
 

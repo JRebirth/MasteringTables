@@ -23,6 +23,7 @@ import javafx.beans.value.ObservableValue;
 import org.jrebirth.core.ui.DefaultModel;
 import org.jrebirth.core.wave.JRebirthWaves;
 import org.jrebirth.core.wave.Wave;
+import org.jrebirth.core.wave.Wave.Status;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
@@ -65,6 +66,7 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
     protected void showView() {
         super.showView();
 
+        // getView().getLoadingBar().setVisible(true);
         // Generate all tables
         final Wave wave = returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
                 WaveData.build(JRebirthWaves.PROGRESS_BAR, getView().getLoadingBar()));
@@ -73,7 +75,9 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
 
             @Override
             public void changed(final ObservableValue<? extends Wave.Status> arg0, final Wave.Status arg1, final Wave.Status arg2) {
-                // Nothing to do yet
+                if (arg1 == Status.Consumed) {
+                    getView().getLoadingBar().setVisible(false);
+                }
 
             }
         });

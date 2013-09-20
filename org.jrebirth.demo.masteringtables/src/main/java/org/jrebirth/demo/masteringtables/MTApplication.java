@@ -20,13 +20,14 @@ package org.jrebirth.demo.masteringtables;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import org.jrebirth.core.application.AbstractApplication;
+import org.jrebirth.core.application.DefaultApplication;
 import org.jrebirth.core.resource.font.FontItem;
 import org.jrebirth.core.ui.Model;
 import org.jrebirth.core.wave.Wave;
@@ -37,7 +38,7 @@ import org.jrebirth.demo.masteringtables.ui.page.PageModel;
 /**
  * The MTApplication is the main class used to start the application in standalone mode.
  */
-public final class MTApplication extends AbstractApplication<StackPane> {
+public final class MTApplication extends DefaultApplication<StackPane> {
 
     /**
      * The main method triggered by Java Runtime.
@@ -46,6 +47,17 @@ public final class MTApplication extends AbstractApplication<StackPane> {
      */
     public static void main(final String... args) {
         Application.launch(MTApplication.class, args);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void preInit() {
+        super.preInit();
+
+        Locale.setDefault(Locale.FRANCE);
+        // JRebirthParameters.LOG_RESOLUTION.define(false);
     }
 
     /**

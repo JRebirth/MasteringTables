@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
 
+	<!-- <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<Marker>APPLI</Marker>
+		<OnMatch>DENY</OnMatch>
+	</turboFilter>
+	<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<Marker>PARAM</Marker>
+		<OnMatch>DENY</OnMatch>
+	</turboFilter>
+	<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<Marker>MESSG</Marker>
+		<OnMatch>DENY</OnMatch>
+	</turboFilter>
+	<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<Marker>JREVT</Marker>
+		<OnMatch>DENY</OnMatch>
+	</turboFilter>
+	<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+		<Marker>CNCRT</Marker>
+		<OnMatch>DENY</OnMatch>
+	</turboFilter>
+ -->
+
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
 		<file>MasteringTables.log</file>
 		<encoder>
-			<pattern>%date %level [%thread{6}] %logger{10} [%file:%line] %msg%n</pattern>
+			<pattern>%date %marker %level [%thread{6}] %logger{10} [%file:%line] %msg%n</pattern>
 		</encoder>
 	</appender>
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-		<!-- %level %msg%n -->
-			<pattern>%date %level [%thread] %file:%line - %msg%n</pattern>
+			<!-- %level %msg%n -->
+			<pattern>%date %marker %level [%thread] %logger{10} [%file:%line] - %msg%n</pattern>
 		</encoder>
 	</appender>
 

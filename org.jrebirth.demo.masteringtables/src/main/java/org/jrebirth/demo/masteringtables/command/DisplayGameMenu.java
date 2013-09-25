@@ -17,12 +17,15 @@
  */
 package org.jrebirth.demo.masteringtables.command;
 
-import java.util.concurrent.TimeUnit;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import org.jrebirth.core.command.DefaultCommand;
+import org.jrebirth.core.wave.JRebirthWaves;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Page;
+import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
 import org.slf4j.Logger;
@@ -44,15 +47,21 @@ public class DisplayGameMenu extends DefaultCommand {
     @Override
     protected void execute(final Wave wave) {
 
-        // Sleep 3 seconds
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (final InterruptedException e) {
-            LOGGER.error("Failure while sleeping 3s");
-        }
+        // Generate all tables
+        final Wave waveLoading = returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
+                wave.getData(JRebirthWaves.PROGRESS_BAR));
 
-        // Then launch the wave that will display the game menu
-        sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
+        waveLoading.statusProperty().addListener(new ChangeListener<Wave.Status>() {
+
+            @Override
+            public void changed(final ObservableValue<? extends Wave.Status> statusProperty, final Wave.Status oldStatus, final Wave.Status newStatus) {
+                if (newStatus == Wave.Status.Consumed) {
+                    // Then launch the wave that will display the game menu
+                    sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
+                }
+
+            }
+        });
 
     }
 }

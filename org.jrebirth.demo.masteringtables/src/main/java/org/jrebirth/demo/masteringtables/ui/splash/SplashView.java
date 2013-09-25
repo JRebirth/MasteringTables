@@ -39,6 +39,9 @@ public class SplashView extends DefaultView<SplashModel, BorderPane, DefaultCont
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(SplashView.class);
 
+    /** The loading bar related to expression calculation. */
+    private ProgressBar loadingBar;
+
     /**
      * Instantiates a new page view.
      * 
@@ -55,13 +58,19 @@ public class SplashView extends DefaultView<SplashModel, BorderPane, DefaultCont
     @Override
     protected void initView() {
 
-        // Add an indefinite progress bar
-        final ProgressBar pb = new ProgressBar();
-        pb.setMinSize(400, 40);
-        BorderPane.setAlignment(pb, Pos.CENTER);
-        BorderPane.setMargin(pb, new Insets(40, 0, 30, 0));
+        loadingBar = new ProgressBar(0.0);
+        loadingBar.setMinSize(400, 40);
+        BorderPane.setAlignment(loadingBar, Pos.CENTER);
+        BorderPane.setMargin(loadingBar, new Insets(40, 0, 30, 0));
 
-        getRootNode().setBottom(pb);
+        getRootNode().setBottom(loadingBar);
+    }
+
+    /**
+     * @return Returns the loadingBar.
+     */
+    public ProgressBar getLoadingBar() {
+        return loadingBar;
     }
 
 }

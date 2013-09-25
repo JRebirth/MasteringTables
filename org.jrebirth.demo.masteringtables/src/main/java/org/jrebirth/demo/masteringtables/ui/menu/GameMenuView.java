@@ -31,7 +31,6 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBuilder;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleButtonBuilder;
@@ -80,9 +79,6 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     /** The game length. */
     private ToggleGroup lengthGroup;
 
-    /** The loading bar related to expression calculation. */
-    private ProgressBar loadingBar;
-
     /**
      * Instantiates a new start view.
      * 
@@ -115,10 +111,6 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         final BooleanBinding bb = Bindings.or(bb1, bb2);
 
         this.playButton.disableProperty().bind(bb.not());
-
-        this.loadingBar = new ProgressBar(0.0);
-        this.loadingBar.visibleProperty().bind(this.loadingBar.progressProperty().lessThan(1));
-        getRootNode().setBottom(this.loadingBar);
     }
 
     /**
@@ -272,13 +264,6 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
                 // .text(Integer.toString(value))
                 .build();
 
-    }
-
-    /**
-     * @return Returns the loadingBar.
-     */
-    public ProgressBar getLoadingBar() {
-        return this.loadingBar;
     }
 
 }

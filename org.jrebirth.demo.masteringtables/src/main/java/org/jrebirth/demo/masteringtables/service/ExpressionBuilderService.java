@@ -95,16 +95,17 @@ public final class ExpressionBuilderService extends DefaultService {
 
                 this.multiplicationTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.multiplication).right(rightOperand).result(leftOperand * rightOperand).build());
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(10);
+                Thread.sleep(5);
                 this.additionTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.addition).right(rightOperand).result(leftOperand + rightOperand).build());
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(10);
+                Thread.sleep(5);
                 this.divisionTable.add(ExpressionBuilder.create().left(rightOperand * leftOperand).operator(Operator.division).right(leftOperand).result(rightOperand).build());
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(10);
+                Thread.sleep(5);
+
+                counter += 3;
+                updateProgress(wave, counter, allItems);
             }
-            counter += 36;
-            updateProgress(wave, counter, allItems);
 
         }
 
@@ -116,7 +117,7 @@ public final class ExpressionBuilderService extends DefaultService {
 
                 this.subtractionTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.subtraction).right(rightOperand).result(leftOperand - rightOperand).build());
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(10);
+                Thread.sleep(5);
             }
             counter += 13;
             updateProgress(wave, counter, allItems);

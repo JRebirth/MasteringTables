@@ -18,6 +18,8 @@
 package org.jrebirth.demo.masteringtables.ui.splash;
 
 import org.jrebirth.core.ui.DefaultModel;
+import org.jrebirth.core.wave.JRebirthWaves;
+import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 
 /**
@@ -31,7 +33,7 @@ public class SplashModel extends DefaultModel<SplashModel, SplashView> {
     @Override
     protected void showView() {
         // Wait 3s and display the game menu
-        callCommand(DisplayGameMenu.class);
+        callCommand(DisplayGameMenu.class, WaveData.build(JRebirthWaves.PROGRESS_BAR, getView().getLoadingBar()));
     }
 
 }

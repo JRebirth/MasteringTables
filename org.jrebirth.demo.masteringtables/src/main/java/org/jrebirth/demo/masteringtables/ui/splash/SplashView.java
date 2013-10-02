@@ -58,19 +58,19 @@ public class SplashView extends DefaultView<SplashModel, BorderPane, DefaultCont
     @Override
     protected void initView() {
 
-        loadingBar = new ProgressBar(0.0);
-        loadingBar.setMinSize(400, 40);
-        BorderPane.setAlignment(loadingBar, Pos.CENTER);
-        BorderPane.setMargin(loadingBar, new Insets(40, 0, 30, 0));
+        this.loadingBar = new ProgressBar(0.0);
+        this.loadingBar.setMinSize(400, 40);
+        BorderPane.setAlignment(this.loadingBar, Pos.CENTER);
+        BorderPane.setMargin(this.loadingBar, new Insets(40, 0, 30, 0));
 
-        getRootNode().setBottom(loadingBar);
+        getRootNode().setBottom(this.loadingBar);
     }
 
     /**
      * @return Returns the loadingBar.
      */
     public ProgressBar getLoadingBar() {
-        return loadingBar;
+        return this.loadingBar;
     }
 
 }

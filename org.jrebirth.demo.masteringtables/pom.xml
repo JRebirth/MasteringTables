@@ -230,6 +230,11 @@
 			<version>0.7.6-SNAPSHOT</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jrebirth</groupId>
+			<artifactId>preloader</artifactId>
+			<version>0.7.6-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>

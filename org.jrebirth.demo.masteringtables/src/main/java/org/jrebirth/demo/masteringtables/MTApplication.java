@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -46,7 +45,7 @@ public final class MTApplication extends DefaultApplication<StackPane> {
      * @param args the arguments
      */
     public static void main(final String... args) {
-        Application.launch(MTApplication.class, args);
+        preloadAndLaunch(args);
     }
 
     /**

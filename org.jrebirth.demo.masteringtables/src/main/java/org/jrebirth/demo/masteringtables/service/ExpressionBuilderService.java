@@ -20,6 +20,8 @@ package org.jrebirth.demo.masteringtables.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jrebirth.core.concurrent.Priority;
+import org.jrebirth.core.concurrent.RunnablePriority;
 import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.service.DefaultService;
 import org.jrebirth.core.wave.Wave;
@@ -79,6 +81,7 @@ public final class ExpressionBuilderService extends DefaultService {
      * @param wave the wave
      * @throws InterruptedException if the job is cancelled
      */
+    @Priority(RunnablePriority.Highest)
     public void doBuildTables(final Wave wave) throws InterruptedException {
 
         LOGGER.trace("Build Tables.");

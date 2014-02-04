@@ -17,7 +17,6 @@
  */
 package org.jrebirth.demo.masteringtables.service;
 
-import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.service.DefaultService;
 import org.jrebirth.demo.masteringtables.beans.Game;
 
@@ -54,7 +53,7 @@ public final class SessionService extends DefaultService {
      * {@inheritDoc}
      */
     @Override
-    public void ready() throws CoreException {
+    public void initService() {
         // listen(MTWaves.FINISH_GAME);
     }
 

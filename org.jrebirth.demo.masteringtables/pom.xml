@@ -93,7 +93,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.1</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
@@ -104,20 +104,20 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>2.4</version>
 
-				<configuration>
+<!-- 				<configuration>
 					<archive>
 						<manifestEntries>
 							<JavaFX-Version>2.0</JavaFX-Version>
 							<Main-Class>${appClass}</Main-Class>
 							<JavaFX-Application-Class>${appClass}</JavaFX-Application-Class>
 
-							<!-- <implementation-vendor>JRebirth</implementation-vendor> <implementation-title>JRebirthAnalyzer</implementation-title> <implementation-version>1.0</implementation-version> -->
+							<implementation-vendor>JRebirth</implementation-vendor> <implementation-title>JRebirthAnalyzer</implementation-title> <implementation-version>1.0</implementation-version>
 
-							<!-- not automated yet -->
+							not automated yet
 							<JavaFX-Class-Path>logback-classic-1.0.13.jar logback-core-1.0.13.jar slf4j-api
-								-1.7.5.jar core-0.7.6.jar</JavaFX-Class-Path>
+								-1.7.5.jar core-7.7.0-SNAPSHOT.jar</JavaFX-Class-Path>
 
 							<Permissions>${permissions}</Permissions>
 							<Codebase>${deployUrl}</Codebase>
@@ -129,19 +129,19 @@
 						</manifest>
 					</archive>
 
-				</configuration>
+				</configuration> -->
 			</plugin>
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>webstart-maven-plugin</artifactId>
-				<version>1.0-beta-3</version>
+				<version>1.0-beta-6</version>
 
 				<executions>
 					<execution>
 						<phase>package</phase>
 						<goals>
-							<goal>jnlp</goal> <!-- use jnlp, jnlp-inline or jnlp-single as appropriate -->
+							<goal>jnlp-inline</goal> <!-- use jnlp, jnlp-inline or jnlp-single as appropriate -->
 						</goals>
 					</execution>
 				</executions>
@@ -152,26 +152,31 @@
 					<excludeTransitive>false</excludeTransitive>
 					<libPath>lib</libPath>
 
-					<resourcesDirectory>${project.basedir}/src/main/jnlp/resources</resourcesDirectory>
-					<codebase>${deployUrl}/${deployPath}</codebase>
+					<!-- <resourcesDirectory>${project.basedir}/src/main/jnlp/resources</resourcesDirectory> -->
+					<!-- <codebase>${deployUrl}/${deployPath}</codebase> -->
 
 					<jnlp>
+					
+						<!-- <codebase>${deployUrl}</codebase> -->
+						<!-- <Permissions>${permissions}</Permissions> -->
+						
 						<!-- <inputTemplateResourcePath>${project.basedir}</inputTemplateResourcePath> <inputTemplate>src/main/jnlp/template.vm</inputTemplate> -->
 						<outputFile>${jnlpFilename}</outputFile>
 
 						<mainClass>${appClass}</mainClass>
+						
 						<offlineAllowed>true</offlineAllowed>
 						<allPermissions>true</allPermissions>
 					</jnlp>
 
-					<sign>
+					<!-- <sign>
 						<keystore>${keystore}</keystore>
-						<!-- MUST BE PROVIDED BY COMMAND LINE ARGUMENTS -->
-						<!-- -Dstorepass=xxx -Dkeypass=xxx -->
+						MUST BE PROVIDED BY COMMAND LINE ARGUMENTS
+						-Dstorepass=xxx -Dkeypass=xxx
 						<keypass>${keypass}</keypass>
 						<storepass>${storepass}</storepass>
 						<storetype>${storetype}</storetype>
-						<!-- <alias>id unizeto technologies s.a. de open source developer, bordes sébastien</alias> -->
+						<alias>id unizeto technologies s.a. de open source developer, bordes sébastien</alias>
 						<alias>${keyalias}</alias>
 
 						<validity>360</validity>
@@ -188,9 +193,11 @@
 							<delete>${deletekeystore}</delete>
 							<gen>${genkeystore}</gen>
 						</keystoreConfig>
-					</sign>
+					</sign> -->
 
-					<pack200>true</pack200>
+					<pack200>
+						<enabled>true</enabled>
+					</pack200>
 					<gzip>true</gzip>
 
 					<outputJarVersions>false</outputJarVersions>
@@ -227,13 +234,13 @@
 		<dependency>
 			<groupId>org.jrebirth</groupId>
 			<artifactId>core</artifactId>
-			<version>0.7.6</version>
+			<version>7.7.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jrebirth</groupId>
 			<artifactId>preloader</artifactId>
-			<version>0.7.6</version>
+			<version>7.7.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

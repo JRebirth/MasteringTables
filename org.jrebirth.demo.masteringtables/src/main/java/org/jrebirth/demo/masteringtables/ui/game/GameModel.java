@@ -24,6 +24,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
 import org.jrebirth.core.ui.object.DefaultObjectModel;
+import org.jrebirth.core.wave.OnWave;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
@@ -39,6 +40,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameModel.
  */
+@OnWave(types = { "toto", "tatat" })
 public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
     /** The Constant LOGGER. */
@@ -50,7 +52,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     @Override
     protected void initModel() {
 
-        listen(MTWaves.START_GAME);
+        // listen(MTWaves.START_GAME);
 
         listen(MTWaves.REGISTER_SUCCESS);
         listen(MTWaves.REGISTER_FAILURE);
@@ -72,7 +74,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param expressionList the expression list
      * @param wave the wave
      */
-    public void doStartGame(final List<Expression> expressionList, final Wave wave) {
+    @OnWave(MTWaves.START_GAME_CODE)
+    public void startGame(final List<Expression> expressionList, final Wave wave) {
 
         // Reset the current index and counters
         getObject().setIndex(0);

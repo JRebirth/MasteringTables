@@ -53,8 +53,11 @@ public interface MTWaves {
     /** Show Page action. */
     WaveType SHOW_PAGE = WaveTypeBase.build("SHOW_PAGE", PAGE);
 
+    /** The Start Game action code. */
+    String START_GAME_CODE = "START_GAME";
+
     /** Start game action. */
-    WaveType START_GAME = WaveTypeBase.build("START_GAME", GAME_LIST);
+    WaveType START_GAME = WaveTypeBase.build(START_GAME_CODE, GAME_LIST);
 
     /** Finish game action. */
     WaveType FINISH_GAME = WaveTypeBase.build("FINISH_GAME");

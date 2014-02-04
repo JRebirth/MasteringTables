@@ -21,12 +21,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 import org.jrebirth.core.command.DefaultCommand;
+import org.jrebirth.core.concurrent.RunInto;
+import org.jrebirth.core.concurrent.RunType;
+import org.jrebirth.core.concurrent.RunnablePriority;
 import org.jrebirth.core.wave.JRebirthWaves;
+import org.jrebirth.core.wave.OnWave;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
+import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +52,10 @@ public class DisplayGameMenu extends DefaultCommand {
     @Override
     protected void execute(final Wave wave) {
 
+        listen(ExpressionBuilderService.RE_TABLES_BUILT);
+
+        getModel(GameMenuModel.class);
+
         // Generate all tables
         final Wave waveLoading = returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
                 wave.getData(JRebirthWaves.PROGRESS_BAR));
@@ -63,5 +72,16 @@ public class DisplayGameMenu extends DefaultCommand {
             }
         });
 
+    }
+
+    /**
+     * Tables built.
+     * 
+     * @param wave the wave
+     */
+    @OnWave(ExpressionBuilderService.TABLES_BUILT)
+    @RunInto(value = RunType.JTP, priority = RunnablePriority.High)
+    public void doTablesBuilt(final boolean bool, final Wave wave) {
+        System.err.println("PROUT");
     }
 }

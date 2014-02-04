@@ -22,7 +22,6 @@ import java.util.List;
 
 import org.jrebirth.core.concurrent.Priority;
 import org.jrebirth.core.concurrent.RunnablePriority;
-import org.jrebirth.core.exception.CoreException;
 import org.jrebirth.core.service.DefaultService;
 import org.jrebirth.core.wave.Wave;
 import org.jrebirth.core.wave.WaveItem;
@@ -46,8 +45,12 @@ public final class ExpressionBuilderService extends DefaultService {
     /** The Wave Type DO_BUILD_TABLES. */
     public static final WaveTypeBase DO_BUILD_TABLES = WaveTypeBase.build("BUILD_TABLES");
 
+    /** The Wavetype return action name. */
+    public static final String TABLES_BUILT = "TABLES_BUILT";
+
     /** The Wave Type RE_TABLES_BUILT. */
-    public static final WaveTypeBase RE_TABLES_BUILT = WaveTypeBase.build("TABLES_BUILT");
+    public static final WaveTypeBase RE_TABLES_BUILT = WaveTypeBase.build(TABLES_BUILT, new WaveItem<Boolean>() {
+    });
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ExpressionBuilderService.class);
@@ -68,8 +71,7 @@ public final class ExpressionBuilderService extends DefaultService {
      * {@inheritDoc}
      */
     @Override
-    public void ready() throws CoreException {
-        super.ready();
+    public void initService() {
 
         // Define the service method
         registerCallback(DO_BUILD_TABLES, RE_TABLES_BUILT);
@@ -82,7 +84,7 @@ public final class ExpressionBuilderService extends DefaultService {
      * @throws InterruptedException if the job is cancelled
      */
     @Priority(RunnablePriority.Highest)
-    public void doBuildTables(final Wave wave) throws InterruptedException {
+    public boolean doBuildTables(final Wave wave) throws InterruptedException {
 
         LOGGER.trace("Build Tables.");
 
@@ -128,6 +130,7 @@ public final class ExpressionBuilderService extends DefaultService {
         }
 
         LOGGER.trace("Tables are ready !");
+        return true;
     }
 
     /**

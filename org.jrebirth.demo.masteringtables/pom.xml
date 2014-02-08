@@ -10,7 +10,7 @@
 
 	<groupId>org.jrebirth.demo</groupId>
 	<artifactId>masteringtables</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>Mastering Tables</name>
 	<url>http://www.jrebirth.org</url>

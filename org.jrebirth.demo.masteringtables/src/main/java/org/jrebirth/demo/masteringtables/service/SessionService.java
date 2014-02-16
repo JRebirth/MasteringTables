@@ -17,7 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables.service;
 
-import org.jrebirth.core.service.DefaultService;
+import org.jrebirth.af.core.service.DefaultService;
 import org.jrebirth.demo.masteringtables.beans.Game;
 
 import org.slf4j.Logger;

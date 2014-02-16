@@ -26,10 +26,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import org.jrebirth.core.application.DefaultApplication;
-import org.jrebirth.core.resource.font.FontItem;
-import org.jrebirth.core.ui.Model;
-import org.jrebirth.core.wave.Wave;
+import org.jrebirth.af.core.application.DefaultApplication;
+import org.jrebirth.af.core.resource.font.FontItem;
+import org.jrebirth.af.core.ui.Model;
+import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.jrebirth.demo.masteringtables.resources.MTStyles;
 import org.jrebirth.demo.masteringtables.ui.page.PageModel;

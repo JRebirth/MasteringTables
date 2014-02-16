@@ -17,10 +17,10 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
-import org.jrebirth.core.resource.style.StyleSheet;
-import org.jrebirth.core.resource.style.StyleSheetItem;
+import org.jrebirth.af.core.resource.style.StyleSheet;
+import org.jrebirth.af.core.resource.style.StyleSheetItem;
 
-import static org.jrebirth.core.resource.Resources.create;
+import static org.jrebirth.af.core.resource.Resources.create;
 
 /**
  * The MTStyles interface providing all style sheets.

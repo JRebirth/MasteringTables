@@ -42,10 +42,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.GridPaneBuilder;
 import javafx.scene.layout.RowConstraints;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultView;
-import org.jrebirth.core.ui.annotation.OnAction;
-import org.jrebirth.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultView;
+import org.jrebirth.af.core.ui.annotation.OnAction;
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.beans.Operator;
 
 import org.slf4j.Logger;

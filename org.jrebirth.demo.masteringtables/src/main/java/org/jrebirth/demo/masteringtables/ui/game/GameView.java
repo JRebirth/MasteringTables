@@ -27,9 +27,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.StackPaneBuilder;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultView;
-import org.jrebirth.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultView;
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
 import org.slf4j.Logger;

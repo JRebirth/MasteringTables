@@ -22,10 +22,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultController;
-import org.jrebirth.core.ui.DefaultView;
-import org.jrebirth.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultController;
+import org.jrebirth.af.core.ui.DefaultView;
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

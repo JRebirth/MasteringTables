@@ -23,10 +23,10 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.core.ui.object.DefaultObjectModel;
-import org.jrebirth.core.wave.OnWave;
-import org.jrebirth.core.wave.Wave;
-import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.af.core.ui.object.DefaultObjectModel;
+import org.jrebirth.af.core.wave.OnWave;
+import org.jrebirth.af.core.wave.Wave;
+import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.beans.Page;

@@ -42,9 +42,9 @@ import javafx.scene.shape.SVGPathBuilder;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultView;
-import org.jrebirth.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultView;
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTColors;
 import org.jrebirth.demo.masteringtables.resources.MTImages;
 

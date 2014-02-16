@@ -19,9 +19,9 @@ package org.jrebirth.demo.masteringtables.ui.game;
 
 import javafx.scene.input.KeyEvent;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultController;
-import org.jrebirth.core.ui.adapter.KeyAdapter;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultController;
+import org.jrebirth.af.core.ui.adapter.KeyAdapter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

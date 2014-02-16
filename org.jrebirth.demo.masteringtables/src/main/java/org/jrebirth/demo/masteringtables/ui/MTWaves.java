@@ -19,9 +19,9 @@ package org.jrebirth.demo.masteringtables.ui;
 
 import java.util.List;
 
-import org.jrebirth.core.wave.WaveItem;
-import org.jrebirth.core.wave.WaveType;
-import org.jrebirth.core.wave.WaveTypeBase;
+import org.jrebirth.af.core.wave.WaveItem;
+import org.jrebirth.af.core.wave.WaveType;
+import org.jrebirth.af.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 

@@ -20,12 +20,12 @@ package org.jrebirth.demo.masteringtables.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jrebirth.core.concurrent.Priority;
-import org.jrebirth.core.concurrent.RunnablePriority;
-import org.jrebirth.core.service.DefaultService;
-import org.jrebirth.core.wave.Wave;
-import org.jrebirth.core.wave.WaveItem;
-import org.jrebirth.core.wave.WaveTypeBase;
+import org.jrebirth.af.core.concurrent.Priority;
+import org.jrebirth.af.core.concurrent.RunnablePriority;
+import org.jrebirth.af.core.service.DefaultService;
+import org.jrebirth.af.core.wave.Wave;
+import org.jrebirth.af.core.wave.WaveItem;
+import org.jrebirth.af.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.ExpressionBuilder;
 import org.jrebirth.demo.masteringtables.beans.Operator;

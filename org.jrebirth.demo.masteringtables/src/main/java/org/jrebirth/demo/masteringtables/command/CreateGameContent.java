@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.jrebirth.core.command.DefaultPoolCommand;
-import org.jrebirth.core.wave.Wave;
-import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.af.core.command.DefaultPoolCommand;
+import org.jrebirth.af.core.wave.Wave;
+import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;

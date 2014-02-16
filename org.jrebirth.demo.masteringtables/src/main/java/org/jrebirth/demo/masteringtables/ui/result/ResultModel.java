@@ -20,7 +20,7 @@ package org.jrebirth.demo.masteringtables.ui.result;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.NumberBinding;
 
-import org.jrebirth.core.ui.object.DefaultObjectModel;
+import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.service.SessionService;
 

@@ -19,9 +19,9 @@ package org.jrebirth.demo.masteringtables.ui.menu;
 
 import javafx.event.ActionEvent;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultController;
-import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultController;
+import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 

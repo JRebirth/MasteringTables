@@ -17,12 +17,12 @@
  */
 package org.jrebirth.demo.masteringtables.ui.menu;
 
-import org.jrebirth.core.concurrent.RunInto;
-import org.jrebirth.core.concurrent.RunType;
-import org.jrebirth.core.concurrent.RunnablePriority;
-import org.jrebirth.core.ui.DefaultModel;
-import org.jrebirth.core.wave.OnWave;
-import org.jrebirth.core.wave.Wave;
+import org.jrebirth.af.core.concurrent.RunInto;
+import org.jrebirth.af.core.concurrent.RunType;
+import org.jrebirth.af.core.concurrent.RunnablePriority;
+import org.jrebirth.af.core.ui.DefaultModel;
+import org.jrebirth.af.core.wave.OnWave;
+import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 
@@ -88,7 +88,7 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
      */
     @OnWave("TABLES_BUILT")
     @RunInto(value = RunType.JTP, priority = RunnablePriority.Highest)
-    public void doTablesBuilt(boolean boo, final Wave wave) {
+    public void doTablesBuilt(final boolean boo, final Wave wave) {
 
         final int nbExpression = this.expressionBuilderService.getAdditionTable().size()
                 + this.expressionBuilderService.getDivisionTable().size()

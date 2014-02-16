@@ -32,10 +32,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextBuilder;
 import javafx.util.Duration;
 
-import org.jrebirth.core.exception.CoreException;
-import org.jrebirth.core.ui.DefaultView;
-import org.jrebirth.core.ui.annotation.OnFinished;
-import org.jrebirth.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.core.ui.DefaultView;
+import org.jrebirth.af.core.ui.annotation.OnFinished;
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 
 import org.slf4j.Logger;

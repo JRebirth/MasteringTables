@@ -17,9 +17,9 @@
  */
 package org.jrebirth.demo.masteringtables.ui.splash;
 
-import org.jrebirth.core.ui.DefaultModel;
-import org.jrebirth.core.wave.JRebirthWaves;
-import org.jrebirth.core.wave.WaveData;
+import org.jrebirth.af.core.ui.DefaultModel;
+import org.jrebirth.af.core.wave.JRebirthWaves;
+import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 
 /**

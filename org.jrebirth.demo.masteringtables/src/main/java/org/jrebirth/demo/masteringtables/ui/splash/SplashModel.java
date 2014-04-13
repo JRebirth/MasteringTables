@@ -17,23 +17,54 @@
  */
 package org.jrebirth.demo.masteringtables.ui.splash;
 
-import org.jrebirth.af.core.ui.DefaultModel;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
+
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.ui.simple.DefaultSimpleModel;
 import org.jrebirth.af.core.wave.JRebirthWaves;
 import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 
 /**
- * The Class SplashModel.
+ * The Class SplashModel used to display the Mastering GTables Splash Screen with progress bar.
  */
-public class SplashModel extends DefaultModel<SplashModel, SplashView> {
+@RootNodeId("SplashPanel")
+public class SplashModel extends DefaultSimpleModel<BorderPane> {
+
+    /** The loading bar related to expression calculation. */
+    private ProgressBar loadingBar;
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void showView() {
-        // Wait 3s and display the game menu
-        callCommand(DisplayGameMenu.class, WaveData.build(JRebirthWaves.PROGRESS_BAR, getView().getLoadingBar()));
+        // Call a command that will perform a service call to update the progress bar
+        callCommand(DisplayGameMenu.class, WaveData.build(JRebirthWaves.PROGRESS_BAR, getLoadingBar()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void initSimpleView() {
+
+        this.loadingBar = new ProgressBar(0.0);
+        this.loadingBar.setMinSize(400, 40);
+        BorderPane.setAlignment(this.loadingBar, Pos.CENTER);
+        BorderPane.setMargin(this.loadingBar, new Insets(40, 0, 30, 0));
+
+        getRootNode().setBottom(this.loadingBar);
+    }
+
+    /**
+     * @return Returns the loadingBar.
+     */
+    public ProgressBar getLoadingBar() {
+        return this.loadingBar;
     }
 
 }

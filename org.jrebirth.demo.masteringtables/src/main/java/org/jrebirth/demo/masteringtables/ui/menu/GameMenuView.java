@@ -110,7 +110,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         final BooleanBinding bb2 = Bindings.or(this.multiplication.selectedProperty(), this.division.selectedProperty());
         final BooleanBinding bb = Bindings.or(bb1, bb2);
 
-        this.playButton.disableProperty().bind(bb.not());
+        this.playButton.disableProperty().bind(bb.and(lengthGroup.selectedToggleProperty().isNotNull()).not());
     }
 
     /**

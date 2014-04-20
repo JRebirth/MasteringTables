@@ -17,12 +17,8 @@
  */
 package org.jrebirth.demo.masteringtables.ui.menu;
 
-import org.jrebirth.af.core.concurrent.RunInto;
-import org.jrebirth.af.core.concurrent.RunType;
-import org.jrebirth.af.core.concurrent.RunnablePriority;
+import org.jrebirth.af.core.annotation.Component;
 import org.jrebirth.af.core.ui.DefaultModel;
-import org.jrebirth.af.core.wave.OnWave;
-import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 
@@ -38,65 +34,11 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuModel.class);
 
     /** The service used to build quiz data. */
+    @Component
     private ExpressionBuilderService expressionBuilderService;
 
     /** The game settings bean. */
     private final GameSettings gameSettings = new GameSettings();
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void initModel() {
-
-        // Be notified when tables are ready
-        // listen(ExpressionBuilderService.RE_TABLES_BUILT);
-
-        // Store an hard link to avoid garbage collection of the service
-        this.expressionBuilderService = getService(ExpressionBuilderService.class);
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void showView() {
-        super.showView();
-
-        // // getView().getLoadingBar().setVisible(true);
-        // // Generate all tables
-        // final Wave wave = returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
-        // WaveData.build(JRebirthWaves.PROGRESS_BAR, getView().getLoadingBar()));
-        //
-        // wave.statusProperty().addListener(new ChangeListener<Wave.Status>() {
-        //
-        // @Override
-        // public void changed(final ObservableValue<? extends Wave.Status> arg0, final Wave.Status arg1, final Wave.Status arg2) {
-        // if (arg1 == Status.Consumed) {
-        // getView().getLoadingBar().setVisible(false);
-        // }
-        //
-        // }
-        // });
-    }
-
-    /**
-     * Tables built.
-     * 
-     * @param wave the wave
-     */
-    @OnWave("TABLES_BUILT")
-    @RunInto(value = RunType.JTP, priority = RunnablePriority.Highest)
-    public void doTablesBuilt(final boolean boo, final Wave wave) {
-
-        final int nbExpression = this.expressionBuilderService.getAdditionTable().size()
-                + this.expressionBuilderService.getDivisionTable().size()
-                + this.expressionBuilderService.getSubtractionTable().size()
-                + this.expressionBuilderService.getMultiplicationTable().size();
-
-        LOGGER.info("Tables are available and contains {} expressions.", nbExpression);
-    }
 
     /**
      * Gets the game settings.

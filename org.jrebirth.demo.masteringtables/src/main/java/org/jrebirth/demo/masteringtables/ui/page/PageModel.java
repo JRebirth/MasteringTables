@@ -17,10 +17,14 @@
  */
 package org.jrebirth.demo.masteringtables.ui.page;
 
+import javafx.scene.layout.StackPane;
+
 import org.jrebirth.af.core.command.basic.showmodel.DisplayModelWaveBean;
 import org.jrebirth.af.core.command.basic.showmodel.ShowFadingModelCommand;
 import org.jrebirth.af.core.key.UniqueKey;
-import org.jrebirth.af.core.ui.DefaultModel;
+import org.jrebirth.af.core.ui.Model;
+import org.jrebirth.af.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.ui.simple.DefaultSimpleModel;
 import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
@@ -35,13 +39,14 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class PageModel.
  */
-public class PageModel extends DefaultModel<PageModel, PageView> {
+@RootNodeId("PagePanel")
+public class PageModel extends DefaultSimpleModel<StackPane> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(PageModel.class);
 
     /** Hold the current mode displayed as a page. */
-    private UniqueKey currentModelKey;
+    private UniqueKey<? extends Model> currentModelKey;
 
     /**
      * {@inheritDoc}
@@ -51,6 +56,14 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
 
         listen(MTWaves.SHOW_PAGE);
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void initSimpleView() {
+        super.initSimpleView();
     }
 
     /**
@@ -68,8 +81,8 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
         // Create the Wave Bean that will hold all data processed by chained commands
         final DisplayModelWaveBean waveBean = new DisplayModelWaveBean();
         // Define the placeholder that will receive the content
-        waveBean.setChidrenPlaceHolder(getView().getRootNode().getChildren());
-        // Allow to add element behin the stack to allow transition
+        waveBean.setChidrenPlaceHolder(getRootNode().getChildren());
+        // Allow to add element behind the stack to allow transition
         waveBean.setAppendChild(false);
 
         switch (page) {
@@ -93,6 +106,7 @@ public class PageModel extends DefaultModel<PageModel, PageView> {
         }
 
         waveBean.setHideModelKey(this.currentModelKey);
+
         this.currentModelKey = waveBean.getShowModelKey();
         callCommand(ShowFadingModelCommand.class, waveBean);
     }

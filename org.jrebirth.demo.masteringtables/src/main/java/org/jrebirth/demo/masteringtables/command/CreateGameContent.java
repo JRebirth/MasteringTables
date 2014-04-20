@@ -39,8 +39,9 @@ public class CreateGameContent extends DefaultPoolCommand {
      * {@inheritDoc}
      */
     @Override
-    protected void execute(final Wave wave) {
+    protected void perform(final Wave wave) {
 
+        // This command will not be retained in memory
         final ExpressionBuilderService service = getService(ExpressionBuilderService.class);
 
         // Retrieve game settings from the ui
@@ -68,7 +69,7 @@ public class CreateGameContent extends DefaultPoolCommand {
         // Get expressions to be asked
         final WaveData<List<Expression>> gameData = WaveData.build(MTWaves.GAME_LIST, gameList.subList(0, gs.getQuestionNumber()));
 
-        // Display the game page
+        // Send a wave Display the game page
         sendWave(MTWaves.START_GAME, gameData);
     }
 }

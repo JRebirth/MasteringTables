@@ -17,9 +17,6 @@
  */
 package org.jrebirth.demo.masteringtables.command;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-
 import org.jrebirth.af.core.command.DefaultCommand;
 import org.jrebirth.af.core.concurrent.RunInto;
 import org.jrebirth.af.core.concurrent.RunType;
@@ -31,7 +28,6 @@ import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
-import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,28 +46,21 @@ public class DisplayGameMenu extends DefaultCommand {
      * {@inheritDoc}
      */
     @Override
-    protected void execute(final Wave wave) {
-
+    protected void initCommand() {
+        LOGGER.trace("Initialize Command " + this.getClass().getSimpleName());
         listen(ExpressionBuilderService.RE_TABLES_BUILT);
+    }
 
-        getModel(GameMenuModel.class);
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void perform(final Wave wave) {
 
-        // Generate all tables
-        final Wave waveLoading = returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
+        // Call the right service to generate all tables
+        // Forward the progress bar attached to the upstream wave
+        returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
                 wave.getData(JRebirthWaves.PROGRESS_BAR));
-
-        waveLoading.statusProperty().addListener(new ChangeListener<Wave.Status>() {
-
-            @Override
-            public void changed(final ObservableValue<? extends Wave.Status> statusProperty, final Wave.Status oldStatus, final Wave.Status newStatus) {
-                if (newStatus == Wave.Status.Consumed) {
-                    // Then launch the wave that will display the game menu
-                    sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
-                }
-
-            }
-        });
-
     }
 
     /**
@@ -82,6 +71,7 @@ public class DisplayGameMenu extends DefaultCommand {
     @OnWave(ExpressionBuilderService.TABLES_BUILT)
     @RunInto(value = RunType.JTP, priority = RunnablePriority.High)
     public void doTablesBuilt(final boolean bool, final Wave wave) {
-        System.err.println("PROUT");
+        // When tables are built, launch the wave that will display the game menu
+        sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
     }
 }

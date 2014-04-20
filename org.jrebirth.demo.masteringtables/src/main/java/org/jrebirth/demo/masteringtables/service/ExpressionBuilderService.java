@@ -27,7 +27,6 @@ import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.af.core.wave.WaveItem;
 import org.jrebirth.af.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
-import org.jrebirth.demo.masteringtables.beans.ExpressionBuilder;
 import org.jrebirth.demo.masteringtables.beans.Operator;
 
 import org.slf4j.Logger;
@@ -98,13 +97,30 @@ public final class ExpressionBuilderService extends DefaultService {
 
             for (int rightOperand = 1; rightOperand <= 12; rightOperand++) {
 
-                this.multiplicationTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.multiplication).right(rightOperand).result(leftOperand * rightOperand).build());
+                this.multiplicationTable.add(Expression.create()
+                        .left(leftOperand)
+                        .operator(Operator.multiplication.toString())
+                        .right(rightOperand)
+                        .result(leftOperand * rightOperand)
+                        );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(5);
-                this.additionTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.addition).right(rightOperand).result(leftOperand + rightOperand).build());
+
+                this.additionTable.add(Expression.create()
+                        .left(leftOperand)
+                        .operator(Operator.addition.toString())
+                        .right(rightOperand)
+                        .result(leftOperand + rightOperand)
+                        );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(5);
-                this.divisionTable.add(ExpressionBuilder.create().left(rightOperand * leftOperand).operator(Operator.division).right(leftOperand).result(rightOperand).build());
+
+                this.divisionTable.add(Expression.create()
+                        .left(rightOperand * leftOperand)
+                        .operator(Operator.division.toString())
+                        .right(leftOperand)
+                        .result(rightOperand)
+                        );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(5);
 
@@ -120,7 +136,12 @@ public final class ExpressionBuilderService extends DefaultService {
 
             for (int leftOperand = tableGap; leftOperand <= tableGap + 12; leftOperand++) {
 
-                this.subtractionTable.add(ExpressionBuilder.create().left(leftOperand).operator(Operator.subtraction).right(rightOperand).result(leftOperand - rightOperand).build());
+                this.subtractionTable.add(Expression.create()
+                        .left(leftOperand)
+                        .operator(Operator.subtraction.toString())
+                        .right(rightOperand)
+                        .result(leftOperand - rightOperand)
+                        );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(5);
             }

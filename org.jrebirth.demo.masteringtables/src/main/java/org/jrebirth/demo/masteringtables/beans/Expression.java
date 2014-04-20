@@ -19,7 +19,6 @@ package org.jrebirth.demo.masteringtables.beans;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  * The Bean Expression.
@@ -36,14 +35,23 @@ public class Expression {
     private final SimpleIntegerProperty resultProperty = new SimpleIntegerProperty();
 
     /** The operator property. */
-    private final StringProperty operatorProperty = new SimpleStringProperty();
+    private final SimpleStringProperty operatorProperty = new SimpleStringProperty();
+
+    /**
+     * Create a new instance of Expression object.
+     * 
+     * @return the fresh instance
+     */
+    public static Expression create() {
+        return new Expression();
+    }
 
     /**
      * Gets the left.
      * 
      * @return the left
      */
-    public int getLeft() {
+    public int left() {
         return this.leftProperty.get();
     }
 
@@ -51,9 +59,12 @@ public class Expression {
      * Sets the left.
      * 
      * @param left the new left
+     * 
+     * @return the current instance to chain setters
      */
-    public void setLeft(final int left) {
+    public Expression left(final int left) {
         this.leftProperty.set(left);
+        return this;
     }
 
     /**
@@ -70,7 +81,7 @@ public class Expression {
      * 
      * @return the right
      */
-    public int getRight() {
+    public int right() {
         return this.rightProperty.get();
     }
 
@@ -78,9 +89,12 @@ public class Expression {
      * Sets the right.
      * 
      * @param right the new right
+     * 
+     * @return the current instance to chain setters
      */
-    public void setRight(final int right) {
+    public Expression right(final int right) {
         this.rightProperty.set(right);
+        return this;
     }
 
     /**
@@ -97,7 +111,7 @@ public class Expression {
      * 
      * @return the result
      */
-    public int getResult() {
+    public int result() {
         return this.resultProperty.get();
     }
 
@@ -105,9 +119,12 @@ public class Expression {
      * Sets the result.
      * 
      * @param result the new result
+     * 
+     * @return the current instance to chain setters
      */
-    public void setResult(final int result) {
+    public Expression result(final int result) {
         this.resultProperty.set(result);
+        return this;
     }
 
     /**
@@ -124,7 +141,7 @@ public class Expression {
      * 
      * @return the operator
      */
-    public String getOperator() {
+    public String operator() {
         return this.operatorProperty.get();
     }
 
@@ -132,9 +149,12 @@ public class Expression {
      * Sets the operator.
      * 
      * @param operator the new operator
+     * 
+     * @return the current instance to chain setters
      */
-    public void setOperator(final String operator) {
+    public Expression operator(final String operator) {
         this.operatorProperty.set(operator);
+        return this;
     }
 
     /**
@@ -142,7 +162,7 @@ public class Expression {
      * 
      * @return the simple object property
      */
-    public StringProperty operatorProperty() {
+    public SimpleStringProperty operatorProperty() {
         return this.operatorProperty;
     }
 
@@ -151,12 +171,14 @@ public class Expression {
      */
     @Override
     public String toString() {
+
         final StringBuilder sb = new StringBuilder();
-        sb.append(getLeft());
-        sb.append(getOperator().toString());
-        sb.append(getRight());
+
+        sb.append(left());
+        sb.append(operator().toString());
+        sb.append(right());
         sb.append("=");
-        sb.append(getResult());
+        sb.append(result());
 
         return sb.toString();
     }

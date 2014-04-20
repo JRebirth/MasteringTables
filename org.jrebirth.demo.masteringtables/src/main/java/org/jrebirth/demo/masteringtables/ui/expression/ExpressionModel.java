@@ -96,10 +96,10 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
     private void checkResult() {
         final int type = Integer.parseInt(getView().getResult().getText());
 
-        if (type == getObject().getResult()) {
+        if (type == getObject().result()) {
             getView().getExpressionResolved().play();
         } else {
-            if (String.valueOf(type).length() == String.valueOf(getObject().getResult()).length()) {
+            if (String.valueOf(type).length() == String.valueOf(getObject().result()).length()) {
                 getView().getExpressionFailure().play();
             }
         }

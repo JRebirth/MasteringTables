@@ -59,16 +59,16 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
     public void applyTo(final Expression expr) {
         // super.applyTo(paramWave);
         if (hasBit(0)) {
-            expr.setLeft(this.leftOperand);
+            expr.left(this.leftOperand);
         }
         if (hasBit(1)) {
-            expr.setRight(this.rightOperand);
+            expr.right(this.rightOperand);
         }
         if (hasBit(2)) {
-            expr.setResult(this.resultOperand);
+            expr.result(this.resultOperand);
         }
         if (hasBit(3)) {
-            expr.setOperator(this.operator.toString());
+            expr.operator(this.operator.toString());
         }
     }
 

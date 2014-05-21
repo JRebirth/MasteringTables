@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -46,7 +46,7 @@ public class Game {
 
     /**
      * Success count property.
-     * 
+     *
      * @return the integer property
      */
     public IntegerProperty successCountProperty() {
@@ -55,7 +55,7 @@ public class Game {
 
     /**
      * Gets the success count.
-     * 
+     *
      * @return the success count
      */
     public int getSuccessCount() {
@@ -64,7 +64,7 @@ public class Game {
 
     /**
      * Sets the success count.
-     * 
+     *
      * @param successCount the new success count
      */
     public void setSuccessCount(final int successCount) {
@@ -73,7 +73,7 @@ public class Game {
 
     /**
      * Failure count property.
-     * 
+     *
      * @return the integer property
      */
     public IntegerProperty failureCountProperty() {
@@ -82,7 +82,7 @@ public class Game {
 
     /**
      * Gets the failure count.
-     * 
+     *
      * @return the failure count
      */
     public int getFailureCount() {
@@ -91,7 +91,7 @@ public class Game {
 
     /**
      * Sets the failure count.
-     * 
+     *
      * @param failureCount the new failure count
      */
     public void setFailureCount(final int failureCount) {
@@ -100,7 +100,7 @@ public class Game {
 
     /**
      * Gets the list of expression that composed the game.
-     * 
+     *
      * @return Returns the gameList.
      */
     public ObservableList<Expression> getGameList() {
@@ -109,7 +109,7 @@ public class Game {
 
     /**
      * Gets the index.
-     * 
+     *
      * @return the index
      */
     public int getIndex() {
@@ -118,7 +118,7 @@ public class Game {
 
     /**
      * Sets the index.
-     * 
+     *
      * @param index the new index
      */
     public void setIndex(final int index) {
@@ -127,7 +127,7 @@ public class Game {
 
     /**
      * Index property.
-     * 
+     *
      * @return the simple integer property
      */
     public SimpleIntegerProperty indexProperty() {
@@ -136,7 +136,7 @@ public class Game {
 
     /**
      * Return the current expression.
-     * 
+     *
      * @return the current expression to solve
      */
     public Expression getCurrentExpression() {
@@ -145,7 +145,7 @@ public class Game {
 
     /**
      * Return true if at least one expression to solve remains.
-     * 
+     *
      * @return true if there is at least another expression to solve
      */
     public boolean hasMoreExpression() {
@@ -154,7 +154,7 @@ public class Game {
 
     /**
      * Time ellapsed property.
-     * 
+     *
      * @return the string property
      */
     public StringProperty timeEllapsedProperty() {
@@ -163,7 +163,7 @@ public class Game {
 
     /**
      * Gets the time ellapsed.
-     * 
+     *
      * @return the time ellapsed
      */
     public String getTimeEllapsed() {
@@ -172,7 +172,7 @@ public class Game {
 
     /**
      * Sets the time ellapsed.
-     * 
+     *
      * @param timeEllapsed the new time ellapsed
      */
     public void setTimeEllapsed(final String timeEllapsed) {

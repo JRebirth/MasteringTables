@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,7 +32,6 @@ import org.jrebirth.demo.masteringtables.ui.game.GameModel;
 import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 import org.jrebirth.demo.masteringtables.ui.result.ResultModel;
 import org.jrebirth.demo.masteringtables.ui.splash.SplashModel;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,9 +67,9 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
 
     /**
      * Show page.
-     * 
+     *
      * Called when model received a SHOW_PAGE wave type.
-     * 
+     *
      * @param page the page
      * @param wave the wave
      */
@@ -81,33 +80,33 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
         // Create the Wave Bean that will hold all data processed by chained commands
         final DisplayModelWaveBean waveBean = new DisplayModelWaveBean();
         // Define the placeholder that will receive the content
-        waveBean.setChidrenPlaceHolder(getRootNode().getChildren());
+        waveBean.childrenPlaceHolder(getRootNode().getChildren());
         // Allow to add element behind the stack to allow transition
-        waveBean.setAppendChild(false);
+        waveBean.appendChild(false);
 
         switch (page) {
 
             case Splash:
-                waveBean.setShowModelKey(getLocalFacade().buildKey(SplashModel.class));
+                waveBean.showModelKey(getLocalFacade().buildKey(SplashModel.class));
                 break;
 
             case Game:
-                waveBean.setShowModelKey(getLocalFacade().buildKey(GameModel.class));
+                waveBean.showModelKey(getLocalFacade().buildKey(GameModel.class));
                 break;
 
             case Result:
-                waveBean.setShowModelKey(getLocalFacade().buildKey(ResultModel.class, getModel(GameModel.class).getObject()));
+                waveBean.showModelKey(getLocalFacade().buildKey(ResultModel.class, getModel(GameModel.class).getObject()));
                 break;
 
             default:
             case GameMenu:
-                waveBean.setShowModelKey(getLocalFacade().buildKey(GameMenuModel.class));
+                waveBean.showModelKey(getLocalFacade().buildKey(GameMenuModel.class));
                 break;
         }
 
-        waveBean.setHideModelKey(this.currentModelKey);
+        waveBean.hideModelKey(this.currentModelKey);
 
-        this.currentModelKey = waveBean.getShowModelKey();
+        this.currentModelKey = waveBean.showModelKey();
         callCommand(ShowFadingModelCommand.class, waveBean);
     }
 

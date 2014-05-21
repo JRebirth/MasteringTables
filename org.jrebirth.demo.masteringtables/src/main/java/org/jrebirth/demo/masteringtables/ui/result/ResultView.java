@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -47,7 +47,6 @@ import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTColors;
 import org.jrebirth.demo.masteringtables.resources.MTImages;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,7 +94,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Instantiates a new page view.
-     * 
+     *
      * @param model the model
      * @throws CoreException the core exception
      */
@@ -223,7 +222,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                 .minWidth(800)
                 .children(this.failureBean, this.successBean, this.timeBean, this.ratioCircle, this.monsterImage, this.successIcon, this.failureIcon, this.timeLabel, this.successLabel,
                         this.failureLabel, this.ratioLabel)
-                .build();
+                        .build();
 
         getRootNode().setCenter(p);
 
@@ -231,7 +230,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Build the drop shadow.
-     * 
+     *
      * @return the drop shadow effect
      */
     private Effect getDropShadow() {
@@ -251,17 +250,17 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     @Override
     public void start() {
         SequentialTransitionBuilder.create()
-                .children(
+        .children(
 
-                        buildBeanAnimation(this.ratioLabel, this.ratioCircle, MTColors.RESULT_RATIO.get()),
-                        buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
+                buildBeanAnimation(this.ratioLabel, this.ratioCircle, MTColors.RESULT_RATIO.get()),
+                buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
 
-                        ParallelTransitionBuilder.create().children(
-                                TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400)).byY(-766).build(),
-                                buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
-                                FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
-                                )
-                                .build(),
+                ParallelTransitionBuilder.create().children(
+                        TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400)).byY(-766).build(),
+                        buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
+                        FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
+                        )
+                        .build(),
 
                         ParallelTransitionBuilder.create().children(
                                 buildBeanAnimation(this.failureLabel, this.failureBean, MTColors.RESULT_FAILURE.get()),
@@ -277,23 +276,23 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Build a bean animation.
-     * 
+     *
      * @param label the attached label
      * @param shape the shape to show
      * @param fillColor the color to use to paint the shape
-     * 
+     *
      * @return the bean animation
      */
     private Animation buildBeanAnimation(final Label label, final Shape shape, final Color fillColor) {
         return ParallelTransitionBuilder.create()
                 .children(
                         ScaleTransitionBuilder.create().node(label).delay(Duration.millis(50)).duration(Duration.millis(300))
-                                .fromX(0).fromY(0).toX(1).toY(1).build(),
+                        .fromX(0).fromY(0).toX(1).toY(1).build(),
                         FillTransitionBuilder.create().shape(shape)
-                                .fromValue(Color.LIGHTGREY).toValue(fillColor)
-                                .build()
-                )
-                .build();
+                        .fromValue(Color.LIGHTGREY).toValue(fillColor)
+                        .build()
+                        )
+                        .build();
     }
 
     /**
@@ -332,7 +331,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Gets the time label.
-     * 
+     *
      * @return Returns the timeLabel.
      */
     Label getTimeLabel() {
@@ -341,7 +340,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Gets the success label.
-     * 
+     *
      * @return Returns the successLabel.
      */
     Label getSuccessLabel() {
@@ -350,7 +349,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Gets the failure label.
-     * 
+     *
      * @return Returns the failureLabel.
      */
     Label getFailureLabel() {
@@ -359,7 +358,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /**
      * Gets the ratio label.
-     * 
+     *
      * @return Returns the ratioLabel.
      */
     Label getRatioLabel() {

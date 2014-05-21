@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -37,7 +37,6 @@ import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.af.core.ui.annotation.OnFinished;
 import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +77,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Instantiates a new question view.
-     * 
+     *
      * @param model the model
      * @throws CoreException the core exception
      */
@@ -133,8 +132,8 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                         buildTextPartAnimation(getOperator()),
                         buildTextPartAnimation(getRightOperand()),
                         buildTextPartAnimation(getEquality())
-                )
-                .build();
+                        )
+                        .build();
 
         // Add a nice drop shadow in all direction
         final DropShadow s = DropShadowBuilder.create()
@@ -151,7 +150,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Return the text builder used for expression part.
-     * 
+     *
      * @return the text builder
      */
     private TextBuilder<?> getExpressionTextBuilder() {
@@ -163,7 +162,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Builds the text part animation.
-     * 
+     *
      * @param textNode the text node
      * @return the animation
      */
@@ -173,18 +172,18 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                 .children(
 
                         ScaleTransitionBuilder.create()
-                                .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
-                                .fromX(0.0).toX(1.0)
-                                .fromY(0.0).toY(1.0)
-                                .build()
-                )
+                        .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
+                        .fromX(0.0).toX(1.0)
+                        .fromY(0.0).toY(1.0)
+                        .build()
+                        )
 
-                .build();
+                        .build();
     }
 
     /**
      * Gets the show expression.
-     * 
+     *
      * @return the show expression
      */
     public Animation getShowExpression() {
@@ -200,7 +199,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the expression resolved.
-     * 
+     *
      * @return the expression resolved
      */
     private Animation buildExpressionResolved() {
@@ -209,33 +208,33 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                 .delay(Duration.millis(400))
                 .children(
                         ScaleTransitionBuilder.create()
-                                .node(this.result)
-                                .fromX(1).toX(4.0)
-                                .fromY(1).toY(4.0)
-                                .build()
+                        .node(this.result)
+                        .fromX(1).toX(4.0)
+                        .fromY(1).toY(4.0)
+                        .build()
                         ,
 
                         ScaleTransitionBuilder.create()
-                                .node(getLeftOperand())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build(),
+                        .node(getLeftOperand())
+                        .fromX(1).toX(0)
+                        .fromY(1).toY(0)
+                        .build(),
                         ScaleTransitionBuilder.create()
-                                .node(getOperator())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build(),
+                        .node(getOperator())
+                        .fromX(1).toX(0)
+                        .fromY(1).toY(0)
+                        .build(),
                         ScaleTransitionBuilder.create()
-                                .node(getRightOperand())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build(),
+                        .node(getRightOperand())
+                        .fromX(1).toX(0)
+                        .fromY(1).toY(0)
+                        .build(),
                         ScaleTransitionBuilder.create()
-                                .node(getEquality())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build()
-                ).build();
+                        .node(getEquality())
+                        .fromX(1).toX(0)
+                        .fromY(1).toY(0)
+                        .build()
+                        ).build();
     }
 
     /**
@@ -247,7 +246,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the expression failure.
-     * 
+     *
      * @return the expression failure
      */
     private Animation buildExpressionFailure() {
@@ -262,7 +261,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the left operand.
-     * 
+     *
      * @return the left operand
      */
     Text getLeftOperand() {
@@ -271,7 +270,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the operator.
-     * 
+     *
      * @return the operator
      */
     Text getOperator() {
@@ -280,7 +279,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the right operand.
-     * 
+     *
      * @return the right operand
      */
     Text getRightOperand() {
@@ -289,7 +288,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the equality.
-     * 
+     *
      * @return the equality
      */
     Text getEquality() {
@@ -298,7 +297,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
 
     /**
      * Gets the result.
-     * 
+     *
      * @return the result
      */
     Text getResult() {

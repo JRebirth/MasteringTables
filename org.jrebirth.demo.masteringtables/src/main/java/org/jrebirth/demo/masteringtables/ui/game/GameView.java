@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,7 +31,6 @@ import org.jrebirth.af.core.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,9 +60,9 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /**
      * Instantiates a new game view.
-     * 
+     *
      * @param model the model
-     * 
+     *
      * @throws CoreException the core exception
      */
     public GameView(final GameModel model) throws CoreException {
@@ -87,7 +86,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /**
      * Gets the expression holder.
-     * 
+     *
      * @return the expression holder
      */
     StackPane getExpressionHolder() {
@@ -96,7 +95,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /**
      * Builds the top panel.
-     * 
+     *
      * @return the node
      */
     private Node buildTopPanel() {
@@ -162,7 +161,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /**
      * Gets the success counter.
-     * 
+     *
      * @return the success counter
      */
     Label getSuccessCounter() {
@@ -171,7 +170,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /**
      * Gets the failure counter.
-     * 
+     *
      * @return the failure counter
      */
     Label getFailureCounter() {

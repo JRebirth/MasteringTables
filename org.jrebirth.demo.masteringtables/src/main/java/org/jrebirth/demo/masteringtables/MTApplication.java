@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,10 +27,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import org.jrebirth.af.core.application.DefaultApplication;
-import org.jrebirth.af.core.resource.font.FontItem;
+import org.jrebirth.af.core.resource.ResourceItem;
 import org.jrebirth.af.core.ui.Model;
 import org.jrebirth.af.core.wave.Wave;
-import org.jrebirth.demo.masteringtables.resources.MTFonts;
+import org.jrebirth.demo.masteringtables.resources.MTColors;
 import org.jrebirth.demo.masteringtables.resources.MTStyles;
 import org.jrebirth.demo.masteringtables.ui.page.PageModel;
 
@@ -41,7 +41,7 @@ public final class MTApplication extends DefaultApplication<StackPane> {
 
     /**
      * The main method triggered by Java Runtime.
-     * 
+     *
      * @param args the arguments
      */
     public static void main(final String... args) {
@@ -89,12 +89,14 @@ public final class MTApplication extends DefaultApplication<StackPane> {
      * {@inheritDoc}
      */
     @Override
-    public List<FontItem> getFontToPreload() {
-        // Define fonts that will be available from CSS
-        return Arrays.asList(new FontItem[] {
-                MTFonts.EXPRESSION,
-                MTFonts.COUNTER,
-        });
+    protected List<? extends ResourceItem<?, ?, ?, ?>> getResourceToPreload() {
+        // // Define fonts that will be available from CSS
+        // return Collections.Arrays.asList(new FontItem[] {
+        // MTFonts.EXPRESSION,
+        // MTFonts.COUNTER,
+        // });
+
+        return Arrays.asList(MTColors.values());
     }
 
     /**

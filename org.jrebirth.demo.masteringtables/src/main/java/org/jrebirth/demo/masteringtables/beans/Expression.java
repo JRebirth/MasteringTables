@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,7 +39,7 @@ public class Expression {
 
     /**
      * Create a new instance of Expression object.
-     * 
+     *
      * @return the fresh instance
      */
     public static Expression create() {
@@ -48,7 +48,7 @@ public class Expression {
 
     /**
      * Gets the left.
-     * 
+     *
      * @return the left
      */
     public int left() {
@@ -57,9 +57,9 @@ public class Expression {
 
     /**
      * Sets the left.
-     * 
+     *
      * @param left the new left
-     * 
+     *
      * @return the current instance to chain setters
      */
     public Expression left(final int left) {
@@ -69,7 +69,7 @@ public class Expression {
 
     /**
      * Left property.
-     * 
+     *
      * @return the simple integer property
      */
     public SimpleIntegerProperty leftProperty() {
@@ -78,7 +78,7 @@ public class Expression {
 
     /**
      * Gets the right.
-     * 
+     *
      * @return the right
      */
     public int right() {
@@ -87,9 +87,9 @@ public class Expression {
 
     /**
      * Sets the right.
-     * 
+     *
      * @param right the new right
-     * 
+     *
      * @return the current instance to chain setters
      */
     public Expression right(final int right) {
@@ -99,7 +99,7 @@ public class Expression {
 
     /**
      * Right property.
-     * 
+     *
      * @return the simple integer property
      */
     public SimpleIntegerProperty rightProperty() {
@@ -108,7 +108,7 @@ public class Expression {
 
     /**
      * Gets the result.
-     * 
+     *
      * @return the result
      */
     public int result() {
@@ -117,9 +117,9 @@ public class Expression {
 
     /**
      * Sets the result.
-     * 
+     *
      * @param result the new result
-     * 
+     *
      * @return the current instance to chain setters
      */
     public Expression result(final int result) {
@@ -129,7 +129,7 @@ public class Expression {
 
     /**
      * Result property.
-     * 
+     *
      * @return the simple integer property
      */
     public SimpleIntegerProperty resultProperty() {
@@ -138,7 +138,7 @@ public class Expression {
 
     /**
      * Gets the operator.
-     * 
+     *
      * @return the operator
      */
     public String operator() {
@@ -147,9 +147,9 @@ public class Expression {
 
     /**
      * Sets the operator.
-     * 
+     *
      * @param operator the new operator
-     * 
+     *
      * @return the current instance to chain setters
      */
     public Expression operator(final String operator) {
@@ -159,7 +159,7 @@ public class Expression {
 
     /**
      * Operator property.
-     * 
+     *
      * @return the simple object property
      */
     public SimpleStringProperty operatorProperty() {

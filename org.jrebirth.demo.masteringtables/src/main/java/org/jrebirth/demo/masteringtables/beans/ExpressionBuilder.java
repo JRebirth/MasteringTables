@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,7 +21,7 @@ import javafx.util.Builder;
 
 /**
  * The Class ExpressionBuilder.
- * 
+ *
  * @param <B> the generic type of the current builder
  */
 public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builder<Expression> {
@@ -43,7 +43,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Creates the.
-     * 
+     *
      * @return the expression builder
      */
     @SuppressWarnings("rawtypes")
@@ -53,7 +53,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Apply to.
-     * 
+     *
      * @param expr the expr
      */
     public void applyTo(final Expression expr) {
@@ -74,7 +74,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Left.
-     * 
+     *
      * @param leftOperand the left operand
      * @return the b
      */
@@ -87,7 +87,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Right.
-     * 
+     *
      * @param rightOperand the right operand
      * @return the b
      */
@@ -100,7 +100,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Result.
-     * 
+     *
      * @param resultOperand the result operand
      * @return the b
      */
@@ -113,7 +113,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Operator.
-     * 
+     *
      * @param operator the operator
      * @return the b
      */
@@ -136,7 +136,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Adds the bit.
-     * 
+     *
      * @param bit the bit
      */
     protected void addBit(final int bit) {
@@ -145,7 +145,7 @@ public class ExpressionBuilder<B extends ExpressionBuilder<B>> implements Builde
 
     /**
      * Checks for bit.
-     * 
+     *
      * @param bit the bit
      * @return true, if successful
      */

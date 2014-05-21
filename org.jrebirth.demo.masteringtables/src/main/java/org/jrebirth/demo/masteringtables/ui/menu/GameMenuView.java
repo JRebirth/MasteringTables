@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -47,7 +47,6 @@ import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.af.core.ui.annotation.OnAction;
 import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.beans.Operator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,7 +80,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
 
     /**
      * Instantiates a new start view.
-     * 
+     *
      * @param model the model
      * @throws CoreException the core exception
      */
@@ -110,12 +109,12 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         final BooleanBinding bb2 = Bindings.or(this.multiplication.selectedProperty(), this.division.selectedProperty());
         final BooleanBinding bb = Bindings.or(bb1, bb2);
 
-        this.playButton.disableProperty().bind(bb.and(lengthGroup.selectedToggleProperty().isNotNull()).not());
+        this.playButton.disableProperty().bind(bb.and(this.lengthGroup.selectedToggleProperty().isNotNull()).not());
     }
 
     /**
      * Builds the start game panel.
-     * 
+     *
      * @return the node
      */
     private Node buildStartGamePanel() {
@@ -136,7 +135,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
 
     /**
      * Builds the game config panel.
-     * 
+     *
      * @return the node
      */
     private Node buildGameConfigPanel() {
@@ -227,9 +226,9 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
 
     /**
      * Builds the choice button for tables.
-     * 
+     *
      * @param name the toggle button name
-     * 
+     *
      * @return the toggle button
      */
     private ToggleButton buildChoiceButton(final String name) {
@@ -247,9 +246,9 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
 
     /**
      * Builds the choice button for game length.
-     * 
+     *
      * @param value the value of thez mini button
-     * 
+     *
      * @return the toggle button
      */
     private ToggleButton buildMiniButton(final int value) {

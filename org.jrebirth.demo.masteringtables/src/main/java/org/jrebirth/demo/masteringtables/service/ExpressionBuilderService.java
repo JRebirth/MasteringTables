@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,7 +28,6 @@ import org.jrebirth.af.core.wave.WaveItem;
 import org.jrebirth.af.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Operator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,7 +77,7 @@ public final class ExpressionBuilderService extends DefaultService {
 
     /**
      * Builds all tables.
-     * 
+     *
      * @param wave the wave
      * @throws InterruptedException if the job is cancelled
      */
@@ -156,7 +155,7 @@ public final class ExpressionBuilderService extends DefaultService {
 
     /**
      * Gets the multiplication table.
-     * 
+     *
      * @return the multiplication table
      */
     public List<Expression> getMultiplicationTable() {
@@ -165,7 +164,7 @@ public final class ExpressionBuilderService extends DefaultService {
 
     /**
      * Gets the addition table.
-     * 
+     *
      * @return the addition table
      */
     public List<Expression> getAdditionTable() {
@@ -174,7 +173,7 @@ public final class ExpressionBuilderService extends DefaultService {
 
     /**
      * Gets the subtraction table.
-     * 
+     *
      * @return the subtraction table
      */
     public List<Expression> getSubtractionTable() {
@@ -183,7 +182,7 @@ public final class ExpressionBuilderService extends DefaultService {
 
     /**
      * Gets the division table.
-     * 
+     *
      * @return the division table
      */
     public List<Expression> getDivisionTable() {

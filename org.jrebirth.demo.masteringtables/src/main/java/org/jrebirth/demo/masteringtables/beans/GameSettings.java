@@ -2,13 +2,13 @@
  * Get more info at : www.jrebirth.org .
  * Copyright JRebirth.org © 2011-2013
  * Contact : sebastien.bordes@jrebirth.org
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -44,7 +44,7 @@ public class GameSettings {
 
     /**
      * Contains addition property.
-     * 
+     *
      * @return the boolean property
      */
     public BooleanProperty containsAdditionProperty() {
@@ -53,7 +53,7 @@ public class GameSettings {
 
     /**
      * Gets the contains addition.
-     * 
+     *
      * @return the contains addition
      */
     public boolean containsAddition() {
@@ -62,7 +62,7 @@ public class GameSettings {
 
     /**
      * Sets the contains addition.
-     * 
+     *
      * @param containsAddition the new contains addition
      */
     public void setContainsAddition(final boolean containsAddition) {
@@ -71,7 +71,7 @@ public class GameSettings {
 
     /**
      * Contains subtraction property.
-     * 
+     *
      * @return the boolean property
      */
     public BooleanProperty containsSubtractionProperty() {
@@ -80,7 +80,7 @@ public class GameSettings {
 
     /**
      * Gets the contains subtraction.
-     * 
+     *
      * @return the contains subtraction
      */
     public boolean containsSubtraction() {
@@ -89,7 +89,7 @@ public class GameSettings {
 
     /**
      * Sets the contains subtraction.
-     * 
+     *
      * @param containsSubtraction the new contains subtraction
      */
     public void setContainsSubtraction(final boolean containsSubtraction) {
@@ -98,7 +98,7 @@ public class GameSettings {
 
     /**
      * Contains multiplication property.
-     * 
+     *
      * @return the boolean property
      */
     public BooleanProperty containsMultiplicationProperty() {
@@ -107,7 +107,7 @@ public class GameSettings {
 
     /**
      * Gets the contains multiplication.
-     * 
+     *
      * @return the contains multiplication
      */
     public boolean containsMultiplication() {
@@ -116,7 +116,7 @@ public class GameSettings {
 
     /**
      * Sets the contains multiplication.
-     * 
+     *
      * @param containsMultiplication the new contains multiplication
      */
     void setContainsMultiplication(final boolean containsMultiplication) {
@@ -125,7 +125,7 @@ public class GameSettings {
 
     /**
      * Contains division property.
-     * 
+     *
      * @return the boolean property
      */
     public BooleanProperty containsDivisionProperty() {
@@ -134,7 +134,7 @@ public class GameSettings {
 
     /**
      * Gets the contains division.
-     * 
+     *
      * @return the contains division
      */
     public boolean containsDivision() {
@@ -143,7 +143,7 @@ public class GameSettings {
 
     /**
      * Sets the contains division.
-     * 
+     *
      * @param containsDivision the new contains division
      */
     public void setContainsDivision(final boolean containsDivision) {
@@ -152,7 +152,7 @@ public class GameSettings {
 
     /**
      * Question number property.
-     * 
+     *
      * @return the integer property
      */
     public IntegerProperty questionNumberProperty() {
@@ -161,7 +161,7 @@ public class GameSettings {
 
     /**
      * Gets the question number.
-     * 
+     *
      * @return the question number
      */
     public int getQuestionNumber() {
@@ -170,7 +170,7 @@ public class GameSettings {
 
     /**
      * Sets the question number.
-     * 
+     *
      * @param questionNumber the new question number
      */
     public void setQuestionNumber(final int questionNumber) {

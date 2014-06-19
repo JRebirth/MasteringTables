@@ -33,6 +33,7 @@ import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.command.CreateGameContent;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,7 +76,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param wave the wave
      */
     @OnWave(MTWaves.START_GAME_CODE)
-    public void startGame(final List<Expression> expressionList, final Wave wave) {
+    public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
         // Reset the current index and counters
         getObject().setIndex(0);
@@ -92,6 +93,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
         // Center the panel
         StackPane.setAlignment(getModel(ExpressionModel.class).getRootNode(), Pos.CENTER);
+
+        getView().startTimer();
 
         // Display the current expression with the help of the inner model
         sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
@@ -113,6 +116,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
             // continue game
             sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
         } else {
+
+            getView().stopTimer();
 
             // Game is finished
             // sendWave(MTWaves.FINISH_GAME);

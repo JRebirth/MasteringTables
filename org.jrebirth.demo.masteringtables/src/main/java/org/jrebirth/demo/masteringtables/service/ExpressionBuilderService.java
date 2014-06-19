@@ -103,7 +103,7 @@ public final class ExpressionBuilderService extends DefaultService {
                         .result(leftOperand * rightOperand)
                         );
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(5);
+                Thread.sleep(2);
 
                 this.additionTable.add(Expression.create()
                         .left(leftOperand)
@@ -112,7 +112,7 @@ public final class ExpressionBuilderService extends DefaultService {
                         .result(leftOperand + rightOperand)
                         );
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(5);
+                Thread.sleep(2);
 
                 this.divisionTable.add(Expression.create()
                         .left(rightOperand * leftOperand)
@@ -121,7 +121,7 @@ public final class ExpressionBuilderService extends DefaultService {
                         .result(rightOperand)
                         );
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(5);
+                Thread.sleep(2);
 
                 counter += 3;
                 updateProgress(wave, counter, allItems);
@@ -142,7 +142,7 @@ public final class ExpressionBuilderService extends DefaultService {
                         .result(leftOperand - rightOperand)
                         );
                 // updateProgress(wave, ++counter, allItems);
-                Thread.sleep(5);
+                Thread.sleep(2);
             }
             counter += 13;
             updateProgress(wave, counter, allItems);

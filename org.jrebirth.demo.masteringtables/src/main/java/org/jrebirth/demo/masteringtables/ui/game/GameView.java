@@ -17,6 +17,14 @@
  */
 package org.jrebirth.demo.masteringtables.ui.game;
 
+import java.text.DecimalFormat;
+import java.time.Instant;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -26,11 +34,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.StackPaneBuilder;
+import javafx.util.Duration;
 
 import org.jrebirth.af.core.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +52,8 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameView.class);
+
+    private static DecimalFormat numberFormat = new DecimalFormat("00");
 
     /** The expression holder. */
     private StackPane expressionHolder;
@@ -57,6 +69,13 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
     /** The failure text counter. */
     private Label failureCounter;
+
+    /** The timer label. */
+    private Label timer;
+
+    private Instant begin;
+
+    private Timeline tl;
 
     /**
      * Instantiates a new game view.
@@ -146,6 +165,14 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
                 .children(this.failureIcon, this.failureCounter)
                 .build();
 
+        this.timer = LabelBuilder.create()
+                .id("Timer")
+                .text("00:00")
+                .font(MTFonts.COUNTER.get())
+                .minWidth(100)
+                .alignment(Pos.CENTER_RIGHT)
+                .build();
+
         // Add Part to the view root node
 
         AnchorPane.setTopAnchor(failurePane, 10.0);
@@ -154,7 +181,10 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
         AnchorPane.setTopAnchor(successPane, 10.0);
         AnchorPane.setRightAnchor(successPane, 200.0);
 
-        ap.getChildren().addAll(successPane, failurePane);
+        AnchorPane.setTopAnchor(timer, 10.0);
+        AnchorPane.setLeftAnchor(timer, 10.0);
+
+        ap.getChildren().addAll(successPane, failurePane, timer);
 
         return ap;
     }
@@ -177,4 +207,27 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
         return this.failureCounter;
     }
 
+    public void stopTimer() {
+        tl.stop();
+        java.time.Duration d = java.time.Duration.between(begin, Instant.now());
+        getModel().getObject().setTimeEllapsed(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
+    }
+
+    public void startTimer() {
+        begin = Instant.now();
+        tl = new Timeline();
+        tl.setCycleCount(Animation.INDEFINITE);
+        tl.getKeyFrames().add(new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                java.time.Duration d = java.time.Duration.between(begin, Instant.now());
+                timer.setText(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
+            }
+
+        }));
+
+        tl.play();
+
+    }
 }

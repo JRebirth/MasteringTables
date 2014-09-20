@@ -28,7 +28,7 @@
 		<appletWidth>800</appletWidth>
 		<appletHeight>600</appletHeight>
 
-		<ciJob>MasteringTables-master</ciJob>
+		<ciJob>MasteringTables-7x</ciJob>
 
 	</properties>
 
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
+			<version>1.1.2</version>
 		</dependency>
 
 		<dependency>

@@ -160,19 +160,15 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
         // Image
 
-        this.successIcon = ImageViewBuilder.create()
-                .image(MTImages.RESULT_SUCCESS_ICON.get())
-                .layoutX(495)
-                .layoutY(195)
-                .opacity(0)
-                .build();
+        this.successIcon = new ImageView(MTImages.RESULT_SUCCESS_ICON.get());
+        this.successIcon.setLayoutX(495);
+        this.successIcon.setLayoutY(195);
+        this.successIcon.setOpacity(0);
 
-        this.failureIcon = ImageViewBuilder.create()
-                .image(MTImages.RESULT_FAILURE_ICON.get())
-                .layoutX(666)
-                .layoutY(320)
-                .opacity(0)
-                .build();
+        this.failureIcon = new ImageView(MTImages.RESULT_FAILURE_ICON.get());
+        this.failureIcon.setLayoutX(666);
+        this.failureIcon.setLayoutY(320);
+        this.failureIcon.setOpacity(0);
 
         this.monsterImage = ImageViewBuilder.create()
                 .image(MTImages.RESULT_MONSTER.get())
@@ -222,7 +218,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                 .minWidth(800)
                 .children(this.failureBean, this.successBean, this.timeBean, this.ratioCircle, this.monsterImage, this.successIcon, this.failureIcon, this.timeLabel, this.successLabel,
                         this.failureLabel, this.ratioLabel)
-                        .build();
+                .build();
 
         getRootNode().setCenter(p);
 
@@ -250,17 +246,17 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     @Override
     public void start() {
         SequentialTransitionBuilder.create()
-        .children(
+                .children(
 
-                buildBeanAnimation(this.ratioLabel, this.ratioCircle, MTColors.RESULT_RATIO.get()),
-                buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
+                        buildBeanAnimation(this.ratioLabel, this.ratioCircle, MTColors.RESULT_RATIO.get()),
+                        buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
 
-                ParallelTransitionBuilder.create().children(
-                        TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400)).byY(-766).build(),
-                        buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
-                        FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
-                        )
-                        .build(),
+                        ParallelTransitionBuilder.create().children(
+                                TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400)).byY(-766).build(),
+                                buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
+                                FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
+                                )
+                                .build(),
 
                         ParallelTransitionBuilder.create().children(
                                 buildBeanAnimation(this.failureLabel, this.failureBean, MTColors.RESULT_FAILURE.get()),
@@ -287,12 +283,12 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
         return ParallelTransitionBuilder.create()
                 .children(
                         ScaleTransitionBuilder.create().node(label).delay(Duration.millis(50)).duration(Duration.millis(300))
-                        .fromX(0).fromY(0).toX(1).toY(1).build(),
+                                .fromX(0).fromY(0).toX(1).toY(1).build(),
                         FillTransitionBuilder.create().shape(shape)
-                        .fromValue(Color.LIGHTGREY).toValue(fillColor)
-                        .build()
-                        )
-                        .build();
+                                .fromValue(Color.LIGHTGREY).toValue(fillColor)
+                                .build()
+                )
+                .build();
     }
 
     /**

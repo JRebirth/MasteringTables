@@ -40,7 +40,6 @@ import org.jrebirth.af.core.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -181,10 +180,10 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
         AnchorPane.setTopAnchor(successPane, 10.0);
         AnchorPane.setRightAnchor(successPane, 200.0);
 
-        AnchorPane.setTopAnchor(timer, 10.0);
-        AnchorPane.setLeftAnchor(timer, 10.0);
+        AnchorPane.setTopAnchor(this.timer, 10.0);
+        AnchorPane.setLeftAnchor(this.timer, 10.0);
 
-        ap.getChildren().addAll(successPane, failurePane, timer);
+        ap.getChildren().addAll(successPane, failurePane, this.timer);
 
         return ap;
     }
@@ -208,26 +207,26 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
     }
 
     public void stopTimer() {
-        tl.stop();
-        java.time.Duration d = java.time.Duration.between(begin, Instant.now());
+        this.tl.stop();
+        final java.time.Duration d = java.time.Duration.between(this.begin, Instant.now());
         getModel().getObject().setTimeEllapsed(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
     }
 
     public void startTimer() {
-        begin = Instant.now();
-        tl = new Timeline();
-        tl.setCycleCount(Animation.INDEFINITE);
-        tl.getKeyFrames().add(new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
+        this.begin = Instant.now();
+        this.tl = new Timeline();
+        this.tl.setCycleCount(Animation.INDEFINITE);
+        this.tl.getKeyFrames().add(new KeyFrame(Duration.millis(200), new EventHandler<ActionEvent>() {
 
             @Override
-            public void handle(ActionEvent arg0) {
-                java.time.Duration d = java.time.Duration.between(begin, Instant.now());
-                timer.setText(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
+            public void handle(final ActionEvent arg0) {
+                final java.time.Duration d = java.time.Duration.between(GameView.this.begin, Instant.now());
+                GameView.this.timer.setText(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
             }
 
         }));
 
-        tl.play();
+        this.tl.play();
 
     }
 }

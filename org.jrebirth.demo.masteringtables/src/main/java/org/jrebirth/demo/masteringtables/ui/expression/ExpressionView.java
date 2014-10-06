@@ -132,8 +132,8 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                         buildTextPartAnimation(getOperator()),
                         buildTextPartAnimation(getRightOperand()),
                         buildTextPartAnimation(getEquality())
-                        )
-                        .build();
+                )
+                .build();
 
         // Add a nice drop shadow in all direction
         final DropShadow s = DropShadowBuilder.create()
@@ -172,13 +172,13 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                 .children(
 
                         ScaleTransitionBuilder.create()
-                        .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
-                        .fromX(0.0).toX(1.0)
-                        .fromY(0.0).toY(1.0)
-                        .build()
-                        )
+                                .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
+                                .fromX(0.0).toX(1.0)
+                                .fromY(0.0).toY(1.0)
+                                .build()
+                )
 
-                        .build();
+                .build();
     }
 
     /**
@@ -208,33 +208,33 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                 .delay(Duration.millis(400))
                 .children(
                         ScaleTransitionBuilder.create()
-                        .node(this.result)
-                        .fromX(1).toX(4.0)
-                        .fromY(1).toY(4.0)
-                        .build()
+                                .node(this.result)
+                                .fromX(1).toX(4.0)
+                                .fromY(1).toY(4.0)
+                                .build()
                         ,
 
                         ScaleTransitionBuilder.create()
-                        .node(getLeftOperand())
-                        .fromX(1).toX(0)
-                        .fromY(1).toY(0)
-                        .build(),
+                                .node(getLeftOperand())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build(),
                         ScaleTransitionBuilder.create()
-                        .node(getOperator())
-                        .fromX(1).toX(0)
-                        .fromY(1).toY(0)
-                        .build(),
+                                .node(getOperator())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build(),
                         ScaleTransitionBuilder.create()
-                        .node(getRightOperand())
-                        .fromX(1).toX(0)
-                        .fromY(1).toY(0)
-                        .build(),
+                                .node(getRightOperand())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build(),
                         ScaleTransitionBuilder.create()
-                        .node(getEquality())
-                        .fromX(1).toX(0)
-                        .fromY(1).toY(0)
-                        .build()
-                        ).build();
+                                .node(getEquality())
+                                .fromX(1).toX(0)
+                                .fromY(1).toY(0)
+                                .build()
+                ).build();
     }
 
     /**

@@ -47,7 +47,7 @@ public class DisplayGameMenu extends DefaultCommand {
     @Override
     protected void initCommand() {
         LOGGER.trace("Initialize Command " + this.getClass().getSimpleName());
-        listen(ExpressionBuilderService.RE_TABLES_BUILT);
+        listen(ExpressionBuilderService.DO_BUILD_TABLES.returnWaveType());
     }
 
     /**

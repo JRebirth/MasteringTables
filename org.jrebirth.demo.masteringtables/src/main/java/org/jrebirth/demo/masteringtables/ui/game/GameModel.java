@@ -23,6 +23,7 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
+import org.jrebirth.af.core.annotation.OnRelease;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.af.core.wave.OnWave;
 import org.jrebirth.af.core.wave.Wave;
@@ -33,15 +34,12 @@ import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.command.CreateGameContent;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * The Class GameModel.
  */
-@OnWave("toto")
-@OnWave("tatat")
 public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
     /** The Constant LOGGER. */
@@ -190,4 +188,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
     }
 
+    @OnRelease
+    public void customRelease() {
+        getModel(ExpressionModel.class).release();
+    }
 }

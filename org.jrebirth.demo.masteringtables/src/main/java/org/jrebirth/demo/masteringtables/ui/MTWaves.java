@@ -21,7 +21,6 @@ import java.util.List;
 
 import org.jrebirth.af.core.wave.WaveItem;
 import org.jrebirth.af.core.wave.WaveType;
-import org.jrebirth.af.core.wave.WaveTypeBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 
@@ -51,23 +50,23 @@ public interface MTWaves {
     /******************************/
 
     /** Show Page action. */
-    WaveType SHOW_PAGE = WaveTypeBase.build("SHOW_PAGE", PAGE);
+    WaveType SHOW_PAGE = WaveType.create("SHOW_PAGE").items(PAGE);
 
     /** The Start Game action code. */
     String START_GAME_CODE = "START_GAME";
 
     /** Start game action. */
-    WaveType START_GAME = WaveTypeBase.build(START_GAME_CODE, GAME_LIST);
+    WaveType START_GAME = WaveType.create(START_GAME_CODE).items(GAME_LIST);
 
     /** Finish game action. */
-    WaveType FINISH_GAME = WaveTypeBase.build("FINISH_GAME");
+    WaveType FINISH_GAME = WaveType.create("FINISH_GAME");
 
     /** Display expression action. */
-    WaveType DISPLAY_EXPRESSION = WaveTypeBase.build("DISPLAY_EXPRESSION", EXPRESSION);
+    WaveType DISPLAY_EXPRESSION = WaveType.create("DISPLAY_EXPRESSION").items(EXPRESSION);
 
     /** Register expression success action. */
-    WaveType REGISTER_SUCCESS = WaveTypeBase.build("REGISTER_SUCCESS", EXPRESSION);
+    WaveType REGISTER_SUCCESS = WaveType.create("REGISTER_SUCCESS").items(EXPRESSION);
 
     /** Register expression failure action. */
-    WaveType REGISTER_FAILURE = WaveTypeBase.build("REGISTER_FAILURE", EXPRESSION);
+    WaveType REGISTER_FAILURE = WaveType.create("REGISTER_FAILURE").items(EXPRESSION);
 }

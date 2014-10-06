@@ -173,10 +173,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         pane.setAlignment(Pos.CENTER);
 
         // Bound widget to properties Binding SHOULD BE grouped
-        getModel().getGameSettings().containsAdditionProperty().bind(this.addition.selectedProperty());
-        getModel().getGameSettings().containsSubtractionProperty().bind(this.subtraction.selectedProperty());
-        getModel().getGameSettings().containsMultiplicationProperty().bind(this.multiplication.selectedProperty());
-        getModel().getGameSettings().containsDivisionProperty().bind(this.division.selectedProperty());
+        getModel().getObject().containsAdditionProperty().bind(this.addition.selectedProperty());
+        getModel().getObject().containsSubtractionProperty().bind(this.subtraction.selectedProperty());
+        getModel().getObject().containsMultiplicationProperty().bind(this.multiplication.selectedProperty());
+        getModel().getObject().containsDivisionProperty().bind(this.division.selectedProperty());
 
         // Manage Question count
 
@@ -205,7 +205,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
             @Override
             public void changed(final ObservableValue<? extends Toggle> toggleProperty, final Toggle previous, final Toggle next) {
                 if (next != null) {
-                    getModel().getGameSettings().setQuestionNumber((int) next.getUserData());
+                    getModel().getObject().setQuestionNumber((int) next.getUserData());
                 }
             }
         });

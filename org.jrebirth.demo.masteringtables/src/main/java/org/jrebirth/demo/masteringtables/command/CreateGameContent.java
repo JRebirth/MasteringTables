@@ -45,7 +45,7 @@ public class CreateGameContent extends DefaultPoolCommand {
         final ExpressionBuilderService service = getService(ExpressionBuilderService.class);
 
         // Retrieve game settings from the ui
-        final GameSettings gs = getModel(GameMenuModel.class).getGameSettings();
+        final GameSettings gs = getModel(GameMenuModel.class).getObject();
 
         // Add tables according to User choice
         final List<Expression> gameList = new ArrayList<>();
@@ -53,6 +53,7 @@ public class CreateGameContent extends DefaultPoolCommand {
         if (gs.containsAddition()) {
             gameList.addAll(service.getAdditionTable());
         }
+
         if (gs.containsSubtraction()) {
             gameList.addAll(service.getSubtractionTable());
         }

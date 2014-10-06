@@ -18,7 +18,8 @@
 package org.jrebirth.demo.masteringtables.ui.menu;
 
 import org.jrebirth.af.core.annotation.Component;
-import org.jrebirth.af.core.ui.DefaultModel;
+import org.jrebirth.af.core.annotation.Releasable;
+import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameMenuModel.
  */
-public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
+public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuView, GameSettings> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuModel.class);
@@ -36,15 +37,8 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
     @Component
     private ExpressionBuilderService expressionBuilderService;
 
-    /** The game settings bean. */
-    private final GameSettings gameSettings = new GameSettings();
-
-    /**
-     * Gets the game settings.
-     *
-     * @return the game settings
-     */
-    public GameSettings getGameSettings() {
-        return this.gameSettings;
+    @Releasable
+    public boolean canRelease() {
+        return false;
     }
 }

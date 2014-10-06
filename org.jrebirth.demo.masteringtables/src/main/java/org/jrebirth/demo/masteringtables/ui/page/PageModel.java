@@ -32,7 +32,6 @@ import org.jrebirth.demo.masteringtables.ui.game.GameModel;
 import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 import org.jrebirth.demo.masteringtables.ui.result.ResultModel;
 import org.jrebirth.demo.masteringtables.ui.splash.SplashModel;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

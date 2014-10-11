@@ -17,7 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables.ui.menu;
 
-import org.jrebirth.af.core.annotation.Component;
+import org.jrebirth.af.core.annotation.LinkComponent;
 import org.jrebirth.af.core.annotation.Releasable;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
@@ -34,7 +34,7 @@ public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuVie
     private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuModel.class);
 
     /** The service used to build quiz data. */
-    @Component
+    @LinkComponent
     private ExpressionBuilderService expressionBuilderService;
 
     @Releasable

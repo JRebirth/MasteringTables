@@ -74,11 +74,5 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jrebirth.af</groupId>
-			<artifactId>modular</artifactId>
-			<version>8.0.0-SNAPSHOT</version>
-		</dependency>
-
 	</dependencies>
 </project>

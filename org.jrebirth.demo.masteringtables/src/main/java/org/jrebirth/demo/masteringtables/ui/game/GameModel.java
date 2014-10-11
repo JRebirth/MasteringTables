@@ -23,7 +23,7 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.af.core.annotation.OnRelease;
+import org.jrebirth.af.core.inner.InnerComponent;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.af.core.wave.OnWave;
 import org.jrebirth.af.core.wave.Wave;
@@ -45,6 +45,9 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(GameModel.class);
 
+    /** The Expression UI inner component. */
+    static final InnerComponent<ExpressionModel> EXPRESSION = InnerComponent.create(ExpressionModel.class);
+    
     /**
      * {@inheritDoc}
      */
@@ -57,6 +60,16 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
         listen(MTWaves.REGISTER_FAILURE);
 
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void initInnerComponents() {
+        addInnerComponent(EXPRESSION);
+    }
+
+
 
     @Override
     protected void bind() {
@@ -76,6 +89,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     @OnWave(MTWaves.START_GAME_CODE)
     public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
+        ExpressionModel expressionModel = getInnerComponent(EXPRESSION);
+        
         // Reset the current index and counters
         getObject().setIndex(0);
         getObject().setSuccessCount(0);
@@ -87,10 +102,10 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
         // Clear the current expression panel
         getView().getExpressionHolder().getChildren().clear();
-        getView().getExpressionHolder().getChildren().add(getModel(ExpressionModel.class).getRootNode());
+        getView().getExpressionHolder().getChildren().add(expressionModel.getRootNode());
 
         // Center the panel
-        StackPane.setAlignment(getModel(ExpressionModel.class).getRootNode(), Pos.CENTER);
+        StackPane.setAlignment(expressionModel.getRootNode(), Pos.CENTER);
 
         getView().startTimer();
 
@@ -148,7 +163,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void hideView() {
-        getModel(ExpressionModel.class).reset();
+        getInnerComponent(EXPRESSION).reset();
     }
 
     /**
@@ -157,7 +172,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param code the code
      */
     public void performNumber(final KeyCode code) {
-        getModel(ExpressionModel.class).appendNumber(code.getName());
+        getInnerComponent(EXPRESSION).appendNumber(code.getName());
     }
 
     /**
@@ -184,12 +199,13 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * Do delete.
      */
     public void performDelete() {
-        getModel(ExpressionModel.class).deleteLastChar();
+        getInnerComponent(EXPRESSION).deleteLastChar();
 
     }
 
-    @OnRelease
-    public void customRelease() {
-        getModel(ExpressionModel.class).release();
-    }
+//    @OnRelease
+//    public void customRelease() {
+//        getInnerModel(EXPRESSION).release();
+//    }
+    
 }

@@ -18,10 +18,10 @@
 package org.jrebirth.demo.masteringtables.ui.menu;
 
 import org.jrebirth.af.core.annotation.Component;
+import org.jrebirth.af.core.annotation.Releasable;
 import org.jrebirth.af.core.ui.DefaultModel;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,5 +47,10 @@ public class GameMenuModel extends DefaultModel<GameMenuModel, GameMenuView> {
      */
     public GameSettings getGameSettings() {
         return this.gameSettings;
+    }
+
+    @Releasable
+    public boolean canRelease() {
+        return false;
     }
 }

@@ -10,11 +10,11 @@
 
 	<groupId>org.jrebirth.demo</groupId>
 	<artifactId>masteringtables</artifactId>
-	<version>1.2.0</version>
+	<version>1.5.0</version>
 
 	<name>Mastering Tables</name>
 	<url>http://www.jrebirth.org</url>
-	<description>Built with JRebirth Framework</description>
+	<description>Built with JReb1irth Framework</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,13 +58,13 @@
 		<dependency>
 			<groupId>org.jrebirth.af</groupId>
 			<artifactId>core</artifactId>
-			<version>7.7.3</version>
+			<version>7.7.5-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jrebirth.af</groupId>
 			<artifactId>preloader</artifactId>
-			<version>7.7.3</version>
+			<version>7.7.5-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

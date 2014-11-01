@@ -17,8 +17,8 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
+import org.jrebirth.af.api.resource.image.ImageExtension;
 import org.jrebirth.af.core.resource.image.ImageEnum;
-import org.jrebirth.af.core.resource.image.ImageExtension;
 
 /**
  * The MTImages enumeration providing all images.

@@ -61,8 +61,8 @@ public class ResultModel extends DefaultObjectModel<ResultModel, ResultView, Gam
             // Compute Hit ratio
             final NumberBinding totalattempt = g.successCountProperty().add(g.failureCountProperty());
             final NumberBinding ratio = Bindings.when(totalattempt.greaterThan(0))
-                    .then(Bindings.divide(g.successCountProperty().multiply(100), totalattempt))
-                    .otherwise(0);
+                                                .then(Bindings.divide(g.successCountProperty().multiply(100), totalattempt))
+                                                .otherwise(0);
 
             getView().getRatioLabel().textProperty().bind(ratio.asString().concat("%"));
 

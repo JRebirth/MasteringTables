@@ -17,14 +17,14 @@
  */
 package org.jrebirth.demo.masteringtables.command;
 
-import org.jrebirth.af.core.command.DefaultCommand;
-import org.jrebirth.af.core.concurrent.RunInto;
-import org.jrebirth.af.core.concurrent.RunType;
-import org.jrebirth.af.core.concurrent.RunnablePriority;
+import org.jrebirth.af.api.concurrent.RunInto;
+import org.jrebirth.af.api.concurrent.RunType;
+import org.jrebirth.af.api.concurrent.RunnablePriority;
+import org.jrebirth.af.api.wave.OnWave;
+import org.jrebirth.af.api.wave.Wave;
+import org.jrebirth.af.core.command.single.internal.DefaultCommand;
+import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.af.core.wave.JRebirthWaves;
-import org.jrebirth.af.core.wave.OnWave;
-import org.jrebirth.af.core.wave.Wave;
-import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
@@ -59,7 +59,7 @@ public class DisplayGameMenu extends DefaultCommand {
         // Call the right service to generate all tables
         // Forward the progress bar attached to the upstream wave
         returnData(ExpressionBuilderService.class, ExpressionBuilderService.DO_BUILD_TABLES,
-                wave.getData(JRebirthWaves.PROGRESS_BAR));
+                   wave.getData(JRebirthWaves.PROGRESS_BAR));
     }
 
     /**
@@ -71,6 +71,6 @@ public class DisplayGameMenu extends DefaultCommand {
     @RunInto(value = RunType.JTP, priority = RunnablePriority.High)
     public void doTablesBuilt(final boolean bool, final Wave wave) {
         // When tables are built, launch the wave that will display the game menu
-        sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
+        sendWave(MTWaves.SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
     }
 }

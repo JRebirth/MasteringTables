@@ -17,8 +17,8 @@
  */
 package org.jrebirth.demo.masteringtables.ui.menu;
 
-import org.jrebirth.af.core.annotation.LinkComponent;
-import org.jrebirth.af.core.annotation.Releasable;
+import org.jrebirth.af.api.annotation.LinkComponent;
+import org.jrebirth.af.api.annotation.Releasable;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;

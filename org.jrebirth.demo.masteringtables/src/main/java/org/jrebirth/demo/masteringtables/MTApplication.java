@@ -26,10 +26,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import org.jrebirth.af.api.resource.ResourceItem;
+import org.jrebirth.af.api.ui.Model;
+import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.application.DefaultApplication;
-import org.jrebirth.af.core.resource.ResourceItem;
-import org.jrebirth.af.core.ui.Model;
-import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.resources.MTColors;
 import org.jrebirth.demo.masteringtables.resources.MTStyles;
 import org.jrebirth.demo.masteringtables.ui.page.PageModel;
@@ -89,7 +89,7 @@ public final class MTApplication extends DefaultApplication<StackPane> {
      * {@inheritDoc}
      */
     @Override
-    protected List<? extends ResourceItem<?, ?, ?, ?>> getResourceToPreload() {
+    protected List<? extends ResourceItem<?, ?, ?>> getResourceToPreload() {
         // // Define fonts that will be available from CSS
         // return Collections.Arrays.asList(new FontItem[] {
         // MTFonts.EXPRESSION,

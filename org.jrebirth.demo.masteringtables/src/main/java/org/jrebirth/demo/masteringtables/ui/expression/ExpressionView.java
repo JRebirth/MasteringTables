@@ -32,10 +32,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextBuilder;
 import javafx.util.Duration;
 
-import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.api.exception.CoreException;
+import org.jrebirth.af.api.ui.annotation.OnFinished;
+import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
-import org.jrebirth.af.core.ui.annotation.OnFinished;
-import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,28 +97,28 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
         getRootNode().setMaxSize(700, 200);
 
         this.leftOperand = getExpressionTextBuilder()
-                .wrappingWidth(180)
-                .build();
+                                                     .wrappingWidth(180)
+                                                     .build();
 
         this.operator = getExpressionTextBuilder()
-                .wrappingWidth(60)
-                .build();
+                                                  .wrappingWidth(60)
+                                                  .build();
 
         this.rightOperand = getExpressionTextBuilder()
-                .wrappingWidth(120)
-                .build();
+                                                      .wrappingWidth(120)
+                                                      .build();
 
         this.equality = getExpressionTextBuilder()
-                .wrappingWidth(60)
-                .text("=")
-                .build();
+                                                  .wrappingWidth(60)
+                                                  .text("=")
+                                                  .build();
 
         this.result = getExpressionTextBuilder()
-                .wrappingWidth(180)
-                .scaleX(1.0)
-                .scaleY(1.0)
-                .text("")
-                .build();
+                                                .wrappingWidth(180)
+                                                .scaleX(1.0)
+                                                .scaleY(1.0)
+                                                .text("")
+                                                .build();
 
         getRootNode().getChildren().addAll(this.leftOperand, this.operator, this.rightOperand, this.equality, this.result);
 
@@ -127,23 +127,23 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
         this.expressionFailure = buildExpressionFailure();
 
         this.showExpression = SequentialTransitionBuilder.create()
-                .children(
-                        buildTextPartAnimation(getLeftOperand()),
-                        buildTextPartAnimation(getOperator()),
-                        buildTextPartAnimation(getRightOperand()),
-                        buildTextPartAnimation(getEquality())
-                )
-                .build();
+                                                         .children(
+                                                                   buildTextPartAnimation(getLeftOperand()),
+                                                                   buildTextPartAnimation(getOperator()),
+                                                                   buildTextPartAnimation(getRightOperand()),
+                                                                   buildTextPartAnimation(getEquality())
+                                                         )
+                                                         .build();
 
         // Add a nice drop shadow in all direction
         final DropShadow s = DropShadowBuilder.create()
-                .height(10)
-                .width(10)
-                .color(Color.BLACK)
-                .blurType(BlurType.THREE_PASS_BOX)
-                .radius(10)
-                .spread(0.1)
-                .build();
+                                              .height(10)
+                                              .width(10)
+                                              .color(Color.BLACK)
+                                              .blurType(BlurType.THREE_PASS_BOX)
+                                              .radius(10)
+                                              .spread(0.1)
+                                              .build();
 
         getRootNode().setEffect(s);
     }
@@ -155,9 +155,9 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
      */
     private TextBuilder<?> getExpressionTextBuilder() {
         return TextBuilder.create()
-                .scaleX(0).scaleY(0)
-                .textAlignment(TextAlignment.CENTER)
-                .font(MTFonts.EXPRESSION.get());
+                          .scaleX(0).scaleY(0)
+                          .textAlignment(TextAlignment.CENTER)
+                          .font(MTFonts.EXPRESSION.get());
     }
 
     /**
@@ -168,17 +168,17 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
      */
     private Animation buildTextPartAnimation(final Text textNode) {
         return ParallelTransitionBuilder.create()
-                .node(textNode)
-                .children(
+                                        .node(textNode)
+                                        .children(
 
-                        ScaleTransitionBuilder.create()
-                                .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
-                                .fromX(0.0).toX(1.0)
-                                .fromY(0.0).toY(1.0)
-                                .build()
-                )
+                                                  ScaleTransitionBuilder.create()
+                                                                        .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
+                                                                        .fromX(0.0).toX(1.0)
+                                                                        .fromY(0.0).toY(1.0)
+                                                                        .build()
+                                        )
 
-                .build();
+                                        .build();
     }
 
     /**
@@ -205,36 +205,36 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
     private Animation buildExpressionResolved() {
 
         return ParallelTransitionBuilder.create()
-                .delay(Duration.millis(400))
-                .children(
-                        ScaleTransitionBuilder.create()
-                                .node(this.result)
-                                .fromX(1).toX(4.0)
-                                .fromY(1).toY(4.0)
-                                .build()
-                        ,
+                                        .delay(Duration.millis(400))
+                                        .children(
+                                                  ScaleTransitionBuilder.create()
+                                                                        .node(this.result)
+                                                                        .fromX(1).toX(4.0)
+                                                                        .fromY(1).toY(4.0)
+                                                                        .build()
+                                                  ,
 
-                        ScaleTransitionBuilder.create()
-                                .node(getLeftOperand())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build(),
-                        ScaleTransitionBuilder.create()
-                                .node(getOperator())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build(),
-                        ScaleTransitionBuilder.create()
-                                .node(getRightOperand())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build(),
-                        ScaleTransitionBuilder.create()
-                                .node(getEquality())
-                                .fromX(1).toX(0)
-                                .fromY(1).toY(0)
-                                .build()
-                ).build();
+                                                  ScaleTransitionBuilder.create()
+                                                                        .node(getLeftOperand())
+                                                                        .fromX(1).toX(0)
+                                                                        .fromY(1).toY(0)
+                                                                        .build(),
+                                                  ScaleTransitionBuilder.create()
+                                                                        .node(getOperator())
+                                                                        .fromX(1).toX(0)
+                                                                        .fromY(1).toY(0)
+                                                                        .build(),
+                                                  ScaleTransitionBuilder.create()
+                                                                        .node(getRightOperand())
+                                                                        .fromX(1).toX(0)
+                                                                        .fromY(1).toY(0)
+                                                                        .build(),
+                                                  ScaleTransitionBuilder.create()
+                                                                        .node(getEquality())
+                                                                        .fromX(1).toX(0)
+                                                                        .fromY(1).toY(0)
+                                                                        .build()
+                                        ).build();
     }
 
     /**
@@ -251,12 +251,12 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
      */
     private Animation buildExpressionFailure() {
         return ScaleTransitionBuilder.create()
-                .delay(Duration.millis(500))
-                .node(getResult())
-                .fromX(1).toX(0.0)
-                .fromY(1).toY(0.0)
-                .duration(Duration.millis(400))
-                .build();
+                                     .delay(Duration.millis(500))
+                                     .node(getResult())
+                                     .fromX(1).toX(0.0)
+                                     .fromY(1).toY(0.0)
+                                     .duration(Duration.millis(400))
+                                     .build();
     }
 
     /**

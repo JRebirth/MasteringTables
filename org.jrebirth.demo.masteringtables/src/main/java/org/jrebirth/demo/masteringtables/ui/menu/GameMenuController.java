@@ -19,9 +19,9 @@ package org.jrebirth.demo.masteringtables.ui.menu;
 
 import javafx.event.ActionEvent;
 
-import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.api.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultController;
-import org.jrebirth.af.core.wave.WaveData;
+import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.slf4j.Logger;
@@ -52,7 +52,7 @@ public class GameMenuController extends DefaultController<GameMenuModel, GameMen
      */
     public void onActionPlay(final ActionEvent actionEvent) {
         // When play button is triggered launch the game
-        getModel().sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.Game));
+        getModel().sendWave(MTWaves.SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.Game));
     }
 
 }

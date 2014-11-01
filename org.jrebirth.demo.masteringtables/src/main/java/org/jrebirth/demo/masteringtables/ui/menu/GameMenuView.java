@@ -42,10 +42,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.GridPaneBuilder;
 import javafx.scene.layout.RowConstraints;
 
-import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.api.exception.CoreException;
+import org.jrebirth.af.api.ui.annotation.OnAction;
+import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
-import org.jrebirth.af.core.ui.annotation.OnAction;
-import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.beans.Operator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -121,11 +121,11 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         final FlowPane fp = new FlowPane();
 
         this.playButton = ButtonBuilder.create()
-                .styleClass("play")
-                .minHeight(130)
-                .minWidth(180)
-                // .text("Start Game")
-                .build();
+                                       .styleClass("play")
+                                       .minHeight(130)
+                                       .minWidth(180)
+                                       // .text("Start Game")
+                                       .build();
 
         fp.getChildren().add(this.playButton);
         fp.setAlignment(Pos.TOP_CENTER);
@@ -141,10 +141,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     private Node buildGameConfigPanel() {
 
         final GridPane pane = GridPaneBuilder.create()
-                .hgap(10)
-                // .vgap(10)
-                // .gridLinesVisible(true)
-                .build();
+                                             .hgap(10)
+                                             // .vgap(10)
+                                             // .gridLinesVisible(true)
+                                             .build();
 
         pane.getRowConstraints().addAll(new RowConstraints(150), new RowConstraints(100), new RowConstraints(100));
 
@@ -194,8 +194,8 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         fp.getChildren().addAll(toggleList);
 
         this.lengthGroup = ToggleGroupBuilder.create()
-                .toggles(toggleList)
-                .build();
+                                             .toggles(toggleList)
+                                             .build();
 
         GridPane.setConstraints(fp, 0, 1, 4, 1, HPos.CENTER, VPos.CENTER);
         pane.getChildren().add(fp);
@@ -233,14 +233,14 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      */
     private ToggleButton buildChoiceButton(final String name) {
         return ToggleButtonBuilder.create()
-                .styleClass("ChoiceButton")// , "toggle-button")
-                .alignment(Pos.BASELINE_CENTER)
-                .minWidth(150)
-                .minHeight(150)
-                .maxWidth(150)
-                .maxHeight(150)
-                // .text(name)
-                .build();
+                                  .styleClass("ChoiceButton")// , "toggle-button")
+                                  .alignment(Pos.BASELINE_CENTER)
+                                  .minWidth(150)
+                                  .minHeight(150)
+                                  .maxWidth(150)
+                                  .maxHeight(150)
+                                  // .text(name)
+                                  .build();
 
     }
 
@@ -253,15 +253,15 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      */
     private ToggleButton buildMiniButton(final int value) {
         return ToggleButtonBuilder.create()
-                .styleClass("MiniChoiceButton", "expr" + value)// , "toggle-button")
-                .alignment(Pos.BASELINE_CENTER)
-                .minWidth(70)
-                .minHeight(70)
-                .maxWidth(70)
-                .maxHeight(70)
-                .userData(value)
-                // .text(Integer.toString(value))
-                .build();
+                                  .styleClass("MiniChoiceButton", "expr" + value)// , "toggle-button")
+                                  .alignment(Pos.BASELINE_CENTER)
+                                  .minWidth(70)
+                                  .minHeight(70)
+                                  .maxWidth(70)
+                                  .maxHeight(70)
+                                  .userData(value)
+                                  // .text(Integer.toString(value))
+                                  .build();
 
     }
 

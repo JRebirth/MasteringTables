@@ -19,9 +19,9 @@ package org.jrebirth.demo.masteringtables.ui.expression;
 
 import javafx.event.ActionEvent;
 
-import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.api.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultController;
-import org.jrebirth.af.core.wave.WaveData;
+import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +56,7 @@ public class ExpressionController extends DefaultController<ExpressionModel, Exp
         getView().getResult().setScaleY(1);
 
         // Send a register success event
-        getModel().sendWave(MTWaves.REGISTER_SUCCESS, WaveData.build(MTWaves.EXPRESSION, getModel().getObject()));
+        getModel().sendWave(MTWaves.REGISTER_SUCCESS, Builders.waveData(MTWaves.EXPRESSION, getModel().getObject()));
     }
 
     /**
@@ -72,6 +72,6 @@ public class ExpressionController extends DefaultController<ExpressionModel, Exp
         getView().getResult().setScaleY(1);
 
         // Send a register failure event
-        getModel().sendWave(MTWaves.REGISTER_FAILURE, WaveData.build(MTWaves.EXPRESSION, getModel().getObject()));
+        getModel().sendWave(MTWaves.REGISTER_FAILURE, Builders.waveData(MTWaves.EXPRESSION, getModel().getObject()));
     }
 }

@@ -20,10 +20,10 @@ package org.jrebirth.demo.masteringtables.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jrebirth.af.core.concurrent.Priority;
-import org.jrebirth.af.core.concurrent.RunnablePriority;
+import org.jrebirth.af.api.concurrent.Priority;
+import org.jrebirth.af.api.concurrent.RunnablePriority;
+import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.service.DefaultService;
-import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.af.processor.annotation.Register;
 import org.jrebirth.af.processor.annotation.RegistrationPriority;
 import org.jrebirth.demo.masteringtables.beans.Expression;
@@ -81,29 +81,29 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
             for (int rightOperand = 1; rightOperand <= 12; rightOperand++) {
 
                 this.multiplicationTable.add(Expression.create()
-                        .left(leftOperand)
-                        .operator(Operator.multiplication.toString())
-                        .right(rightOperand)
-                        .result(leftOperand * rightOperand)
-                        );
+                                                       .left(leftOperand)
+                                                       .operator(Operator.multiplication.toString())
+                                                       .right(rightOperand)
+                                                       .result(leftOperand * rightOperand)
+                                        );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
 
                 this.additionTable.add(Expression.create()
-                        .left(leftOperand)
-                        .operator(Operator.addition.toString())
-                        .right(rightOperand)
-                        .result(leftOperand + rightOperand)
-                        );
+                                                 .left(leftOperand)
+                                                 .operator(Operator.addition.toString())
+                                                 .right(rightOperand)
+                                                 .result(leftOperand + rightOperand)
+                                  );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
 
                 this.divisionTable.add(Expression.create()
-                        .left(rightOperand * leftOperand)
-                        .operator(Operator.division.toString())
-                        .right(leftOperand)
-                        .result(rightOperand)
-                        );
+                                                 .left(rightOperand * leftOperand)
+                                                 .operator(Operator.division.toString())
+                                                 .right(leftOperand)
+                                                 .result(rightOperand)
+                                  );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
 
@@ -120,11 +120,11 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
             for (int leftOperand = tableGap; leftOperand <= tableGap + 12; leftOperand++) {
 
                 this.subtractionTable.add(Expression.create()
-                        .left(leftOperand)
-                        .operator(Operator.subtraction.toString())
-                        .right(rightOperand)
-                        .result(leftOperand - rightOperand)
-                        );
+                                                    .left(leftOperand)
+                                                    .operator(Operator.subtraction.toString())
+                                                    .right(rightOperand)
+                                                    .result(leftOperand - rightOperand)
+                                     );
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
             }

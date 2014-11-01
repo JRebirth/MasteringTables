@@ -36,9 +36,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.StackPaneBuilder;
 import javafx.util.Duration;
 
-import org.jrebirth.af.core.exception.CoreException;
+import org.jrebirth.af.api.exception.CoreException;
+import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
-import org.jrebirth.af.core.ui.annotation.RootNodeId;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -123,15 +123,15 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
         // Success Part
 
         this.successCounter = LabelBuilder.create()
-                .id("SuccessCounter")
-                .font(MTFonts.COUNTER.get())
-                .minWidth(100)
-                .alignment(Pos.CENTER_RIGHT)
-                .build();
+                                          .id("SuccessCounter")
+                                          .font(MTFonts.COUNTER.get())
+                                          .minWidth(100)
+                                          .alignment(Pos.CENTER_RIGHT)
+                                          .build();
 
         this.successIcon = LabelBuilder.create()
-                .id("SuccessIcon")
-                .build();
+                                       .id("SuccessIcon")
+                                       .build();
 
         StackPane.setMargin(this.successIcon, new Insets(0, 0, 12, 92));
         StackPane.setAlignment(this.successIcon, Pos.TOP_RIGHT);
@@ -139,21 +139,21 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
         StackPane.setAlignment(this.successCounter, Pos.BOTTOM_LEFT);
 
         final StackPane successPane = StackPaneBuilder.create()
-                .children(this.successIcon, this.successCounter)
-                .build();
+                                                      .children(this.successIcon, this.successCounter)
+                                                      .build();
 
         // Failure Part
 
         this.failureCounter = LabelBuilder.create()
-                .id("FailureCounter")
-                .font(MTFonts.COUNTER.get())
-                .minWidth(100)
-                .alignment(Pos.CENTER_RIGHT)
-                .build();
+                                          .id("FailureCounter")
+                                          .font(MTFonts.COUNTER.get())
+                                          .minWidth(100)
+                                          .alignment(Pos.CENTER_RIGHT)
+                                          .build();
 
         this.failureIcon = LabelBuilder.create()
-                .id("FailureIcon")
-                .build();
+                                       .id("FailureIcon")
+                                       .build();
 
         StackPane.setMargin(this.failureIcon, new Insets(0, 0, 12, 92));
         StackPane.setAlignment(this.failureIcon, Pos.TOP_RIGHT);
@@ -161,16 +161,16 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
         StackPane.setAlignment(this.failureCounter, Pos.BOTTOM_LEFT);
 
         final StackPane failurePane = StackPaneBuilder.create()
-                .children(this.failureIcon, this.failureCounter)
-                .build();
+                                                      .children(this.failureIcon, this.failureCounter)
+                                                      .build();
 
         this.timer = LabelBuilder.create()
-                .id("Timer")
-                .text("00:00")
-                .font(MTFonts.COUNTER.get())
-                .minWidth(100)
-                .alignment(Pos.CENTER_RIGHT)
-                .build();
+                                 .id("Timer")
+                                 .text("00:00")
+                                 .font(MTFonts.COUNTER.get())
+                                 .minWidth(100)
+                                 .alignment(Pos.CENTER_RIGHT)
+                                 .build();
 
         // Add Part to the view root node
 

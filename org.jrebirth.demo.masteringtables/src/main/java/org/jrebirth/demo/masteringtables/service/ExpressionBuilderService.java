@@ -19,13 +19,15 @@ package org.jrebirth.demo.masteringtables.service;
 
 import java.util.List;
 
-import org.jrebirth.af.core.concurrent.Priority;
-import org.jrebirth.af.core.concurrent.RunnablePriority;
-import org.jrebirth.af.core.service.Service;
+import org.jrebirth.af.api.concurrent.Priority;
+import org.jrebirth.af.api.concurrent.RunnablePriority;
+import org.jrebirth.af.api.service.Service;
+import org.jrebirth.af.api.wave.Wave;
+import org.jrebirth.af.api.wave.WaveItem;
+import org.jrebirth.af.api.wave.WaveType;
+import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.af.core.wave.JRebirthItems;
-import org.jrebirth.af.core.wave.Wave;
-import org.jrebirth.af.core.wave.WaveItem;
-import org.jrebirth.af.core.wave.WaveType;
+import org.jrebirth.af.core.wave.WaveItemBase;
 import org.jrebirth.af.processor.annotation.RegistrationPoint;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 
@@ -36,16 +38,16 @@ import org.jrebirth.demo.masteringtables.beans.Expression;
 public interface ExpressionBuilderService extends Service {
 
     /** The Wave Item ALL_EXPRESSIONS. */
-    WaveItem<List<Expression>> ALL_EXPRESSIONS = new WaveItem<List<Expression>>() {
+    WaveItem<List<Expression>> ALL_EXPRESSIONS = new WaveItemBase<List<Expression>>() {
     };
 
     /** The WaveType return action name. */
     String TABLES_BUILT = "TABLES_BUILT";
 
     /** The Wave Type DO_BUILD_TABLES. */
-    WaveType DO_BUILD_TABLES = WaveType.create("BUILD_TABLES")
-            .returnAction(TABLES_BUILT)
-            .returnItem(JRebirthItems.booleanItem);
+    WaveType DO_BUILD_TABLES = Builders.waveType("BUILD_TABLES")
+                                       .returnAction(TABLES_BUILT)
+                                       .returnItem(JRebirthItems.booleanItem);
 
     /**
      * Builds all tables.

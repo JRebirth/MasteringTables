@@ -17,8 +17,8 @@
  */
 package org.jrebirth.demo.masteringtables.ui.expression;
 
+import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
-import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.slf4j.Logger;

@@ -17,17 +17,19 @@
  */
 package org.jrebirth.demo.masteringtables.ui.game;
 
+import static org.jrebirth.af.core.wave.Builders.waveData;
+
 import java.util.List;
 
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.af.core.inner.InnerComponent;
+import org.jrebirth.af.api.inner.InnerComponent;
+import org.jrebirth.af.api.wave.OnWave;
+import org.jrebirth.af.api.wave.Wave;
+import org.jrebirth.af.core.inner.InnerComponentBase;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
-import org.jrebirth.af.core.wave.OnWave;
-import org.jrebirth.af.core.wave.Wave;
-import org.jrebirth.af.core.wave.WaveData;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Game;
 import org.jrebirth.demo.masteringtables.beans.Page;
@@ -46,8 +48,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameModel.class);
 
     /** The Expression UI inner component. */
-    static final InnerComponent<ExpressionModel> EXPRESSION = InnerComponent.create(ExpressionModel.class);
-    
+    static final InnerComponent<ExpressionModel> EXPRESSION = InnerComponentBase.create(ExpressionModel.class);
+
     /**
      * {@inheritDoc}
      */
@@ -60,7 +62,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
         listen(MTWaves.REGISTER_FAILURE);
 
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -68,8 +70,6 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     protected void initInnerComponents() {
         addInnerComponent(EXPRESSION);
     }
-
-
 
     @Override
     protected void bind() {
@@ -89,8 +89,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     @OnWave(MTWaves.START_GAME_CODE)
     public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
-        ExpressionModel expressionModel = getInnerComponent(EXPRESSION);
-        
+        final ExpressionModel expressionModel = getInnerComponent(EXPRESSION);
+
         // Reset the current index and counters
         getObject().setIndex(0);
         getObject().setSuccessCount(0);
@@ -110,7 +110,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
         getView().startTimer();
 
         // Display the current expression with the help of the inner model
-        sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
+        sendWave(MTWaves.DISPLAY_EXPRESSION, waveData(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
     }
 
     /**
@@ -127,14 +127,14 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
         if (getObject().hasMoreExpression()) {
             // continue game
-            sendWave(MTWaves.DISPLAY_EXPRESSION, WaveData.build(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
+            sendWave(MTWaves.DISPLAY_EXPRESSION, waveData(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
         } else {
 
             getView().stopTimer();
 
             // Game is finished
             // sendWave(MTWaves.FINISH_GAME);
-            sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.Result));
+            sendWave(MTWaves.SHOW_PAGE, waveData(MTWaves.PAGE, Page.Result));
         }
 
     }
@@ -191,7 +191,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
         sendWave(MTWaves.FINISH_GAME);
 
         // Display the star menu
-        sendWave(MTWaves.SHOW_PAGE, WaveData.build(MTWaves.PAGE, Page.GameMenu));
+        sendWave(MTWaves.SHOW_PAGE, waveData(MTWaves.PAGE, Page.GameMenu));
 
     }
 
@@ -203,9 +203,9 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
     }
 
-//    @OnRelease
-//    public void customRelease() {
-//        getInnerModel(EXPRESSION).release();
-//    }
-    
+    // @OnRelease
+    // public void customRelease() {
+    // getInnerModel(EXPRESSION).release();
+    // }
+
 }

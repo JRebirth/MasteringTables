@@ -17,10 +17,13 @@
  */
 package org.jrebirth.demo.masteringtables.ui;
 
+import static org.jrebirth.af.core.wave.Builders.waveType;
+
 import java.util.List;
 
-import org.jrebirth.af.core.wave.WaveItem;
-import org.jrebirth.af.core.wave.WaveType;
+import org.jrebirth.af.api.wave.WaveItem;
+import org.jrebirth.af.api.wave.WaveType;
+import org.jrebirth.af.core.wave.WaveItemBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;
 
@@ -34,15 +37,15 @@ public interface MTWaves {
     /******************************/
 
     /** The expression to ask to user. */
-    WaveItem<Expression> EXPRESSION = new WaveItem<Expression>() {
+    WaveItem<Expression> EXPRESSION = new WaveItemBase<Expression>() {
     };
 
     /** The game list. */
-    WaveItem<List<Expression>> GAME_LIST = new WaveItem<List<Expression>>() {
+    WaveItem<List<Expression>> GAME_LIST = new WaveItemBase<List<Expression>>() {
     };
 
     /** The page to display. */
-    WaveItem<Page> PAGE = new WaveItem<Page>() {
+    WaveItem<Page> PAGE = new WaveItemBase<Page>() {
     };
 
     /******************************/
@@ -50,23 +53,23 @@ public interface MTWaves {
     /******************************/
 
     /** Show Page action. */
-    WaveType SHOW_PAGE = WaveType.create("SHOW_PAGE").items(PAGE);
+    WaveType SHOW_PAGE = waveType("SHOW_PAGE").items(PAGE);
 
     /** The Start Game action code. */
     String START_GAME_CODE = "START_GAME";
 
     /** Start game action. */
-    WaveType START_GAME = WaveType.create(START_GAME_CODE).items(GAME_LIST);
+    WaveType START_GAME = waveType(START_GAME_CODE).items(GAME_LIST);
 
     /** Finish game action. */
-    WaveType FINISH_GAME = WaveType.create("FINISH_GAME");
+    WaveType FINISH_GAME = waveType("FINISH_GAME");
 
     /** Display expression action. */
-    WaveType DISPLAY_EXPRESSION = WaveType.create("DISPLAY_EXPRESSION").items(EXPRESSION);
+    WaveType DISPLAY_EXPRESSION = waveType("DISPLAY_EXPRESSION").items(EXPRESSION);
 
     /** Register expression success action. */
-    WaveType REGISTER_SUCCESS = WaveType.create("REGISTER_SUCCESS").items(EXPRESSION);
+    WaveType REGISTER_SUCCESS = waveType("REGISTER_SUCCESS").items(EXPRESSION);
 
     /** Register expression failure action. */
-    WaveType REGISTER_FAILURE = WaveType.create("REGISTER_FAILURE").items(EXPRESSION);
+    WaveType REGISTER_FAILURE = waveType("REGISTER_FAILURE").items(EXPRESSION);
 }

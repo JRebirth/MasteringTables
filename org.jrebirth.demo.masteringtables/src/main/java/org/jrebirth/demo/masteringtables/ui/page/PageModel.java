@@ -19,13 +19,14 @@ package org.jrebirth.demo.masteringtables.ui.page;
 
 import javafx.scene.layout.StackPane;
 
+import org.jrebirth.af.api.key.UniqueKey;
+import org.jrebirth.af.api.ui.Model;
+import org.jrebirth.af.api.ui.annotation.RootNodeId;
+import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.command.basic.showmodel.DisplayModelWaveBean;
 import org.jrebirth.af.core.command.basic.showmodel.ShowFadingModelCommand;
-import org.jrebirth.af.core.key.UniqueKey;
-import org.jrebirth.af.core.ui.Model;
-import org.jrebirth.af.core.ui.annotation.RootNodeId;
+import org.jrebirth.af.core.key.Key;
 import org.jrebirth.af.core.ui.simple.DefaultSimpleModel;
-import org.jrebirth.af.core.wave.Wave;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.game.GameModel;
@@ -43,7 +44,7 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory
-            .getLogger(PageModel.class);
+                                                      .getLogger(PageModel.class);
 
     /** Hold the current mode displayed as a page. */
     private UniqueKey<? extends Model> currentModelKey;
@@ -81,29 +82,29 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
         // Create the Wave Bean that will hold all data processed by chained
         // commands
         final DisplayModelWaveBean waveBean = DisplayModelWaveBean.create()
-                // Define the placeholder that will receive the content
-                .childrenPlaceHolder(getRootNode().getChildren())
-                // Allow to add element behind the stack to allow transition
-                .appendChild(false);
+                                                                  // Define the placeholder that will receive the content
+                                                                  .childrenPlaceHolder(getRootNode().getChildren())
+                                                                  // Allow to add element behind the stack to allow transition
+                                                                  .appendChild(false);
 
         switch (page) {
 
             case Splash:
-                waveBean.showModelKey(UniqueKey.key(SplashModel.class));
+                waveBean.showModelKey(Key.create(SplashModel.class));
                 break;
 
             case Game:
-                waveBean.showModelKey(UniqueKey.key(GameModel.class));
+                waveBean.showModelKey(Key.create(GameModel.class));
                 break;
 
             case Result:
-                waveBean.showModelKey(UniqueKey.key(ResultModel.class,
-                        getModel(GameModel.class).getObject()));
+                waveBean.showModelKey(Key.create(ResultModel.class,
+                                                 getModel(GameModel.class).getObject()));
                 break;
 
             default:
             case GameMenu:
-                waveBean.showModelKey(UniqueKey.key(GameMenuModel.class));
+                waveBean.showModelKey(Key.createSingle(GameMenuModel.class));
                 break;
         }
 

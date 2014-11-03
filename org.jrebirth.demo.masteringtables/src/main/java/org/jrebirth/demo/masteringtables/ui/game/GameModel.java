@@ -25,7 +25,7 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
-import org.jrebirth.af.api.inner.InnerComponent;
+import org.jrebirth.af.api.component.InnerComponent;
 import org.jrebirth.af.api.wave.OnWave;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.inner.InnerComponentBase;

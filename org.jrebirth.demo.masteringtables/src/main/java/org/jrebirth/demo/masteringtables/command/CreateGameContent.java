@@ -22,7 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.jrebirth.af.api.wave.Wave;
-import org.jrebirth.af.api.wave.WaveData;
+import org.jrebirth.af.api.wave.contract.WaveData;
 import org.jrebirth.af.core.command.single.pool.DefaultPoolCommand;
 import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.demo.masteringtables.beans.Expression;

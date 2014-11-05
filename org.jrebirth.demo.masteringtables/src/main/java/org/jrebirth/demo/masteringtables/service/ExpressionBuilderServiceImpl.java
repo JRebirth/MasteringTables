@@ -65,6 +65,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
     /**
      * {@inheritDoc}
      */
+    @Override
     @Priority(RunnablePriority.Highest)
     public boolean doBuildTables(final Wave wave) throws InterruptedException {
 
@@ -140,6 +141,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<Expression> getMultiplicationTable() {
         return this.multiplicationTable;
     }
@@ -147,6 +149,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<Expression> getAdditionTable() {
         return this.additionTable;
     }
@@ -154,6 +157,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<Expression> getSubtractionTable() {
         return this.subtractionTable;
     }
@@ -161,6 +165,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
     /**
      * {@inheritDoc}
      */
+    @Override
     public List<Expression> getDivisionTable() {
         return this.divisionTable;
     }

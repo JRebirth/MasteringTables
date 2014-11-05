@@ -21,8 +21,8 @@ import static org.jrebirth.af.core.wave.Builders.waveType;
 
 import java.util.List;
 
-import org.jrebirth.af.api.wave.WaveItem;
-import org.jrebirth.af.api.wave.WaveType;
+import org.jrebirth.af.api.wave.contract.WaveItem;
+import org.jrebirth.af.api.wave.contract.WaveType;
 import org.jrebirth.af.core.wave.WaveItemBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Page;

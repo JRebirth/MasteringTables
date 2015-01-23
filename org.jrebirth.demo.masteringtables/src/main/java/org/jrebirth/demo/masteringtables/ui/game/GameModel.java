@@ -28,7 +28,7 @@ import javafx.scene.layout.StackPane;
 import org.jrebirth.af.api.component.basic.InnerComponent;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.annotation.OnWave;
-import org.jrebirth.af.core.inner.InnerComponentBase;
+import org.jrebirth.af.core.component.basic.InnerComponentBase;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Game;

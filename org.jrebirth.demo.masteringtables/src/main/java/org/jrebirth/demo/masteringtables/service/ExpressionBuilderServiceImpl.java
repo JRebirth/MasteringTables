@@ -67,7 +67,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
      */
     @Override
     @Priority(RunnablePriority.Highest)
-    public boolean doBuildTables(final Wave wave) throws InterruptedException {
+    public void doBuildTables(final Wave wave) throws InterruptedException {
 
         LOGGER.trace("Build Tables.");
 
@@ -135,7 +135,6 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
         }
 
         LOGGER.trace("Tables are ready !");
-        return true;
     }
 
     /**

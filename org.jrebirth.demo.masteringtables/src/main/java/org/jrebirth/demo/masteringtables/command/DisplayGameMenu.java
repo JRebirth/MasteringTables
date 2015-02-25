@@ -69,7 +69,7 @@ public class DisplayGameMenu extends DefaultCommand {
      */
     @OnWave(ExpressionBuilderService.TABLES_BUILT)
     @RunInto(value = RunType.JTP, priority = RunnablePriority.High)
-    public void doTablesBuilt(final boolean bool, final Wave wave) {
+    public void doTablesBuilt(final Wave wave) {
         // When tables are built, launch the wave that will display the game menu
         sendWave(MTWaves.SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
     }

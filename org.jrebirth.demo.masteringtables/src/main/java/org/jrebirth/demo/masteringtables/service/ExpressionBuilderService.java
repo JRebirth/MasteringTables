@@ -47,7 +47,7 @@ public interface ExpressionBuilderService extends Service {
     /** The Wave Type DO_BUILD_TABLES. */
     WaveType DO_BUILD_TABLES = Builders.waveType("BUILD_TABLES")
                                        .returnAction(TABLES_BUILT)
-                                       .returnItem(JRebirthItems.booleanItem);
+                                       .returnItem(JRebirthItems.voidItem);
 
     /**
      * Builds all tables.
@@ -56,7 +56,7 @@ public interface ExpressionBuilderService extends Service {
      * @throws InterruptedException if the job is cancelled
      */
     @Priority(RunnablePriority.Highest)
-    boolean doBuildTables(final Wave wave) throws InterruptedException;
+    void doBuildTables(final Wave wave) throws InterruptedException;
 
     /**
      * Gets the multiplication table.

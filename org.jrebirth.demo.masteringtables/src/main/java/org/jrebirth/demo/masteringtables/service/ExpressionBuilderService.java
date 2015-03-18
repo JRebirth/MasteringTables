@@ -23,6 +23,7 @@ import org.jrebirth.af.api.concurrent.Priority;
 import org.jrebirth.af.api.concurrent.RunnablePriority;
 import org.jrebirth.af.api.service.Service;
 import org.jrebirth.af.api.wave.Wave;
+import org.jrebirth.af.api.wave.annotation.OnWave;
 import org.jrebirth.af.api.wave.contract.WaveItem;
 import org.jrebirth.af.api.wave.contract.WaveType;
 import org.jrebirth.af.core.wave.Builders;
@@ -41,11 +42,14 @@ public interface ExpressionBuilderService extends Service {
     WaveItem<List<Expression>> ALL_EXPRESSIONS = new WaveItemBase<List<Expression>>() {
     };
 
+    /** The WaveType used to build Tables. */
+    String BUILD_TABLES = "BUILD_TABLES";
+
     /** The WaveType return action name. */
     String TABLES_BUILT = "TABLES_BUILT";
 
     /** The Wave Type DO_BUILD_TABLES. */
-    WaveType DO_BUILD_TABLES = Builders.waveType("BUILD_TABLES")
+    WaveType DO_BUILD_TABLES = Builders.waveType(BUILD_TABLES)
                                        .returnAction(TABLES_BUILT)
                                        .returnItem(JRebirthItems.voidItem);
 
@@ -55,6 +59,7 @@ public interface ExpressionBuilderService extends Service {
      * @param wave the wave
      * @throws InterruptedException if the job is cancelled
      */
+    @OnWave(BUILD_TABLES)
     @Priority(RunnablePriority.Highest)
     void doBuildTables(final Wave wave) throws InterruptedException;
 

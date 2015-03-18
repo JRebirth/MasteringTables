@@ -28,8 +28,6 @@ import org.jrebirth.af.core.wave.JRebirthWaves;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * The Class DisplayGameMenu.
@@ -38,17 +36,14 @@ import org.slf4j.LoggerFactory;
  */
 public class DisplayGameMenu extends DefaultCommand {
 
-    /** The Constant LOGGER. */
-    private static final Logger LOGGER = LoggerFactory.getLogger(DisplayGameMenu.class);
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void initCommand() {
-        LOGGER.trace("Initialize Command " + this.getClass().getSimpleName());
-        listen(ExpressionBuilderService.DO_BUILD_TABLES.returnWaveType());
-    }
+    // /** The Constant LOGGER. */
+    // private static final Logger LOGGER = LoggerFactory.getLogger(DisplayGameMenu.class);
+    //
+    // @Override
+    // protected void initCommand() {
+    // LOGGER.trace("Initialize Command " + this.getClass().getSimpleName());
+    // // listen(ExpressionBuilderService.DO_BUILD_TABLES.returnWaveType());
+    // }
 
     /**
      * {@inheritDoc}
@@ -63,9 +58,7 @@ public class DisplayGameMenu extends DefaultCommand {
     }
 
     /**
-     * Tables built.
-     *
-     * @param wave the wave
+     * {@inheritDoc}
      */
     @OnWave(ExpressionBuilderService.TABLES_BUILT)
     @RunInto(value = RunType.JTP, priority = RunnablePriority.High)

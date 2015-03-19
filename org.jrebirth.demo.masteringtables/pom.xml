@@ -69,6 +69,12 @@
 		
 		<dependency>
 			<groupId>org.jrebirth.af</groupId>
+			<artifactId>modular</artifactId>
+			<version>8.0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jrebirth.af</groupId>
 			<artifactId>processor</artifactId>
 			<version>8.0.1</version>
 			<scope>provided</scope>

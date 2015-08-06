@@ -170,7 +170,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         GridPane.setConstraints(this.division, 3, 0, 1, 1, HPos.CENTER, VPos.CENTER);
 
         pane.getChildren().addAll(this.addition, this.subtraction, this.multiplication, this.division);
-        pane.setAlignment(Pos.CENTER);
+        pane.setAlignment(Pos.TOP_CENTER);
 
         // Bound widget to properties Binding SHOULD BE grouped
         getModel().getObject().containsAdditionProperty().bind(this.addition.selectedProperty());
@@ -219,7 +219,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         GridPane.setConstraints(start, 0, 2, 4, 1, HPos.CENTER, VPos.CENTER);
         pane.getChildren().add(start);
 
-        BorderPane.setMargin(pane, new Insets(140, 0, 0, 0));
+        BorderPane.setMargin(pane, new Insets(90, 0, 0, 0));
 
         return pane;
     }

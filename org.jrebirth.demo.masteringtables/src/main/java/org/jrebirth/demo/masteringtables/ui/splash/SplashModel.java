@@ -30,7 +30,7 @@ import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 
 /**
- * The Class SplashModel used to display the Mastering GTables Splash Screen with progress bar.
+ * The Class AdModel used to display the Mastering GTables Splash Screen with progress bar.
  */
 @RootNodeId("SplashPanel")
 public class SplashModel extends DefaultSimpleModel<BorderPane> {
@@ -50,6 +50,7 @@ public class SplashModel extends DefaultSimpleModel<BorderPane> {
 
         // Call a command that will perform a service call to update the progress bar
         callCommand(DisplayGameMenu.class, Builders.waveData(JRebirthWaves.PROGRESS_BAR, getLoadingBar()));
+
     }
 
     /**

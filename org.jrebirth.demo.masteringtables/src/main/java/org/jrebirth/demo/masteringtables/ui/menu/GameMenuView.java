@@ -24,8 +24,10 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
@@ -78,6 +80,8 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     /** The game length. */
     private ToggleGroup lengthGroup;
 
+    private FlowPane topPane;
+
     /**
      * Instantiates a new start view.
      *
@@ -98,7 +102,9 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         // .children(new ImageView(MTImages.MT_TITLE.get()))
         // .build();
         // fp.setAlignment(Pos.CENTER);
-        // getRootNode().setTop(fp);
+        this.topPane = new FlowPane(Orientation.VERTICAL);
+        this.topPane.setPrefHeight(100);
+        getRootNode().setTop(this.topPane);
 
         getRootNode().setCenter(buildGameConfigPanel());
 
@@ -263,6 +269,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
                                   // .text(Integer.toString(value))
                                   .build();
 
+    }
+
+    public ObservableList<Node> topPlaceHolder() {
+        return this.topPane.getChildren();
     }
 
 }

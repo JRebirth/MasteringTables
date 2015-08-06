@@ -17,6 +17,8 @@
  */
 package org.jrebirth.demo.masteringtables.ui.menu;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import javafx.util.Duration;
 
 import org.jrebirth.af.api.annotation.LinkComponent;
@@ -44,6 +46,8 @@ public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuVie
     @LinkComponent
     private ExpressionBuilderService expressionBuilderService;
 
+    private final AtomicBoolean hasShown = new AtomicBoolean(false);
+
     @Releasable
     public boolean canRelease() {
         return false;
@@ -58,7 +62,9 @@ public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuVie
 
         final FadeInOutWaveBean fiowb = FadeInOutWaveBean.create().showDuration(Duration.millis(4000));
 
-        attachUi(AdModel.class, Builders.buildUiData(getView().getRootNode().topProperty(), fiowb, ShowTemporaryCommand.class).toArray(new WaveData[0]));
+        if (!hasShown.getAndSet(true)) {
+            attachUi(AdModel.class, Builders.buildUiData(getView().topPlaceHolder(), fiowb, ShowTemporaryCommand.class).toArray(new WaveData[0]));
+        }
 
     }
 

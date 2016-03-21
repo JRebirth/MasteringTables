@@ -36,6 +36,7 @@ import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.command.CreateGameContent;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -134,7 +135,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
             // Game is finished
             // sendWave(MTWaves.FINISH_GAME);
-            sendWave(MTWaves.SHOW_PAGE, waveData(MTWaves.PAGE, Page.Result));
+            sendWave(MTWaves.DO_SHOW_PAGE, waveData(MTWaves.PAGE, Page.Result));
         }
 
     }
@@ -191,7 +192,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
         sendWave(MTWaves.FINISH_GAME);
 
         // Display the star menu
-        sendWave(MTWaves.SHOW_PAGE, waveData(MTWaves.PAGE, Page.GameMenu));
+        sendWave(MTWaves.DO_SHOW_PAGE, waveData(MTWaves.PAGE, Page.GameMenu));
 
     }
 

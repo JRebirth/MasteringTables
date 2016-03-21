@@ -49,6 +49,7 @@ import org.jrebirth.af.api.ui.annotation.OnAction;
 import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.demo.masteringtables.beans.Operator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

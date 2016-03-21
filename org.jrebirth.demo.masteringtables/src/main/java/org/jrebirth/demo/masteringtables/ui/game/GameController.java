@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import org.jrebirth.af.api.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultController;
 import org.jrebirth.af.core.ui.adapter.KeyAdapter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

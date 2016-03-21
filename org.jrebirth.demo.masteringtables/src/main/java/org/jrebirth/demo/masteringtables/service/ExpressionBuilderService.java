@@ -21,6 +21,8 @@ import java.util.List;
 
 import org.jrebirth.af.api.concurrent.Priority;
 import org.jrebirth.af.api.concurrent.RunnablePriority;
+import org.jrebirth.af.api.module.BootComponent;
+import org.jrebirth.af.api.module.RegistrationPoint;
 import org.jrebirth.af.api.service.Service;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.annotation.OnWave;
@@ -29,12 +31,12 @@ import org.jrebirth.af.api.wave.contract.WaveType;
 import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.af.core.wave.JRebirthItems;
 import org.jrebirth.af.core.wave.WaveItemBase;
-import org.jrebirth.af.processor.annotation.RegistrationPoint;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 
 /**
  * The Service ExpressionBuilder is used to build all mathematical tables.
  */
+@BootComponent
 @RegistrationPoint(exclusive = true)
 public interface ExpressionBuilderService extends Service {
 

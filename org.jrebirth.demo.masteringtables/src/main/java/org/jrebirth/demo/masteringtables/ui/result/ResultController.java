@@ -25,6 +25,7 @@ import org.jrebirth.af.core.ui.DefaultController;
 import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,8 +53,8 @@ public class ResultController extends DefaultController<ResultModel, ResultView>
     @Override
     protected void initEventAdapters() throws CoreException {
 
-        linkWave(getRootNode(), KeyEvent.KEY_RELEASED, MTWaves.SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
-        linkWave(getRootNode(), MouseEvent.MOUSE_CLICKED, MTWaves.SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(getRootNode(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(getRootNode(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
 
     }
 }

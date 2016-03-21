@@ -27,38 +27,18 @@ public enum MTColors implements ColorEnum {
     // @formatter:off
 
     /** The result ratio background color. */
-    RESULT_RATIO {
-        {
-            web("bdccd4");
-        }
-    },
+    RESULT_RATIO    {{ web("bdccd4"); }},
 
     /** The result time background color. */
-    RESULT_TIME {
-        {
-            web("fbb03b");
-        }
-    },
+    RESULT_TIME     {{ web("fbb03b"); }},
 
     /** The result success background color. */
-    RESULT_SUCCESS {
-        {
-            web("95cd8b");
-        }
-    },
+    RESULT_SUCCESS  {{ web("95cd8b"); }},
 
     /** The result ratio background color. */
-    RESULT_FAILURE {
-        {
-            web("e7685d");
-        }
-    },
+    RESULT_FAILURE  {{ web("e7685d"); }},
 
     /** The bean shadow color. */
-    BEAN_SHADOW {
-        {
-            web("4c4945");
-        }
-    };
+    BEAN_SHADOW     {{ web("4c4945"); }};
 
 }

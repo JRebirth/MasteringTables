@@ -40,6 +40,7 @@ import org.jrebirth.af.api.exception.CoreException;
 import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

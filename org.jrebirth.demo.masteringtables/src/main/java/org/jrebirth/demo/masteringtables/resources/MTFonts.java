@@ -17,20 +17,20 @@
  */
 package org.jrebirth.demo.masteringtables.resources;
 
-import static org.jrebirth.af.core.resource.Resources.create;
-
-import org.jrebirth.af.api.resource.font.FontItem;
-import org.jrebirth.af.core.resource.font.RealFont;
+import org.jrebirth.af.api.resource.font.FontExtension;
+import org.jrebirth.af.core.resource.font.FontEnum;
 
 /**
- * The MTFonts interface providing all fonts.
+ * The MTFonts enumeration providing all fonts.
  */
-public interface MTFonts {
+public enum MTFonts implements FontEnum {
+
+    // @formatter:off
 
     /** The font used to display expression. */
-    FontItem EXPRESSION = create(new RealFont(MTFontNames.NYALA, 130.0));
+    EXPRESSION {{ real(MTFontNames.NYALA, 130.0, FontExtension.TTF); }},
 
     /** The font used to display counter values. */
-    FontItem COUNTER = create(new RealFont(MTFontNames.NYALA, 50.0));
+    COUNTER {{ real(MTFontNames.NYALA, 50.0, FontExtension.TTF); }};
 
 }

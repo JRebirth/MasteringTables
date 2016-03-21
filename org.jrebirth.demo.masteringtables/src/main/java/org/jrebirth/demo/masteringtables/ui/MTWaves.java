@@ -21,6 +21,8 @@ import static org.jrebirth.af.core.wave.Builders.waveType;
 
 import java.util.List;
 
+import org.jrebirth.af.api.annotation.Preload;
+import org.jrebirth.af.api.module.Preloadable;
 import org.jrebirth.af.api.wave.contract.WaveItem;
 import org.jrebirth.af.api.wave.contract.WaveType;
 import org.jrebirth.af.core.wave.WaveItemBase;
@@ -30,7 +32,8 @@ import org.jrebirth.demo.masteringtables.beans.Page;
 /**
  * The Interface MTWaves that store all Wave Items and Wave Types used for asynchronous messaging.
  */
-public interface MTWaves {
+@Preload
+public interface MTWaves extends Preloadable {
 
     /******************************/
     /** WaveItem */
@@ -52,8 +55,11 @@ public interface MTWaves {
     /** WaveType related to Model */
     /******************************/
 
+    /** The Start Game action code. */
+    String SHOW_PAGE = "SHOW_PAGE";
+
     /** Show Page action. */
-    WaveType SHOW_PAGE = waveType("SHOW_PAGE").items(PAGE);
+    WaveType DO_SHOW_PAGE = waveType(SHOW_PAGE).items(PAGE);
 
     /** The Start Game action code. */
     String START_GAME_CODE = "START_GAME";

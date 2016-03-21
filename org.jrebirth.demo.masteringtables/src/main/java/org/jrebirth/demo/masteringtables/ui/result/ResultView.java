@@ -47,6 +47,7 @@ import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.demo.masteringtables.resources.MTColors;
 import org.jrebirth.demo.masteringtables.resources.MTImages;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -257,18 +258,16 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                                                                                 TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400))
                                                                                                           .byY(-766).build(),
                                                                                 buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
-                                                                                FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
-                                                                      )
+                                                                                FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build())
                                                                       .build(),
 
                                              ParallelTransitionBuilder.create()
                                                                       .children(
                                                                                 buildBeanAnimation(this.failureLabel, this.failureBean, MTColors.RESULT_FAILURE.get()),
-                                                                                FadeTransitionBuilder.create().node(this.failureIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build()
-                                                                      )
+                                                                                FadeTransitionBuilder.create().node(this.failureIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build())
                                                                       .build()
 
-                                   )
+        )
 
                                    .build().playFromStart();
 
@@ -290,8 +289,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                                                                         .fromX(0).fromY(0).toX(1).toY(1).build(),
                                                   FillTransitionBuilder.create().shape(shape)
                                                                        .fromValue(Color.LIGHTGREY).toValue(fillColor)
-                                                                       .build()
-                                        )
+                                                                       .build())
                                         .build();
     }
 

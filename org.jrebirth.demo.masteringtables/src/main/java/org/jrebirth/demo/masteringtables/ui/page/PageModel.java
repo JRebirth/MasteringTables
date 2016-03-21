@@ -23,6 +23,7 @@ import org.jrebirth.af.api.key.UniqueKey;
 import org.jrebirth.af.api.ui.Model;
 import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.api.wave.Wave;
+import org.jrebirth.af.api.wave.annotation.OnWave;
 import org.jrebirth.af.core.command.basic.showmodel.DisplayModelWaveBean;
 import org.jrebirth.af.core.command.basic.showmodel.ShowFadingModelCommand;
 import org.jrebirth.af.core.key.Key;
@@ -33,6 +34,7 @@ import org.jrebirth.demo.masteringtables.ui.game.GameModel;
 import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 import org.jrebirth.demo.masteringtables.ui.result.ResultModel;
 import org.jrebirth.demo.masteringtables.ui.splash.SplashModel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +57,7 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
     @Override
     protected void initModel() {
 
-        listen(MTWaves.SHOW_PAGE);
+        // listen(MTWaves.SHOW_PAGE);
 
     }
 
@@ -75,6 +77,7 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
      * @param page the page
      * @param wave the wave
      */
+    @OnWave(MTWaves.SHOW_PAGE)
     public void doShowPage(final Page page, final Wave wave) {
 
         LOGGER.info("Show Page: " + page.toString());

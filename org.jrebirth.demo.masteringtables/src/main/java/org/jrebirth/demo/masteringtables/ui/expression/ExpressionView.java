@@ -37,6 +37,7 @@ import org.jrebirth.af.api.ui.annotation.OnFinished;
 import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.demo.masteringtables.resources.MTFonts;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -131,8 +132,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                                                                    buildTextPartAnimation(getLeftOperand()),
                                                                    buildTextPartAnimation(getOperator()),
                                                                    buildTextPartAnimation(getRightOperand()),
-                                                                   buildTextPartAnimation(getEquality())
-                                                         )
+                                                                   buildTextPartAnimation(getEquality()))
                                                          .build();
 
         // Add a nice drop shadow in all direction
@@ -175,8 +175,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                                                                         .duration(Duration.millis(300)) // SHOULD BE CONFIGURABLE (Game Speed)
                                                                         .fromX(0.0).toX(1.0)
                                                                         .fromY(0.0).toY(1.0)
-                                                                        .build()
-                                        )
+                                                                        .build())
 
                                         .build();
     }
@@ -211,8 +210,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                                                                         .node(this.result)
                                                                         .fromX(1).toX(4.0)
                                                                         .fromY(1).toY(4.0)
-                                                                        .build()
-                                                  ,
+                                                                        .build(),
 
                                                   ScaleTransitionBuilder.create()
                                                                         .node(getLeftOperand())
@@ -233,8 +231,8 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                                                                         .node(getEquality())
                                                                         .fromX(1).toX(0)
                                                                         .fromY(1).toY(0)
-                                                                        .build()
-                                        ).build();
+                                                                        .build())
+                                        .build();
     }
 
     /**

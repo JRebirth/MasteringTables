@@ -22,12 +22,13 @@ import java.util.List;
 
 import org.jrebirth.af.api.concurrent.Priority;
 import org.jrebirth.af.api.concurrent.RunnablePriority;
+import org.jrebirth.af.api.module.Register;
+import org.jrebirth.af.api.module.RegistrationPriority;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.service.DefaultService;
-import org.jrebirth.af.processor.annotation.Register;
-import org.jrebirth.af.processor.annotation.RegistrationPriority;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Operator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -85,8 +86,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
                                                        .left(leftOperand)
                                                        .operator(Operator.multiplication.toString())
                                                        .right(rightOperand)
-                                                       .result(leftOperand * rightOperand)
-                                        );
+                                                       .result(leftOperand * rightOperand));
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
 
@@ -94,8 +94,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
                                                  .left(leftOperand)
                                                  .operator(Operator.addition.toString())
                                                  .right(rightOperand)
-                                                 .result(leftOperand + rightOperand)
-                                  );
+                                                 .result(leftOperand + rightOperand));
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
 
@@ -103,8 +102,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
                                                  .left(rightOperand * leftOperand)
                                                  .operator(Operator.division.toString())
                                                  .right(leftOperand)
-                                                 .result(rightOperand)
-                                  );
+                                                 .result(rightOperand));
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
 
@@ -124,8 +122,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
                                                     .left(leftOperand)
                                                     .operator(Operator.subtraction.toString())
                                                     .right(rightOperand)
-                                                    .result(leftOperand - rightOperand)
-                                     );
+                                                    .result(leftOperand - rightOperand));
                 // updateProgress(wave, ++counter, allItems);
                 Thread.sleep(2);
             }

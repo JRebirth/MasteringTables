@@ -23,7 +23,7 @@
 	</turboFilter>
  -->
 
-	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+ 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
 		<file>MasteringTables.log</file>
 		<encoder>
 			<pattern>%date %marker %level [%thread{6}] %logger{10} [%file:%line] %msg%n</pattern>
@@ -41,4 +41,5 @@
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</root>
+	
 </configuration>

@@ -64,6 +64,6 @@ public class DisplayGameMenu extends DefaultCommand {
     @RunInto(value = RunType.JTP, priority = RunnablePriority.High)
     public void doTablesBuilt(final Wave wave) {
         // When tables are built, launch the wave that will display the game menu
-        sendWave(MTWaves.SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        sendWave(MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
     }
 }

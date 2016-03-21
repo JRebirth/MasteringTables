@@ -29,9 +29,9 @@ public enum MTImages implements ImageEnum {
 
     /** The application main title image. */
     MT_TITLE                {{  rel("Title", ImageExtension.PNG); }},
-    
+
     /** The application main title image. */
-    POWERED_BY                {{  rel("PoweredBy", ImageExtension.PNG); }},
+    POWERED_BY              {{  rel("PoweredBy", ImageExtension.PNG); }},
 
     /** Monster used into Result page (Monster is reading a book). */
     RESULT_MONSTER          {{ rel("Result_Monster", ImageExtension.PNG); }},

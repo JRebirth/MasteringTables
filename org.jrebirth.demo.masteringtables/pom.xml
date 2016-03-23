@@ -145,7 +145,7 @@
 								<addDependencies>false</addDependencies>
 								<preCp>.</preCp>
 							</classPath>
-							<icon>src/main/resources/images/JRebirth.ico</icon>
+							<icon>src/main/resources/images/MT.ico</icon>
 							<jre>
 								<minVersion>1.8.0</minVersion>
 								<jdkPreference>preferJre</jdkPreference>
@@ -154,13 +154,13 @@
 								<fileVersion>1.0.0.0</fileVersion>
 								<txtFileVersion>${project.version}</txtFileVersion>
 								<fileDescription>${project.name}</fileDescription>
-								<copyright>JRebirth 2015</copyright>
+								<copyright>JRebirth 2016</copyright>
 								<productVersion>1.0.0.0</productVersion>
 								<txtProductVersion>1.0.0.0</txtProductVersion>
 								<productName>${project.name}</productName>
 								<companyName>JRebirth</companyName>
-								<internalName>JRebirthTour</internalName>
-								<originalFilename>JRebirthTour.exe</originalFilename>
+								<internalName>MasteringTables</internalName>
+								<originalFilename>MasteringTables.exe</originalFilename>
 							</versionInfo>
 						</configuration>
 					</execution>

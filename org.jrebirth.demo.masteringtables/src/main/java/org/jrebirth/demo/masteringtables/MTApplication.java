@@ -17,6 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,10 +26,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import org.jrebirth.af.api.resource.ResourceItem;
+import org.jrebirth.af.api.resource.font.FontItem;
 import org.jrebirth.af.api.ui.Model;
 import org.jrebirth.af.core.application.DefaultApplication;
-import org.jrebirth.demo.masteringtables.resources.MTColors;
-import org.jrebirth.demo.masteringtables.resources.MTImages;
+import org.jrebirth.demo.masteringtables.resources.MTFonts;
 import org.jrebirth.demo.masteringtables.resources.MTStyles;
 import org.jrebirth.demo.masteringtables.ui.page.PageModel;
 
@@ -55,12 +56,6 @@ public final class MTApplication extends DefaultApplication<StackPane> {
 
         Locale.setDefault(Locale.FRANCE);
         // JRebirthParameters.LOG_RESOLUTION.define(false);
-
-        // try {
-        // Class.forName(MTWaves.class.getName(), true, Thread.currentThread().getContextClassLoader());
-        // } catch (final ClassNotFoundException e) {
-        // throw new AssertionError(e); // Can't happen
-        // }
     }
 
     /**
@@ -94,18 +89,12 @@ public final class MTApplication extends DefaultApplication<StackPane> {
      */
     @Override
     protected List<? extends ResourceItem<?, ?, ?>> getResourceToPreload() {
-        // // Define fonts that will be available from CSS
-        // return Collections.Arrays.asList(new FontItem[] {
-        // MTFonts.EXPRESSION,
-        // MTFonts.COUNTER,
-        // });
+        // Define fonts that will be available from CSS
+        return Arrays.asList(new FontItem[] {
+                MTFonts.EXPRESSION,
+                MTFonts.COUNTER,
+        });
 
-        return resourceEnumToList(MTColors.class, MTImages.class);
-    }
-
-    private List<? extends ResourceItem<?, ?, ?>> resourceEnumToList(final Class<? extends ResourceItem<?, ?, ?>>... enumeration) {
-
-        return null;
     }
 
 }

@@ -27,7 +27,6 @@ import org.jrebirth.af.core.ui.simple.DefaultSimpleModel;
 import org.jrebirth.af.core.wave.Builders;
 import org.jrebirth.af.core.wave.JRebirthWaves;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
-import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 
 /**
  * The Class AdModel used to display the Mastering GTables Splash Screen with progress bar.
@@ -43,10 +42,6 @@ public class SplashModel extends DefaultSimpleModel<BorderPane> {
      */
     @Override
     protected void showView() {
-
-        // Patch for webstart since module.xml is not correctly read
-        // getLocalFacade().getGlobalFacade().getComponentFactory().register(ExpressionBuilderService.class, ExpressionBuilderServiceImpl.class);
-        getService(ExpressionBuilderService.class);
 
         // Call a command that will perform a service call to update the progress bar
         callCommand(DisplayGameMenu.class, Builders.waveData(JRebirthWaves.PROGRESS_BAR, getLoadingBar()));

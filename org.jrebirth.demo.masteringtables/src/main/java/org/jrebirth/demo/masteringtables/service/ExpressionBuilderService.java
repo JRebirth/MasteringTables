@@ -19,8 +19,8 @@ package org.jrebirth.demo.masteringtables.service;
 
 import java.util.List;
 
+import org.jrebirth.af.api.annotation.PriorityLevel;
 import org.jrebirth.af.api.concurrent.Priority;
-import org.jrebirth.af.api.concurrent.RunnablePriority;
 import org.jrebirth.af.api.module.RegistrationPoint;
 import org.jrebirth.af.api.service.Service;
 import org.jrebirth.af.api.wave.Wave;
@@ -60,7 +60,7 @@ public interface ExpressionBuilderService extends Service {
      * @throws InterruptedException if the job is cancelled
      */
     @OnWave(BUILD_TABLES)
-    @Priority(RunnablePriority.Highest)
+    @Priority(PriorityLevel.Highest)
     void doBuildTables(final Wave wave) throws InterruptedException;
 
     /**

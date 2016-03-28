@@ -17,9 +17,9 @@
  */
 package org.jrebirth.demo.masteringtables.command;
 
+import org.jrebirth.af.api.annotation.PriorityLevel;
 import org.jrebirth.af.api.concurrent.RunInto;
 import org.jrebirth.af.api.concurrent.RunType;
-import org.jrebirth.af.api.concurrent.RunnablePriority;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.annotation.OnWave;
 import org.jrebirth.af.core.command.single.internal.DefaultCommand;
@@ -61,7 +61,7 @@ public class DisplayGameMenu extends DefaultCommand {
      * {@inheritDoc}
      */
     @OnWave(ExpressionBuilderService.TABLES_BUILT)
-    @RunInto(value = RunType.JTP, priority = RunnablePriority.High)
+    @RunInto(value = RunType.JTP, priority = PriorityLevel.High)
     public void doTablesBuilt(final Wave wave) {
         // When tables are built, launch the wave that will display the game menu
         sendWave(MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));

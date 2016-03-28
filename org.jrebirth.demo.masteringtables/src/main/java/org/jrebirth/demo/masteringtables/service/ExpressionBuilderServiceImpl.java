@@ -20,10 +20,9 @@ package org.jrebirth.demo.masteringtables.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jrebirth.af.api.annotation.PriorityLevel;
 import org.jrebirth.af.api.concurrent.Priority;
-import org.jrebirth.af.api.concurrent.RunnablePriority;
 import org.jrebirth.af.api.module.Register;
-import org.jrebirth.af.api.module.RegistrationPriority;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.core.service.DefaultService;
 import org.jrebirth.demo.masteringtables.beans.Expression;
@@ -35,7 +34,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Service ExpressionBuilder is used to build all mathematical tables.
  */
-@Register(value = ExpressionBuilderService.class, priority = RegistrationPriority.Normal)
+@Register(value = ExpressionBuilderService.class, priority = PriorityLevel.Normal)
 public final class ExpressionBuilderServiceImpl extends DefaultService implements ExpressionBuilderService {
 
     /** The Constant LOGGER. */
@@ -67,7 +66,7 @@ public final class ExpressionBuilderServiceImpl extends DefaultService implement
      * {@inheritDoc}
      */
     @Override
-    @Priority(RunnablePriority.Highest)
+    @Priority(PriorityLevel.Highest)
     public void doBuildTables(final Wave wave) throws InterruptedException {
 
         LOGGER.trace("Build Tables.");

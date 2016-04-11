@@ -53,8 +53,8 @@ public class ResultController extends DefaultController<ResultModel, ResultView>
     @Override
     protected void initEventAdapters() throws CoreException {
 
-        linkWave(getRootNode(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
-        linkWave(getRootNode(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(node(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(node(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
 
     }
 }

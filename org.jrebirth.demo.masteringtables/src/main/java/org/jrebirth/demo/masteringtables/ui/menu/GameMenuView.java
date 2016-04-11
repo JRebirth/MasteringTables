@@ -105,9 +105,9 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         // fp.setAlignment(Pos.CENTER);
         this.topPane = new FlowPane(Orientation.VERTICAL);
         this.topPane.setPrefHeight(100);
-        getRootNode().setTop(this.topPane);
+        node().setTop(this.topPane);
 
-        getRootNode().setCenter(buildGameConfigPanel());
+        node().setCenter(buildGameConfigPanel());
 
         // getRootNode().setBottom(buildStartGamePanel());
 
@@ -180,10 +180,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         pane.setAlignment(Pos.TOP_CENTER);
 
         // Bound widget to properties Binding SHOULD BE grouped
-        getModel().getObject().containsAdditionProperty().bind(this.addition.selectedProperty());
-        getModel().getObject().containsSubtractionProperty().bind(this.subtraction.selectedProperty());
-        getModel().getObject().containsMultiplicationProperty().bind(this.multiplication.selectedProperty());
-        getModel().getObject().containsDivisionProperty().bind(this.division.selectedProperty());
+        model().object().containsAdditionProperty().bind(this.addition.selectedProperty());
+        model().object().containsSubtractionProperty().bind(this.subtraction.selectedProperty());
+        model().object().containsMultiplicationProperty().bind(this.multiplication.selectedProperty());
+        model().object().containsDivisionProperty().bind(this.division.selectedProperty());
 
         // Manage Question count
 
@@ -212,7 +212,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
             @Override
             public void changed(final ObservableValue<? extends Toggle> toggleProperty, final Toggle previous, final Toggle next) {
                 if (next != null) {
-                    getModel().getObject().setQuestionNumber((int) next.getUserData());
+                    model().object().setQuestionNumber((int) next.getUserData());
                 }
             }
         });

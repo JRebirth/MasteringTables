@@ -46,7 +46,7 @@ public class CreateGameContent extends DefaultPoolCommand {
         final ExpressionBuilderService service = getService(ExpressionBuilderService.class);
 
         // Retrieve game settings from the ui
-        final GameSettings gs = getModel(GameMenuModel.class).getObject();
+        final GameSettings gs = getModel(GameMenuModel.class).object();
 
         // Add tables according to User choice
         final List<Expression> gameList = new ArrayList<>();

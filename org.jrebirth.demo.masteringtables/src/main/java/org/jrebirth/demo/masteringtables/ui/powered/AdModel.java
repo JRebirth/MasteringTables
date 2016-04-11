@@ -43,7 +43,7 @@ public class AdModel extends DefaultSimpleModel<ImageView> {
     @Override
     protected void initSimpleView() {
 
-        getRootNode().setImage(MTImages.POWERED_BY.get());
+        node().setImage(MTImages.POWERED_BY.get());
 
     }
 

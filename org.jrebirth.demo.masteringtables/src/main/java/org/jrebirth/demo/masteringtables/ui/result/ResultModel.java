@@ -49,13 +49,13 @@ public class ResultModel extends DefaultObjectModel<ResultModel, ResultView, Gam
     @Override
     protected void bind() {
 
-        final Game g = getObject();
+        final Game g = object();
 
-        getView().getTimeLabel().textProperty().bind(g.timeEllapsedProperty());
+        view().getTimeLabel().textProperty().bind(g.timeEllapsedProperty());
 
         // Bind number of success and failure to UI objects
-        getView().getSuccessLabel().textProperty().bind(g.successCountProperty().asString());
-        getView().getFailureLabel().textProperty().bind(g.failureCountProperty().asString());
+        view().getSuccessLabel().textProperty().bind(g.successCountProperty().asString());
+        view().getFailureLabel().textProperty().bind(g.failureCountProperty().asString());
 
         if (g.getSuccessCount() > 0) {
             // Compute Hit ratio
@@ -64,7 +64,7 @@ public class ResultModel extends DefaultObjectModel<ResultModel, ResultView, Gam
                                                 .then(Bindings.divide(g.successCountProperty().multiply(100), totalattempt))
                                                 .otherwise(0);
 
-            getView().getRatioLabel().textProperty().bind(ratio.asString().concat("%"));
+            view().getRatioLabel().textProperty().bind(ratio.asString().concat("%"));
 
         }
     }

@@ -62,7 +62,7 @@ public final class MTApplication extends DefaultApplication<StackPane> {
      * {@inheritDoc}
      */
     @Override
-    public Class<? extends Model> getFirstModelClass() {
+    public Class<? extends Model> firstModelClass() {
         return PageModel.class;
     }
 

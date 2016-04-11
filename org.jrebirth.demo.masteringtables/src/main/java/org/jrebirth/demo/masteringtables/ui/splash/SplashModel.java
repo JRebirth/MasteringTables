@@ -59,7 +59,7 @@ public class SplashModel extends DefaultSimpleModel<BorderPane> {
         BorderPane.setAlignment(this.loadingBar, Pos.CENTER);
         BorderPane.setMargin(this.loadingBar, new Insets(40, 0, 30, 0));
 
-        getRootNode().setBottom(this.loadingBar);
+        node().setBottom(this.loadingBar);
     }
 
     /**

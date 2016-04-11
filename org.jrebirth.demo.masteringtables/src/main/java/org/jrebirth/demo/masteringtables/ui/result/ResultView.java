@@ -109,7 +109,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
     @Override
     protected void initView() {
 
-        getRootNode().setFocusTraversable(true);
+        node().setFocusTraversable(true);
 
         final String beanPath = "M264.489,353.896h0.152c-10.026-28-15.393-58.608-15.192-90.053c0.21-33.038,6.578-64.879,17.979-93.896"
                 + "c-0.077,0.192-0.156,0.299-0.229,0.491c3.331-11.38,5.158-23.444,5.236-35.892C272.895,62.568,214.922,3.827,142.943,3.364"
@@ -222,7 +222,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                                             this.failureLabel, this.ratioLabel)
                                   .build();
 
-        getRootNode().setCenter(p);
+        node().setCenter(p);
 
     }
 

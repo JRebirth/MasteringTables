@@ -76,8 +76,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     protected void bind() {
 
         // Bind counter values
-        getView().getSuccessCounter().textProperty().bind(getObject().successCountProperty().asString());
-        getView().getFailureCounter().textProperty().bind(getObject().failureCountProperty().asString());
+        view().getSuccessCounter().textProperty().bind(object().successCountProperty().asString());
+        view().getFailureCounter().textProperty().bind(object().failureCountProperty().asString());
 
     }
 
@@ -90,28 +90,28 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     @OnWave(MTWaves.START_GAME_CODE)
     public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
-        final ExpressionModel expressionModel = getInnerComponent(EXPRESSION);
+        final ExpressionModel expressionModel = findInnerComponent(EXPRESSION);
 
         // Reset the current index and counters
-        getObject().setIndex(0);
-        getObject().setSuccessCount(0);
-        getObject().setFailureCount(0);
+        object().setIndex(0);
+        object().setSuccessCount(0);
+        object().setFailureCount(0);
 
         // Add new generated list of expression
-        getObject().getGameList().clear();
-        getObject().getGameList().addAll(expressionList);
+        object().getGameList().clear();
+        object().getGameList().addAll(expressionList);
 
         // Clear the current expression panel
-        getView().getExpressionHolder().getChildren().clear();
-        getView().getExpressionHolder().getChildren().add(expressionModel.getRootNode());
+        view().getExpressionHolder().getChildren().clear();
+        view().getExpressionHolder().getChildren().add(expressionModel.node());
 
         // Center the panel
-        StackPane.setAlignment(expressionModel.getRootNode(), Pos.CENTER);
+        StackPane.setAlignment(expressionModel.node(), Pos.CENTER);
 
-        getView().startTimer();
+        view().startTimer();
 
         // Display the current expression with the help of the inner model
-        sendWave(MTWaves.DISPLAY_EXPRESSION, waveData(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
+        sendWave(MTWaves.DISPLAY_EXPRESSION, waveData(MTWaves.EXPRESSION, object().getCurrentExpression()));
     }
 
     /**
@@ -122,16 +122,16 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     public void doRegisterSuccess(final Expression expression, final Wave wave) {
 
-        getObject().setSuccessCount(getObject().getSuccessCount() + 1);
+        object().setSuccessCount(object().getSuccessCount() + 1);
 
-        getObject().setIndex(getObject().getIndex() + 1);
+        object().setIndex(object().getIndex() + 1);
 
-        if (getObject().hasMoreExpression()) {
+        if (object().hasMoreExpression()) {
             // continue game
-            sendWave(MTWaves.DISPLAY_EXPRESSION, waveData(MTWaves.EXPRESSION, getObject().getCurrentExpression()));
+            sendWave(MTWaves.DISPLAY_EXPRESSION, waveData(MTWaves.EXPRESSION, object().getCurrentExpression()));
         } else {
 
-            getView().stopTimer();
+            view().stopTimer();
 
             // Game is finished
             // sendWave(MTWaves.FINISH_GAME);
@@ -147,7 +147,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param wave the wave
      */
     public void doRegisterFailure(final Expression expression, final Wave wave) {
-        getObject().setFailureCount(getObject().getFailureCount() + 1);
+        object().setFailureCount(object().getFailureCount() + 1);
     }
 
     /**
@@ -164,7 +164,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void hideView() {
-        getInnerComponent(EXPRESSION).reset();
+        findInnerComponent(EXPRESSION).reset();
     }
 
     /**
@@ -173,7 +173,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param code the code
      */
     public void performNumber(final KeyCode code) {
-        getInnerComponent(EXPRESSION).appendNumber(code.getName());
+        findInnerComponent(EXPRESSION).appendNumber(code.getName());
     }
 
     /**
@@ -200,7 +200,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * Do delete.
      */
     public void performDelete() {
-        getInnerComponent(EXPRESSION).deleteLastChar();
+        findInnerComponent(EXPRESSION).deleteLastChar();
 
     }
 

@@ -49,7 +49,7 @@ public class GameController extends DefaultController<GameModel, GameView> imple
      */
     @Override
     protected void initEventAdapters() throws CoreException {
-        getView().getRootNode().addEventFilter(KeyEvent.KEY_RELEASED, getHandler(KeyEvent.KEY_RELEASED));
+        view().node().addEventFilter(KeyEvent.KEY_RELEASED, getHandler(KeyEvent.KEY_RELEASED));
     }
 
     /**
@@ -76,7 +76,7 @@ public class GameController extends DefaultController<GameModel, GameView> imple
 
         switch (keyEvent.getCode()) {
             case ENTER:
-                getModel().performEnter();
+                model().performEnter();
                 break;
             case DIGIT0:
             case DIGIT1:
@@ -98,14 +98,14 @@ public class GameController extends DefaultController<GameModel, GameView> imple
             case NUMPAD7:
             case NUMPAD8:
             case NUMPAD9:
-                getModel().performNumber(keyEvent.getCode());
+                model().performNumber(keyEvent.getCode());
                 break;
             case ESCAPE:
-                getModel().performCancel();
+                model().performCancel();
                 break;
             case DELETE:
             case BACK_SPACE:
-                getModel().performDelete();
+                model().performDelete();
                 break;
             default:
         }

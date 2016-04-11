@@ -92,10 +92,10 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
     @Override
     protected void initView() {
 
-        getRootNode().setAlignment(Pos.CENTER);
+        node().setAlignment(Pos.CENTER);
 
-        getRootNode().setPrefSize(650, 200);
-        getRootNode().setMaxSize(700, 200);
+        node().setPrefSize(650, 200);
+        node().setMaxSize(700, 200);
 
         this.leftOperand = getExpressionTextBuilder()
                                                      .wrappingWidth(180)
@@ -121,7 +121,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                                                 .text("")
                                                 .build();
 
-        getRootNode().getChildren().addAll(this.leftOperand, this.operator, this.rightOperand, this.equality, this.result);
+        node().getChildren().addAll(this.leftOperand, this.operator, this.rightOperand, this.equality, this.result);
 
         // Manage Animation
         this.expressionResolved = buildExpressionResolved();
@@ -145,7 +145,7 @@ public class ExpressionView extends DefaultView<ExpressionModel, FlowPane, Expre
                                               .spread(0.1)
                                               .build();
 
-        getRootNode().setEffect(s);
+        node().setEffect(s);
     }
 
     /**

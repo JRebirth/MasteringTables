@@ -49,12 +49,12 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
     protected void bind() {
 
         // Bind expression properties
-        getView().getLeftOperand().textProperty().bind(getObject().leftProperty().asString());
-        getView().getOperator().textProperty().bind(getObject().operatorProperty());
-        getView().getRightOperand().textProperty().bind(getObject().rightProperty().asString());
+        view().getLeftOperand().textProperty().bind(object().leftProperty().asString());
+        view().getOperator().textProperty().bind(object().operatorProperty());
+        view().getRightOperand().textProperty().bind(object().rightProperty().asString());
 
-        getView().getEquality().setText("=");
-        getView().getResult().setText("");
+        view().getEquality().setText("=");
+        view().getResult().setText("");
 
     }
 
@@ -67,10 +67,10 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
     public void doDisplayExpression(final Expression expression, final Wave wave) {
 
         // Store the current expression
-        setObject(expression);
+        object(expression);
 
         // Start the show animation
-        getView().getShowExpression().play();
+        view().getShowExpression().play();
     }
 
     /**
@@ -84,7 +84,7 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
         if (name.contains("Numpad")) {
             number = name.replaceAll("Numpad ", "");
         }
-        getView().getResult().setText(getView().getResult().getText() + number);
+        view().getResult().setText(view().getResult().getText() + number);
 
         checkResult();
 
@@ -94,13 +94,13 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
      * Check result.
      */
     private void checkResult() {
-        final int type = Integer.parseInt(getView().getResult().getText());
+        final int type = Integer.parseInt(view().getResult().getText());
 
-        if (type == getObject().result()) {
-            getView().getExpressionResolved().play();
+        if (type == object().result()) {
+            view().getExpressionResolved().play();
         } else {
-            if (String.valueOf(type).length() == String.valueOf(getObject().result()).length()) {
-                getView().getExpressionFailure().play();
+            if (String.valueOf(type).length() == String.valueOf(object().result()).length()) {
+                view().getExpressionFailure().play();
             }
         }
     }
@@ -109,14 +109,14 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
      * Delete last char.
      */
     public void deleteLastChar() {
-        getView().getResult().setText(getView().getResult().getText().substring(0, Math.max(0, getView().getResult().getText().length() - 1)));
+        view().getResult().setText(view().getResult().getText().substring(0, Math.max(0, view().getResult().getText().length() - 1)));
     }
 
     /**
      * Reset the result text.
      */
     public void reset() {
-        getView().getResult().setText("");
+        view().getResult().setText("");
     }
 
 }

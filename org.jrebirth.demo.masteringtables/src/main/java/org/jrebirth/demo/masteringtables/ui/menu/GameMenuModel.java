@@ -64,7 +64,7 @@ public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuVie
         final FadeInOutWaveBean fiowb = FadeInOutWaveBean.create().showDuration(Duration.millis(4000));
 
         if (!this.hasShown.getAndSet(true)) {
-            attachUi(AdModel.class, Builders.buildUiData(getView().topPlaceHolder(), fiowb, ShowTemporaryCommand.class).toArray(new WaveData[0]));
+            attachUi(AdModel.class, Builders.buildUiData(view().topPlaceHolder(), fiowb, ShowTemporaryCommand.class).toArray(new WaveData[0]));
         }
 
     }

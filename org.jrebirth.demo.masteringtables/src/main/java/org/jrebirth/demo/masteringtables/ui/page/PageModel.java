@@ -86,7 +86,7 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
         // commands
         final DisplayModelWaveBean waveBean = DisplayModelWaveBean.create()
                                                                   // Define the placeholder that will receive the content
-                                                                  .childrenPlaceHolder(getRootNode().getChildren())
+                                                                  .childrenPlaceHolder(node().getChildren())
                                                                   // Allow to add element behind the stack to allow transition
                                                                   .appendChild(false);
 
@@ -102,7 +102,7 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
 
             case Result:
                 waveBean.showModelKey(Key.create(ResultModel.class,
-                                                 getModel(GameModel.class).getObject()));
+                                                 getModel(GameModel.class).object()));
                 break;
 
             default:

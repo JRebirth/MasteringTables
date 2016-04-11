@@ -93,13 +93,13 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
      */
     @Override
     protected void initView() {
-        getRootNode().setTop(buildTopPanel());
+        node().setTop(buildTopPanel());
 
         // This stackPane will hold the expression view
         this.expressionHolder = new StackPane();
-        getRootNode().setCenter(this.expressionHolder);
+        node().setCenter(this.expressionHolder);
 
-        getRootNode().setFocusTraversable(true);
+        node().setFocusTraversable(true);
 
     }
 
@@ -210,7 +210,7 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
     public void stopTimer() {
         this.tl.stop();
         final java.time.Duration d = java.time.Duration.between(this.begin, Instant.now());
-        getModel().getObject().setTimeEllapsed(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
+        model().object().setTimeEllapsed(numberFormat.format(d.getSeconds() / 60) + ":" + numberFormat.format(d.getSeconds() % 60));
     }
 
     public void startTimer() {

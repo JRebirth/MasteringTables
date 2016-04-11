@@ -53,7 +53,7 @@ public class GameMenuController extends DefaultController<GameMenuModel, GameMen
      */
     public void onActionPlay(final ActionEvent actionEvent) {
         // When play button is triggered launch the game
-        getModel().sendWave(MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.Game));
+        model().sendWave(MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.Game));
     }
 
 }

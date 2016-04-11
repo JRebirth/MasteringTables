@@ -53,11 +53,11 @@ public class ExpressionController extends DefaultController<ExpressionModel, Exp
     public void onFinishedExpressionResolved(final ActionEvent actionEvent) {
 
         // Reset basic scale
-        getView().getResult().setScaleX(1);
-        getView().getResult().setScaleY(1);
+        view().getResult().setScaleX(1);
+        view().getResult().setScaleY(1);
 
         // Send a register success event
-        getModel().sendWave(MTWaves.REGISTER_SUCCESS, Builders.waveData(MTWaves.EXPRESSION, getModel().getObject()));
+        model().sendWave(MTWaves.REGISTER_SUCCESS, Builders.waveData(MTWaves.EXPRESSION, model().object()));
     }
 
     /**
@@ -68,11 +68,11 @@ public class ExpressionController extends DefaultController<ExpressionModel, Exp
     public void onFinishedExpressionFailure(final ActionEvent actionEvent) {
 
         // Reset basic scale and erase current result
-        getView().getResult().setText("");
-        getView().getResult().setScaleX(1);
-        getView().getResult().setScaleY(1);
+        view().getResult().setText("");
+        view().getResult().setScaleX(1);
+        view().getResult().setScaleY(1);
 
         // Send a register failure event
-        getModel().sendWave(MTWaves.REGISTER_FAILURE, Builders.waveData(MTWaves.EXPRESSION, getModel().getObject()));
+        model().sendWave(MTWaves.REGISTER_FAILURE, Builders.waveData(MTWaves.EXPRESSION, model().object()));
     }
 }

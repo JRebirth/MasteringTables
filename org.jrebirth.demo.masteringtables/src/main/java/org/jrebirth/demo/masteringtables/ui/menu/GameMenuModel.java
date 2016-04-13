@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javafx.util.Duration;
 
-import org.jrebirth.af.api.annotation.LinkComponent;
+import org.jrebirth.af.api.annotation.Link;
 import org.jrebirth.af.api.annotation.Releasable;
 import org.jrebirth.af.api.wave.contract.WaveData;
 import org.jrebirth.af.core.command.basic.showmodel.FadeInOutWaveBean;
@@ -44,7 +44,7 @@ public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuVie
     private static final Logger LOGGER = LoggerFactory.getLogger(GameMenuModel.class);
 
     /** The service used to build quiz data. */
-    @LinkComponent
+    @Link
     private ExpressionBuilderService expressionBuilderService;
 
     private final AtomicBoolean hasShown = new AtomicBoolean(false);

@@ -25,10 +25,10 @@ import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 
+import org.jrebirth.af.api.annotation.Link;
 import org.jrebirth.af.api.component.basic.InnerComponent;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.annotation.OnWave;
-import org.jrebirth.af.core.component.basic.InnerComponentBase;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.Game;
@@ -49,7 +49,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameModel.class);
 
     /** The Expression UI inner component. */
-    static final InnerComponent<ExpressionModel> EXPRESSION = InnerComponentBase.create(ExpressionModel.class);
+    @Link
+    protected InnerComponent<ExpressionModel> EXPRESSION;
 
     /**
      * {@inheritDoc}

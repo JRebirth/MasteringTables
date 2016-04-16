@@ -24,7 +24,7 @@ import java.util.List;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.contract.WaveData;
 import org.jrebirth.af.core.command.single.pool.DefaultPoolCommand;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.demo.masteringtables.beans.Expression;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
@@ -69,7 +69,7 @@ public class CreateGameContent extends DefaultPoolCommand {
         Collections.shuffle(gameList);
 
         // Get expressions to be asked
-        final WaveData<List<Expression>> gameData = Builders.waveData(MTWaves.GAME_LIST, gameList.subList(0, gs.getQuestionNumber()));
+        final WaveData<List<Expression>> gameData = WBuilder.waveData(MTWaves.GAME_LIST, gameList.subList(0, gs.getQuestionNumber()));
 
         // Send a wave Display the game page
         sendWave(MTWaves.START_GAME, gameData);

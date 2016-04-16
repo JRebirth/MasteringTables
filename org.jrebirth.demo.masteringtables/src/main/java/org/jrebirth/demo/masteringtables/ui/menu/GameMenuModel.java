@@ -27,7 +27,7 @@ import org.jrebirth.af.api.wave.contract.WaveData;
 import org.jrebirth.af.core.command.basic.showmodel.FadeInOutWaveBean;
 import org.jrebirth.af.core.command.basic.showmodel.ShowTemporaryCommand;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.demo.masteringtables.beans.GameSettings;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
 import org.jrebirth.demo.masteringtables.ui.powered.AdModel;
@@ -64,7 +64,7 @@ public class GameMenuModel extends DefaultObjectModel<GameMenuModel, GameMenuVie
         final FadeInOutWaveBean fiowb = FadeInOutWaveBean.create().showDuration(Duration.millis(4000));
 
         if (!this.hasShown.getAndSet(true)) {
-            attachUi(AdModel.class, Builders.buildUiData(view().topPlaceHolder(), fiowb, ShowTemporaryCommand.class).toArray(new WaveData[0]));
+            attachUi(AdModel.class, WBuilder.buildUiData(view().topPlaceHolder(), fiowb, ShowTemporaryCommand.class).toArray(new WaveData[0]));
         }
 
     }

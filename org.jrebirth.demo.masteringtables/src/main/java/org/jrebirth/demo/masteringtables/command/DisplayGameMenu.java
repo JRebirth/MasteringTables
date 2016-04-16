@@ -23,7 +23,7 @@ import org.jrebirth.af.api.concurrent.RunType;
 import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.annotation.OnWave;
 import org.jrebirth.af.core.command.single.internal.DefaultCommand;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.af.core.wave.JRebirthWaves;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.service.ExpressionBuilderService;
@@ -64,6 +64,6 @@ public class DisplayGameMenu extends DefaultCommand {
     @RunInto(value = RunType.JTP, priority = PriorityLevel.High)
     public void doTablesBuilt(final Wave wave) {
         // When tables are built, launch the wave that will display the game menu
-        sendWave(MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        sendWave(MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
     }
 }

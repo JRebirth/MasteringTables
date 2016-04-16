@@ -18,9 +18,9 @@
 package org.jrebirth.demo.masteringtables.ui.expression;
 
 import org.jrebirth.af.api.wave.Wave;
+import org.jrebirth.af.api.wave.annotation.OnWave;
 import org.jrebirth.af.core.ui.object.DefaultObjectModel;
 import org.jrebirth.demo.masteringtables.beans.Expression;
-import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +39,7 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
     @Override
     protected void initModel() {
         // Listen event to display a given expression
-        listen(MTWaves.DISPLAY_EXPRESSION);
+        // listen(MTWaves.DISPLAY_EXPRESSION);
     }
 
     /**
@@ -64,6 +64,7 @@ public class ExpressionModel extends DefaultObjectModel<ExpressionModel, Express
      * @param expression the expression
      * @param wave the wave
      */
+    @OnWave("DISPLAY_EXPRESSION")
     public void doDisplayExpression(final Expression expression, final Wave wave) {
 
         // Store the current expression

@@ -22,7 +22,7 @@ import javafx.scene.input.MouseEvent;
 
 import org.jrebirth.af.api.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultController;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
@@ -53,8 +53,8 @@ public class ResultController extends DefaultController<ResultModel, ResultView>
     @Override
     protected void initEventAdapters() throws CoreException {
 
-        linkWave(node(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
-        linkWave(node(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(node(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(node(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
 
     }
 }

@@ -27,7 +27,7 @@ import org.jrebirth.af.api.wave.Wave;
 import org.jrebirth.af.api.wave.annotation.OnWave;
 import org.jrebirth.af.api.wave.contract.WaveItem;
 import org.jrebirth.af.api.wave.contract.WaveType;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.af.core.wave.JRebirthItems;
 import org.jrebirth.af.core.wave.WaveItemBase;
 import org.jrebirth.demo.masteringtables.beans.Expression;
@@ -49,7 +49,7 @@ public interface ExpressionBuilderService extends Service {
     String TABLES_BUILT = "TABLES_BUILT";
 
     /** The Wave Type DO_BUILD_TABLES. */
-    WaveType DO_BUILD_TABLES = Builders.waveType(BUILD_TABLES)
+    WaveType DO_BUILD_TABLES = WBuilder.waveType(BUILD_TABLES)
                                        .returnAction(TABLES_BUILT)
                                        .returnItem(JRebirthItems.voidItem);
 

@@ -21,7 +21,7 @@ import javafx.event.ActionEvent;
 
 import org.jrebirth.af.api.exception.CoreException;
 import org.jrebirth.af.core.ui.DefaultController;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
 
@@ -53,7 +53,7 @@ public class GameMenuController extends DefaultController<GameMenuModel, GameMen
      */
     public void onActionPlay(final ActionEvent actionEvent) {
         // When play button is triggered launch the game
-        model().sendWave(MTWaves.DO_SHOW_PAGE, Builders.waveData(MTWaves.PAGE, Page.Game));
+        model().sendWave(MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.Game));
     }
 
 }

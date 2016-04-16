@@ -24,7 +24,7 @@ import javafx.scene.layout.BorderPane;
 
 import org.jrebirth.af.api.ui.annotation.RootNodeId;
 import org.jrebirth.af.core.ui.simple.DefaultSimpleModel;
-import org.jrebirth.af.core.wave.Builders;
+import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.af.core.wave.JRebirthWaves;
 import org.jrebirth.demo.masteringtables.command.DisplayGameMenu;
 
@@ -44,7 +44,7 @@ public class SplashModel extends DefaultSimpleModel<BorderPane> {
     protected void showView() {
 
         // Call a command that will perform a service call to update the progress bar
-        callCommand(DisplayGameMenu.class, Builders.waveData(JRebirthWaves.PROGRESS_BAR, getLoadingBar()));
+        callCommand(DisplayGameMenu.class, WBuilder.waveData(JRebirthWaves.PROGRESS_BAR, getLoadingBar()));
 
     }
 

@@ -17,7 +17,7 @@
  */
 package org.jrebirth.demo.masteringtables.ui.game;
 
-import static org.jrebirth.af.core.wave.Builders.waveData;
+import static org.jrebirth.af.core.wave.WBuilder.waveData;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
     /** The Expression UI inner component. */
     @Link
-    protected InnerComponent<ExpressionModel> EXPRESSION;
+    protected InnerComponent<ExpressionModel> expressionModel;
 
     /**
      * {@inheritDoc}
@@ -70,7 +70,8 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void initInnerComponents() {
-        addInnerComponent(EXPRESSION);
+        // Preload the expression model
+        expressionModel.get();
     }
 
     @Override
@@ -91,8 +92,6 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
     @OnWave(MTWaves.START_GAME_CODE)
     public void doStartGame(final List<Expression> expressionList, final Wave wave) {
 
-        final ExpressionModel expressionModel = findInnerComponent(EXPRESSION);
-
         // Reset the current index and counters
         object().setIndex(0);
         object().setSuccessCount(0);
@@ -104,10 +103,10 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
 
         // Clear the current expression panel
         view().getExpressionHolder().getChildren().clear();
-        view().getExpressionHolder().getChildren().add(expressionModel.node());
+        view().getExpressionHolder().getChildren().add(expressionModel.get().node());
 
         // Center the panel
-        StackPane.setAlignment(expressionModel.node(), Pos.CENTER);
+        StackPane.setAlignment(expressionModel.get().node(), Pos.CENTER);
 
         view().startTimer();
 
@@ -165,7 +164,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void hideView() {
-        findInnerComponent(EXPRESSION).reset();
+        findInnerComponent(expressionModel).reset();
     }
 
     /**
@@ -174,7 +173,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param code the code
      */
     public void performNumber(final KeyCode code) {
-        findInnerComponent(EXPRESSION).appendNumber(code.getName());
+        findInnerComponent(expressionModel).appendNumber(code.getName());
     }
 
     /**
@@ -201,7 +200,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * Do delete.
      */
     public void performDelete() {
-        findInnerComponent(EXPRESSION).deleteLastChar();
+        findInnerComponent(expressionModel).deleteLastChar();
 
     }
 

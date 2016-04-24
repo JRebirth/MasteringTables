@@ -164,7 +164,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      */
     @Override
     protected void hideView() {
-        findInnerComponent(expressionModel).reset();
+        expressionModel.get().reset();
     }
 
     /**
@@ -173,7 +173,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * @param code the code
      */
     public void performNumber(final KeyCode code) {
-        findInnerComponent(expressionModel).appendNumber(code.getName());
+        expressionModel.get().appendNumber(code.getName());
     }
 
     /**
@@ -200,7 +200,7 @@ public class GameModel extends DefaultObjectModel<GameModel, GameView, Game> {
      * Do delete.
      */
     public void performDelete() {
-        findInnerComponent(expressionModel).deleteLastChar();
+        expressionModel.get().deleteLastChar();
 
     }
 

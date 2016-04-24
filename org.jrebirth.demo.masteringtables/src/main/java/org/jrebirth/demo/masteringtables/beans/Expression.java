@@ -174,11 +174,11 @@ public class Expression {
 
         final StringBuilder sb = new StringBuilder();
 
-        sb.append(left());
-        sb.append(operator().toString());
-        sb.append(right());
-        sb.append("=");
-        sb.append(result());
+        sb.append(left())
+          .append(operator().toString())
+          .append(right())
+          .append('=')
+          .append(result());
 
         return sb.toString();
     }

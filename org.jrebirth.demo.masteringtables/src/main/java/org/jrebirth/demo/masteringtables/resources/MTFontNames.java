@@ -25,6 +25,6 @@ import org.jrebirth.af.api.resource.font.FontName;
 public enum MTFontNames implements FontName {
 
     /** The NYALA font. */
-    NYALA;
+    nyala;
 
 }

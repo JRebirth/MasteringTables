@@ -28,9 +28,9 @@ public enum MTFonts implements FontEnum {
     // @formatter:off
 
     /** The font used to display expression. */
-    EXPRESSION {{ real(MTFontNames.NYALA, 130.0, FontExtension.TTF); }},
+    EXPRESSION {{ real(MTFontNames.nyala, 130.0, FontExtension.TTF); }},
 
     /** The font used to display counter values. */
-    COUNTER {{ real(MTFontNames.NYALA, 50.0, FontExtension.TTF); }};
+    COUNTER {{ real(MTFontNames.nyala, 50.0, FontExtension.TTF); }};
 
 }

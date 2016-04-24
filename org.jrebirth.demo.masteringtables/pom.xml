@@ -24,7 +24,8 @@
 		<deployUrl>http://apps.jrebirth.org</deployUrl>
 		<deployPath>${project.artifactId}/${project.version}</deployPath>
 
-		<jnlpFilename>MasteringTables.jnlp</jnlpFilename>
+		<archiveName>MasteringTables</archiveName>
+		<jnlpFilename>${archiveName}.jnlp</jnlpFilename>
 		<appClass>org.jrebirth.demo.masteringtables.MTApplication</appClass>
 
 		<appletWidth>800</appletWidth>
@@ -122,6 +123,7 @@
 							</manifestEntries>
 						</transformer>
 					</transformers>
+					<finalName>${archiveName}-${version}</finalName>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -137,8 +139,8 @@
 						</goals>
 						<configuration>
 							<headerType>gui</headerType>
-							<jar>${project.build.directory}/${artifactId}-${version}.jar</jar>
-							<outfile>${project.build.directory}/MasteringTables.exe</outfile>
+							<jar>${project.build.directory}/${archiveName}-${version}.jar</jar>
+							<outfile>${project.build.directory}/${archiveName}-${version}.exe</outfile>
 							<downloadUrl>http://java.com/download</downloadUrl>
 							<classPath>
 								<mainClass>${appClass}</mainClass>
@@ -159,8 +161,8 @@
 								<txtProductVersion>1.0.0.0</txtProductVersion>
 								<productName>${project.name}</productName>
 								<companyName>JRebirth</companyName>
-								<internalName>MasteringTables</internalName>
-								<originalFilename>MasteringTables.exe</originalFilename>
+								<internalName>${archiveName}</internalName>
+								<originalFilename>${archiveName}.exe</originalFilename>
 							</versionInfo>
 						</configuration>
 					</execution>

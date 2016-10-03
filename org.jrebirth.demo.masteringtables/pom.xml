@@ -10,7 +10,7 @@
 
 	<groupId>org.jrebirth.demo</groupId>
 	<artifactId>masteringtables</artifactId>
-	<version>2.5.0-SNAPSHOT</version>
+	<version>2.5.0</version>
 
 	<name>Mastering Tables</name>
 	<url>http://wip.jrebirth.org/apps/MasteringTables.html</url>
@@ -19,7 +19,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jrebirth.version>8.5.0-SNAPSHOT</jrebirth.version>
+		<jrebirth.version>8.5.0</jrebirth.version>
 
 		<deployUrl>http://apps.jrebirth.org</deployUrl>
 		<deployPath>${project.artifactId}/${project.version}/jnlp</deployPath>

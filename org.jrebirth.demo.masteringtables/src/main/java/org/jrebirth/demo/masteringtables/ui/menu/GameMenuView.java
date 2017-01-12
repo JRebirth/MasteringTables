@@ -127,7 +127,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     private Node buildStartGamePanel() {
         final FlowPane fp = new FlowPane();
 
-        this.playButton = ButtonBuilder.create()
+        this.playButton = ButtonBuilder.create().id("playButton")
                                        .styleClass("play")
                                        .minHeight(130)
                                        .minWidth(180)
@@ -156,6 +156,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         pane.getRowConstraints().addAll(new RowConstraints(150), new RowConstraints(100), new RowConstraints(100));
 
         this.addition = buildChoiceButton(Operator.addition.toString());
+        this.addition.setId("addButton");
         this.addition.getStyleClass().add("addition");
         // this.addition.setSkin(new ArcadeButtonSkin(this.addition));
 
@@ -164,6 +165,7 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         // this.subtraction.setSkin(new ArcadeButtonSkin(this.subtraction));
 
         this.multiplication = buildChoiceButton(Operator.multiplication.toString());
+        this.multiplication.setId("multiplyButton");
         this.multiplication.getStyleClass().add("multiplication");
         // this.multiplication.setSkin(new ArcadeButtonSkin(this.multiplication));
 

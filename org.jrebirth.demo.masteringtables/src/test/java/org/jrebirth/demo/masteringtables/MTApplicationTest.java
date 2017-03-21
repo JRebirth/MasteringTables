@@ -13,6 +13,7 @@ import org.jrebirth.demo.masteringtables.ui.expression.ExpressionModel;
 import org.jrebirth.demo.masteringtables.ui.menu.GameMenuModel;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -21,11 +22,8 @@ import org.testfx.framework.junit.ApplicationTest;
  *
  * @author Sébastien Bordes
  */
+@Ignore
 public class MTApplicationTest extends JRebirthApplicationTest<MTApplication> {
-
-    public MTApplicationTest() {
-        super(MTApplication.class);
-    }
 
     @BeforeClass
     public static void startUp() throws Exception {

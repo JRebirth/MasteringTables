@@ -1,6 +1,6 @@
 /**
  * Get more info at : www.jrebirth.org .
- * Copyright JRebirth.org © 2011-2013
+ * Copyright JRebirth.org © 2011-2017
  * Contact : sebastien.bordes@jrebirth.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +24,7 @@ import javafx.animation.ParallelTransitionBuilder;
 import javafx.animation.ScaleTransitionBuilder;
 import javafx.animation.SequentialTransitionBuilder;
 import javafx.animation.TranslateTransitionBuilder;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.LabelBuilder;
 import javafx.scene.effect.BlurType;
@@ -43,7 +44,9 @@ import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
 import org.jrebirth.af.api.exception.CoreException;
+import org.jrebirth.af.api.ui.annotation.OnMouse;
 import org.jrebirth.af.api.ui.annotation.RootNodeId;
+import org.jrebirth.af.api.ui.annotation.type.Mouse;
 import org.jrebirth.af.core.ui.DefaultView;
 import org.jrebirth.demo.masteringtables.resources.MTColors;
 import org.jrebirth.demo.masteringtables.resources.MTImages;
@@ -92,6 +95,12 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
 
     /** The failure icon. */
     private ImageView failureIcon;
+
+    /**
+     * The print button allowing to capture a screenshot.
+     */
+    @OnMouse(value = Mouse.Clicked)
+    private Button printResult;
 
     /**
      * Instantiates a new page view.
@@ -211,6 +220,10 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                                         .scaleY(0)
                                         .build();
 
+        printResult = new Button("Print Results");
+        printResult.setLayoutX(40);
+        printResult.setLayoutY(540);
+
         final Pane p = PaneBuilder
                                   .create()
                                   .prefHeight(600)
@@ -219,7 +232,9 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                                   .minWidth(800)
                                   .children(this.failureBean, this.successBean, this.timeBean, this.ratioCircle, this.monsterImage, this.successIcon, this.failureIcon, this.timeLabel,
                                             this.successLabel,
-                                            this.failureLabel, this.ratioLabel)
+                                            this.failureLabel,
+                                            this.ratioLabel,
+                                            this.printResult)
                                   .build();
 
         node().setCenter(p);
@@ -267,7 +282,7 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                                                                                 FadeTransitionBuilder.create().node(this.failureIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build())
                                                                       .build()
 
-        )
+                                   )
 
                                    .build().playFromStart();
 

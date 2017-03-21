@@ -94,6 +94,12 @@
 			<artifactId>core</artifactId>
 			<version>${jrebirth.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.jrebirth.af</groupId>
+			<artifactId>component</artifactId>
+			<version>${jrebirth.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jrebirth.af</groupId>

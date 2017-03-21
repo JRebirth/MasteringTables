@@ -1,6 +1,7 @@
 /**
+
  * Get more info at : www.jrebirth.org .
- * Copyright JRebirth.org © 2011-2013
+ * Copyright JRebirth.org © 2011-2017
  * Contact : sebastien.bordes@jrebirth.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,10 +18,18 @@
  */
 package org.jrebirth.demo.masteringtables.ui.result;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 import org.jrebirth.af.api.exception.CoreException;
+import org.jrebirth.af.component.command.snapshot.SaveImageWaveBean;
+import org.jrebirth.af.component.command.snapshot.SnapshotWaveBean;
+import org.jrebirth.af.component.command.snapshot.TakeSnapshotToFile;
 import org.jrebirth.af.core.ui.DefaultController;
 import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.demo.masteringtables.beans.Page;
@@ -56,5 +65,18 @@ public class ResultController extends DefaultController<ResultModel, ResultView>
         linkWave(node(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
         linkWave(node(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
 
+    }
+
+    public void onMouseClicked(MouseEvent event) {
+
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
+
+        callCommand(TakeSnapshotToFile.class,
+                    SnapshotWaveBean.of()
+                                    .node(node()),
+                    SaveImageWaveBean.of()
+                                     .chooserTitle("Choose a file location for screenshot")
+                                     .fileName(sdf.format(Calendar.getInstance().getTime()) + "-screenshot.png")
+                                     .fileExtension(Arrays.asList(new ExtensionFilter("PNG file", "*.png"))));
     }
 }

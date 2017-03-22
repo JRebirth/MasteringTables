@@ -15,7 +15,7 @@ Download Binaries
 
 All binaries are stored on our binaries server : http://apps.jrebirth.org/masteringtables
 
-Latest one are here : http://apps.jrebirth.org/masteringtables/2.0.2-SNAPSHOT/
+Latest one are here : http://apps.jrebirth.org/masteringtables/3.0.0/
 
 
 Build it
@@ -24,8 +24,8 @@ Build it
 Requires [Git](http://git-scm.com/), [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) and [Maven](http://maven.apache.org/).
 
     git clone https://github.com/JRebirth/MasteringTables.git
-    cd JRebirth-Tour/org.jrebirth.demo.masteringtables
-    mvn clean install
+    cd MasteringTables/org.jrebirth.demo.masteringtables
+    mvn clean install -P WebStart,AutoJar,WinExe
 
 
 How to Build Snaphot Versions

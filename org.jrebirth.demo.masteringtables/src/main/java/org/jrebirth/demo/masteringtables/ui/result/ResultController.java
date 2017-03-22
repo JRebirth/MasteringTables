@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -31,6 +32,7 @@ import org.jrebirth.af.component.command.snapshot.SaveImageWaveBean;
 import org.jrebirth.af.component.command.snapshot.SnapshotWaveBean;
 import org.jrebirth.af.component.command.snapshot.TakeSnapshotToFile;
 import org.jrebirth.af.core.ui.DefaultController;
+import org.jrebirth.af.core.ui.EventFilter;
 import org.jrebirth.af.core.wave.WBuilder;
 import org.jrebirth.demo.masteringtables.beans.Page;
 import org.jrebirth.demo.masteringtables.ui.MTWaves;
@@ -41,7 +43,7 @@ import org.slf4j.LoggerFactory;
 /**
  * The Class GameController.
  */
-public class ResultController extends DefaultController<ResultModel, ResultView> {
+public class ResultController extends DefaultController<ResultModel, ResultView> implements EventFilter {
 
     /** The Constant LOGGER. */
     private static final Logger LOGGER = LoggerFactory.getLogger(ResultController.class);
@@ -62,13 +64,22 @@ public class ResultController extends DefaultController<ResultModel, ResultView>
     @Override
     protected void initEventAdapters() throws CoreException {
 
-        linkWave(node(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
+        linkWave(node(), KeyEvent.KEY_RELEASED, MTWaves.DO_SHOW_PAGE, forbiddenKeys(KeyCode.PRINTSCREEN), WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
+
         linkWave(node(), MouseEvent.MOUSE_CLICKED, MTWaves.DO_SHOW_PAGE, WBuilder.waveData(MTWaves.PAGE, Page.GameMenu));
 
+        node().setOnKeyReleased(handleIf(allowedKeys(KeyCode.PRINTSCREEN), this::takeScreenshot));
     }
 
     public void onMouseClicked(MouseEvent event) {
 
+        takeScreenshot();
+    }
+
+    /**
+     * 
+     */
+    protected void takeScreenshot() {
         final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
 
         callCommand(TakeSnapshotToFile.class,

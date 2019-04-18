@@ -18,28 +18,23 @@
 package org.jrebirth.demo.masteringtables.ui.result;
 
 import javafx.animation.Animation;
-import javafx.animation.FadeTransitionBuilder;
-import javafx.animation.FillTransitionBuilder;
-import javafx.animation.ParallelTransitionBuilder;
-import javafx.animation.ScaleTransitionBuilder;
-import javafx.animation.SequentialTransitionBuilder;
-import javafx.animation.TranslateTransitionBuilder;
+import javafx.animation.FadeTransition;
+import javafx.animation.FillTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.LabelBuilder;
 import javafx.scene.effect.BlurType;
-import javafx.scene.effect.DropShadowBuilder;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.PaneBuilder;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.CircleBuilder;
 import javafx.scene.shape.SVGPath;
-import javafx.scene.shape.SVGPathBuilder;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 
@@ -127,46 +122,42 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
                 + "C9.66,464.417,67.636,523.015,139.613,523.474c71.979,0.459,130.693-57.118,131.155-129.096"
                 + "C270.861,380.109,268.652,365.896,264.489,353.896z";
 
-        this.timeBean = SVGPathBuilder.create()
-                                      .content(beanPath)
-                                      .scaleX(1.0)
-                                      .scaleY(1.0)
-                                      .layoutX(80)
-                                      .layoutY(14)
-                                      .rotate(-34.0)
-                                      .fill(Color.LIGHTGREY)
-                                      .effect(getDropShadow())
-                                      .build();
+        this.timeBean = new SVGPath();
+        this.timeBean.setContent(beanPath);
+        this.timeBean.setScaleX(1.0);
+        this.timeBean.setScaleY(1.0);
+        this.timeBean.setLayoutX(80);
+        this.timeBean.setLayoutY(14);
+        this.timeBean.setRotate(-34.0);
+        this.timeBean.setFill(Color.LIGHTGREY);
+        this.timeBean.setEffect(getDropShadow());
 
-        this.successBean = SVGPathBuilder.create()
-                                         .content(beanPath)
-                                         .scaleX(0.84)
-                                         .scaleY(0.84)
-                                         .layoutX(270)
-                                         .layoutY(80)
-                                         .rotate(62.0)
-                                         .fill(Color.LIGHTGREY)
-                                         .effect(getDropShadow())
-                                         .build();
+        this.successBean = new SVGPath();
+        this.successBean.setContent(beanPath);
+        this.successBean.setScaleX(0.84);
+        this.successBean.setScaleY(0.84);
+        this.successBean.setLayoutX(270);
+        this.successBean.setLayoutY(80);
+        this.successBean.setRotate(62.0);
+        this.successBean.setFill(Color.LIGHTGREY);
+        this.successBean.setEffect(getDropShadow());
 
-        this.failureBean = SVGPathBuilder.create()
-                                         .content(beanPath)
-                                         .scaleX(0.73)
-                                         .scaleY(0.73)
-                                         .layoutX(460)
-                                         .layoutY(85)
-                                         .rotate(-58)
-                                         .fill(Color.LIGHTGREY)
-                                         .effect(getDropShadow())
-                                         .build();
+        this.failureBean = new SVGPath();
+        this.failureBean.setContent(beanPath);
+        this.failureBean.setScaleX(0.73);
+        this.failureBean.setScaleY(0.73);
+        this.failureBean.setLayoutX(460);
+        this.failureBean.setLayoutY(85);
+        this.failureBean.setRotate(-58);
+        this.failureBean.setFill(Color.LIGHTGREY);
+        this.failureBean.setEffect(getDropShadow());
 
-        this.ratioCircle = CircleBuilder.create()
-                                        .fill(Color.LIGHTGREY)
-                                        .radius(150)
-                                        .layoutX(154)
-                                        .layoutY(154)
-                                        .effect(getDropShadow())
-                                        .build();
+        this.ratioCircle = new Circle();
+        this.ratioCircle.setFill(Color.LIGHTGREY);
+        this.ratioCircle.setRadius(150);
+        this.ratioCircle.setLayoutX(154);
+        this.ratioCircle.setLayoutY(154);
+        this.ratioCircle.setEffect(getDropShadow());
 
         // Image
 
@@ -180,62 +171,55 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
         this.failureIcon.setLayoutY(320);
         this.failureIcon.setOpacity(0);
 
-        this.monsterImage = ImageViewBuilder.create()
-                                            .image(MTImages.RESULT_MONSTER.get())
-                                            .scaleX(0.9)
-                                            .scaleY(0.9)
-                                            .layoutX(410)
-                                            .layoutY(1200)
-                                            .build();
+        this.monsterImage = new ImageView(MTImages.RESULT_MONSTER.get());
+        this.monsterImage.setScaleX(0.9);
+        this.monsterImage.setScaleY(0.9);
+        this.monsterImage.setLayoutX(410);
+        this.monsterImage.setLayoutY(1200);
 
-        this.ratioLabel = LabelBuilder.create()
-                                      .id("ResultRatioLabel")
-                                      .layoutX(28)
-                                      .layoutY(80)
-                                      .scaleX(0)
-                                      .scaleY(0)
-                                      .build();
+        this.ratioLabel = new Label();
+        this.ratioLabel.setId("ResultRatioLabel");
+        this.ratioLabel.setLayoutX(28);
+        this.ratioLabel.setLayoutY(80);
+        this.ratioLabel.setScaleX(0);
+        this.ratioLabel.setScaleY(0);
 
-        this.timeLabel = LabelBuilder.create()
-                                     .id("ResultTimeLabel")
-                                     .layoutX(170)
-                                     .layoutY(330)
-                                     .scaleX(0)
-                                     .scaleY(0)
-                                     .build();
+        this.timeLabel = new Label();
+        this.timeLabel.setId("ResultTimeLabel");
+        this.timeLabel.setLayoutX(170);
+        this.timeLabel.setLayoutY(330);
+        this.timeLabel.setScaleX(0);
+        this.timeLabel.setScaleY(0);
 
-        this.successLabel = LabelBuilder.create()
-                                        .id("ResultSuccessLabel")
-                                        .layoutX(444)
-                                        .layoutY(255)
-                                        .scaleX(0)
-                                        .scaleY(0)
-                                        .build();
+        this.successLabel = new Label();
+        this.successLabel.setId("ResultSuccessLabel");
+        this.successLabel.setLayoutX(444);
+        this.successLabel.setLayoutY(255);
+        this.successLabel.setScaleX(0);
+        this.successLabel.setScaleY(0);
 
-        this.failureLabel = LabelBuilder.create()
-                                        .id("ResultFailureLabel")
-                                        .layoutX(645)
-                                        .layoutY(390)
-                                        .scaleX(0)
-                                        .scaleY(0)
-                                        .build();
+        this.failureLabel = new Label();
+        this.failureLabel.setId("ResultFailureLabel");
+        this.failureLabel.setLayoutX(645);
+        this.failureLabel.setLayoutY(390);
+        this.failureLabel.setScaleX(0);
+        this.failureLabel.setScaleY(0);
 
         printResult = new Button("Print Results");
         printResult.setLayoutX(40);
         printResult.setLayoutY(540);
 
-        final Pane p = PaneBuilder
-                                  .create()
-                                  .prefHeight(600)
-                                  .prefWidth(800)
-                                  .minHeight(600)
-                                  .minWidth(800)
-                                  .children(this.failureBean, this.successBean, this.timeBean, this.ratioCircle, this.monsterImage, this.successIcon, this.failureIcon, this.timeLabel,
-                                            this.successLabel,
-                                            this.failureLabel,
-                                            this.ratioLabel,
-                                            this.printResult)
-                                  .build();
+        final Pane p = new Pane();
+
+        p.setPrefHeight(600);
+        p.setPrefWidth(800);
+        p.setMinHeight(600);
+        p.setMinWidth(800);
+        p.getChildren().addAll(this.failureBean, this.successBean, this.timeBean, this.ratioCircle, this.monsterImage, this.successIcon, this.failureIcon, this.timeLabel,
+                               this.successLabel,
+                               this.failureLabel,
+                               this.ratioLabel,
+                               this.printResult);
 
         node().setCenter(p);
 
@@ -247,14 +231,14 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
      * @return the drop shadow effect
      */
     private Effect getDropShadow() {
-        return DropShadowBuilder.create()
-                                .offsetX(0)
-                                .offsetY(5)
-                                .color(MTColors.BEAN_SHADOW.get())
-                                .blurType(BlurType.GAUSSIAN)
-                                .radius(5)
-                                .spread(0.1)
-                                .build();
+        DropShadow ds = new DropShadow();
+        ds.setOffsetX(0);
+        ds.setOffsetY(5);
+        ds.setColor(MTColors.BEAN_SHADOW.get());
+        ds.setBlurType(BlurType.GAUSSIAN);
+        ds.setRadius(5);
+        ds.setSpread(0.1);
+        return ds;
     }
 
     /**
@@ -262,29 +246,44 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
      */
     @Override
     public void start() {
-        SequentialTransitionBuilder.create()
-                                   .children(
 
-                                             buildBeanAnimation(this.ratioLabel, this.ratioCircle, MTColors.RESULT_RATIO.get()),
-                                             buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
+        TranslateTransition tt = new TranslateTransition();
+        tt.setNode(this.monsterImage);
+        tt.setDelay(Duration.millis(500));
+        tt.setDuration(Duration.millis(400));
+        tt.setByY(-766);
 
-                                             ParallelTransitionBuilder.create()
-                                                                      .children(
-                                                                                TranslateTransitionBuilder.create().node(this.monsterImage).delay(Duration.millis(500)).duration(Duration.millis(400))
-                                                                                                          .byY(-766).build(),
-                                                                                buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
-                                                                                FadeTransitionBuilder.create().node(this.successIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build())
-                                                                      .build(),
+        FadeTransition ft = new FadeTransition();
+        ft.setNode(this.successIcon);
+        ft.setDuration(Duration.millis(500));
+        ft.setFromValue(0);
+        ft.setToValue(1);
 
-                                             ParallelTransitionBuilder.create()
-                                                                      .children(
-                                                                                buildBeanAnimation(this.failureLabel, this.failureBean, MTColors.RESULT_FAILURE.get()),
-                                                                                FadeTransitionBuilder.create().node(this.failureIcon).duration(Duration.millis(500)).fromValue(0).toValue(1).build())
-                                                                      .build()
+        ParallelTransition pt1 = new ParallelTransition();
+        pt1.getChildren().addAll(
+                                 tt,
+                                 buildBeanAnimation(this.successLabel, this.successBean, MTColors.RESULT_SUCCESS.get()),
+                                 ft);
 
-                                   )
+        FadeTransition ft0 = new FadeTransition();
+        ft0.setNode(this.failureIcon);
+        ft0.setDuration(Duration.millis(500));
+        ft0.setFromValue(0);
+        ft0.setToValue(1);
 
-                                   .build().playFromStart();
+        ParallelTransition pt2 = new ParallelTransition();
+        pt2.getChildren().addAll(
+                                 buildBeanAnimation(this.failureLabel, this.failureBean, MTColors.RESULT_FAILURE.get()),
+                                 ft0);
+
+        SequentialTransition st = new SequentialTransition();
+        st.getChildren().addAll(
+
+                                buildBeanAnimation(this.ratioLabel, this.ratioCircle, MTColors.RESULT_RATIO.get()),
+                                buildBeanAnimation(this.timeLabel, this.timeBean, MTColors.RESULT_TIME.get()),
+                                pt1, pt2);
+
+        st.playFromStart();
 
     }
 
@@ -298,14 +297,26 @@ public class ResultView extends DefaultView<ResultModel, BorderPane, ResultContr
      * @return the bean animation
      */
     private Animation buildBeanAnimation(final Label label, final Shape shape, final Color fillColor) {
-        return ParallelTransitionBuilder.create()
-                                        .children(
-                                                  ScaleTransitionBuilder.create().node(label).delay(Duration.millis(50)).duration(Duration.millis(300))
-                                                                        .fromX(0).fromY(0).toX(1).toY(1).build(),
-                                                  FillTransitionBuilder.create().shape(shape)
-                                                                       .fromValue(Color.LIGHTGREY).toValue(fillColor)
-                                                                       .build())
-                                        .build();
+        ScaleTransition st = new ScaleTransition();
+        st.setNode(label);
+        st.setDelay(Duration.millis(50));
+        st.setDuration(Duration.millis(300));
+
+        st.setFromX(0);
+        st.setFromY(0);
+        st.setToX(1);
+        st.setToY(1);
+
+        FillTransition ft = new FillTransition();
+        ft.setShape(shape);
+        ft.setFromValue(Color.LIGHTGREY);
+        ft.setToValue(fillColor);
+
+        ParallelTransition pt = new ParallelTransition();
+        pt.getChildren().addAll(
+                                st,
+                                ft);
+        return pt;
     }
 
     /**

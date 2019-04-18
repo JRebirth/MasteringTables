@@ -29,11 +29,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.LabelBuilder;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.StackPaneBuilder;
 import javafx.util.Duration;
 
 import org.jrebirth.af.api.exception.CoreException;
@@ -123,55 +121,48 @@ public class GameView extends DefaultView<GameModel, BorderPane, GameController>
 
         // Success Part
 
-        this.successCounter = LabelBuilder.create()
-                                          .id("SuccessCounter")
-                                          .font(MTFonts.COUNTER.get())
-                                          .minWidth(100)
-                                          .alignment(Pos.CENTER_RIGHT)
-                                          .build();
+        this.successCounter = new Label();
+        this.successCounter.setId("SuccessCounter");
+        this.successCounter.setFont(MTFonts.COUNTER.get());
+        this.successCounter.setMinWidth(100);
+        this.successCounter.setAlignment(Pos.CENTER_RIGHT);
 
-        this.successIcon = LabelBuilder.create()
-                                       .id("SuccessIcon")
-                                       .build();
+        this.successIcon = new Label();
+        this.successIcon.setId("SuccessIcon");
 
         StackPane.setMargin(this.successIcon, new Insets(0, 0, 12, 92));
         StackPane.setAlignment(this.successIcon, Pos.TOP_RIGHT);
 
         StackPane.setAlignment(this.successCounter, Pos.BOTTOM_LEFT);
 
-        final StackPane successPane = StackPaneBuilder.create()
-                                                      .children(this.successIcon, this.successCounter)
-                                                      .build();
+        final StackPane successPane = new StackPane();
+        successPane.getChildren().addAll(this.successIcon, this.successCounter);
 
         // Failure Part
 
-        this.failureCounter = LabelBuilder.create()
-                                          .id("FailureCounter")
-                                          .font(MTFonts.COUNTER.get())
-                                          .minWidth(100)
-                                          .alignment(Pos.CENTER_RIGHT)
-                                          .build();
+        this.failureCounter = new Label();
+        this.failureCounter.setId("FailureCounter");
+        this.failureCounter.setFont(MTFonts.COUNTER.get());
+        this.failureCounter.setMinWidth(100);
+        this.failureCounter.setAlignment(Pos.CENTER_RIGHT);
 
-        this.failureIcon = LabelBuilder.create()
-                                       .id("FailureIcon")
-                                       .build();
+        this.failureIcon = new Label();
+        this.failureIcon.setId("FailureIcon");
 
         StackPane.setMargin(this.failureIcon, new Insets(0, 0, 12, 92));
         StackPane.setAlignment(this.failureIcon, Pos.TOP_RIGHT);
 
         StackPane.setAlignment(this.failureCounter, Pos.BOTTOM_LEFT);
 
-        final StackPane failurePane = StackPaneBuilder.create()
-                                                      .children(this.failureIcon, this.failureCounter)
-                                                      .build();
+        final StackPane failurePane = new StackPane();
+        failurePane.getChildren().addAll(this.failureIcon, this.failureCounter);
 
-        this.timer = LabelBuilder.create()
-                                 .id("Timer")
-                                 .text("00:00")
-                                 .font(MTFonts.COUNTER.get())
-                                 .minWidth(100)
-                                 .alignment(Pos.CENTER_RIGHT)
-                                 .build();
+        this.timer = new Label("00:00");
+        
+        this.timer.setId("Timer");
+        this.timer.setFont(MTFonts.COUNTER.get());
+        this.timer.setMinWidth(100);
+        this.timer.setAlignment(Pos.CENTER_RIGHT);
 
         // Add Part to the view root node
 

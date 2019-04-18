@@ -32,16 +32,12 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBuilder;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleButtonBuilder;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.ToggleGroupBuilder;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.GridPaneBuilder;
 import javafx.scene.layout.RowConstraints;
 
 import org.jrebirth.af.api.exception.CoreException;
@@ -127,12 +123,12 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
     private Node buildStartGamePanel() {
         final FlowPane fp = new FlowPane();
 
-        this.playButton = ButtonBuilder.create().id("playButton")
-                                       .styleClass("play")
-                                       .minHeight(130)
-                                       .minWidth(180)
-                                       // .text("Start Game")
-                                       .build();
+        this.playButton = new Button();
+        this.playButton.setId("playButton");
+        this.playButton.getStyleClass().add("play");
+        this.playButton.setMinHeight(130);
+        this.playButton.setMinWidth(180);
+        // .text("Start Game")
 
         fp.getChildren().add(this.playButton);
         fp.setAlignment(Pos.TOP_CENTER);
@@ -147,11 +143,10 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      */
     private Node buildGameConfigPanel() {
 
-        final GridPane pane = GridPaneBuilder.create()
-                                             .hgap(10)
-                                             // .vgap(10)
-                                             // .gridLinesVisible(true)
-                                             .build();
+        final GridPane pane = new GridPane();
+        pane.setHgap(10);
+        // .vgap(10)
+        // .gridLinesVisible(true)
 
         pane.getRowConstraints().addAll(new RowConstraints(150), new RowConstraints(100), new RowConstraints(100));
 
@@ -202,9 +197,8 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
         }
         fp.getChildren().addAll(toggleList);
 
-        this.lengthGroup = ToggleGroupBuilder.create()
-                                             .toggles(toggleList)
-                                             .build();
+        this.lengthGroup = new ToggleGroup();
+        lengthGroup.getToggles().addAll(toggleList);
 
         GridPane.setConstraints(fp, 0, 1, 4, 1, HPos.CENTER, VPos.CENTER);
         pane.getChildren().add(fp);
@@ -241,16 +235,15 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      * @return the toggle button
      */
     private ToggleButton buildChoiceButton(final String name) {
-        return ToggleButtonBuilder.create()
-                                  .styleClass("ChoiceButton")// , "toggle-button")
-                                  .alignment(Pos.BASELINE_CENTER)
-                                  .minWidth(150)
-                                  .minHeight(150)
-                                  .maxWidth(150)
-                                  .maxHeight(150)
-                                  // .text(name)
-                                  .build();
-
+        ToggleButton tb = new ToggleButton();
+        tb.getStyleClass().add("ChoiceButton");// , "toggle-button")
+        tb.setAlignment(Pos.BASELINE_CENTER);
+        tb.setMinWidth(150);
+        tb.setMinHeight(150);
+        tb.setMaxWidth(150);
+        tb.setMaxHeight(150);
+        // .text(name)
+        return tb;
     }
 
     /**
@@ -261,16 +254,16 @@ public class GameMenuView extends DefaultView<GameMenuModel, BorderPane, GameMen
      * @return the toggle button
      */
     private ToggleButton buildMiniButton(final int value) {
-        return ToggleButtonBuilder.create()
-                                  .styleClass("MiniChoiceButton", "expr" + value)// , "toggle-button")
-                                  .alignment(Pos.BASELINE_CENTER)
-                                  .minWidth(70)
-                                  .minHeight(70)
-                                  .maxWidth(70)
-                                  .maxHeight(70)
-                                  .userData(value)
-                                  // .text(Integer.toString(value))
-                                  .build();
+        ToggleButton tb = new ToggleButton();
+        tb.getStyleClass().addAll("MiniChoiceButton", "expr" + value);// , "toggle-button")
+        tb.setAlignment(Pos.BASELINE_CENTER);
+        tb.setMinWidth(70);
+        tb.setMinHeight(70);
+        tb.setMaxWidth(70);
+        tb.setMaxHeight(70);
+        tb.setUserData(value);
+        // .text(Integer.toString(value))
+        return tb;
 
     }
 

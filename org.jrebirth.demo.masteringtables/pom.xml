@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.jrebirth</groupId>
 		<artifactId>ria</artifactId>
-		<version>3.0.0</version>
+		<version>4.0.0-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.jrebirth.demo</groupId>
 	<artifactId>masteringtables</artifactId>
-	<version>3.0.1-SNAPSHOT</version>
+	<version>4.0.0-SNAPSHOT</version>
 
 	<name>Mastering Tables</name>
 	<url>http://wip.jrebirth.org/apps/MasteringTables.html</url>
@@ -20,14 +20,11 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jrebirth.version>8.5.1-SNAPSHOT</jrebirth.version>
+		<jrebirth.version>11.0.0-SNAPSHOT</jrebirth.version>
 
 		<archiveName>MasteringTables</archiveName>
 		<exeIcon>src/main/resources/images/MT.ico</exeIcon>
 		<appClass>org.jrebirth.demo.masteringtables.MTApplication</appClass>
-
-		<appletWidth>800</appletWidth>
-		<appletHeight>600</appletHeight>
 
 		<ciJob>MasteringTables-master</ciJob>
 
@@ -47,7 +44,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
+				<version>3.0.0-M3</version>
 				<configuration>
 					<argLine>${argLine} -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw</argLine>
 				</configuration>
@@ -56,7 +53,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.2.201409121644</version>
+				<version>0.8.3</version>
 
 				<executions>
 					<execution>
@@ -86,9 +83,15 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.5</version>
+			<version>1.3.0-alpha4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jrebirth.af</groupId>
+			<artifactId>api</artifactId>
+			<version>${jrebirth.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.jrebirth.af</groupId>
 			<artifactId>core</artifactId>
@@ -111,28 +114,29 @@
 			<groupId>org.jrebirth.af</groupId>
 			<artifactId>processor</artifactId>
 			<version>${jrebirth.version}</version>
+			<classifier>4ide</classifier>
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.jrebirth.af</groupId>
 			<artifactId>core</artifactId>
 			<version>${jrebirth.version}</version>
 			<classifier>tests</classifier>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.testfx</groupId>
 			<artifactId>testfx-core</artifactId>
-			<version>4.0.1-alpha</version>
+			<version>4.0.15-alpha</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.testfx</groupId>
 			<artifactId>testfx-junit</artifactId>
-			<version>4.0.1-alpha</version>
+			<version>4.0.15-alpha</version>
 			<scope>test</scope>
 		</dependency>
 

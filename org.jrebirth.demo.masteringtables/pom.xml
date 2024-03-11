@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -20,11 +22,15 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jrebirth.version>11.0.0-SNAPSHOT</jrebirth.version>
+		<jrebirth.version>9.0.0-SNAPSHOT</jrebirth.version>
 
+		
 		<archiveName>MasteringTables</archiveName>
+		<appName>Mastering Tables</appName>
 		<exeIcon>src/main/resources/images/MT.ico</exeIcon>
+		<mainModule>org.jrebirth.demo.masteringtables</mainModule>
 		<appClass>org.jrebirth.demo.masteringtables.MTApplication</appClass>
+		<appVersion>4.0.0</appVersion>
 
 		<ciJob>MasteringTables-master</ciJob>
 
@@ -32,7 +38,8 @@
 
 	<scm>
 		<connection>scm:git:git://github.com/JRebirth/MasteringTables.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/JRebirth/MasteringTables.git</developerConnection>
+		<developerConnection>
+			scm:git:ssh://git@github.com/JRebirth/MasteringTables.git</developerConnection>
 		<url>https://github.com/JRebirth/MasteringTables</url>
 	</scm>
 
@@ -40,68 +47,108 @@
 
 		<plugins>
 
-			<!-- Add Headless test engine, require open-jfx-monocle.jar deployed into jdk/jre/lib/ext -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M3</version>
+				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<argLine>${argLine} -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw</argLine>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.jrebirth.af</groupId>
+							<artifactId>processor</artifactId>
+							<version>${jrebirth.version}</version>
+							<classifier>4ide</classifier>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
 			</plugin>
 
 			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.3</version>
-
-				<executions>
-					<execution>
-						<id>default-prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>default-report</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>org.panteleyev</groupId>
+				<artifactId>jpackage-maven-plugin</artifactId>
 			</plugin>
 
 		</plugins>
 
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.5</version>
+
+					<configuration>
+						<archive>
+							<manifestEntries>
+								<JavaFX-Version>11.0.0</JavaFX-Version>
+								<Main-Class>${appClass}</Main-Class>
+								<!--<JavaFX-Application-Class>${appClass}</JavaFX-Application-Class> -->
+							</manifestEntries>
+
+							<!-- <manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries> 
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							<addClasspath>true</addClasspath> 
+								<classpathLayoutType>custom</classpathLayoutType>
+							<customClasspathLayout>${artifact.groupId}-${artifact.artifactId}-${artifact.version}${dashClassifier?}.${artifact.extension}</customClasspathLayout> 
+								</manifest> -->
+						</archive>
+					</configuration>
+				</plugin>
 
 
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>wagon-maven-plugin</artifactId>
+					<version>1.0</version>
+					<configuration>
+						<serverId>JRebirth_Sites</serverId>
+						<url>
+							scp://s143909802.onlinehome.fr/kunden/homepages/14/d143909784/htdocs/jrebirth/apps</url>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>2.2</version>
+			</extension>
+
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>2.10</version>
+			</extension>
+
+		</extensions>
 	</build>
 
 	<dependencies>
-		<!-- Use logback logger -->
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.3.0-alpha4</version>
+			<version>1.4.14</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.jrebirth.af</groupId>
-			<artifactId>api</artifactId>
-			<version>${jrebirth.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.jrebirth.af</groupId>
-			<artifactId>core</artifactId>
-			<version>${jrebirth.version}</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.jrebirth.af</groupId>
 			<artifactId>component</artifactId>
 			<version>${jrebirth.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-swing</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -118,13 +165,30 @@
 			<scope>provided</scope>
 		</dependency>
 
-<!-- 		<dependency>
-			<groupId>org.jrebirth.af</groupId>
-			<artifactId>core</artifactId>
-			<version>${jrebirth.version}</version>
-			<classifier>tests</classifier>
-			<scope>test</scope>
-		</dependency> -->
+		<!-- Modules -->
+		<!--<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-base</artifactId>
+			<version>${openjfx.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>${openjfx.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${openjfx.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>${openjfx.version}</version>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.testfx</groupId>

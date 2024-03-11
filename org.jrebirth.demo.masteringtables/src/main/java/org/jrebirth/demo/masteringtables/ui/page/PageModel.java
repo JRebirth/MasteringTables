@@ -57,8 +57,7 @@ public class PageModel extends DefaultSimpleModel<StackPane> {
     @Override
     protected void initModel() {
 
-        // listen(MTWaves.SHOW_PAGE);
-
+        //listen(MTWaves.SHOW_PAGE);
     }
 
     /**

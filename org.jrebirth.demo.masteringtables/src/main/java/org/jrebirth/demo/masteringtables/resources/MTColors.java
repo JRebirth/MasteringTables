@@ -40,5 +40,5 @@ public enum MTColors implements ColorEnum {
 
     /** The bean shadow color. */
     BEAN_SHADOW     {{ web("4c4945"); }};
-
+	
 }

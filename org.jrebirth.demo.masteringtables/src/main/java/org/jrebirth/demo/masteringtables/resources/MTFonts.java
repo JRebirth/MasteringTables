@@ -33,4 +33,8 @@ public enum MTFonts implements FontEnum {
     /** The font used to display counter values. */
     COUNTER {{ real(MTFontNames.nyala, 50.0, FontExtension.TTF); }};
 
+	@Override
+	public Module module() {
+		return MTImages.class.getModule();
+	}
 }

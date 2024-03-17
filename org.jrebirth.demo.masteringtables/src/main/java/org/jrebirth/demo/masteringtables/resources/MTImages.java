@@ -42,4 +42,9 @@ public enum MTImages implements ImageEnum {
     /** The failure icon used to count a bad answer. */
     RESULT_FAILURE_ICON     {{ rel("Result_Failure_Icon", ImageExtension.PNG); }};
 
+	@Override
+	public Module module() {
+		return MTImages.class.getModule();
+	}
+
 }

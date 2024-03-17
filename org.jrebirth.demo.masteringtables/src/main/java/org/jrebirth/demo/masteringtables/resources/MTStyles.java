@@ -28,9 +28,9 @@ import org.jrebirth.af.core.resource.style.StyleSheet;
 public interface MTStyles {
 
     /** The application main style sheet. */
-    StyleSheetItem MAIN = create(new StyleSheet("mt"));
+    StyleSheetItem MAIN = create(new StyleSheet("mt")).module(MTStyles.class.getModule());
 
     /** The application menu style sheet. */
-    StyleSheetItem MENU = create(new StyleSheet("menu"));
+    StyleSheetItem MENU = create(new StyleSheet("menu")).module(MTStyles.class.getModule());
 
 }

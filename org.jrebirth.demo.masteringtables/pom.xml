@@ -24,9 +24,10 @@
 
 		<jrebirth.version>9.0.0-SNAPSHOT</jrebirth.version>
 
-		
-		<archiveName>MasteringTables</archiveName>
+		<resources.base.path>org/jrebirth/demo/masteringtables</resources.base.path>
+		<vendor>JRebirth</vendor>		
 		<appName>Mastering Tables</appName>
+		<archiveName>MasteringTables</archiveName>
 		<exeIcon>src/main/resources/images/MT.ico</exeIcon>
 		<mainModule>org.jrebirth.demo.masteringtables</mainModule>
 		<appClass>org.jrebirth.demo.masteringtables.MTApplication</appClass>
@@ -61,46 +62,10 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.openjfx</groupId>
-				<artifactId>javafx-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.panteleyev</groupId>
-				<artifactId>jpackage-maven-plugin</artifactId>
-			</plugin>
-
 		</plugins>
 
 		<pluginManagement>
 			<plugins>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.5</version>
-
-					<configuration>
-						<archive>
-							<manifestEntries>
-								<JavaFX-Version>11.0.0</JavaFX-Version>
-								<Main-Class>${appClass}</Main-Class>
-								<!--<JavaFX-Application-Class>${appClass}</JavaFX-Application-Class> -->
-							</manifestEntries>
-
-							<!-- <manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries> 
-								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-							<addClasspath>true</addClasspath> 
-								<classpathLayoutType>custom</classpathLayoutType>
-							<customClasspathLayout>${artifact.groupId}-${artifact.artifactId}-${artifact.version}${dashClassifier?}.${artifact.extension}</customClasspathLayout> 
-								</manifest> -->
-						</archive>
-					</configuration>
-				</plugin>
-
-
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>wagon-maven-plugin</artifactId>
@@ -111,7 +76,6 @@
 							scp://s143909802.onlinehome.fr/kunden/homepages/14/d143909784/htdocs/jrebirth/apps</url>
 					</configuration>
 				</plugin>
-
 			</plugins>
 		</pluginManagement>
 
@@ -165,31 +129,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Modules -->
-		<!--<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-base</artifactId>
-			<version>${openjfx.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-graphics</artifactId>
-			<version>${openjfx.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-controls</artifactId>
-			<version>${openjfx.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-fxml</artifactId>
-			<version>${openjfx.version}</version>
-		</dependency>-->
-
+		<!-- Test -->
 		<dependency>
 			<groupId>org.testfx</groupId>
 			<artifactId>testfx-core</artifactId>

@@ -22,7 +22,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jrebirth.version>9.0.0-SNAPSHOT</jrebirth.version>
+		<jrebirth.version>12.0.0-SNAPSHOT</jrebirth.version>
 
 		<resources.base.path>org/jrebirth/demo/masteringtables</resources.base.path>
 		<vendor>JRebirth</vendor>		
@@ -145,4 +145,19 @@
 		</dependency>
 
 	</dependencies>
+
+	<profiles>
+		<!-- Override RIA github-packages URLs for this repo's Packages feed -->
+		<profile>
+			<id>github-packages</id>
+			<properties>
+				<repositoryId>github</repositoryId>
+				<repositoryName>GitHub Packages Releases</repositoryName>
+				<repositoryUrl>https://maven.pkg.github.com/JRebirth/MasteringTables</repositoryUrl>
+				<snapshotRepositoryId>github</snapshotRepositoryId>
+				<snapshotRepositoryName>GitHub Packages Snapshots</snapshotRepositoryName>
+				<snapshotRepositoryUrl>https://maven.pkg.github.com/JRebirth/MasteringTables</snapshotRepositoryUrl>
+			</properties>
+		</profile>
+	</profiles>
 </project>

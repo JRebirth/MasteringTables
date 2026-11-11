@@ -15,7 +15,7 @@ Download Binaries
 
 All binaries are stored on our binaries server : http://apps.jrebirth.org/masteringtables
 
-Latest one are here : http://apps.jrebirth.org/masteringtables/3.0.0/
+Latest one are here : http://apps.jrebirth.org/masteringtables/4.0.0/
 
 
 Build it
@@ -33,12 +33,12 @@ How to Build Snaphot Versions
 
 You can build __RELEASE__ versions by simply using [Maven Central](http://search.maven.org) or [JCenter](jcenter.bintray.com) repositories to grab all dependencies.
 
-As this project depends on 2 others repositories, if you want to build __SNAPSHOT__ version you have 2 options:
-* Use [oss.jfrog.org](http://oss.jfrog.org) repository into your maven settings to grap SNAPSHOT dependencies
-* Build yourself [JRebirth-RIA-POM](https://github.com/JRebirth/JRebirth-RIA-POM) and [JRebirth](https://github.com/JRebirth/JRebirth) repositories
- 
+As this project may depend on snapshot versions of JRebirth, if you want to build a __SNAPSHOT__ line-up you can:
 
-__Maven Settings.xml file to use oss.jfrog.org__
+* Use [Maven Central](https://repo1.maven.org/maven2) for releases and add [repo.jrebirth.org](https://repo.jrebirth.org/) snapshot repositories in your Maven settings when needed, or  
+* Build yourself [JRebirth-RIA-POM](https://github.com/JRebirth/JRebirth-RIA-POM) and [JRebirth](https://github.com/JRebirth/JRebirth) from source.
+
+__Example: extra repositories in `settings.xml` (snapshots on repo.jrebirth.org)__
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,43 +46,39 @@ __Maven Settings.xml file to use oss.jfrog.org__
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <profiles>
     <profile>
+      <id>jrebirth-snapshots</id>
       <repositories>
         <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
           <id>central</id>
-          <name>libs-release</name>
-          <url>https://oss.jfrog.org/artifactory/libs-release</url>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
         </repository>
         <repository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
+          <id>jrebirth-snapshot</id>
+          <url>https://repo.jrebirth.org/libs-snapshot</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
         </repository>
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
           <id>central</id>
-          <name>plugins-release</name>
-          <url>https://oss.jfrog.org/artifactory/plugins-release</url>
+          <url>https://repo1.maven.org/maven2</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
         </pluginRepository>
         <pluginRepository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>plugins-snapshot</name>
-          <url>https://oss.jfrog.org/artifactory/plugins-snapshot</url>
+          <id>jrebirth-plugin-snapshot</id>
+          <url>https://repo.jrebirth.org/plugins-snapshot</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
         </pluginRepository>
       </pluginRepositories>
-      <id>artifactory</id>
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>artifactory</activeProfile>
+    <activeProfile>jrebirth-snapshots</activeProfile>
   </activeProfiles>
 </settings>
 ```

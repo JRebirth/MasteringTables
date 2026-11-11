@@ -7,12 +7,12 @@
 	<parent>
 		<groupId>org.jrebirth</groupId>
 		<artifactId>ria</artifactId>
-		<version>4.0.0-SNAPSHOT</version>
+		<version>4.0.0</version>
 	</parent>
 
 	<groupId>org.jrebirth.demo</groupId>
 	<artifactId>masteringtables</artifactId>
-	<version>4.0.0-SNAPSHOT</version>
+	<version>4.0.0</version>
 
 	<name>Mastering Tables</name>
 	<url>http://wip.jrebirth.org/apps/MasteringTables.html</url>
@@ -22,7 +22,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<jrebirth.version>12.0.0-SNAPSHOT</jrebirth.version>
+		<jrebirth.version>12.0.0</jrebirth.version>
 
 		<resources.base.path>org/jrebirth/demo/masteringtables</resources.base.path>
 		<vendor>JRebirth</vendor>		
@@ -32,6 +32,8 @@
 		<mainModule>org.jrebirth.demo.masteringtables</mainModule>
 		<appClass>org.jrebirth.demo.masteringtables.MTApplication</appClass>
 		<appVersion>4.0.0</appVersion>
+		<!-- Remote path under apps.jrebirth.org (matches AF site Presentation.vm links). -->
+		<deployPath>masteringtables/${project.version}</deployPath>
 
 		<ciJob>MasteringTables-master</ciJob>
 
@@ -158,6 +160,32 @@
 				<snapshotRepositoryName>GitHub Packages Snapshots</snapshotRepositoryName>
 				<snapshotRepositoryUrl>https://maven.pkg.github.com/JRebirth/MasteringTables</snapshotRepositoryUrl>
 			</properties>
+		</profile>
+
+		<!-- Upload jlink zip produced by -PAPP to apps.jrebirth.org/${deployPath}/ -->
+		<profile>
+			<id>DeployApps</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>deploy-jlink-zip</id>
+								<phase>site-deploy</phase>
+								<goals>
+									<goal>upload-single</goal>
+								</goals>
+								<configuration>
+									<fromFile>${project.build.directory}/${archiveName}.zip</fromFile>
+									<toFile>${deployPath}/${archiveName}-${project.version}.zip</toFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>

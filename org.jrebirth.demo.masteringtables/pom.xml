@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.jrebirth</groupId>
 		<artifactId>ria</artifactId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.0.0</version>
 	</parent>
 
 	<groupId>org.jrebirth.demo</groupId>
@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jrebirth.version>12.0.1-SNAPSHOT</jrebirth.version>
+		<jrebirth.version>12.0.1</jrebirth.version>
 		<resources.base.path>org/jrebirth/demo/masteringtables</resources.base.path>
 		<vendor>JRebirth</vendor>
 		<appName>Mastering Tables</appName>

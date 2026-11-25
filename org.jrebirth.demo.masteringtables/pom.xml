@@ -7,12 +7,12 @@
 	<parent>
 		<groupId>org.jrebirth</groupId>
 		<artifactId>ria</artifactId>
-		<version>5.0.0</version>
+		<version>5.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>org.jrebirth.demo</groupId>
 	<artifactId>masteringtables</artifactId>
-	<version>5.0.0</version>
+	<version>5.0.1-SNAPSHOT</version>
 
 	<name>Mastering Tables</name>
 	<url>https://www.jrebirth.org/apps/MasteringTables.html</url>
@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jrebirth.version>12.0.1</jrebirth.version>
+		<jrebirth.version>12.1.0-SNAPSHOT</jrebirth.version>
 		<resources.base.path>org/jrebirth/demo/masteringtables</resources.base.path>
 		<vendor>JRebirth</vendor>
 		<appName>Mastering Tables</appName>
